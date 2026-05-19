@@ -1,0 +1,718 @@
+openapi: 3.0.0
+info:
+  version: '2018-08-01'
+  title: AWS RDS DataService
+  description: AWS RDS DataService
+  x-serviceName: rds-data
+  x-serviceAlias: rds_data
+  x-protocol: rest-json
+  x-apiVersion: '2018-08-01'
+  x-endpointPrefix: rds-data
+servers:
+- url: https://rds-data.{region}.amazonaws.com
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+  description: Regional endpoint for rds-data
+paths:
+  /BatchExecute:
+    post:
+      operationId: BatchExecuteStatement
+      description: Runs a batch SQL statement over an array of data. You can run bulk update and insert operations for multiple
+        records using a DML statement with different parameter sets. Bulk operations can provide a significant performance
+        improvement over individual insert and update operations. If a call isn't part of a transaction because it doesn't
+        include the transactionID parameter, changes that result from the call are committed automatically. There isn't a
+        fixed upper limit on the number of parameter sets. However, the maximum size of the HTTP request submitted through
+        the Data API is 4 MiB. If the request exceeds this limit, the Data API returns an error and doesn't process the request.
+        This 4-MiB limit includes the size of the HTTP headers and the JSON notation in the request. Thus, the number of parameter
+        sets that you can include depends on a combination of factors, such as the size of the SQL statement and the size
+        of each parameter set. The response size limit is 1 MiB. If the call returns more than 1 MiB of response data, the
+        call is terminated.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resourceArn:
+                  $ref: '#/components/schemas/Arn'
+                secretArn:
+                  $ref: '#/components/schemas/Arn'
+                sql:
+                  $ref: '#/components/schemas/SqlStatement'
+                database:
+                  $ref: '#/components/schemas/DbName'
+                schema:
+                  $ref: '#/components/schemas/DbName'
+                parameterSets:
+                  $ref: '#/components/schemas/SqlParameterSets'
+                transactionId:
+                  $ref: '#/components/schemas/Id'
+              required:
+              - resourceArn
+              - secretArn
+              - sql
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchExecuteStatementResponse'
+      x-stackql-resource: batch_execute_statement
+      x-stackql-method: batch_execute_statement
+      x-stackql-verb: EXEC
+  /BeginTransaction:
+    post:
+      operationId: BeginTransaction
+      description: Starts a SQL transaction. A transaction can run for a maximum of 24 hours. A transaction is terminated
+        and rolled back automatically after 24 hours. A transaction times out if no calls use its transaction ID in three
+        minutes. If a transaction times out before it's committed, it's rolled back automatically. For Aurora MySQL, DDL statements
+        inside a transaction cause an implicit commit. We recommend that you run each MySQL DDL statement in a separate ExecuteStatement
+        call with continueAfterTimeout enabled.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resourceArn:
+                  $ref: '#/components/schemas/Arn'
+                secretArn:
+                  $ref: '#/components/schemas/Arn'
+                database:
+                  $ref: '#/components/schemas/DbName'
+                schema:
+                  $ref: '#/components/schemas/DbName'
+              required:
+              - resourceArn
+              - secretArn
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeginTransactionResponse'
+      x-stackql-resource: begin_transaction
+      x-stackql-method: begin_transaction
+      x-stackql-verb: EXEC
+  /CommitTransaction:
+    post:
+      operationId: CommitTransaction
+      description: Ends a SQL transaction started with the BeginTransaction operation and commits the changes.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resourceArn:
+                  $ref: '#/components/schemas/Arn'
+                secretArn:
+                  $ref: '#/components/schemas/Arn'
+                transactionId:
+                  $ref: '#/components/schemas/Id'
+              required:
+              - resourceArn
+              - secretArn
+              - transactionId
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitTransactionResponse'
+      x-stackql-resource: commit_transaction
+      x-stackql-method: commit_transaction
+      x-stackql-verb: EXEC
+  /ExecuteSql:
+    post:
+      operationId: ExecuteSql
+      description: Runs one or more SQL statements. This operation isn't supported for Aurora Serverless v2 and provisioned
+        DB clusters. For Aurora Serverless v1 DB clusters, the operation is deprecated. Use the BatchExecuteStatement or ExecuteStatement
+        operation.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dbClusterOrInstanceArn:
+                  $ref: '#/components/schemas/Arn'
+                awsSecretStoreArn:
+                  $ref: '#/components/schemas/Arn'
+                sqlStatements:
+                  $ref: '#/components/schemas/SqlStatement'
+                database:
+                  $ref: '#/components/schemas/DbName'
+                schema:
+                  $ref: '#/components/schemas/DbName'
+              required:
+              - dbClusterOrInstanceArn
+              - awsSecretStoreArn
+              - sqlStatements
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecuteSqlResponse'
+      x-stackql-resource: execute_sql
+      x-stackql-method: execute_sql
+      x-stackql-verb: EXEC
+  /Execute:
+    post:
+      operationId: ExecuteStatement
+      description: Runs a SQL statement against a database. If a call isn't part of a transaction because it doesn't include
+        the transactionID parameter, changes that result from the call are committed automatically. If the binary response
+        data from the database is more than 1 MB, the call is terminated.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resourceArn:
+                  $ref: '#/components/schemas/Arn'
+                secretArn:
+                  $ref: '#/components/schemas/Arn'
+                sql:
+                  $ref: '#/components/schemas/SqlStatement'
+                database:
+                  $ref: '#/components/schemas/DbName'
+                schema:
+                  $ref: '#/components/schemas/DbName'
+                parameters:
+                  $ref: '#/components/schemas/SqlParametersList'
+                transactionId:
+                  $ref: '#/components/schemas/Id'
+                includeResultMetadata:
+                  $ref: '#/components/schemas/Boolean'
+                continueAfterTimeout:
+                  $ref: '#/components/schemas/Boolean'
+                resultSetOptions:
+                  $ref: '#/components/schemas/ResultSetOptions'
+                formatRecordsAs:
+                  $ref: '#/components/schemas/RecordsFormatType'
+              required:
+              - resourceArn
+              - secretArn
+              - sql
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecuteStatementResponse'
+      x-stackql-resource: execute_statement
+      x-stackql-method: execute_statement
+      x-stackql-verb: EXEC
+  /RollbackTransaction:
+    post:
+      operationId: RollbackTransaction
+      description: Performs a rollback of a transaction. Rolling back a transaction cancels its changes.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resourceArn:
+                  $ref: '#/components/schemas/Arn'
+                secretArn:
+                  $ref: '#/components/schemas/Arn'
+                transactionId:
+                  $ref: '#/components/schemas/Id'
+              required:
+              - resourceArn
+              - secretArn
+              - transactionId
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RollbackTransactionResponse'
+      x-stackql-resource: rollback_transaction
+      x-stackql-method: rollback_transaction
+      x-stackql-verb: EXEC
+components:
+  parameters:
+    X-Amz-Content-Sha256:
+      in: header
+      name: X-Amz-Content-Sha256
+      required: false
+      schema:
+        type: string
+    X-Amz-Date:
+      in: header
+      name: X-Amz-Date
+      required: false
+      schema:
+        type: string
+    X-Amz-Algorithm:
+      in: header
+      name: X-Amz-Algorithm
+      required: false
+      schema:
+        type: string
+    X-Amz-Credential:
+      in: header
+      name: X-Amz-Credential
+      required: false
+      schema:
+        type: string
+    X-Amz-Security-Token:
+      in: header
+      name: X-Amz-Security-Token
+      required: false
+      schema:
+        type: string
+    X-Amz-Signature:
+      in: header
+      name: X-Amz-Signature
+      required: false
+      schema:
+        type: string
+    X-Amz-SignedHeaders:
+      in: header
+      name: X-Amz-SignedHeaders
+      required: false
+      schema:
+        type: string
+  schemas:
+    Arn:
+      type: string
+      minLength: 11
+      maxLength: 100
+    SqlStatement:
+      type: string
+      minLength: 0
+      maxLength: 65536
+    DbName:
+      type: string
+      minLength: 0
+      maxLength: 64
+    SqlParameterSets:
+      type: array
+      items:
+        $ref: '#/components/schemas/SqlParametersList'
+    SqlParametersList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SqlParameter'
+    SqlParameter:
+      description: A parameter used in a SQL statement.
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/ParameterName'
+          description: The name of the parameter.
+        value:
+          $ref: '#/components/schemas/Field'
+          description: The value of the parameter.
+        typeHint:
+          $ref: '#/components/schemas/TypeHint'
+          description: 'A hint that specifies the correct object type for data type mapping. Possible values are as follows:
+            DATE - The corresponding String parameter value is sent as an object of DATE type to the database. The accepted
+            format is YYYY-MM-DD. DECIMAL - The corresponding String parameter value is sent as an object of DECIMAL type
+            to the database. JSON - The corresponding String parameter value is sent as an object of JSON type to the database.
+            TIME - The corresponding String parameter value is sent as an object of TIME type to the database. The accepted
+            format is HH:MM:SS[.FFF]. TIMESTAMP - The corresponding String parameter value is sent as an object of TIMESTAMP
+            type to the database. The accepted format is YYYY-MM-DD HH:MM:SS[.FFF]. UUID - The corresponding String parameter
+            value is sent as an object of UUID type to the database.'
+    ParameterName:
+      type: string
+    Field:
+      description: Contains a value.
+      type: object
+      properties:
+        isNull:
+          $ref: '#/components/schemas/BoxedBoolean'
+          description: A NULL value.
+        booleanValue:
+          $ref: '#/components/schemas/BoxedBoolean'
+          description: A value of Boolean data type.
+        longValue:
+          $ref: '#/components/schemas/BoxedLong'
+          description: A value of long data type.
+        doubleValue:
+          $ref: '#/components/schemas/BoxedDouble'
+          description: A value of double data type.
+        stringValue:
+          $ref: '#/components/schemas/String'
+          description: A value of string data type.
+        blobValue:
+          $ref: '#/components/schemas/Blob'
+          description: A value of BLOB data type.
+        arrayValue:
+          $ref: '#/components/schemas/ArrayValue'
+          description: An array of values.
+    BoxedBoolean:
+      type: boolean
+    BoxedLong:
+      type: integer
+      format: int64
+    BoxedDouble:
+      type: number
+      format: double
+    String:
+      type: string
+    Blob:
+      type: string
+      format: byte
+    ArrayValue:
+      description: Contains an array.
+      type: object
+      properties:
+        booleanValues:
+          $ref: '#/components/schemas/BooleanArray'
+          description: An array of Boolean values.
+        longValues:
+          $ref: '#/components/schemas/LongArray'
+          description: An array of integers.
+        doubleValues:
+          $ref: '#/components/schemas/DoubleArray'
+          description: An array of floating-point numbers.
+        stringValues:
+          $ref: '#/components/schemas/StringArray'
+          description: An array of strings.
+        arrayValues:
+          $ref: '#/components/schemas/ArrayOfArray'
+          description: An array of arrays.
+    BooleanArray:
+      description: An array of Boolean values. Some array entries can be null.
+      type: array
+      items:
+        $ref: '#/components/schemas/BoxedBoolean'
+    LongArray:
+      description: An array of integers. Some array entries can be null.
+      type: array
+      items:
+        $ref: '#/components/schemas/BoxedLong'
+    DoubleArray:
+      description: An array of floating-point numbers. Some array entries can be null.
+      type: array
+      items:
+        $ref: '#/components/schemas/BoxedDouble'
+    StringArray:
+      description: An array of strings. Some array entries can be null.
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    ArrayOfArray:
+      description: An array of arrays. Some array entries can be null.
+      type: array
+      items:
+        $ref: '#/components/schemas/ArrayValue'
+    TypeHint:
+      type: string
+      enum:
+      - JSON
+      - UUID
+      - TIMESTAMP
+      - DATE
+      - TIME
+      - DECIMAL
+    Id:
+      type: string
+      minLength: 0
+      maxLength: 192
+    BatchExecuteStatementResponse:
+      description: The response elements represent the output of a SQL statement over an array of data.
+      type: object
+      properties:
+        updateResults:
+          $ref: '#/components/schemas/UpdateResults'
+          description: The execution results of each batch entry.
+    UpdateResults:
+      type: array
+      items:
+        $ref: '#/components/schemas/UpdateResult'
+    UpdateResult:
+      description: The response elements represent the results of an update.
+      type: object
+      properties:
+        generatedFields:
+          $ref: '#/components/schemas/FieldList'
+          description: Values for fields generated during the request.
+    FieldList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Field'
+    BeginTransactionResponse:
+      description: The response elements represent the output of a request to start a SQL transaction.
+      type: object
+      properties:
+        transactionId:
+          $ref: '#/components/schemas/Id'
+          description: The transaction ID of the transaction started by the call.
+    CommitTransactionResponse:
+      description: The response elements represent the output of a commit transaction request.
+      type: object
+      properties:
+        transactionStatus:
+          $ref: '#/components/schemas/TransactionStatus'
+          description: The status of the commit operation.
+    TransactionStatus:
+      type: string
+      minLength: 0
+      maxLength: 128
+    ExecuteSqlResponse:
+      description: The response elements represent the output of a request to run one or more SQL statements.
+      type: object
+      properties:
+        sqlStatementResults:
+          $ref: '#/components/schemas/SqlStatementResults'
+          description: The results of the SQL statement or statements.
+    SqlStatementResults:
+      type: array
+      items:
+        $ref: '#/components/schemas/SqlStatementResult'
+    SqlStatementResult:
+      description: The result of a SQL statement. This data structure is only used with the deprecated ExecuteSql operation.
+        Use the BatchExecuteStatement or ExecuteStatement operation instead.
+      type: object
+      properties:
+        resultFrame:
+          $ref: '#/components/schemas/ResultFrame'
+          description: The result set of the SQL statement.
+        numberOfRecordsUpdated:
+          $ref: '#/components/schemas/RecordsUpdated'
+          description: The number of records updated by a SQL statement.
+    ResultFrame:
+      description: The result set returned by a SQL statement. This data structure is only used with the deprecated ExecuteSql
+        operation. Use the BatchExecuteStatement or ExecuteStatement operation instead.
+      type: object
+      properties:
+        resultSetMetadata:
+          $ref: '#/components/schemas/ResultSetMetadata'
+          description: The result-set metadata in the result set.
+        records:
+          $ref: '#/components/schemas/Records'
+          description: The records in the result set.
+    ResultSetMetadata:
+      description: The metadata of the result set returned by a SQL statement.
+      type: object
+      properties:
+        columnCount:
+          $ref: '#/components/schemas/Long'
+          description: The number of columns in the result set.
+        columnMetadata:
+          $ref: '#/components/schemas/Metadata'
+          description: The metadata of the columns in the result set.
+    Long:
+      type: integer
+      format: int64
+    Metadata:
+      type: array
+      items:
+        $ref: '#/components/schemas/ColumnMetadata'
+    ColumnMetadata:
+      description: Contains the metadata for a column.
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/String'
+          description: The name of the column.
+        type_:
+          $ref: '#/components/schemas/Integer'
+          description: The type of the column.
+        typeName:
+          $ref: '#/components/schemas/String'
+          description: The database-specific data type of the column.
+        label:
+          $ref: '#/components/schemas/String'
+          description: The label for the column.
+        schemaName:
+          $ref: '#/components/schemas/String'
+          description: The name of the schema that owns the table that includes the column.
+        tableName:
+          $ref: '#/components/schemas/String'
+          description: The name of the table that includes the column.
+        isAutoIncrement:
+          $ref: '#/components/schemas/Boolean'
+          description: A value that indicates whether the column increments automatically.
+        isSigned:
+          $ref: '#/components/schemas/Boolean'
+          description: A value that indicates whether an integer column is signed.
+        isCurrency:
+          $ref: '#/components/schemas/Boolean'
+          description: A value that indicates whether the column contains currency values.
+        isCaseSensitive:
+          $ref: '#/components/schemas/Boolean'
+          description: A value that indicates whether the column is case-sensitive.
+        nullable_:
+          $ref: '#/components/schemas/Integer'
+          description: A value that indicates whether the column is nullable.
+        precision:
+          $ref: '#/components/schemas/Integer'
+          description: The precision value of a decimal number column.
+        scale:
+          $ref: '#/components/schemas/Integer'
+          description: The scale value of a decimal number column.
+        arrayBaseColumnType:
+          $ref: '#/components/schemas/Integer'
+          description: The type of the column.
+    Integer:
+      type: integer
+    Boolean:
+      type: boolean
+    Records:
+      type: array
+      items:
+        $ref: '#/components/schemas/Record'
+    Record:
+      description: A record returned by a call. This data structure is only used with the deprecated ExecuteSql operation.
+        Use the BatchExecuteStatement or ExecuteStatement operation instead.
+      type: object
+      properties:
+        values:
+          $ref: '#/components/schemas/Row'
+          description: The values returned in the record.
+    Row:
+      type: array
+      items:
+        $ref: '#/components/schemas/Value'
+    Value:
+      description: Contains the value of a column. This data structure is only used with the deprecated ExecuteSql operation.
+        Use the BatchExecuteStatement or ExecuteStatement operation instead.
+      type: object
+      properties:
+        isNull:
+          $ref: '#/components/schemas/BoxedBoolean'
+          description: A NULL value.
+        bitValue:
+          $ref: '#/components/schemas/BoxedBoolean'
+          description: A value for a column of BIT data type.
+        bigIntValue:
+          $ref: '#/components/schemas/BoxedLong'
+          description: A value for a column of big integer data type.
+        intValue:
+          $ref: '#/components/schemas/BoxedInteger'
+          description: A value for a column of integer data type.
+        doubleValue:
+          $ref: '#/components/schemas/BoxedDouble'
+          description: A value for a column of double data type.
+        realValue:
+          $ref: '#/components/schemas/BoxedFloat'
+          description: A value for a column of real data type.
+        stringValue:
+          $ref: '#/components/schemas/String'
+          description: A value for a column of string data type.
+        blobValue:
+          $ref: '#/components/schemas/Blob'
+          description: A value for a column of BLOB data type.
+        arrayValues:
+          $ref: '#/components/schemas/ArrayValueList'
+          description: An array of column values.
+        structValue:
+          $ref: '#/components/schemas/StructValue'
+          description: A value for a column of STRUCT data type.
+    BoxedInteger:
+      type: integer
+    BoxedFloat:
+      type: number
+      format: float
+    ArrayValueList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Value'
+    StructValue:
+      description: A structure value returned by a call. This data structure is only used with the deprecated ExecuteSql operation.
+        Use the BatchExecuteStatement or ExecuteStatement operation instead.
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ArrayValueList'
+          description: The attributes returned in the record.
+    RecordsUpdated:
+      type: integer
+      format: int64
+    ResultSetOptions:
+      description: Options that control how the result set is returned.
+      type: object
+      properties:
+        decimalReturnType:
+          $ref: '#/components/schemas/DecimalReturnType'
+          description: A value that indicates how a field of DECIMAL type is represented in the response. The value of STRING,
+            the default, specifies that it is converted to a String value. The value of DOUBLE_OR_LONG specifies that it is
+            converted to a Long value if its scale is 0, or to a Double value otherwise. Conversion to Double or Long can
+            result in roundoff errors due to precision loss. We recommend converting to String, especially when working with
+            currency values.
+        longReturnType:
+          $ref: '#/components/schemas/LongReturnType'
+          description: A value that indicates how a field of LONG type is represented. Allowed values are LONG and STRING.
+            The default is LONG. Specify STRING if the length or precision of numeric values might cause truncation or rounding
+            errors.
+    DecimalReturnType:
+      type: string
+      enum:
+      - STRING
+      - DOUBLE_OR_LONG
+    LongReturnType:
+      type: string
+      enum:
+      - STRING
+      - LONG
+    RecordsFormatType:
+      type: string
+      enum:
+      - NONE
+      - JSON
+    ExecuteStatementResponse:
+      description: The response elements represent the output of a request to run a SQL statement against a database.
+      type: object
+      properties:
+        records:
+          $ref: '#/components/schemas/SqlRecords'
+          description: The records returned by the SQL statement. This field is blank if the formatRecordsAs parameter is
+            set to JSON.
+        columnMetadata:
+          $ref: '#/components/schemas/Metadata'
+          description: Metadata for the columns included in the results. This field is blank if the formatRecordsAs parameter
+            is set to JSON.
+        numberOfRecordsUpdated:
+          $ref: '#/components/schemas/RecordsUpdated'
+          description: The number of records updated by the request.
+        generatedFields:
+          $ref: '#/components/schemas/FieldList'
+          description: Values for fields generated during a DML request. The generatedFields data isn't supported by Aurora
+            PostgreSQL. To get the values of generated fields, use the RETURNING clause. For more information, see Returning
+            Data From Modified Rows in the PostgreSQL documentation.
+        formattedRecords:
+          $ref: '#/components/schemas/FormattedSqlRecords'
+          description: A string value that represents the result set of a SELECT statement in JSON format. This value is only
+            present when the formatRecordsAs parameter is set to JSON. The size limit for this field is currently 10 MB. If
+            the JSON-formatted string representing the result set requires more than 10 MB, the call returns an error.
+    SqlRecords:
+      type: array
+      items:
+        $ref: '#/components/schemas/FieldList'
+    FormattedSqlRecords:
+      type: string
+    RollbackTransactionResponse:
+      description: The response elements represent the output of a request to perform a rollback of a transaction.
+      type: object
+      properties:
+        transactionStatus:
+          $ref: '#/components/schemas/TransactionStatus'
+          description: The status of the rollback operation.

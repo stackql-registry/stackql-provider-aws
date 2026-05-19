@@ -1,3 +1,11 @@
+# stackql
+stackql
+stackql-*.sh
+stackql-*.err
+stackql-*.log
+/**/.stackql
+.env
+
 .DS_Store
 *.py[co]
 

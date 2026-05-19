@@ -1,0 +1,109 @@
+openapi: 3.0.0
+info:
+  version: '2023-08-08'
+  title: Inspector Scan
+  description: Inspector Scan
+  x-serviceName: inspector-scan
+  x-serviceAlias: inspector_scan
+  x-protocol: rest-json
+  x-apiVersion: '2023-08-08'
+  x-endpointPrefix: inspector-scan
+servers:
+- url: https://inspector-scan.{region}.amazonaws.com
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+  description: Regional endpoint for inspector-scan
+paths:
+  /scan/sbom:
+    post:
+      operationId: ScanSbom
+      description: Scans a provided CycloneDX 1.5 SBOM and reports on any vulnerabilities discovered in that SBOM. You can
+        generate compatible SBOMs for your resources using the Amazon Inspector SBOM generator. The output of this action
+        reports NVD and CVSS scores when NVD and CVSS scores are available. Because the output reports both scores, you might
+        notice a discrepency between them. However, you can triage the severity of either score depending on the vendor of
+        your choosing.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sbom:
+                  $ref: '#/components/schemas/Sbom'
+                outputFormat:
+                  $ref: '#/components/schemas/OutputFormat'
+              required:
+              - sbom
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanSbomResponse'
+      x-stackql-resource: scan_sbom
+      x-stackql-method: scan_sbom
+      x-stackql-verb: EXEC
+components:
+  parameters:
+    X-Amz-Content-Sha256:
+      in: header
+      name: X-Amz-Content-Sha256
+      required: false
+      schema:
+        type: string
+    X-Amz-Date:
+      in: header
+      name: X-Amz-Date
+      required: false
+      schema:
+        type: string
+    X-Amz-Algorithm:
+      in: header
+      name: X-Amz-Algorithm
+      required: false
+      schema:
+        type: string
+    X-Amz-Credential:
+      in: header
+      name: X-Amz-Credential
+      required: false
+      schema:
+        type: string
+    X-Amz-Security-Token:
+      in: header
+      name: X-Amz-Security-Token
+      required: false
+      schema:
+        type: string
+    X-Amz-Signature:
+      in: header
+      name: X-Amz-Signature
+      required: false
+      schema:
+        type: string
+    X-Amz-SignedHeaders:
+      in: header
+      name: X-Amz-SignedHeaders
+      required: false
+      schema:
+        type: string
+  schemas:
+    Sbom:
+      type: object
+    OutputFormat:
+      type: string
+      enum:
+      - CYCLONE_DX_1_5
+      - INSPECTOR
+      - INSPECTOR_ALT
+    ScanSbomResponse:
+      type: object
+      properties:
+        sbom:
+          $ref: '#/components/schemas/Sbom'
+          description: The vulnerability report for the scanned SBOM.

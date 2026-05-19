@@ -1,0 +1,142 @@
+openapi: 3.0.0
+info:
+  version: '2018-05-10'
+  title: Amazon Kinesis Video WebRTC Storage
+  description: Amazon Kinesis Video WebRTC Storage
+  x-serviceName: kinesisvideo
+  x-serviceAlias: kinesis_video_webrtc_storage
+  x-protocol: rest-json
+  x-apiVersion: '2018-05-10'
+  x-endpointPrefix: kinesisvideo
+  x-jsonVersion: '1.1'
+servers:
+- url: https://kinesisvideo.{region}.amazonaws.com
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+  description: Regional endpoint for kinesis-video-webrtc-storage
+paths:
+  /joinStorageSession:
+    post:
+      operationId: JoinStorageSession
+      description: 'Before using this API, you must call the GetSignalingChannelEndpoint API to request the WEBRTC endpoint.
+        You then specify the endpoint and region in your JoinStorageSession API request. Join the ongoing one way-video and/or
+        multi-way audio WebRTC session as a video producing device for an input channel. If there’s no existing session for
+        the channel, a new streaming session needs to be created, and the Amazon Resource Name (ARN) of the signaling channel
+        must be provided. Currently for the SINGLE_MASTER type, a video producing device is able to ingest both audio and
+        video media into a stream. Only video producing devices can join the session and record media. Both audio and video
+        tracks are currently required for WebRTC ingestion. Current requirements: Video track: H.264 Audio track: Opus The
+        resulting ingested video in the Kinesis video stream will have the following parameters: H.264 video and AAC audio.
+        Once a master participant has negotiated a connection through WebRTC, the ingested media session will be stored in
+        the Kinesis video stream. Multiple viewers are then able to play back real-time media through our Playback APIs. You
+        can also use existing Kinesis Video Streams features like HLS or DASH playback, image generation via GetImages, and
+        more with ingested WebRTC media. S3 image delivery and notifications are not currently supported. Assume that only
+        one video producing device client can be associated with a session for the channel. If more than one client joins
+        the session of a specific channel as a video producing device, the most recent client request takes precedence. Additional
+        information Idempotent - This API is not idempotent. Retry behavior - This is counted as a new API call. Concurrent
+        calls - Concurrent calls are allowed. An offer is sent once per each call.'
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                channelArn:
+                  $ref: '#/components/schemas/ChannelArn'
+              required:
+              - channelArn
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: join_storage_session
+      x-stackql-method: join_storage_session
+      x-stackql-verb: EXEC
+  /joinStorageSessionAsViewer:
+    post:
+      operationId: JoinStorageSessionAsViewer
+      description: Join the ongoing one way-video and/or multi-way audio WebRTC session as a viewer for an input channel.
+        If there’s no existing session for the channel, create a new streaming session and provide the Amazon Resource Name
+        (ARN) of the signaling channel (channelArn) and client id (clientId). Currently for SINGLE_MASTER type, a video producing
+        device is able to ingest both audio and video media into a stream, while viewers can only ingest audio. Both a video
+        producing device and viewers can join a session first and wait for other participants. While participants are having
+        peer to peer conversations through WebRTC, the ingested media session will be stored into the Kinesis Video Stream.
+        Multiple viewers are able to playback real-time media. Customers can also use existing Kinesis Video Streams features
+        like HLS or DASH playback, Image generation, and more with ingested WebRTC media. If there’s an existing session with
+        the same clientId that's found in the join session request, the new request takes precedence.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                channelArn:
+                  $ref: '#/components/schemas/ChannelArn'
+                clientId:
+                  $ref: '#/components/schemas/ClientId'
+              required:
+              - channelArn
+              - clientId
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: join_storage_session_as_viewer
+      x-stackql-method: join_storage_session_as_viewer
+      x-stackql-verb: EXEC
+components:
+  parameters:
+    X-Amz-Content-Sha256:
+      in: header
+      name: X-Amz-Content-Sha256
+      required: false
+      schema:
+        type: string
+    X-Amz-Date:
+      in: header
+      name: X-Amz-Date
+      required: false
+      schema:
+        type: string
+    X-Amz-Algorithm:
+      in: header
+      name: X-Amz-Algorithm
+      required: false
+      schema:
+        type: string
+    X-Amz-Credential:
+      in: header
+      name: X-Amz-Credential
+      required: false
+      schema:
+        type: string
+    X-Amz-Security-Token:
+      in: header
+      name: X-Amz-Security-Token
+      required: false
+      schema:
+        type: string
+    X-Amz-Signature:
+      in: header
+      name: X-Amz-Signature
+      required: false
+      schema:
+        type: string
+    X-Amz-SignedHeaders:
+      in: header
+      name: X-Amz-SignedHeaders
+      required: false
+      schema:
+        type: string
+  schemas:
+    ChannelArn:
+      type: string
+      pattern: ^arn:(aws[a-zA-Z-]*):kinesisvideo:[a-z0-9-]+:[0-9]+:[a-z]+/[a-zA-Z0-9_.-]+/[0-9]+$
+    ClientId:
+      type: string
+      minLength: 1
+      maxLength: 256
+      pattern: ^[a-zA-Z0-9_.-]+$

@@ -1,0 +1,921 @@
+openapi: 3.0.0
+info:
+  version: '2010-06-01'
+  title: AWS Import/Export
+  description: AWS Import/Export
+  x-serviceName: importexport
+  x-serviceAlias: importexport
+  x-protocol: query
+  x-apiVersion: '2010-06-01'
+  x-endpointPrefix: importexport
+servers:
+- url: https://importexport.amazonaws.com
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+  description: Global endpoint for importexport
+paths:
+  /?Action=CancelJob&Version=2010-06-01:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: POST_CancelJob
+      description: This operation cancels a specified job. Only the job owner can cancel it. The operation fails if the job
+        has already started or is complete.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CancelJobOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/CancelJobInput'
+      x-stackql-resource: job
+      x-stackql-method: cancel_job
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: CancelJobOutputDisplay
+      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CancelJobResponse\" \"CancelJobResult\"\
+        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"success\": {{ $v\
+        \ := index . \"Success\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    get:
+      operationId: GET_CancelJob
+      description: This operation cancels a specified job. Only the job owner can cancel it. The operation fails if the job
+        has already started or is complete.
+      parameters:
+      - name: JobId
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/JobId'
+      - name: APIVersion
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/APIVersion'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CancelJobOutputDisplay'
+      x-stackql-resource: job
+      x-stackql-method: cancel_job
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: CancelJobOutputDisplay
+      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CancelJobResponse\" \"CancelJobResult\"\
+        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"success\": {{ $v\
+        \ := index . \"Success\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+  /?Action=CreateJob&Version=2010-06-01:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: POST_CreateJob
+      description: This operation initiates the process of scheduling an upload or download of your data. You include in the
+        request a manifest that describes the data transfer specifics. The response to the request includes a job ID, which
+        you can use in other operations, a signature that you use to identify your storage device, and the address where you
+        should ship your storage device.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CreateJobOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/CreateJobInput'
+      x-stackql-resource: jobs
+      x-stackql-method: create_job
+      x-stackql-verb: INSERT
+      x-stackql-responseEnvelope: CreateJobOutputDisplay
+      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CreateJobResponse\" \"CreateJobResult\"\
+        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"job_id\": {{ $v\
+        \ := index . \"JobId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
+        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
+        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"job_type\": {{ $v := index . \"JobType\"\
+        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
+        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
+        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"signature\": {{ $v := index . \"Signature\" }}{{ if or\
+        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
+        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
+        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"signature_file_contents\": {{ $v := index . \"SignatureFileContents\"\
+        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
+        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
+        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"warning_message\": {{ $v := index . \"WarningMessage\"\
+        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
+        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
+        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"artifact_list\": {{ $v := index . \"ArtifactList\" }}{{\
+        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    get:
+      operationId: GET_CreateJob
+      description: This operation initiates the process of scheduling an upload or download of your data. You include in the
+        request a manifest that describes the data transfer specifics. The response to the request includes a job ID, which
+        you can use in other operations, a signature that you use to identify your storage device, and the address where you
+        should ship your storage device.
+      parameters:
+      - name: JobType
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/JobType'
+      - name: Manifest
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Manifest'
+      - name: ManifestAddendum
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ManifestAddendum'
+      - name: ValidateOnly
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/ValidateOnly'
+      - name: APIVersion
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/APIVersion'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CreateJobOutputDisplay'
+      x-stackql-resource: jobs
+      x-stackql-method: create_job
+      x-stackql-verb: INSERT
+      x-stackql-responseEnvelope: CreateJobOutputDisplay
+      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CreateJobResponse\" \"CreateJobResult\"\
+        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"job_id\": {{ $v\
+        \ := index . \"JobId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
+        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
+        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"job_type\": {{ $v := index . \"JobType\"\
+        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
+        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
+        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"signature\": {{ $v := index . \"Signature\" }}{{ if or\
+        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
+        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
+        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"signature_file_contents\": {{ $v := index . \"SignatureFileContents\"\
+        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
+        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
+        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"warning_message\": {{ $v := index . \"WarningMessage\"\
+        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
+        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
+        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"artifact_list\": {{ $v := index . \"ArtifactList\" }}{{\
+        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+  /?Action=GetShippingLabel&Version=2010-06-01:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: POST_GetShippingLabel
+      description: This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for
+        processing.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/GetShippingLabelOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetShippingLabelInput'
+      x-stackql-resource: shipping_labels
+      x-stackql-method: get_shipping_label
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetShippingLabelOutputDisplay
+      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetShippingLabelResponse\" \"GetShippingLabelResult\"\
+        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"shipping_label_url\"\
+        : {{ $v := index . \"ShippingLabelURL\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
+        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
+        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"warning\": {{ $v := index .\
+        \ \"Warning\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
+        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
+        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    get:
+      operationId: GET_GetShippingLabel
+      description: This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for
+        processing.
+      parameters:
+      - name: jobIds
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/JobIdList'
+      - name: name
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/name'
+      - name: company
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/company'
+      - name: phoneNumber
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/phoneNumber'
+      - name: country
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/country'
+      - name: stateOrProvince
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/stateOrProvince'
+      - name: city
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/city'
+      - name: postalCode
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/postalCode'
+      - name: street1
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/street1'
+      - name: street2
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/street2'
+      - name: street3
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/street3'
+      - name: APIVersion
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/APIVersion'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/GetShippingLabelOutputDisplay'
+      x-stackql-resource: shipping_labels
+      x-stackql-method: get_shipping_label
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetShippingLabelOutputDisplay
+      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetShippingLabelResponse\" \"GetShippingLabelResult\"\
+        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"shipping_label_url\"\
+        : {{ $v := index . \"ShippingLabelURL\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
+        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
+        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"warning\": {{ $v := index .\
+        \ \"Warning\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
+        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
+        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+  /?Action=GetStatus&Version=2010-06-01:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: POST_GetStatus
+      description: This operation returns information about a job, including where the job is in the processing pipeline,
+        the status of the results, and the signature value associated with the job. You can only return information about
+        jobs you own.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/GetStatusOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetStatusInput'
+      x-stackql-resource: status
+      x-stackql-method: get_status
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetStatusOutputDisplay
+      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetStatusResponse\" \"GetStatusResult\"\
+        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"job_id\": {{ $v\
+        \ := index . \"JobId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
+        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
+        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"job_type\": {{ $v := index . \"JobType\"\
+        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
+        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
+        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"location_code\": {{ $v := index . \"LocationCode\" }}{{\
+        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
+        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
+        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"location_message\": {{ $v := index . \"LocationMessage\" }}{{\
+        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
+        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
+        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"progress_code\": {{ $v := index . \"ProgressCode\" }}{{ if or\
+        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
+        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
+        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"progress_message\": {{ $v := index . \"ProgressMessage\" }}{{ if or\
+        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
+        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
+        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"carrier\": {{ $v := index . \"Carrier\" }}{{ if or (eq $v nil) (eq\
+        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
+        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
+        \ $v) }}{{ end }},\n        \"tracking_number\": {{ $v := index . \"TrackingNumber\" }}{{ if or (eq $v nil) (eq (printf\
+        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
+        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
+        \ end }},\n        \"log_bucket\": {{ $v := index . \"LogBucket\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\
+        \") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"\
+        float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n \
+        \       \"log_key\": {{ $v := index . \"LogKey\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
+        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
+        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"error_count\"\
+        : {{ $v := index . \"ErrorCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"signature\"\
+        : {{ $v := index . \"Signature\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
+        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
+        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"signature_file_contents\":\
+        \ {{ $v := index . \"SignatureFileContents\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
+        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
+        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"current_manifest\"\
+        : {{ $v := index . \"CurrentManifest\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
+        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
+        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"creation_date\": {{ $v := index\
+        \ . \"CreationDate\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
+        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
+        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"artifact_list\": {{ $v := index . \"\
+        ArtifactList\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
+        \ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    get:
+      operationId: GET_GetStatus
+      description: This operation returns information about a job, including where the job is in the processing pipeline,
+        the status of the results, and the signature value associated with the job. You can only return information about
+        jobs you own.
+      parameters:
+      - name: JobId
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/JobId'
+      - name: APIVersion
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/APIVersion'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/GetStatusOutputDisplay'
+      x-stackql-resource: status
+      x-stackql-method: get_status
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetStatusOutputDisplay
+      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetStatusResponse\" \"GetStatusResult\"\
+        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"job_id\": {{ $v\
+        \ := index . \"JobId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
+        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
+        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"job_type\": {{ $v := index . \"JobType\"\
+        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
+        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
+        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"location_code\": {{ $v := index . \"LocationCode\" }}{{\
+        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
+        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
+        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"location_message\": {{ $v := index . \"LocationMessage\" }}{{\
+        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
+        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
+        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"progress_code\": {{ $v := index . \"ProgressCode\" }}{{ if or\
+        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
+        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
+        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"progress_message\": {{ $v := index . \"ProgressMessage\" }}{{ if or\
+        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
+        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
+        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"carrier\": {{ $v := index . \"Carrier\" }}{{ if or (eq $v nil) (eq\
+        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
+        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
+        \ $v) }}{{ end }},\n        \"tracking_number\": {{ $v := index . \"TrackingNumber\" }}{{ if or (eq $v nil) (eq (printf\
+        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
+        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
+        \ end }},\n        \"log_bucket\": {{ $v := index . \"LogBucket\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\
+        \") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"\
+        float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n \
+        \       \"log_key\": {{ $v := index . \"LogKey\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
+        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
+        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"error_count\"\
+        : {{ $v := index . \"ErrorCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"signature\"\
+        : {{ $v := index . \"Signature\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
+        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
+        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"signature_file_contents\":\
+        \ {{ $v := index . \"SignatureFileContents\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
+        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
+        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"current_manifest\"\
+        : {{ $v := index . \"CurrentManifest\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
+        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
+        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"creation_date\": {{ $v := index\
+        \ . \"CreationDate\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
+        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
+        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"artifact_list\": {{ $v := index . \"\
+        ArtifactList\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
+        \ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+  /?Action=ListJobs&Version=2010-06-01:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: POST_ListJobs
+      description: This operation returns the jobs associated with the requester. AWS Import/Export lists the jobs in reverse
+        chronological order based on the date of creation. For example if Job Test1 was created 2009Dec30 and Test2 was created
+        2010Feb05, the ListJobs operation would return Test2 followed by Test1.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ListJobsOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ListJobsInput'
+      x-stackql-resource: jobs
+      x-stackql-method: list_jobs
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListJobsOutputDisplay
+      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListJobsResponse\" \"ListJobsResult\"\
+        \ \"Jobs\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n      {{- $items := index\
+        \ $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface {}\" }}\n        {{template\
+        \ \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n        {{- range $i, $v :=\
+        \ $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n        {{- end }}\n      {{- end }}\n\
+        \    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"job_id\": {{ $v := index . \"JobId\" }}{{ if or (eq $v nil)\
+        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
+        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
+        %v\" $v) }}{{ end }},\n        \"creation_date\": {{ $v := index . \"CreationDate\" }}{{ if or (eq $v nil) (eq (printf\
+        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
+        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
+        \ end }},\n        \"is_canceled\": {{ $v := index . \"IsCanceled\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{\
+        \ end }},\n        \"job_type\": {{ $v := index . \"JobType\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\")\
+        \ }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\"\
+        \ }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    get:
+      operationId: GET_ListJobs
+      description: This operation returns the jobs associated with the requester. AWS Import/Export lists the jobs in reverse
+        chronological order based on the date of creation. For example if Job Test1 was created 2009Dec30 and Test2 was created
+        2010Feb05, the ListJobs operation would return Test2 followed by Test1.
+      parameters:
+      - name: MaxJobs
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/MaxJobs'
+      - name: Marker
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/Marker'
+      - name: APIVersion
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/APIVersion'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ListJobsOutputDisplay'
+      x-stackql-resource: jobs
+      x-stackql-method: list_jobs
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListJobsOutputDisplay
+      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListJobsResponse\" \"ListJobsResult\"\
+        \ \"Jobs\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n      {{- $items := index\
+        \ $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface {}\" }}\n        {{template\
+        \ \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n        {{- range $i, $v :=\
+        \ $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n        {{- end }}\n      {{- end }}\n\
+        \    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"job_id\": {{ $v := index . \"JobId\" }}{{ if or (eq $v nil)\
+        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
+        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
+        %v\" $v) }}{{ end }},\n        \"creation_date\": {{ $v := index . \"CreationDate\" }}{{ if or (eq $v nil) (eq (printf\
+        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
+        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
+        \ end }},\n        \"is_canceled\": {{ $v := index . \"IsCanceled\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{\
+        \ end }},\n        \"job_type\": {{ $v := index . \"JobType\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\")\
+        \ }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\"\
+        \ }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+  /?Action=UpdateJob&Version=2010-06-01:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: POST_UpdateJob
+      description: You use this operation to change the parameters specified in the original manifest file by supplying a
+        new manifest file. The manifest file attached to this request replaces the original manifest file. You can only use
+        the operation after a CreateJob request but before the data transfer starts and you can only use it on jobs you own.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/UpdateJobOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/UpdateJobInput'
+      x-stackql-resource: jobs
+      x-stackql-method: update_job
+      x-stackql-verb: UPDATE
+      x-stackql-responseEnvelope: UpdateJobOutputDisplay
+      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"UpdateJobResponse\" \"UpdateJobResult\"\
+        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"success\": {{ $v\
+        \ := index . \"Success\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"warning_message\": {{\
+        \ $v := index . \"WarningMessage\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
+        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
+        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"artifact_list\": {{ $v := index\
+        \ . \"ArtifactList\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
+        \ $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    get:
+      operationId: GET_UpdateJob
+      description: You use this operation to change the parameters specified in the original manifest file by supplying a
+        new manifest file. The manifest file attached to this request replaces the original manifest file. You can only use
+        the operation after a CreateJob request but before the data transfer starts and you can only use it on jobs you own.
+      parameters:
+      - name: JobId
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/JobId'
+      - name: Manifest
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Manifest'
+      - name: JobType
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/JobType'
+      - name: ValidateOnly
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/ValidateOnly'
+      - name: APIVersion
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/APIVersion'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/UpdateJobOutputDisplay'
+      x-stackql-resource: jobs
+      x-stackql-method: update_job
+      x-stackql-verb: UPDATE
+      x-stackql-responseEnvelope: UpdateJobOutputDisplay
+      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"UpdateJobResponse\" \"UpdateJobResult\"\
+        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"success\": {{ $v\
+        \ := index . \"Success\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"warning_message\": {{\
+        \ $v := index . \"WarningMessage\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
+        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
+        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"artifact_list\": {{ $v := index\
+        \ . \"ArtifactList\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
+        \ $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+components:
+  parameters:
+    X-Amz-Content-Sha256:
+      in: header
+      name: X-Amz-Content-Sha256
+      required: false
+      schema:
+        type: string
+    X-Amz-Date:
+      in: header
+      name: X-Amz-Date
+      required: false
+      schema:
+        type: string
+    X-Amz-Algorithm:
+      in: header
+      name: X-Amz-Algorithm
+      required: false
+      schema:
+        type: string
+    X-Amz-Credential:
+      in: header
+      name: X-Amz-Credential
+      required: false
+      schema:
+        type: string
+    X-Amz-Security-Token:
+      in: header
+      name: X-Amz-Security-Token
+      required: false
+      schema:
+        type: string
+    X-Amz-Signature:
+      in: header
+      name: X-Amz-Signature
+      required: false
+      schema:
+        type: string
+    X-Amz-SignedHeaders:
+      in: header
+      name: X-Amz-SignedHeaders
+      required: false
+      schema:
+        type: string
+  schemas:
+    JobId:
+      description: A unique identifier which refers to a particular job.
+      type: string
+    APIVersion:
+      description: Specifies the version of the client tool.
+      type: string
+    CancelJobOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CancelJobOutputDisplay'
+    CancelJobInput:
+      description: Input structure for the CancelJob operation.
+      type: object
+      properties:
+        JobId:
+          $ref: '#/components/schemas/JobId'
+        APIVersion:
+          $ref: '#/components/schemas/APIVersion'
+      required:
+      - JobId
+    JobType:
+      description: Specifies whether the job to initiate is an import or export job.
+      type: string
+      enum:
+      - Import
+      - Export
+    Manifest:
+      description: The UTF-8 encoded text of the manifest file.
+      type: string
+    ManifestAddendum:
+      description: For internal use only.
+      type: string
+    ValidateOnly:
+      description: Validate the manifest and parameter values in the request but do not actually create a job.
+      type: boolean
+    CreateJobOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateJobOutputDisplay'
+    CreateJobInput:
+      description: Input structure for the CreateJob operation.
+      type: object
+      properties:
+        JobType:
+          $ref: '#/components/schemas/JobType'
+        Manifest:
+          $ref: '#/components/schemas/Manifest'
+        ManifestAddendum:
+          $ref: '#/components/schemas/ManifestAddendum'
+        ValidateOnly:
+          $ref: '#/components/schemas/ValidateOnly'
+        APIVersion:
+          $ref: '#/components/schemas/APIVersion'
+      required:
+      - JobType
+      - Manifest
+      - ValidateOnly
+    JobIdList:
+      type: array
+      items:
+        $ref: '#/components/schemas/GenericString'
+    GenericString:
+      type: string
+    name:
+      description: Specifies the name of the person responsible for shipping this package.
+      type: string
+    company:
+      description: Specifies the name of the company that will ship this package.
+      type: string
+    phoneNumber:
+      description: Specifies the phone number of the person responsible for shipping this package.
+      type: string
+    country:
+      description: Specifies the name of your country for the return address.
+      type: string
+    stateOrProvince:
+      description: Specifies the name of your state or your province for the return address.
+      type: string
+    city:
+      description: Specifies the name of your city for the return address.
+      type: string
+    postalCode:
+      description: Specifies the postal code for the return address.
+      type: string
+    street1:
+      description: Specifies the first part of the street address for the return address, for example 1234 Main Street.
+      type: string
+    street2:
+      description: Specifies the optional second part of the street address for the return address, for example Suite 100.
+      type: string
+    street3:
+      description: Specifies the optional third part of the street address for the return address, for example c/o Jane Doe.
+      type: string
+    GetShippingLabelOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetShippingLabelOutputDisplay'
+    GetShippingLabelInput:
+      type: object
+      properties:
+        jobIds:
+          $ref: '#/components/schemas/JobIdList'
+        name:
+          $ref: '#/components/schemas/name'
+        company:
+          $ref: '#/components/schemas/company'
+        phoneNumber:
+          $ref: '#/components/schemas/phoneNumber'
+        country:
+          $ref: '#/components/schemas/country'
+        stateOrProvince:
+          $ref: '#/components/schemas/stateOrProvince'
+        city:
+          $ref: '#/components/schemas/city'
+        postalCode:
+          $ref: '#/components/schemas/postalCode'
+        street1:
+          $ref: '#/components/schemas/street1'
+        street2:
+          $ref: '#/components/schemas/street2'
+        street3:
+          $ref: '#/components/schemas/street3'
+        APIVersion:
+          $ref: '#/components/schemas/APIVersion'
+      required:
+      - jobIds
+    GetStatusOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetStatusOutputDisplay'
+    GetStatusInput:
+      description: Input structure for the GetStatus operation.
+      type: object
+      properties:
+        JobId:
+          $ref: '#/components/schemas/JobId'
+        APIVersion:
+          $ref: '#/components/schemas/APIVersion'
+      required:
+      - JobId
+    MaxJobs:
+      description: Sets the maximum number of jobs returned in the response. If there are additional jobs that were not returned
+        because MaxJobs was exceeded, the response contains `<IsTruncated>`true</IsTruncated>. To return the additional jobs,
+        see Marker.
+      type: integer
+    Marker:
+      description: Specifies the JOBID to start after when listing the jobs created with your account. AWS Import/Export lists
+        your jobs in reverse chronological order. See MaxJobs.
+      type: string
+    JobDisplay:
+      type: object
+      properties:
+        job_id:
+          type: string
+          description: A unique identifier which refers to a particular job.
+        creation_date:
+          type: string
+          description: Timestamp of the CreateJob request in ISO8601 date format. For example "2010-03-28T20:27:35Z".
+        is_canceled:
+          type: boolean
+          description: Indicates whether the job was canceled.
+        job_type:
+          type: string
+          description: Specifies whether the job to initiate is an import or export job.
+    ListJobsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobDisplay'
+    ListJobsInput:
+      description: Input structure for the ListJobs operation.
+      type: object
+      properties:
+        MaxJobs:
+          $ref: '#/components/schemas/MaxJobs'
+        Marker:
+          $ref: '#/components/schemas/Marker'
+        APIVersion:
+          $ref: '#/components/schemas/APIVersion'
+    UpdateJobOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateJobOutputDisplay'
+    UpdateJobInput:
+      description: Input structure for the UpateJob operation.
+      type: object
+      properties:
+        JobId:
+          $ref: '#/components/schemas/JobId'
+        Manifest:
+          $ref: '#/components/schemas/Manifest'
+        JobType:
+          $ref: '#/components/schemas/JobType'
+        ValidateOnly:
+          $ref: '#/components/schemas/ValidateOnly'
+        APIVersion:
+          $ref: '#/components/schemas/APIVersion'
+      required:
+      - JobId
+      - Manifest
+      - JobType
+      - ValidateOnly

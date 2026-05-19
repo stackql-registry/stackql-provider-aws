@@ -1,0 +1,513 @@
+--- 
+title: self_hosted_runners
+hide_title: false
+hide_table_of_contents: false
+keywords:
+  - self_hosted_runners
+  - actions
+  - github
+  - infrastructure-as-code
+  - configuration-as-data
+  - cloud inventory
+description: Query, deploy and manage github resources using SQL
+custom_edit_url: null
+image: /img/stackql-github-provider-featured-image.png
+---
+
+import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Creates, updates, deletes, gets or lists a <code>self_hosted_runners</code> resource.
+
+## Overview
+<table><tbody>
+<tr><td><b>Name</b></td><td><CopyableCode code="self_hosted_runners" /></td></tr>
+<tr><td><b>Type</b></td><td>Resource</td></tr>
+<tr><td><b>Id</b></td><td><CopyableCode code="github.actions.self_hosted_runners" /></td></tr>
+</tbody></table>
+
+## Fields
+
+The following fields are returned by `SELECT` queries:
+
+<Tabs
+    defaultValue="get_self_hosted_runner_for_repo"
+    values={[
+        { label: 'get_self_hosted_runner_for_repo', value: 'get_self_hosted_runner_for_repo' },
+        { label: 'get_self_hosted_runner_for_org', value: 'get_self_hosted_runner_for_org' },
+        { label: 'list_self_hosted_runners_for_repo', value: 'list_self_hosted_runners_for_repo' },
+        { label: 'list_self_hosted_runners_for_org', value: 'list_self_hosted_runners_for_org' }
+    ]}
+>
+<TabItem value="get_self_hosted_runner_for_repo">
+
+Response
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>integer</code></td>
+    <td>The ID of the runner.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the runner. (example: iMac)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="runner_group_id" /></td>
+    <td><code>integer</code></td>
+    <td>The ID of the runner group.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="busy" /></td>
+    <td><code>boolean</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="ephemeral" /></td>
+    <td><code>boolean</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="labels" /></td>
+    <td><code>array</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="os" /></td>
+    <td><code>string</code></td>
+    <td>The Operating System of the runner. (example: macos)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the runner. (example: online)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="get_self_hosted_runner_for_org">
+
+Response
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>integer</code></td>
+    <td>The ID of the runner.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the runner. (example: iMac)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="runner_group_id" /></td>
+    <td><code>integer</code></td>
+    <td>The ID of the runner group.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="busy" /></td>
+    <td><code>boolean</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="ephemeral" /></td>
+    <td><code>boolean</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="labels" /></td>
+    <td><code>array</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="os" /></td>
+    <td><code>string</code></td>
+    <td>The Operating System of the runner. (example: macos)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the runner. (example: online)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_self_hosted_runners_for_repo">
+
+Response
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>integer</code></td>
+    <td>The ID of the runner.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the runner. (example: iMac)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="runner_group_id" /></td>
+    <td><code>integer</code></td>
+    <td>The ID of the runner group.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="busy" /></td>
+    <td><code>boolean</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="ephemeral" /></td>
+    <td><code>boolean</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="labels" /></td>
+    <td><code>array</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="os" /></td>
+    <td><code>string</code></td>
+    <td>The Operating System of the runner. (example: macos)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the runner. (example: online)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_self_hosted_runners_for_org">
+
+Response
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>integer</code></td>
+    <td>The ID of the runner.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the runner. (example: iMac)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="runner_group_id" /></td>
+    <td><code>integer</code></td>
+    <td>The ID of the runner group.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="busy" /></td>
+    <td><code>boolean</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="ephemeral" /></td>
+    <td><code>boolean</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="labels" /></td>
+    <td><code>array</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="os" /></td>
+    <td><code>string</code></td>
+    <td>The Operating System of the runner. (example: macos)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the runner. (example: online)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+</Tabs>
+
+## Methods
+
+The following methods are available for this resource:
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Accessible by</th>
+    <th>Required Params</th>
+    <th>Optional Params</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><a href="#get_self_hosted_runner_for_repo"><CopyableCode code="get_self_hosted_runner_for_repo" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-owner"><code>owner</code></a>, <a href="#parameter-repo"><code>repo</code></a>, <a href="#parameter-runner_id"><code>runner_id</code></a></td>
+    <td></td>
+    <td>Gets a specific self-hosted runner configured in a repository.<br /><br />Authenticated users must have admin access to the repository to use this endpoint.<br /><br />OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.</td>
+</tr>
+<tr>
+    <td><a href="#get_self_hosted_runner_for_org"><CopyableCode code="get_self_hosted_runner_for_org" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-org"><code>org</code></a>, <a href="#parameter-runner_id"><code>runner_id</code></a></td>
+    <td></td>
+    <td>Gets a specific self-hosted runner configured in an organization.<br /><br />Authenticated users must have admin access to the organization to use this endpoint.<br /><br />OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.</td>
+</tr>
+<tr>
+    <td><a href="#list_self_hosted_runners_for_repo"><CopyableCode code="list_self_hosted_runners_for_repo" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-owner"><code>owner</code></a>, <a href="#parameter-repo"><code>repo</code></a></td>
+    <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-per_page"><code>per_page</code></a>, <a href="#parameter-page"><code>page</code></a></td>
+    <td>Lists all self-hosted runners configured in a repository.<br /><br />Authenticated users must have admin access to the repository to use this endpoint.<br /><br />OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.</td>
+</tr>
+<tr>
+    <td><a href="#list_self_hosted_runners_for_org"><CopyableCode code="list_self_hosted_runners_for_org" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-org"><code>org</code></a></td>
+    <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-per_page"><code>per_page</code></a>, <a href="#parameter-page"><code>page</code></a></td>
+    <td>Lists all self-hosted runners configured in an organization.<br /><br />Authenticated users must have admin access to the organization to use this endpoint.<br /><br />OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.</td>
+</tr>
+<tr>
+    <td><a href="#delete_self_hosted_runner_from_repo"><CopyableCode code="delete_self_hosted_runner_from_repo" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-owner"><code>owner</code></a>, <a href="#parameter-repo"><code>repo</code></a>, <a href="#parameter-runner_id"><code>runner_id</code></a></td>
+    <td></td>
+    <td>Forces the removal of a self-hosted runner from a repository. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.<br /><br />Authenticated users must have admin access to the repository to use this endpoint.<br /><br />OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.</td>
+</tr>
+<tr>
+    <td><a href="#delete_self_hosted_runner_from_org"><CopyableCode code="delete_self_hosted_runner_from_org" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-org"><code>org</code></a>, <a href="#parameter-runner_id"><code>runner_id</code></a></td>
+    <td></td>
+    <td>Forces the removal of a self-hosted runner from an organization. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.<br /><br />Authenticated users must have admin access to the organization to use this endpoint.<br /><br />OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.</td>
+</tr>
+</tbody>
+</table>
+
+## Parameters
+
+Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#methods) section to see which parameters are required or optional for each operation.
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr id="parameter-org">
+    <td><CopyableCode code="org" /></td>
+    <td><code>string</code></td>
+    <td>The organization name. The name is not case sensitive.</td>
+</tr>
+<tr id="parameter-owner">
+    <td><CopyableCode code="owner" /></td>
+    <td><code>string</code></td>
+    <td>The account owner of the repository. The name is not case sensitive.</td>
+</tr>
+<tr id="parameter-repo">
+    <td><CopyableCode code="repo" /></td>
+    <td><code>string</code></td>
+    <td>The name of the repository without the `.git` extension. The name is not case sensitive.</td>
+</tr>
+<tr id="parameter-runner_id">
+    <td><CopyableCode code="runner_id" /></td>
+    <td><code>integer</code></td>
+    <td>Unique identifier of the self-hosted runner.</td>
+</tr>
+<tr id="parameter-name">
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of a self-hosted runner.</td>
+</tr>
+<tr id="parameter-page">
+    <td><CopyableCode code="page" /></td>
+    <td><code>integer</code></td>
+    <td>The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."</td>
+</tr>
+<tr id="parameter-per_page">
+    <td><CopyableCode code="per_page" /></td>
+    <td><code>integer</code></td>
+    <td>The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."</td>
+</tr>
+</tbody>
+</table>
+
+## `SELECT` examples
+
+<Tabs
+    defaultValue="get_self_hosted_runner_for_repo"
+    values={[
+        { label: 'get_self_hosted_runner_for_repo', value: 'get_self_hosted_runner_for_repo' },
+        { label: 'get_self_hosted_runner_for_org', value: 'get_self_hosted_runner_for_org' },
+        { label: 'list_self_hosted_runners_for_repo', value: 'list_self_hosted_runners_for_repo' },
+        { label: 'list_self_hosted_runners_for_org', value: 'list_self_hosted_runners_for_org' }
+    ]}
+>
+<TabItem value="get_self_hosted_runner_for_repo">
+
+Gets a specific self-hosted runner configured in a repository.<br /><br />Authenticated users must have admin access to the repository to use this endpoint.<br /><br />OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+```sql
+SELECT
+id,
+name,
+runner_group_id,
+busy,
+ephemeral,
+labels,
+os,
+status
+FROM github.actions.self_hosted_runners
+WHERE owner = '{{ owner }}' -- required
+AND repo = '{{ repo }}' -- required
+AND runner_id = '{{ runner_id }}' -- required
+;
+```
+</TabItem>
+<TabItem value="get_self_hosted_runner_for_org">
+
+Gets a specific self-hosted runner configured in an organization.<br /><br />Authenticated users must have admin access to the organization to use this endpoint.<br /><br />OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+```sql
+SELECT
+id,
+name,
+runner_group_id,
+busy,
+ephemeral,
+labels,
+os,
+status
+FROM github.actions.self_hosted_runners
+WHERE org = '{{ org }}' -- required
+AND runner_id = '{{ runner_id }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_self_hosted_runners_for_repo">
+
+Lists all self-hosted runners configured in a repository.<br /><br />Authenticated users must have admin access to the repository to use this endpoint.<br /><br />OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+```sql
+SELECT
+id,
+name,
+runner_group_id,
+busy,
+ephemeral,
+labels,
+os,
+status
+FROM github.actions.self_hosted_runners
+WHERE owner = '{{ owner }}' -- required
+AND repo = '{{ repo }}' -- required
+AND name = '{{ name }}'
+AND per_page = '{{ per_page }}'
+AND page = '{{ page }}'
+;
+```
+</TabItem>
+<TabItem value="list_self_hosted_runners_for_org">
+
+Lists all self-hosted runners configured in an organization.<br /><br />Authenticated users must have admin access to the organization to use this endpoint.<br /><br />OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+```sql
+SELECT
+id,
+name,
+runner_group_id,
+busy,
+ephemeral,
+labels,
+os,
+status
+FROM github.actions.self_hosted_runners
+WHERE org = '{{ org }}' -- required
+AND name = '{{ name }}'
+AND per_page = '{{ per_page }}'
+AND page = '{{ page }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## `DELETE` examples
+
+<Tabs
+    defaultValue="delete_self_hosted_runner_from_repo"
+    values={[
+        { label: 'delete_self_hosted_runner_from_repo', value: 'delete_self_hosted_runner_from_repo' },
+        { label: 'delete_self_hosted_runner_from_org', value: 'delete_self_hosted_runner_from_org' }
+    ]}
+>
+<TabItem value="delete_self_hosted_runner_from_repo">
+
+Forces the removal of a self-hosted runner from a repository. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.<br /><br />Authenticated users must have admin access to the repository to use this endpoint.<br /><br />OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+```sql
+DELETE FROM github.actions.self_hosted_runners
+WHERE owner = '{{ owner }}' --required
+AND repo = '{{ repo }}' --required
+AND runner_id = '{{ runner_id }}' --required
+;
+```
+</TabItem>
+<TabItem value="delete_self_hosted_runner_from_org">
+
+Forces the removal of a self-hosted runner from an organization. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.<br /><br />Authenticated users must have admin access to the organization to use this endpoint.<br /><br />OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+```sql
+DELETE FROM github.actions.self_hosted_runners
+WHERE org = '{{ org }}' --required
+AND runner_id = '{{ runner_id }}' --required
+;
+```
+</TabItem>
+</Tabs>

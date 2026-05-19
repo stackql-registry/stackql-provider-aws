@@ -1,0 +1,1531 @@
+openapi: 3.0.0
+info:
+  version: '2019-12-02'
+  title: Schemas
+  description: Schemas
+  x-serviceName: schemas
+  x-serviceAlias: schemas
+  x-protocol: rest-json
+  x-apiVersion: '2019-12-02'
+  x-endpointPrefix: schemas
+  x-jsonVersion: '1.1'
+servers:
+- url: https://schemas.{region}.amazonaws.com
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+  description: Regional endpoint for schemas
+paths:
+  /v1/discoverers:
+    post:
+      operationId: CreateDiscoverer
+      description: Creates a discoverer.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Description:
+                  $ref: '#/components/schemas/__stringMin0Max256'
+                SourceArn:
+                  $ref: '#/components/schemas/__stringMin20Max1600'
+                CrossAccount:
+                  $ref: '#/components/schemas/__boolean'
+                Tags:
+                  $ref: '#/components/schemas/Tags'
+              required:
+              - SourceArn
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateDiscovererResponse'
+      x-stackql-resource: discoverers
+      x-stackql-method: create_discoverer
+      x-stackql-verb: INSERT
+    get:
+      operationId: ListDiscoverers
+      description: List the discoverers.
+      parameters:
+      - name: discovererIdPrefix
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: Specifying this limits the results to only those discoverer IDs that start with the specified prefix.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__integer'
+      - name: nextToken
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The token that specifies the next page of results to return. To request the first page, leave NextToken
+          empty. The token will expire in 24 hours, and cannot be shared with other accounts.
+      - name: sourceArnPrefix
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: Specifying this limits the results to only those ARNs that start with the specified prefix.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListDiscoverersResponse'
+      x-stackql-resource: discoverers
+      x-stackql-method: list_discoverers
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Discoverers
+  /v1/registries/name/{registry_name}:
+    post:
+      operationId: CreateRegistry
+      description: Creates a registry.
+      parameters:
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Description:
+                  $ref: '#/components/schemas/__stringMin0Max256'
+                Tags:
+                  $ref: '#/components/schemas/Tags'
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateRegistryResponse'
+      x-stackql-resource: registries
+      x-stackql-method: create_registry
+      x-stackql-verb: INSERT
+    delete:
+      operationId: DeleteRegistry
+      description: Deletes a Registry.
+      parameters:
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      responses:
+        '204':
+          description: Success
+      x-stackql-resource: registries
+      x-stackql-method: delete_registry
+      x-stackql-verb: DELETE
+    get:
+      operationId: DescribeRegistry
+      description: Describes the registry.
+      parameters:
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeRegistryResponse'
+      x-stackql-resource: registries
+      x-stackql-method: describe_registry
+      x-stackql-verb: SELECT
+    put:
+      operationId: UpdateRegistry
+      description: Updates a registry.
+      parameters:
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Description:
+                  $ref: '#/components/schemas/__stringMin0Max256'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateRegistryResponse'
+      x-stackql-resource: registries
+      x-stackql-method: update_registry
+      x-stackql-verb: UPDATE
+  /v1/registries/name/{registry_name}/schemas/name/{schema_name}:
+    post:
+      operationId: CreateSchema
+      description: Creates a schema definition. Inactive schemas will be deleted after two years.
+      parameters:
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      - name: schema_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the schema.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Content:
+                  $ref: '#/components/schemas/__stringMin1Max100000'
+                Description:
+                  $ref: '#/components/schemas/__stringMin0Max256'
+                Tags:
+                  $ref: '#/components/schemas/Tags'
+                Type:
+                  $ref: '#/components/schemas/Type'
+              required:
+              - Content
+              - Type
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSchemaResponse'
+      x-stackql-resource: schemas
+      x-stackql-method: create_schema
+      x-stackql-verb: INSERT
+    delete:
+      operationId: DeleteSchema
+      description: Delete a schema definition.
+      parameters:
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      - name: schema_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the schema.
+      responses:
+        '204':
+          description: Success
+      x-stackql-resource: schemas
+      x-stackql-method: delete_schema
+      x-stackql-verb: DELETE
+    get:
+      operationId: DescribeSchema
+      description: Retrieve the schema definition.
+      parameters:
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      - name: schema_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the schema.
+      - name: schemaVersion
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: Specifying this limits the results to only this schema version.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeSchemaResponse'
+      x-stackql-resource: schemas
+      x-stackql-method: describe_schema
+      x-stackql-verb: SELECT
+    put:
+      operationId: UpdateSchema
+      description: Updates the schema definition Inactive schemas will be deleted after two years.
+      parameters:
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      - name: schema_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the schema.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ClientTokenId:
+                  $ref: '#/components/schemas/__stringMin0Max36'
+                Content:
+                  $ref: '#/components/schemas/__stringMin1Max100000'
+                Description:
+                  $ref: '#/components/schemas/__stringMin0Max256'
+                Type:
+                  $ref: '#/components/schemas/Type'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateSchemaResponse'
+      x-stackql-resource: schemas
+      x-stackql-method: update_schema
+      x-stackql-verb: UPDATE
+  /v1/discoverers/id/{discoverer_id}:
+    delete:
+      operationId: DeleteDiscoverer
+      description: Deletes a discoverer.
+      parameters:
+      - name: discoverer_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The ID of the discoverer.
+      responses:
+        '204':
+          description: Success
+      x-stackql-resource: discoverers
+      x-stackql-method: delete_discoverer
+      x-stackql-verb: DELETE
+    get:
+      operationId: DescribeDiscoverer
+      description: Describes the discoverer.
+      parameters:
+      - name: discoverer_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The ID of the discoverer.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeDiscovererResponse'
+      x-stackql-resource: discoverers
+      x-stackql-method: describe_discoverer
+      x-stackql-verb: SELECT
+    put:
+      operationId: UpdateDiscoverer
+      description: Updates the discoverer
+      parameters:
+      - name: discoverer_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The ID of the discoverer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Description:
+                  $ref: '#/components/schemas/__stringMin0Max256'
+                CrossAccount:
+                  $ref: '#/components/schemas/__boolean'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateDiscovererResponse'
+      x-stackql-resource: discoverers
+      x-stackql-method: update_discoverer
+      x-stackql-verb: UPDATE
+  /v1/policy:
+    delete:
+      operationId: DeleteResourcePolicy
+      description: Delete the resource-based policy attached to the specified registry.
+      parameters:
+      - name: registryName
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      responses:
+        '204':
+          description: Success
+      x-stackql-resource: resource_policies
+      x-stackql-method: delete_resource_policy
+      x-stackql-verb: DELETE
+    get:
+      operationId: GetResourcePolicy
+      description: Retrieves the resource-based policy attached to a given registry.
+      parameters:
+      - name: registryName
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetResourcePolicyResponse'
+      x-stackql-resource: resource_policies
+      x-stackql-method: get_resource_policy
+      x-stackql-verb: SELECT
+    put:
+      operationId: PutResourcePolicy
+      description: The name of the policy.
+      parameters:
+      - name: registryName
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Policy:
+                  $ref: '#/components/schemas/__string'
+                RevisionId:
+                  $ref: '#/components/schemas/__string'
+              required:
+              - Policy
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutResourcePolicyResponse'
+      x-stackql-resource: resource_policies
+      x-stackql-method: put_resource_policy
+      x-stackql-verb: REPLACE
+  /v1/registries/name/{registry_name}/schemas/name/{schema_name}/version/{schema_version}:
+    delete:
+      operationId: DeleteSchemaVersion
+      description: Delete the schema version definition
+      parameters:
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      - name: schema_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the schema.
+      - name: schema_version
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The version number of the schema
+      responses:
+        '204':
+          description: Success
+      x-stackql-resource: schema_versions
+      x-stackql-method: delete_schema_version
+      x-stackql-verb: DELETE
+  /v1/registries/name/{registry_name}/schemas/name/{schema_name}/language/{language}:
+    get:
+      operationId: DescribeCodeBinding
+      description: Describe the code binding URI.
+      parameters:
+      - name: language
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The language of the code binding.
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      - name: schema_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the schema.
+      - name: schemaVersion
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: Specifying this limits the results to only this schema version.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeCodeBindingResponse'
+      x-stackql-resource: code_bindings
+      x-stackql-method: describe_code_binding
+      x-stackql-verb: SELECT
+    post:
+      operationId: PutCodeBinding
+      description: Put code binding URI
+      parameters:
+      - name: language
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The language of the code binding.
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      - name: schema_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the schema.
+      - name: schemaVersion
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: Specifying this limits the results to only this schema version.
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutCodeBindingResponse'
+      x-stackql-resource: code_bindings
+      x-stackql-method: put_code_binding
+      x-stackql-verb: REPLACE
+  /v1/registries/name/{registry_name}/schemas/name/{schema_name}/export:
+    get:
+      operationId: ExportSchema
+      parameters:
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      - name: schema_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the schema.
+      - name: schemaVersion
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: Specifying this limits the results to only this schema version.
+      - name: type
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportSchemaResponse'
+      x-stackql-resource: schema
+      x-stackql-method: export_schema
+      x-stackql-verb: EXEC
+  /v1/registries/name/{registry_name}/schemas/name/{schema_name}/language/{language}/source:
+    get:
+      operationId: GetCodeBindingSource
+      description: Get the code binding source URI.
+      parameters:
+      - name: language
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The language of the code binding.
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      - name: schema_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the schema.
+      - name: schemaVersion
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: Specifying this limits the results to only this schema version.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCodeBindingSourceResponse'
+      x-stackql-resource: code_binding_sources
+      x-stackql-method: get_code_binding_source
+      x-stackql-verb: SELECT
+  /v1/discover:
+    post:
+      operationId: GetDiscoveredSchema
+      description: Get the discovered schema that was generated based on sampled events.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Events:
+                  $ref: '#/components/schemas/__listOfGetDiscoveredSchemaVersionItemInput'
+                Type:
+                  $ref: '#/components/schemas/Type'
+              required:
+              - Events
+              - Type
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDiscoveredSchemaResponse'
+      x-stackql-resource: discovered_schemas
+      x-stackql-method: get_discovered_schema
+      x-stackql-verb: SELECT
+  /v1/registries:
+    get:
+      operationId: ListRegistries
+      description: List the registries.
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__integer'
+      - name: nextToken
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The token that specifies the next page of results to return. To request the first page, leave NextToken
+          empty. The token will expire in 24 hours, and cannot be shared with other accounts.
+      - name: registryNamePrefix
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: Specifying this limits the results to only those registry names that start with the specified prefix.
+      - name: scope
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: Can be set to Local or AWS to limit responses to your custom registries, or the ones provided by AWS.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRegistriesResponse'
+      x-stackql-resource: registries
+      x-stackql-method: list_registries
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Registries
+  /v1/registries/name/{registry_name}/schemas/name/{schema_name}/versions:
+    get:
+      operationId: ListSchemaVersions
+      description: Provides a list of the schema versions and related information.
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__integer'
+      - name: nextToken
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The token that specifies the next page of results to return. To request the first page, leave NextToken
+          empty. The token will expire in 24 hours, and cannot be shared with other accounts.
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      - name: schema_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the schema.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSchemaVersionsResponse'
+      x-stackql-resource: schema_versions
+      x-stackql-method: list_schema_versions
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SchemaVersions
+  /v1/registries/name/{registry_name}/schemas:
+    get:
+      operationId: ListSchemas
+      description: List the schemas.
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__integer'
+      - name: nextToken
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The token that specifies the next page of results to return. To request the first page, leave NextToken
+          empty. The token will expire in 24 hours, and cannot be shared with other accounts.
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      - name: schemaNamePrefix
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: Specifying this limits the results to only those schema names that start with the specified prefix.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSchemasResponse'
+      x-stackql-resource: schemas
+      x-stackql-method: list_schemas
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Schemas
+  /tags/{resource-arn}:
+    get:
+      operationId: ListTagsForResource
+      description: Get tags for resource.
+      parameters:
+      - name: resource-arn
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The ARN of the resource.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTagsForResourceResponse'
+      x-stackql-resource: tags_for_resources
+      x-stackql-method: list_tags_for_resource
+      x-stackql-verb: SELECT
+    post:
+      operationId: TagResource
+      description: Add tags to a resource.
+      parameters:
+      - name: resource-arn
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The ARN of the resource.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Tags:
+                  $ref: '#/components/schemas/Tags'
+              required:
+              - Tags
+      responses:
+        '204':
+          description: Success
+      x-stackql-resource: resources
+      x-stackql-method: tag_resource
+      x-stackql-verb: UPDATE
+    delete:
+      operationId: UntagResource
+      description: Removes tags from a resource.
+      parameters:
+      - name: resource-arn
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The ARN of the resource.
+      - name: tagKeys
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/__listOf__string'
+        description: Keys of key-value pairs.
+      responses:
+        '204':
+          description: Success
+      x-stackql-resource: resources
+      x-stackql-method: untag_resource
+      x-stackql-verb: UPDATE
+  /v1/registries/name/{registry_name}/schemas/search:
+    get:
+      operationId: SearchSchemas
+      description: Search the schemas
+      parameters:
+      - name: keywords
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: Specifying this limits the results to only schemas that include the provided keywords.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__integer'
+      - name: nextToken
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The token that specifies the next page of results to return. To request the first page, leave NextToken
+          empty. The token will expire in 24 hours, and cannot be shared with other accounts.
+      - name: registry_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The name of the registry.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSchemasResponse'
+      x-stackql-resource: schemas
+      x-stackql-method: search_schemas
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Schemas
+  /v1/discoverers/id/{discoverer_id}/start:
+    post:
+      operationId: StartDiscoverer
+      description: Starts the discoverer
+      parameters:
+      - name: discoverer_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The ID of the discoverer.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartDiscovererResponse'
+      x-stackql-resource: discoverer
+      x-stackql-method: start_discoverer
+      x-stackql-verb: EXEC
+  /v1/discoverers/id/{discoverer_id}/stop:
+    post:
+      operationId: StopDiscoverer
+      description: Stops the discoverer
+      parameters:
+      - name: discoverer_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The ID of the discoverer.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StopDiscovererResponse'
+      x-stackql-resource: discoverer
+      x-stackql-method: stop_discoverer
+      x-stackql-verb: EXEC
+components:
+  parameters:
+    X-Amz-Content-Sha256:
+      in: header
+      name: X-Amz-Content-Sha256
+      required: false
+      schema:
+        type: string
+    X-Amz-Date:
+      in: header
+      name: X-Amz-Date
+      required: false
+      schema:
+        type: string
+    X-Amz-Algorithm:
+      in: header
+      name: X-Amz-Algorithm
+      required: false
+      schema:
+        type: string
+    X-Amz-Credential:
+      in: header
+      name: X-Amz-Credential
+      required: false
+      schema:
+        type: string
+    X-Amz-Security-Token:
+      in: header
+      name: X-Amz-Security-Token
+      required: false
+      schema:
+        type: string
+    X-Amz-Signature:
+      in: header
+      name: X-Amz-Signature
+      required: false
+      schema:
+        type: string
+    X-Amz-SignedHeaders:
+      in: header
+      name: X-Amz-SignedHeaders
+      required: false
+      schema:
+        type: string
+  schemas:
+    __stringMin0Max256:
+      type: string
+      minLength: 0
+      maxLength: 256
+    __stringMin20Max1600:
+      type: string
+      minLength: 20
+      maxLength: 1600
+    __boolean:
+      type: boolean
+    Tags:
+      description: Key-value pairs associated with a resource.
+      type: object
+      properties: {}
+    CreateDiscovererResponse:
+      type: object
+      properties:
+        Description:
+          $ref: '#/components/schemas/__string'
+          description: The description of the discoverer.
+        DiscovererArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the discoverer.
+        DiscovererId:
+          $ref: '#/components/schemas/__string'
+          description: The ID of the discoverer.
+        SourceArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the event bus.
+        State:
+          $ref: '#/components/schemas/DiscovererState'
+          description: The state of the discoverer.
+        CrossAccount:
+          $ref: '#/components/schemas/__boolean'
+          description: The Status if the discoverer will discover schemas from events sent from another account.
+        Tags:
+          type: object
+          properties: {}
+          description: Tags associated with the resource.
+    __string:
+      type: string
+    DiscovererState:
+      type: string
+      enum:
+      - STARTED
+      - STOPPED
+    CreateRegistryResponse:
+      type: object
+      properties:
+        Description:
+          $ref: '#/components/schemas/__string'
+          description: The description of the registry.
+        RegistryArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the registry.
+        RegistryName:
+          $ref: '#/components/schemas/__string'
+          description: The name of the registry.
+        Tags:
+          type: object
+          properties: {}
+          description: Tags associated with the registry.
+    __stringMin1Max100000:
+      type: string
+      minLength: 1
+      maxLength: 100000
+    Type:
+      type: string
+      enum:
+      - OpenApi3
+      - JSONSchemaDraft4
+    CreateSchemaResponse:
+      type: object
+      properties:
+        Description:
+          $ref: '#/components/schemas/__string'
+          description: The description of the schema.
+        LastModified:
+          $ref: '#/components/schemas/__timestampIso8601'
+          description: The date and time that schema was modified.
+        SchemaArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the schema.
+        SchemaName:
+          $ref: '#/components/schemas/__string'
+          description: The name of the schema.
+        SchemaVersion:
+          $ref: '#/components/schemas/__string'
+          description: The version number of the schema
+        Tags:
+          type: object
+          properties: {}
+        Type:
+          $ref: '#/components/schemas/__string'
+          description: The type of the schema.
+        VersionCreatedDate:
+          $ref: '#/components/schemas/__timestampIso8601'
+          description: The date the schema version was created.
+    __timestampIso8601:
+      type: string
+      format: date-time
+    DescribeCodeBindingResponse:
+      type: object
+      properties:
+        CreationDate:
+          $ref: '#/components/schemas/__timestampIso8601'
+          description: The time and date that the code binding was created.
+        LastModified:
+          $ref: '#/components/schemas/__timestampIso8601'
+          description: The date and time that code bindings were modified.
+        SchemaVersion:
+          $ref: '#/components/schemas/__string'
+          description: The version number of the schema.
+        Status:
+          $ref: '#/components/schemas/CodeGenerationStatus'
+          description: The current status of code binding generation.
+    CodeGenerationStatus:
+      type: string
+      enum:
+      - CREATE_IN_PROGRESS
+      - CREATE_COMPLETE
+      - CREATE_FAILED
+    DescribeDiscovererResponse:
+      type: object
+      properties:
+        Description:
+          $ref: '#/components/schemas/__string'
+          description: The description of the discoverer.
+        DiscovererArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the discoverer.
+        DiscovererId:
+          $ref: '#/components/schemas/__string'
+          description: The ID of the discoverer.
+        SourceArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the event bus.
+        State:
+          $ref: '#/components/schemas/DiscovererState'
+          description: The state of the discoverer.
+        CrossAccount:
+          $ref: '#/components/schemas/__boolean'
+          description: The Status if the discoverer will discover schemas from events sent from another account.
+        Tags:
+          type: object
+          properties: {}
+          description: Tags associated with the resource.
+    DescribeRegistryResponse:
+      type: object
+      properties:
+        Description:
+          $ref: '#/components/schemas/__string'
+          description: The description of the registry.
+        RegistryArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the registry.
+        RegistryName:
+          $ref: '#/components/schemas/__string'
+          description: The name of the registry.
+        Tags:
+          type: object
+          properties: {}
+          description: Tags associated with the registry.
+    DescribeSchemaResponse:
+      type: object
+      properties:
+        Content:
+          $ref: '#/components/schemas/__string'
+          description: The source of the schema definition.
+        Description:
+          $ref: '#/components/schemas/__string'
+          description: The description of the schema.
+        LastModified:
+          $ref: '#/components/schemas/__timestampIso8601'
+          description: The date and time that schema was modified.
+        SchemaArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the schema.
+        SchemaName:
+          $ref: '#/components/schemas/__string'
+          description: The name of the schema.
+        SchemaVersion:
+          $ref: '#/components/schemas/__string'
+          description: The version number of the schema
+        Tags:
+          type: object
+          properties: {}
+          description: Tags associated with the resource.
+        Type:
+          $ref: '#/components/schemas/__string'
+          description: The type of the schema.
+        VersionCreatedDate:
+          $ref: '#/components/schemas/__timestampIso8601'
+          description: The date the schema version was created.
+    ExportSchemaResponse:
+      type: object
+      properties:
+        Content:
+          $ref: '#/components/schemas/__string'
+        SchemaArn:
+          $ref: '#/components/schemas/__string'
+        SchemaName:
+          $ref: '#/components/schemas/__string'
+        SchemaVersion:
+          $ref: '#/components/schemas/__string'
+        Type:
+          $ref: '#/components/schemas/__string'
+    GetCodeBindingSourceResponse:
+      type: object
+      properties:
+        Body:
+          $ref: '#/components/schemas/Body'
+    Body:
+      type: string
+      format: byte
+    __listOfGetDiscoveredSchemaVersionItemInput:
+      type: array
+      items:
+        $ref: '#/components/schemas/GetDiscoveredSchemaVersionItemInput'
+    GetDiscoveredSchemaVersionItemInput:
+      type: string
+      minLength: 1
+      maxLength: 100000
+    GetDiscoveredSchemaResponse:
+      type: object
+      properties:
+        Content:
+          $ref: '#/components/schemas/__string'
+          description: The source of the schema definition.
+    GetResourcePolicyResponse:
+      type: object
+      properties:
+        Policy:
+          $ref: '#/components/schemas/__string'
+          description: The resource-based policy.
+        RevisionId:
+          $ref: '#/components/schemas/__string'
+          description: The revision ID.
+    __integer:
+      type: integer
+    ListDiscoverersResponse:
+      type: object
+      properties:
+        Discoverers:
+          $ref: '#/components/schemas/__listOfDiscovererSummary'
+          description: An array of DiscovererSummary information.
+        NextToken:
+          $ref: '#/components/schemas/__string'
+          description: The token that specifies the next page of results to return. To request the first page, leave NextToken
+            empty. The token will expire in 24 hours, and cannot be shared with other accounts.
+    __listOfDiscovererSummary:
+      type: array
+      items:
+        $ref: '#/components/schemas/DiscovererSummary'
+    DiscovererSummary:
+      type: object
+      properties:
+        DiscovererArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the discoverer.
+        DiscovererId:
+          $ref: '#/components/schemas/__string'
+          description: The ID of the discoverer.
+        SourceArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the event bus.
+        State:
+          $ref: '#/components/schemas/DiscovererState'
+          description: The state of the discoverer.
+        CrossAccount:
+          $ref: '#/components/schemas/__boolean'
+          description: The Status if the discoverer will discover schemas from events sent from another account.
+        Tags:
+          type: object
+          properties: {}
+          description: Tags associated with the resource.
+    ListRegistriesResponse:
+      type: object
+      properties:
+        NextToken:
+          $ref: '#/components/schemas/__string'
+          description: The token that specifies the next page of results to return. To request the first page, leave NextToken
+            empty. The token will expire in 24 hours, and cannot be shared with other accounts.
+        Registries:
+          $ref: '#/components/schemas/__listOfRegistrySummary'
+          description: An array of registry summaries.
+    __listOfRegistrySummary:
+      type: array
+      items:
+        $ref: '#/components/schemas/RegistrySummary'
+    RegistrySummary:
+      type: object
+      properties:
+        RegistryArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the registry.
+        RegistryName:
+          $ref: '#/components/schemas/__string'
+          description: The name of the registry.
+        Tags:
+          type: object
+          properties: {}
+          description: Tags associated with the registry.
+    ListSchemaVersionsResponse:
+      type: object
+      properties:
+        NextToken:
+          $ref: '#/components/schemas/__string'
+          description: The token that specifies the next page of results to return. To request the first page, leave NextToken
+            empty. The token will expire in 24 hours, and cannot be shared with other accounts.
+        SchemaVersions:
+          $ref: '#/components/schemas/__listOfSchemaVersionSummary'
+          description: An array of schema version summaries.
+    __listOfSchemaVersionSummary:
+      type: array
+      items:
+        $ref: '#/components/schemas/SchemaVersionSummary'
+    SchemaVersionSummary:
+      type: object
+      properties:
+        SchemaArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the schema version.
+        SchemaName:
+          $ref: '#/components/schemas/__string'
+          description: The name of the schema.
+        SchemaVersion:
+          $ref: '#/components/schemas/__string'
+          description: The version number of the schema.
+        Type:
+          $ref: '#/components/schemas/Type'
+          description: The type of schema.
+    ListSchemasResponse:
+      type: object
+      properties:
+        NextToken:
+          $ref: '#/components/schemas/__string'
+          description: The token that specifies the next page of results to return. To request the first page, leave NextToken
+            empty. The token will expire in 24 hours, and cannot be shared with other accounts.
+        Schemas:
+          $ref: '#/components/schemas/__listOfSchemaSummary'
+          description: An array of schema summaries.
+    __listOfSchemaSummary:
+      type: array
+      items:
+        $ref: '#/components/schemas/SchemaSummary'
+    SchemaSummary:
+      description: A summary of schema details.
+      type: object
+      properties:
+        LastModified:
+          $ref: '#/components/schemas/__timestampIso8601'
+          description: The date and time that schema was modified.
+        SchemaArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the schema.
+        SchemaName:
+          $ref: '#/components/schemas/__string'
+          description: The name of the schema.
+        Tags:
+          type: object
+          properties: {}
+          description: Tags associated with the schema.
+        VersionCount:
+          $ref: '#/components/schemas/__long'
+          description: The number of versions available for the schema.
+    __long:
+      type: integer
+      format: int64
+    ListTagsForResourceResponse:
+      type: object
+      properties:
+        Tags:
+          type: object
+          properties: {}
+    PutCodeBindingResponse:
+      type: object
+      properties:
+        CreationDate:
+          $ref: '#/components/schemas/__timestampIso8601'
+          description: The time and date that the code binding was created.
+        LastModified:
+          $ref: '#/components/schemas/__timestampIso8601'
+          description: The date and time that code bindings were modified.
+        SchemaVersion:
+          $ref: '#/components/schemas/__string'
+          description: The version number of the schema.
+        Status:
+          $ref: '#/components/schemas/CodeGenerationStatus'
+          description: The current status of code binding generation.
+    PutResourcePolicyResponse:
+      type: object
+      properties:
+        Policy:
+          $ref: '#/components/schemas/__string'
+          description: The resource-based policy.
+        RevisionId:
+          $ref: '#/components/schemas/__string'
+          description: The revision ID of the policy.
+    SearchSchemasResponse:
+      type: object
+      properties:
+        NextToken:
+          $ref: '#/components/schemas/__string'
+          description: The token that specifies the next page of results to return. To request the first page, leave NextToken
+            empty. The token will expire in 24 hours, and cannot be shared with other accounts.
+        Schemas:
+          $ref: '#/components/schemas/__listOfSearchSchemaSummary'
+          description: An array of SearchSchemaSummary information.
+    __listOfSearchSchemaSummary:
+      type: array
+      items:
+        $ref: '#/components/schemas/SearchSchemaSummary'
+    SearchSchemaSummary:
+      type: object
+      properties:
+        RegistryName:
+          $ref: '#/components/schemas/__string'
+          description: The name of the registry.
+        SchemaArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the schema.
+        SchemaName:
+          $ref: '#/components/schemas/__string'
+          description: The name of the schema.
+        SchemaVersions:
+          $ref: '#/components/schemas/__listOfSearchSchemaVersionSummary'
+          description: An array of schema version summaries.
+    __listOfSearchSchemaVersionSummary:
+      type: array
+      items:
+        $ref: '#/components/schemas/SearchSchemaVersionSummary'
+    SearchSchemaVersionSummary:
+      type: object
+      properties:
+        CreatedDate:
+          $ref: '#/components/schemas/__timestampIso8601'
+          description: The date the schema version was created.
+        SchemaVersion:
+          $ref: '#/components/schemas/__string'
+          description: The version number of the schema
+        Type:
+          $ref: '#/components/schemas/Type'
+          description: The type of schema.
+    StartDiscovererResponse:
+      type: object
+      properties:
+        DiscovererId:
+          $ref: '#/components/schemas/__string'
+          description: The ID of the discoverer.
+        State:
+          $ref: '#/components/schemas/DiscovererState'
+          description: The state of the discoverer.
+    StopDiscovererResponse:
+      type: object
+      properties:
+        DiscovererId:
+          $ref: '#/components/schemas/__string'
+          description: The ID of the discoverer.
+        State:
+          $ref: '#/components/schemas/DiscovererState'
+          description: The state of the discoverer.
+    __listOf__string:
+      type: array
+      items:
+        $ref: '#/components/schemas/__string'
+    UpdateDiscovererResponse:
+      type: object
+      properties:
+        Description:
+          $ref: '#/components/schemas/__string'
+          description: The description of the discoverer.
+        DiscovererArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the discoverer.
+        DiscovererId:
+          $ref: '#/components/schemas/__string'
+          description: The ID of the discoverer.
+        SourceArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the event bus.
+        State:
+          $ref: '#/components/schemas/DiscovererState'
+          description: The state of the discoverer.
+        CrossAccount:
+          $ref: '#/components/schemas/__boolean'
+          description: The Status if the discoverer will discover schemas from events sent from another account.
+        Tags:
+          type: object
+          properties: {}
+          description: Tags associated with the resource.
+    UpdateRegistryResponse:
+      type: object
+      properties:
+        Description:
+          $ref: '#/components/schemas/__string'
+          description: The description of the registry.
+        RegistryArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the registry.
+        RegistryName:
+          $ref: '#/components/schemas/__string'
+          description: The name of the registry.
+        Tags:
+          type: object
+          properties: {}
+          description: Tags associated with the registry.
+    __stringMin0Max36:
+      type: string
+      minLength: 0
+      maxLength: 36
+    UpdateSchemaResponse:
+      type: object
+      properties:
+        Description:
+          $ref: '#/components/schemas/__string'
+          description: The description of the schema.
+        LastModified:
+          $ref: '#/components/schemas/__timestampIso8601'
+          description: The date and time that schema was modified.
+        SchemaArn:
+          $ref: '#/components/schemas/__string'
+          description: The ARN of the schema.
+        SchemaName:
+          $ref: '#/components/schemas/__string'
+          description: The name of the schema.
+        SchemaVersion:
+          $ref: '#/components/schemas/__string'
+          description: The version number of the schema
+        Tags:
+          type: object
+          properties: {}
+        Type:
+          $ref: '#/components/schemas/__string'
+          description: The type of the schema.
+        VersionCreatedDate:
+          $ref: '#/components/schemas/__timestampIso8601'
+          description: The date the schema version was created.

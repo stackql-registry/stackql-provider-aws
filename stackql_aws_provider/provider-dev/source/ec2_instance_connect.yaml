@@ -1,0 +1,206 @@
+openapi: 3.0.0
+info:
+  version: '2018-04-02'
+  title: AWS EC2 Instance Connect
+  description: AWS EC2 Instance Connect
+  x-serviceName: ec2-instance-connect
+  x-serviceAlias: ec2_instance_connect
+  x-protocol: json
+  x-apiVersion: '2018-04-02'
+  x-endpointPrefix: ec2-instance-connect
+  x-targetPrefix: AWSEC2InstanceConnectService
+  x-jsonVersion: '1.1'
+servers:
+- url: https://ec2-instance-connect.{region}.amazonaws.com
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+  description: Regional endpoint for ec2-instance-connect
+paths:
+  /SendSSHPublicKey:
+    post:
+      operationId: SendSSHPublicKey
+      description: Pushes an SSH public key to the specified EC2 instance for use by the specified user. The key remains for
+        60 seconds. For more information, see Connect to your Linux instance using EC2 Instance Connect in the Amazon EC2
+        User Guide.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - AWSEC2InstanceConnectService.SendSSHPublicKey
+          default: AWSEC2InstanceConnectService.SendSSHPublicKey
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                InstanceId:
+                  $ref: '#/components/schemas/InstanceId'
+                  description: The ID of the EC2 instance.
+                InstanceOSUser:
+                  $ref: '#/components/schemas/InstanceOSUser'
+                  description: The OS user on the EC2 instance for whom the key can be used to authenticate.
+                SSHPublicKey:
+                  $ref: '#/components/schemas/SSHPublicKey'
+                  description: The public key material. To use the public key, you must have the matching private key.
+                AvailabilityZone:
+                  $ref: '#/components/schemas/AvailabilityZone'
+                  description: The Availability Zone in which the EC2 instance was launched.
+              required:
+              - InstanceId
+              - InstanceOSUser
+              - SSHPublicKey
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendSSHPublicKeyResponse'
+      x-stackql-resource: ssh_public_key
+      x-stackql-method: send_ssh_public_key
+      x-stackql-verb: EXEC
+  /SendSerialConsoleSSHPublicKey:
+    post:
+      operationId: SendSerialConsoleSSHPublicKey
+      description: Pushes an SSH public key to the specified EC2 instance. The key remains for 60 seconds, which gives you
+        60 seconds to establish a serial console connection to the instance using SSH. For more information, see EC2 Serial
+        Console in the Amazon EC2 User Guide.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - AWSEC2InstanceConnectService.SendSerialConsoleSSHPublicKey
+          default: AWSEC2InstanceConnectService.SendSerialConsoleSSHPublicKey
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                InstanceId:
+                  $ref: '#/components/schemas/InstanceId'
+                  description: The ID of the EC2 instance.
+                SerialPort:
+                  $ref: '#/components/schemas/SerialPort'
+                  description: 'The serial port of the EC2 instance. Currently only port 0 is supported. Default: 0'
+                SSHPublicKey:
+                  $ref: '#/components/schemas/SSHPublicKey'
+                  description: The public key material. To use the public key, you must have the matching private key. For
+                    information about the supported key formats and lengths, see Requirements for key pairs in the Amazon
+                    EC2 User Guide.
+              required:
+              - InstanceId
+              - SSHPublicKey
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendSerialConsoleSSHPublicKeyResponse'
+      x-stackql-resource: serial_console_ssh_public_key
+      x-stackql-method: send_serial_console_ssh_public_key
+      x-stackql-verb: EXEC
+components:
+  parameters:
+    X-Amz-Content-Sha256:
+      in: header
+      name: X-Amz-Content-Sha256
+      required: false
+      schema:
+        type: string
+    X-Amz-Date:
+      in: header
+      name: X-Amz-Date
+      required: false
+      schema:
+        type: string
+    X-Amz-Algorithm:
+      in: header
+      name: X-Amz-Algorithm
+      required: false
+      schema:
+        type: string
+    X-Amz-Credential:
+      in: header
+      name: X-Amz-Credential
+      required: false
+      schema:
+        type: string
+    X-Amz-Security-Token:
+      in: header
+      name: X-Amz-Security-Token
+      required: false
+      schema:
+        type: string
+    X-Amz-Signature:
+      in: header
+      name: X-Amz-Signature
+      required: false
+      schema:
+        type: string
+    X-Amz-SignedHeaders:
+      in: header
+      name: X-Amz-SignedHeaders
+      required: false
+      schema:
+        type: string
+  schemas:
+    InstanceId:
+      type: string
+      minLength: 10
+      maxLength: 32
+      pattern: ^i-[a-f0-9]+$
+    InstanceOSUser:
+      type: string
+      minLength: 1
+      maxLength: 32
+      pattern: (^[A-Za-z_][A-Za-z0-9\@\._-]{0,30}[A-Za-z0-9\$_-]?$)|(^(?=.{2,32}$)[0-9]{1,32}[A-Za-z\@\._-][A-Za-z0-9\@\._-]*[A-Za-z0-9\$_-]?$)
+    SSHPublicKey:
+      type: string
+      minLength: 80
+      maxLength: 4096
+    AvailabilityZone:
+      type: string
+      minLength: 6
+      maxLength: 32
+      pattern: ^(\w+-){2,3}\d+\w+$
+    SendSSHPublicKeyResponse:
+      type: object
+      properties:
+        RequestId:
+          $ref: '#/components/schemas/RequestId'
+          description: The ID of the request. Please provide this ID when contacting AWS Support for assistance.
+        Success:
+          $ref: '#/components/schemas/Success'
+          description: Is true if the request succeeds and an error otherwise.
+    RequestId:
+      type: string
+    Success:
+      type: boolean
+    SerialPort:
+      type: integer
+      minimum: 0
+      maximum: 0
+    SendSerialConsoleSSHPublicKeyResponse:
+      type: object
+      properties:
+        RequestId:
+          $ref: '#/components/schemas/RequestId'
+          description: The ID of the request. Please provide this ID when contacting AWS Support for assistance.
+        Success:
+          $ref: '#/components/schemas/Success'
+          description: Is true if the request succeeds and an error otherwise.
