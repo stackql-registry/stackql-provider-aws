@@ -374,7 +374,7 @@ paths:
             $ref: "#/components/schemas/ABTestId"
           description: The unique identifier of the A/B test to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1404,7 +1404,7 @@ paths:
             $ref: "#/components/schemas/MemoryId"
           description: The identifier of the AgentCore Memory resource for which to list actors.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1490,7 +1490,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The unique identifier of the browser to list sessions for. If specified, only sessions for this browser are returned. If not specified, sessions for all browsers are returned.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1521,7 +1521,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The unique identifier of the code interpreter to list sessions for. If specified, only sessions for this code interpreter are returned. If not specified, sessions for all code interpreters are returned.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1564,7 +1564,7 @@ paths:
             $ref: "#/components/schemas/ActorId"
           description: The identifier of the actor for which to list events.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1597,7 +1597,7 @@ paths:
             $ref: "#/components/schemas/MemoryId"
           description: The unique identifier of the memory to list extraction jobs for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1628,7 +1628,7 @@ paths:
             $ref: "#/components/schemas/MemoryId"
           description: The identifier of the AgentCore Memory resource for which to list memory records.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1813,7 +1813,7 @@ paths:
             $ref: "#/components/schemas/ActorId"
           description: The identifier of the actor for which to list sessions.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2018,7 +2018,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The unique identifier of the browser to use for this session. This identifier specifies which browser environment to initialize for the session.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2073,7 +2073,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The unique identifier of the code interpreter to use for this session. This identifier specifies which code interpreter environment to initialize for the session.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2173,7 +2173,7 @@ paths:
             $ref: "#/components/schemas/BrowserSessionId"
           description: The unique identifier of the browser session to stop.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2218,7 +2218,7 @@ paths:
             $ref: "#/components/schemas/CodeInterpreterSessionId"
           description: The unique identifier of the code interpreter session to stop.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2257,7 +2257,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: Optional qualifier to specify an agent alias, such as prodcode> or dev. If you don't provide a value, the DEFAULT alias is used.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8183,6 +8183,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8193,6 +8195,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.abTests
+          request:
+            nativeCasing: pascal
         delete_ab_test:
           operation:
             $ref: "#/paths/~1ab-tests~1{ab_test_id}/delete"
@@ -8211,6 +8215,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8235,6 +8241,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8257,6 +8265,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.events
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8280,6 +8290,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8289,6 +8301,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8298,6 +8312,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8308,6 +8324,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.paymentInstruments
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8331,6 +8349,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8340,6 +8360,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8349,6 +8371,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8359,6 +8383,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.paymentSessions
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8395,6 +8421,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.batchEvaluations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/batch_evaluations/methods/get_batch_evaluation"
@@ -8427,6 +8455,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.memoryRecordSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8462,6 +8492,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.recommendationSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommendations/methods/get_recommendation"
@@ -8481,6 +8513,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/agent_cards/methods/get_agent_card"
@@ -8498,12 +8532,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_browser_sessions:
           operation:
             $ref: "#/paths/~1browsers~1{browser_identifier}~1sessions~1list/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8525,12 +8563,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_code_interpreter_sessions:
           operation:
             $ref: "#/paths/~1code-interpreters~1{code_interpreter_identifier}~1sessions~1list/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8552,6 +8594,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8572,6 +8616,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8592,6 +8638,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8612,6 +8660,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8632,6 +8682,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8652,6 +8704,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8672,6 +8726,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8693,6 +8749,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.actorSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8714,6 +8772,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobs
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8735,6 +8795,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.sessionSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8755,6 +8817,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8775,6 +8839,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

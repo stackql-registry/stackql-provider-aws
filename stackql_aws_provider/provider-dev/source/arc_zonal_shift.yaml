@@ -73,7 +73,7 @@ paths:
           $ref: '#/components/schemas/ZonalShiftId'
         description: The identifier of a zonal shift.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -174,7 +174,7 @@ paths:
         description: The identifier for the resource that you want to update the practice run configuration for. The identifier
           is the Amazon Resource Name (ARN) for the resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

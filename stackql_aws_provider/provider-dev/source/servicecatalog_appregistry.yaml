@@ -103,7 +103,7 @@ paths:
           $ref: '#/components/schemas/ResourceSpecifier'
         description: The name or ID of the resource of which the application will be associated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -395,7 +395,7 @@ paths:
           $ref: '#/components/schemas/ApplicationSpecifier'
         description: The name, ID, or ARN of the application that will be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -468,7 +468,7 @@ paths:
           $ref: '#/components/schemas/AttributeGroupSpecifier'
         description: The name, ID, or ARN of the attribute group that holds the attributes to describe the application.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

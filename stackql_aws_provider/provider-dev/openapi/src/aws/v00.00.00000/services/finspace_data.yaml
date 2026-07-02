@@ -35,7 +35,7 @@ paths:
             $ref: "#/components/schemas/UserId"
           description: The unique identifier for the user.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -519,7 +519,7 @@ paths:
             $ref: "#/components/schemas/PermissionGroupId"
           description: The unique identifier for the permission group to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -552,7 +552,7 @@ paths:
             $ref: "#/components/schemas/UserId"
           description: The unique identifier for the user that you want to deactivate.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -579,7 +579,7 @@ paths:
             $ref: "#/components/schemas/UserId"
           description: The unique identifier for the user that you want to activate.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -758,7 +758,7 @@ paths:
             $ref: "#/components/schemas/UserId"
           description: The unique identifier for the user that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -789,7 +789,7 @@ paths:
       description: A temporary Amazon S3 location, where you can copy your files from a source location to stage or use as a scratch space in FinSpace notebook.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -876,7 +876,7 @@ paths:
             $ref: "#/components/schemas/UserId"
           description: The unique identifier of the user that a temporary password is requested for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2072,6 +2072,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2092,6 +2094,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -2109,6 +2113,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2119,6 +2125,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.changesets
+          request:
+            nativeCasing: pascal
         get_changeset:
           operation:
             $ref: "#/paths/~1datasets~1{dataset_id}~1changesetsv2~1{changeset_id}/get"
@@ -2131,6 +2139,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2154,6 +2164,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2164,6 +2176,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.dataViews
+          request:
+            nativeCasing: pascal
         get_data_view:
           operation:
             $ref: "#/paths/~1datasets~1{dataset_id}~1dataviewsv2~1{dataview_id}/get"
@@ -2189,6 +2203,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2199,12 +2215,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.datasets
+          request:
+            nativeCasing: pascal
         delete_dataset:
           operation:
             $ref: "#/paths/~1datasetsv2~1{dataset_id}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_dataset:
           operation:
             $ref: "#/paths/~1datasetsv2~1{dataset_id}/get"
@@ -2217,6 +2237,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2241,6 +2263,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2251,12 +2275,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.permissionGroups
+          request:
+            nativeCasing: pascal
         delete_permission_group:
           operation:
             $ref: "#/paths/~1permission-group~1{permission_group_id}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_permission_group:
           operation:
             $ref: "#/paths/~1permission-group~1{permission_group_id}/get"
@@ -2269,6 +2297,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2293,6 +2323,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2303,6 +2335,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.users
+          request:
+            nativeCasing: pascal
         get_user:
           operation:
             $ref: "#/paths/~1user~1{user_id}/get"
@@ -2315,6 +2349,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2355,6 +2391,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/programmatic_access_credentials/methods/get_programmatic_access_credentials"
@@ -2372,6 +2410,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2392,6 +2432,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/permission_groups_by_users/methods/list_permission_groups_by_user"
@@ -2409,6 +2451,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/users_by_permission_groups/methods/list_users_by_permission_group"

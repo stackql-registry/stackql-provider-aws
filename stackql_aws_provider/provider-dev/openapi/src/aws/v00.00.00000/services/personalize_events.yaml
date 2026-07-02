@@ -385,6 +385,8 @@ components:
             $ref: "#/paths/~1action-interactions/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -405,6 +407,8 @@ components:
             $ref: "#/paths/~1actions/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -425,6 +429,8 @@ components:
             $ref: "#/paths/~1events/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -445,6 +451,8 @@ components:
             $ref: "#/paths/~1items/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -465,6 +473,8 @@ components:
             $ref: "#/paths/~1users/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

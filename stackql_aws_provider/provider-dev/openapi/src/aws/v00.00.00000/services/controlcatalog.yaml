@@ -57,7 +57,7 @@ paths:
             $ref: "#/components/schemas/PaginationToken"
           description: The pagination token that's used to fetch the next set of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -90,7 +90,7 @@ paths:
             $ref: "#/components/schemas/MaxListControlMappingsResults"
           description: The maximum number of results on a page or for an API request call.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -123,7 +123,7 @@ paths:
             $ref: "#/components/schemas/MaxListControlsResults"
           description: The maximum number of results on a page or for an API request call.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -180,7 +180,7 @@ paths:
             $ref: "#/components/schemas/PaginationToken"
           description: The pagination token that's used to fetch the next set of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -827,6 +827,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -837,6 +839,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Controls
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -859,6 +863,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CommonControls
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -880,6 +886,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ControlMappings
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -901,6 +909,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Domains
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domains/methods/list_domains"
@@ -919,6 +929,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Objectives
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

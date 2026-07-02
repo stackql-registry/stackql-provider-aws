@@ -40,7 +40,7 @@ paths:
           $ref: '#/components/schemas/Revision'
         description: The revision that is to be made to the asset.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -80,7 +80,7 @@ paths:
           $ref: '#/components/schemas/SubscriptionRequestId'
         description: The unique identifier of the subscription request that is to be accepted.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2028,7 +2028,7 @@ paths:
           $ref: '#/components/schemas/DomainId'
         description: The identifier of the Amazon DataZone domain in which the group profile is created.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3008,7 +3008,7 @@ paths:
           $ref: '#/components/schemas/AccountPoolId'
         description: The ID of the account pool that is to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3190,7 +3190,7 @@ paths:
           $ref: '#/components/schemas/FilterId'
         description: The ID of the asset filter.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3358,7 +3358,7 @@ paths:
           $ref: '#/components/schemas/ConnectionId'
         description: The ID of the connection to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3611,7 +3611,7 @@ paths:
           $ref: '#/components/schemas/DataSourceId'
         description: The identifier of the data source to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3715,7 +3715,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: A unique, case-sensitive identifier that is provided to ensure the idempotency of the request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3811,7 +3811,7 @@ paths:
           $ref: '#/components/schemas/DomainUnitId'
         description: The ID of the domain unit that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3897,7 +3897,7 @@ paths:
           $ref: '#/components/schemas/EnvironmentId'
         description: The identifier of the environment that is to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4010,7 +4010,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The ID of the environment action.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4098,7 +4098,7 @@ paths:
           $ref: '#/components/schemas/EnvironmentBlueprintId'
         description: The identifier of the environment blueprint to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4288,7 +4288,7 @@ paths:
           $ref: '#/components/schemas/EnvironmentProfileId'
         description: The identifier of the environment profile that is to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4463,7 +4463,7 @@ paths:
           $ref: '#/components/schemas/GlossaryId'
         description: The identifier of the business glossary to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4562,7 +4562,7 @@ paths:
           $ref: '#/components/schemas/GlossaryTermId'
         description: The identifier of the business glossary term that is to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4720,7 +4720,7 @@ paths:
           $ref: '#/components/schemas/NotebookId'
         description: The identifier of the notebook to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4828,7 +4828,7 @@ paths:
           $ref: '#/components/schemas/ProjectId'
         description: The identifier of the project that is to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4968,7 +4968,7 @@ paths:
           $ref: '#/components/schemas/ProjectProfileId'
         description: The ID of a project profile that is to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5088,7 +5088,7 @@ paths:
           $ref: '#/components/schemas/RuleId'
         description: The ID of the rule that is to be updated
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5337,7 +5337,7 @@ paths:
           $ref: '#/components/schemas/SubscriptionTargetId'
         description: Identifier of the subscription target that is to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -6204,7 +6204,7 @@ paths:
           $ref: '#/components/schemas/DataSourceId'
         description: The identifier of the data source.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -7293,7 +7293,7 @@ paths:
           $ref: '#/components/schemas/Revision'
         description: The revision that is to be made to the asset.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -7333,7 +7333,7 @@ paths:
           $ref: '#/components/schemas/SubscriptionRequestId'
         description: The identifier of the subscription request that was rejected.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -7466,7 +7466,7 @@ paths:
           $ref: '#/components/schemas/SubscriptionId'
         description: The identifier of the revoked subscription.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -7627,7 +7627,7 @@ paths:
           $ref: '#/components/schemas/DomainId'
         description: The identifier of the domain in which to search listings.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -7853,7 +7853,7 @@ paths:
           $ref: '#/components/schemas/NotebookRunId'
         description: The identifier of the notebook run to stop.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

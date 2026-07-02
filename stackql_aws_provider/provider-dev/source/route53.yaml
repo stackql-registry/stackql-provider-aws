@@ -46,20 +46,6 @@ paths:
       x-stackql-method: activate_key_signing_key
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ActivateKeySigningKeyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ChangeInfo\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{\
-        \ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"submitted_at\": {{ $v := index\
-        \ . \"SubmittedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"comment\": {{ $v := index . \"Comment\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzone/{id}/associatevpc:
     post:
@@ -84,7 +70,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -103,20 +89,6 @@ paths:
       x-stackql-method: associate_vpc_with_hosted_zone
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AssociateVPCWithHostedZoneOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ChangeInfo\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{\
-        \ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"submitted_at\": {{ $v := index\
-        \ . \"SubmittedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"comment\": {{ $v := index . \"Comment\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/cidrcollection/{cidr_collection_id}:
     post:
@@ -137,7 +109,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -158,11 +130,6 @@ paths:
       x-stackql-method: change_cidr_collection
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ChangeCidrCollectionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     delete:
       operationId: DeleteCidrCollection
@@ -186,8 +153,6 @@ paths:
       x-stackql-method: delete_cidr_collection
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteCidrCollectionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: ListCidrLocations
@@ -224,15 +189,6 @@ paths:
       x-stackql-method: list_cidr_locations
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListCidrLocationsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"CidrLocations\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n     \
-        \   {{- $items := index $list_parent \"item\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"location_name\": {{ $v := index . \"LocationName\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzone/{id}/rrset/:
     post:
@@ -280,7 +236,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -299,20 +255,6 @@ paths:
       x-stackql-method: change_resource_record_sets
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ChangeResourceRecordSetsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ChangeInfo\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{\
-        \ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"submitted_at\": {{ $v := index\
-        \ . \"SubmittedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"comment\": {{ $v := index . \"Comment\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/tags/{resource_type}/{resource_id}:
     post:
@@ -334,9 +276,9 @@ paths:
           $ref: '#/components/schemas/TagResourceId'
         description: The ID of the resource for which you want to add, change, or delete tags.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -355,8 +297,6 @@ paths:
       x-stackql-method: change_tags_for_resource
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ChangeTagsForResourceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: ListTagsForResource
@@ -387,16 +327,6 @@ paths:
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ResourceTagSet\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"resource_type\": {{ $v := index . \"ResourceType\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }},\n        \"resource_id\": {{ $v := index . \"ResourceId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\"\
-        ) }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\"\
-        \ }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"\
-        tags\": {{ $v := index . \"Tags\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/cidrcollection:
     post:
@@ -406,7 +336,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -427,12 +357,6 @@ paths:
       x-stackql-method: create_cidr_collection
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateCidrCollectionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"collection\": {{ $v := index . \"Collection\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"location\": {{ $v := index . \"Location\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: ListCidrCollections
@@ -462,22 +386,6 @@ paths:
       x-stackql-method: list_cidr_collections
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListCidrCollectionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"CidrCollections\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n   \
-        \     {{- $items := index $list_parent \"item\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"arn\": {{ $v := index . \"Arn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"id\": {{ $v := index . \"Id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\": {{ $v := index . \"Name\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"version\": {{ $v := index . \"Version\" }}{{ if eq $v nil }}null{{ else }}{{toInt\
-        \ $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/healthcheck:
     post:
@@ -498,7 +406,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -520,20 +428,6 @@ paths:
       x-stackql-method: create_health_check
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateHealthCheckOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"HealthCheck\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"caller_reference\"\
-        : {{ $v := index . \"CallerReference\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"linked_service\": {{ $v :=\
-        \ index . \"LinkedService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }},\n        \"health_check_config\": {{ $v := index . \"HealthCheckConfig\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"health_check_version\"\
-        : {{ $v := index . \"HealthCheckVersion\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"cloud_watch_alarm_configuration\"\
-        : {{ $v := index . \"CloudWatchAlarmConfiguration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: ListHealthChecks
@@ -567,24 +461,6 @@ paths:
       x-stackql-method: list_health_checks
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListHealthChecksOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"HealthChecks\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n      \
-        \  {{- $items := index $list_parent \"HealthCheck\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"caller_reference\": {{ $v :=\
-        \ index . \"CallerReference\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"linked_service\": {{ $v := index\
-        \ . \"LinkedService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }},\n        \"health_check_config\": {{ $v := index . \"HealthCheckConfig\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"health_check_version\"\
-        : {{ $v := index . \"HealthCheckVersion\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"cloud_watch_alarm_configuration\"\
-        : {{ $v := index . \"CloudWatchAlarmConfiguration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzone:
     post:
@@ -614,7 +490,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -641,23 +517,6 @@ paths:
       x-stackql-method: create_hosted_zone
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateHostedZoneOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"HostedZone\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\": {{ $v\
-        \ := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"caller_reference\": {{ $v := index .\
-        \ \"CallerReference\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"config\": {{ $v := index . \"Config\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"resource_record_set_count\": {{ $v := index . \"ResourceRecordSetCount\" }}{{ if eq $v nil }}null{{ else\
-        \ }}{{toInt $v}}{{ end }},\n        \"linked_service\": {{ $v := index . \"LinkedService\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"features\": {{\
-        \ $v := index . \"Features\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: ListHostedZones
@@ -707,26 +566,6 @@ paths:
       x-stackql-method: list_hosted_zones
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListHostedZonesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"HostedZones\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n       \
-        \ {{- $items := index $list_parent \"HostedZone\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\": {{ $v := index . \"\
-        Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"caller_reference\": {{ $v := index . \"CallerReference\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"config\": {{ $v := index . \"Config\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"resource_record_set_count\"\
-        : {{ $v := index . \"ResourceRecordSetCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"\
-        linked_service\": {{ $v := index . \"LinkedService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"features\": {{ $v := index . \"Features\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/keysigningkey:
     post:
@@ -737,7 +576,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -766,48 +605,6 @@ paths:
       x-stackql-method: create_key_signing_key
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateKeySigningKeyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"KeySigningKey\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"name\": {{ $v := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"kms_arn\"\
-        : {{ $v := index . \"KmsArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"flag\": {{ $v := index . \"Flag\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"signing_algorithm_mnemonic\": {{ $v := index\
-        \ . \"SigningAlgorithmMnemonic\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"signing_algorithm_type\": {{\
-        \ $v := index . \"SigningAlgorithmType\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"digest_algorithm_mnemonic\"\
-        : {{ $v := index . \"DigestAlgorithmMnemonic\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"digest_algorithm_type\"\
-        : {{ $v := index . \"DigestAlgorithmType\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"key_tag\"\
-        : {{ $v := index . \"KeyTag\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"digest_value\":\
-        \ {{ $v := index . \"DigestValue\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"public_key\": {{ $v := index\
-        \ . \"PublicKey\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ds_record\": {{ $v := index . \"DSRecord\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"dnskey_record\": {{ $v := index . \"DNSKEYRecord\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"status_message\": {{ $v := index . \"StatusMessage\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }},\n        \"created_date\": {{ $v := index . \"CreatedDate\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\
-        \") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"\
-        float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n \
-        \       \"last_modified_date\": {{ $v := index . \"LastModifiedDate\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n\
-        }\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/queryloggingconfig:
     post:
@@ -860,7 +657,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -882,17 +679,6 @@ paths:
       x-stackql-method: create_query_logging_config
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateQueryLoggingConfigOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"QueryLoggingConfig\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"hosted_zone_id\"\
-        : {{ $v := index . \"HostedZoneId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"cloud_watch_logs_log_group_arn\"\
-        : {{ $v := index . \"CloudWatchLogsLogGroupArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: ListQueryLoggingConfigs
@@ -938,21 +724,6 @@ paths:
       x-stackql-method: list_query_logging_configs
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListQueryLoggingConfigsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"QueryLoggingConfigs\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n\
-        \        {{- $items := index $list_parent \"QueryLoggingConfig\" -}}\n        {{- if eq (printf \"%T\" $items) \"\
-        map[string]interface {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items)\
-        \ \"[]interface {}\" }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template\
-        \ \"row\" $v}}\n          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"hosted_zone_id\"\
-        : {{ $v := index . \"HostedZoneId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"cloud_watch_logs_log_group_arn\"\
-        : {{ $v := index . \"CloudWatchLogsLogGroupArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/delegationset:
     post:
@@ -979,7 +750,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1000,13 +771,6 @@ paths:
       x-stackql-method: create_reusable_delegation_set
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateReusableDelegationSetOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"delegation_set\": {{ $v := index .\
-        \ \"DelegationSet\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v)\
-        \ }}{{ end }},\n        \"location\": {{ $v := index . \"Location\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n\
-        }\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: ListReusableDelegationSets
@@ -1041,20 +805,6 @@ paths:
       x-stackql-method: list_reusable_delegation_sets
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListReusableDelegationSetsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"DelegationSets\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n    \
-        \    {{- $items := index $list_parent \"DelegationSet\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"caller_reference\": {{ $v :=\
-        \ index . \"CallerReference\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name_servers\": {{ $v := index\
-        \ . \"NameServers\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v)\
-        \ }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/trafficpolicy:
     post:
@@ -1065,7 +815,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1086,24 +836,6 @@ paths:
       x-stackql-method: create_traffic_policy
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateTrafficPolicyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"TrafficPolicy\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"version\": {{\
-        \ $v := index . \"Version\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"name\": {{ $v := index\
-        \ . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"type\": {{ $v := index . \"Type\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"document\": {{ $v := index . \"Document\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"comment\": {{ $v := index . \"Comment\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n\
-        }\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/trafficpolicyinstance:
     post:
@@ -1120,7 +852,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1149,31 +881,6 @@ paths:
       x-stackql-method: create_traffic_policy_instance
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateTrafficPolicyInstanceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"TrafficPolicyInstance\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"hosted_zone_id\"\
-        : {{ $v := index . \"HostedZoneId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\": {{ $v := index . \"\
-        Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ttl\": {{ $v := index . \"TTL\" }}{{ if eq $v nil\
-        \ }}null{{ else }}{{toInt $v}}{{ end }},\n        \"state\": {{ $v := index . \"State\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"message\": {{ $v := index . \"Message\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"traffic_policy_id\": {{ $v := index . \"TrafficPolicyId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"traffic_policy_version\": {{ $v := index . \"TrafficPolicyVersion\" }}{{ if eq $v nil }}null{{ else }}{{toInt\
-        \ $v}}{{ end }},\n        \"traffic_policy_type\": {{ $v := index . \"TrafficPolicyType\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/trafficpolicy/{id}:
     post:
@@ -1193,7 +900,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1212,13 +919,6 @@ paths:
       x-stackql-method: create_traffic_policy_version
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateTrafficPolicyVersionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"traffic_policy\": {{ $v := index .\
-        \ \"TrafficPolicy\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v)\
-        \ }}{{ end }},\n        \"location\": {{ $v := index . \"Location\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n\
-        }\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzone/{id}/authorizevpcassociation:
     post:
@@ -1239,7 +939,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1256,12 +956,6 @@ paths:
       x-stackql-method: create_vpc_association_authorization
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateVPCAssociationAuthorizationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"hosted_zone_id\": {{ $v := index .\
-        \ \"HostedZoneId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"vpc\": {{ $v := index . \"VPC\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: ListVPCAssociationAuthorizations
@@ -1301,18 +995,6 @@ paths:
       x-stackql-method: list_vpc_association_authorizations
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListVPCAssociationAuthorizationsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"VPCs\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n        {{- $items\
-        \ := index $list_parent \"VPC\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface {}\" }}\n   \
-        \       {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n       \
-        \   {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n        \
-        \  {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"vpc_region\"\
-        : {{ $v := index . \"VPCRegion\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"vpc_id\": {{ $v := index .\
-        \ \"VPCId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/keysigningkey/{hosted_zone_id}/{name}/deactivate:
     post:
@@ -1343,20 +1025,6 @@ paths:
       x-stackql-method: deactivate_key_signing_key
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DeactivateKeySigningKeyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ChangeInfo\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{\
-        \ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"submitted_at\": {{ $v := index\
-        \ . \"SubmittedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"comment\": {{ $v := index . \"Comment\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/healthcheck/{health_check_id}:
     delete:
@@ -1387,8 +1055,6 @@ paths:
       x-stackql-method: delete_health_check
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteHealthCheckOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetHealthCheck
@@ -1413,20 +1079,6 @@ paths:
       x-stackql-method: get_health_check
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetHealthCheckOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"HealthCheck\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"caller_reference\"\
-        : {{ $v := index . \"CallerReference\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"linked_service\": {{ $v :=\
-        \ index . \"LinkedService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }},\n        \"health_check_config\": {{ $v := index . \"HealthCheckConfig\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"health_check_version\"\
-        : {{ $v := index . \"HealthCheckVersion\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"cloud_watch_alarm_configuration\"\
-        : {{ $v := index . \"CloudWatchAlarmConfiguration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     post:
       operationId: UpdateHealthCheck
@@ -1441,9 +1093,9 @@ paths:
         description: The ID for the health check for which you want detailed information. When you created the health check,
           CreateHealthCheck returned the ID in the response, in the HealthCheckId element.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1490,20 +1142,6 @@ paths:
       x-stackql-method: update_health_check
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateHealthCheckOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"HealthCheck\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"caller_reference\"\
-        : {{ $v := index . \"CallerReference\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"linked_service\": {{ $v :=\
-        \ index . \"LinkedService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }},\n        \"health_check_config\": {{ $v := index . \"HealthCheckConfig\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"health_check_version\"\
-        : {{ $v := index . \"HealthCheckVersion\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"cloud_watch_alarm_configuration\"\
-        : {{ $v := index . \"CloudWatchAlarmConfiguration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzone/{id}:
     delete:
@@ -1547,20 +1185,6 @@ paths:
       x-stackql-method: delete_hosted_zone
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteHostedZoneOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ChangeInfo\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{\
-        \ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"submitted_at\": {{ $v := index\
-        \ . \"SubmittedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"comment\": {{ $v := index . \"Comment\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetHostedZone
@@ -1585,23 +1209,6 @@ paths:
       x-stackql-method: get_hosted_zone
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetHostedZoneOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"HostedZone\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\": {{ $v\
-        \ := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"caller_reference\": {{ $v := index .\
-        \ \"CallerReference\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"config\": {{ $v := index . \"Config\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"resource_record_set_count\": {{ $v := index . \"ResourceRecordSetCount\" }}{{ if eq $v nil }}null{{ else\
-        \ }}{{toInt $v}}{{ end }},\n        \"linked_service\": {{ $v := index . \"LinkedService\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"features\": {{\
-        \ $v := index . \"Features\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     post:
       operationId: UpdateHostedZoneComment
@@ -1614,9 +1221,9 @@ paths:
           $ref: '#/components/schemas/ResourceId'
         description: The ID for the hosted zone that you want to update the comment for.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1633,23 +1240,6 @@ paths:
       x-stackql-method: update_hosted_zone_comment
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateHostedZoneCommentOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"HostedZone\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\": {{ $v\
-        \ := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"caller_reference\": {{ $v := index .\
-        \ \"CallerReference\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"config\": {{ $v := index . \"Config\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"resource_record_set_count\": {{ $v := index . \"ResourceRecordSetCount\" }}{{ if eq $v nil }}null{{ else\
-        \ }}{{toInt $v}}{{ end }},\n        \"linked_service\": {{ $v := index . \"LinkedService\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"features\": {{\
-        \ $v := index . \"Features\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/keysigningkey/{hosted_zone_id}/{name}:
     delete:
@@ -1681,20 +1271,6 @@ paths:
       x-stackql-method: delete_key_signing_key
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteKeySigningKeyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ChangeInfo\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{\
-        \ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"submitted_at\": {{ $v := index\
-        \ . \"SubmittedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"comment\": {{ $v := index . \"Comment\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/queryloggingconfig/{id}:
     delete:
@@ -1720,8 +1296,6 @@ paths:
       x-stackql-method: delete_query_logging_config
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteQueryLoggingConfigOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetQueryLoggingConfig
@@ -1745,17 +1319,6 @@ paths:
       x-stackql-method: get_query_logging_config
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetQueryLoggingConfigOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"QueryLoggingConfig\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"hosted_zone_id\"\
-        : {{ $v := index . \"HostedZoneId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"cloud_watch_logs_log_group_arn\"\
-        : {{ $v := index . \"CloudWatchLogsLogGroupArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/delegationset/{id}:
     delete:
@@ -1781,8 +1344,6 @@ paths:
       x-stackql-method: delete_reusable_delegation_set
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteReusableDelegationSetOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetReusableDelegationSet
@@ -1806,16 +1367,6 @@ paths:
       x-stackql-method: get_reusable_delegation_set
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetReusableDelegationSetOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"DelegationSet\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"caller_reference\"\
-        : {{ $v := index . \"CallerReference\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name_servers\": {{ $v := index\
-        \ . \"NameServers\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v)\
-        \ }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/trafficpolicy/{id}/{version}:
     delete:
@@ -1849,8 +1400,6 @@ paths:
       x-stackql-method: delete_traffic_policy
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteTrafficPolicyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetTrafficPolicy
@@ -1880,24 +1429,6 @@ paths:
       x-stackql-method: get_traffic_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetTrafficPolicyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"TrafficPolicy\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"version\": {{\
-        \ $v := index . \"Version\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"name\": {{ $v := index\
-        \ . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"type\": {{ $v := index . \"Type\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"document\": {{ $v := index . \"Document\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"comment\": {{ $v := index . \"Comment\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n\
-        }\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     post:
       operationId: UpdateTrafficPolicyComment
@@ -1918,7 +1449,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1935,24 +1466,6 @@ paths:
       x-stackql-method: update_traffic_policy_comment
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateTrafficPolicyCommentOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"TrafficPolicy\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"version\": {{\
-        \ $v := index . \"Version\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"name\": {{ $v := index\
-        \ . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"type\": {{ $v := index . \"Type\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"document\": {{ $v := index . \"Document\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"comment\": {{ $v := index . \"Comment\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n\
-        }\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/trafficpolicyinstance/{id}:
     delete:
@@ -1979,8 +1492,6 @@ paths:
       x-stackql-method: delete_traffic_policy_instance
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteTrafficPolicyInstanceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetTrafficPolicyInstance
@@ -2006,31 +1517,6 @@ paths:
       x-stackql-method: get_traffic_policy_instance
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetTrafficPolicyInstanceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"TrafficPolicyInstance\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"hosted_zone_id\"\
-        : {{ $v := index . \"HostedZoneId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\": {{ $v := index . \"\
-        Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ttl\": {{ $v := index . \"TTL\" }}{{ if eq $v nil\
-        \ }}null{{ else }}{{toInt $v}}{{ end }},\n        \"state\": {{ $v := index . \"State\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"message\": {{ $v := index . \"Message\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"traffic_policy_id\": {{ $v := index . \"TrafficPolicyId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"traffic_policy_version\": {{ $v := index . \"TrafficPolicyVersion\" }}{{ if eq $v nil }}null{{ else }}{{toInt\
-        \ $v}}{{ end }},\n        \"traffic_policy_type\": {{ $v := index . \"TrafficPolicyType\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     post:
       operationId: UpdateTrafficPolicyInstance
@@ -2056,7 +1542,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2080,31 +1566,6 @@ paths:
       x-stackql-method: update_traffic_policy_instance
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateTrafficPolicyInstanceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"TrafficPolicyInstance\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"hosted_zone_id\"\
-        : {{ $v := index . \"HostedZoneId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\": {{ $v := index . \"\
-        Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ttl\": {{ $v := index . \"TTL\" }}{{ if eq $v nil\
-        \ }}null{{ else }}{{toInt $v}}{{ end }},\n        \"state\": {{ $v := index . \"State\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"message\": {{ $v := index . \"Message\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"traffic_policy_id\": {{ $v := index . \"TrafficPolicyId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"traffic_policy_version\": {{ $v := index . \"TrafficPolicyVersion\" }}{{ if eq $v nil }}null{{ else }}{{toInt\
-        \ $v}}{{ end }},\n        \"traffic_policy_type\": {{ $v := index . \"TrafficPolicyType\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzone/{id}/deauthorizevpcassociation:
     post:
@@ -2126,7 +1587,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2143,8 +1604,6 @@ paths:
       x-stackql-method: delete_vpc_association_authorization
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteVPCAssociationAuthorizationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzone/{id}/disable-dnssec:
     post:
@@ -2169,20 +1628,6 @@ paths:
       x-stackql-method: disable_hosted_zone_dnssec
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DisableHostedZoneDNSSECOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ChangeInfo\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{\
-        \ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"submitted_at\": {{ $v := index\
-        \ . \"SubmittedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"comment\": {{ $v := index . \"Comment\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzone/{id}/disassociatevpc:
     post:
@@ -2210,7 +1655,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2229,20 +1674,6 @@ paths:
       x-stackql-method: disassociate_vpc_from_hosted_zone
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: DisassociateVPCFromHostedZoneOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ChangeInfo\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{\
-        \ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"submitted_at\": {{ $v := index\
-        \ . \"SubmittedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"comment\": {{ $v := index . \"Comment\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzone/{id}/enable-dnssec:
     post:
@@ -2266,20 +1697,6 @@ paths:
       x-stackql-method: enable_hosted_zone_dnssec
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableHostedZoneDNSSECOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ChangeInfo\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{\
-        \ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"submitted_at\": {{ $v := index\
-        \ . \"SubmittedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"comment\": {{ $v := index . \"Comment\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/accountlimit/{type}:
     get:
@@ -2313,10 +1730,6 @@ paths:
       x-stackql-method: get_account_limit
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccountLimitOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"limit\": {{ $v := index . \"Limit\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"count\": {{ $v := index . \"Count\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/change/{id}:
     get:
@@ -2344,20 +1757,6 @@ paths:
       x-stackql-method: get_change
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetChangeOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ChangeInfo\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{\
-        \ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"submitted_at\": {{ $v := index\
-        \ . \"SubmittedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"comment\": {{ $v := index . \"Comment\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/checkeripranges:
     get:
@@ -2378,10 +1777,6 @@ paths:
       x-stackql-method: get_checker_ip_ranges
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetCheckerIpRangesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"checker_ip_ranges\": {{ $v := index\
-        \ . \"CheckerIpRanges\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzone/{id}/dnssec:
     get:
@@ -2406,11 +1801,6 @@ paths:
       x-stackql-method: get_dnssec
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetDNSSECOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"status\": {{ $v := index . \"Status\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"key_signing_keys\": {{ $v := index . \"KeySigningKeys\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\
-        \") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/geolocation:
     get:
@@ -2457,26 +1847,6 @@ paths:
       x-stackql-method: get_geo_location
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetGeoLocationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"GeoLocationDetails\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"continent_code\": {{ $v := index . \"ContinentCode\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"continent_name\": {{ $v := index . \"ContinentName\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }},\n        \"country_code\": {{ $v := index . \"CountryCode\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\
-        \") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"\
-        float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n \
-        \       \"country_name\": {{ $v := index . \"CountryName\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"subdivision_code\"\
-        : {{ $v := index . \"SubdivisionCode\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"subdivision_name\": {{ $v :=\
-        \ index . \"SubdivisionName\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/healthcheckcount:
     get:
@@ -2494,9 +1864,6 @@ paths:
       x-stackql-method: get_health_check_count
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetHealthCheckCountOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"health_check_count\": {{ $v := index\
-        \ . \"HealthCheckCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/healthcheck/{health_check_id}/lastfailurereason:
     get:
@@ -2523,10 +1890,6 @@ paths:
       x-stackql-method: get_health_check_last_failure_reason
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetHealthCheckLastFailureReasonOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"health_check_observations\": {{ $v\
-        \ := index . \"HealthCheckObservations\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/healthcheck/{health_check_id}/status:
     get:
@@ -2554,10 +1917,6 @@ paths:
       x-stackql-method: get_health_check_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetHealthCheckStatusOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"health_check_observations\": {{ $v\
-        \ := index . \"HealthCheckObservations\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzonecount:
     get:
@@ -2575,9 +1934,6 @@ paths:
       x-stackql-method: get_hosted_zone_count
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetHostedZoneCountOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"hosted_zone_count\": {{ $v := index\
-        \ . \"HostedZoneCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzonelimit/{id}/{type}:
     get:
@@ -2611,10 +1967,6 @@ paths:
       x-stackql-method: get_hosted_zone_limit
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetHostedZoneLimitOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"limit\": {{ $v := index . \"Limit\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"count\": {{ $v := index . \"Count\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/reusabledelegationsetlimit/{id}/{type}:
     get:
@@ -2646,10 +1998,6 @@ paths:
       x-stackql-method: get_reusable_delegation_set_limit
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetReusableDelegationSetLimitOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"limit\": {{ $v := index . \"Limit\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"count\": {{ $v := index . \"Count\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/trafficpolicyinstancecount:
     get:
@@ -2667,9 +2015,6 @@ paths:
       x-stackql-method: get_traffic_policy_instance_count
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetTrafficPolicyInstanceCountOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"traffic_policy_instance_count\": {{\
-        \ $v := index . \"TrafficPolicyInstanceCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/cidrcollection/{cidr_collection_id}/cidrblocks:
     get:
@@ -2711,18 +2056,6 @@ paths:
       x-stackql-method: list_cidr_blocks
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListCidrBlocksOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"CidrBlocks\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n        {{-\
-        \ $items := index $list_parent \"item\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface {}\"\
-        \ }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n \
-        \         {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n      \
-        \  \"cidr_block\": {{ $v := index . \"CidrBlock\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"location_name\"\
-        : {{ $v := index . \"LocationName\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/geolocations:
     get:
@@ -2780,30 +2113,6 @@ paths:
       x-stackql-method: list_geo_locations
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListGeoLocationsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"GeoLocationDetailsList\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n\
-        \        {{- $items := index $list_parent \"GeoLocationDetails\" -}}\n        {{- if eq (printf \"%T\" $items) \"\
-        map[string]interface {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items)\
-        \ \"[]interface {}\" }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template\
-        \ \"row\" $v}}\n          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"continent_code\": {{ $v := index . \"ContinentCode\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"continent_name\": {{ $v := index . \"ContinentName\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\"\
-        ) }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\"\
-        \ }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"\
-        country_code\": {{ $v := index . \"CountryCode\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"country_name\"\
-        : {{ $v := index . \"CountryName\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"subdivision_code\": {{ $v :=\
-        \ index . \"SubdivisionCode\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"subdivision_name\": {{ $v := index\
-        \ . \"SubdivisionName\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzonesbyname:
     get:
@@ -2868,26 +2177,6 @@ paths:
       x-stackql-method: list_hosted_zones_by_name
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListHostedZonesByNameOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"HostedZones\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n       \
-        \ {{- $items := index $list_parent \"HostedZone\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\": {{ $v := index . \"\
-        Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"caller_reference\": {{ $v := index . \"CallerReference\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"config\": {{ $v := index . \"Config\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"resource_record_set_count\"\
-        : {{ $v := index . \"ResourceRecordSetCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"\
-        linked_service\": {{ $v := index . \"LinkedService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"features\": {{ $v := index . \"Features\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzonesbyvpc:
     get:
@@ -2947,20 +2236,6 @@ paths:
       x-stackql-method: list_hosted_zones_by_vpc
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListHostedZonesByVPCOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"HostedZoneSummaries\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n\
-        \        {{- $items := index $list_parent \"HostedZoneSummary\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"hosted_zone_id\": {{ $v := index . \"HostedZoneId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\"\
-        : {{ $v := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"owner\": {{ $v := index . \"Owner\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n\
-        {{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzone/{id}/rrset:
     get:
@@ -3042,43 +2317,6 @@ paths:
       x-stackql-method: list_resource_record_sets
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListResourceRecordSetsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"ResourceRecordSets\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n\
-        \        {{- $items := index $list_parent \"ResourceRecordSet\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"name\": {{ $v := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"type\": {{ $v := index . \"\
-        Type\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"set_identifier\": {{ $v := index . \"SetIdentifier\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"weight\": {{ $v := index . \"Weight\" }}{{ if eq $v nil\
-        \ }}null{{ else }}{{toInt $v}}{{ end }},\n        \"region\": {{ $v := index . \"Region\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"geo_location\": {{ $v := index . \"GeoLocation\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"failover\": {{ $v := index\
-        \ . \"Failover\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"multi_value_answer\": {{ $v := index . \"MultiValueAnswer\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"ttl\": {{ $v := index . \"TTL\" }}{{ if eq\
-        \ $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"resource_records\": {{ $v := index . \"ResourceRecords\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"alias_target\": {{ $v := index . \"AliasTarget\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"health_check_id\": {{ $v := index . \"HealthCheckId\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"traffic_policy_instance_id\": {{ $v := index . \"TrafficPolicyInstanceId\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"cidr_routing_config\": {{ $v := index . \"CidrRoutingConfig\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"geo_proximity_location\": {{ $v := index . \"GeoProximityLocation\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/tags/{resource_type}:
     post:
@@ -3096,7 +2334,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -3115,20 +2353,6 @@ paths:
       x-stackql-method: list_tags_for_resources
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourcesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"ResourceTagSets\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n   \
-        \     {{- $items := index $list_parent \"ResourceTagSet\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"resource_type\": {{ $v := index . \"ResourceType\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"resource_id\"\
-        : {{ $v := index . \"ResourceId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"tags\": {{ $v := index . \"\
-        Tags\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n\
-        }\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/trafficpolicies:
     get:
@@ -3167,23 +2391,6 @@ paths:
       x-stackql-method: list_traffic_policies
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTrafficPoliciesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"TrafficPolicySummaries\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n\
-        \        {{- $items := index $list_parent \"TrafficPolicySummary\" -}}\n        {{- if eq (printf \"%T\" $items) \"\
-        map[string]interface {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items)\
-        \ \"[]interface {}\" }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template\
-        \ \"row\" $v}}\n          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\": {{ $v\
-        \ := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"type\": {{ $v := index . \"Type\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"latest_version\": {{ $v := index . \"LatestVersion\" }}{{ if eq\
-        \ $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"traffic_policy_count\": {{ $v := index . \"TrafficPolicyCount\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/trafficpolicyinstances:
     get:
@@ -3245,35 +2452,6 @@ paths:
       x-stackql-method: list_traffic_policy_instances
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTrafficPolicyInstancesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"TrafficPolicyInstances\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n\
-        \        {{- $items := index $list_parent \"TrafficPolicyInstance\" -}}\n        {{- if eq (printf \"%T\" $items)\
-        \ \"map[string]interface {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items)\
-        \ \"[]interface {}\" }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template\
-        \ \"row\" $v}}\n          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"hosted_zone_id\"\
-        : {{ $v := index . \"HostedZoneId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\": {{ $v := index . \"\
-        Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ttl\": {{ $v := index . \"TTL\" }}{{ if eq $v nil\
-        \ }}null{{ else }}{{toInt $v}}{{ end }},\n        \"state\": {{ $v := index . \"State\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"message\": {{ $v := index . \"Message\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"traffic_policy_id\": {{ $v := index . \"TrafficPolicyId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"traffic_policy_version\": {{ $v := index . \"TrafficPolicyVersion\" }}{{ if eq $v nil }}null{{ else }}{{toInt\
-        \ $v}}{{ end }},\n        \"traffic_policy_type\": {{ $v := index . \"TrafficPolicyType\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/trafficpolicyinstances/hostedzone:
     get:
@@ -3330,35 +2508,6 @@ paths:
       x-stackql-method: list_traffic_policy_instances_by_hosted_zone
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTrafficPolicyInstancesByHostedZoneOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"TrafficPolicyInstances\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n\
-        \        {{- $items := index $list_parent \"TrafficPolicyInstance\" -}}\n        {{- if eq (printf \"%T\" $items)\
-        \ \"map[string]interface {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items)\
-        \ \"[]interface {}\" }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template\
-        \ \"row\" $v}}\n          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"hosted_zone_id\"\
-        : {{ $v := index . \"HostedZoneId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\": {{ $v := index . \"\
-        Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ttl\": {{ $v := index . \"TTL\" }}{{ if eq $v nil\
-        \ }}null{{ else }}{{toInt $v}}{{ end }},\n        \"state\": {{ $v := index . \"State\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"message\": {{ $v := index . \"Message\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"traffic_policy_id\": {{ $v := index . \"TrafficPolicyId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"traffic_policy_version\": {{ $v := index . \"TrafficPolicyVersion\" }}{{ if eq $v nil }}null{{ else }}{{toInt\
-        \ $v}}{{ end }},\n        \"traffic_policy_type\": {{ $v := index . \"TrafficPolicyType\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/trafficpolicyinstances/trafficpolicy:
     get:
@@ -3432,35 +2581,6 @@ paths:
       x-stackql-method: list_traffic_policy_instances_by_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTrafficPolicyInstancesByPolicyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"TrafficPolicyInstances\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n\
-        \        {{- $items := index $list_parent \"TrafficPolicyInstance\" -}}\n        {{- if eq (printf \"%T\" $items)\
-        \ \"map[string]interface {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items)\
-        \ \"[]interface {}\" }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template\
-        \ \"row\" $v}}\n          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"hosted_zone_id\"\
-        : {{ $v := index . \"HostedZoneId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"name\": {{ $v := index . \"\
-        Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ttl\": {{ $v := index . \"TTL\" }}{{ if eq $v nil\
-        \ }}null{{ else }}{{toInt $v}}{{ end }},\n        \"state\": {{ $v := index . \"State\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"message\": {{ $v := index . \"Message\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"traffic_policy_id\": {{ $v := index . \"TrafficPolicyId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"traffic_policy_version\": {{ $v := index . \"TrafficPolicyVersion\" }}{{ if eq $v nil }}null{{ else }}{{toInt\
-        \ $v}}{{ end }},\n        \"traffic_policy_type\": {{ $v := index . \"TrafficPolicyType\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/trafficpolicies/{id}/versions:
     get:
@@ -3504,27 +2624,6 @@ paths:
       x-stackql-method: list_traffic_policy_versions
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTrafficPolicyVersionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"TrafficPolicies\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n   \
-        \     {{- $items := index $list_parent \"TrafficPolicy\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"version\": {{ $v := index .\
-        \ \"Version\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"name\": {{ $v := index . \"Name\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"type\": {{ $v := index . \"Type\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"document\": {{ $v := index . \"Document\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }},\n        \"comment\": {{ $v := index . \"Comment\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/testdnsanswer:
     get:
@@ -3590,24 +2689,6 @@ paths:
       x-stackql-method: test_dns_answer
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: TestDNSAnswerOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"nameserver\": {{ $v := index . \"Nameserver\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"record_name\": {{ $v := index . \"RecordName\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"record_type\": {{ $v := index . \"RecordType\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{\
-        \ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"record_data\": {{ $v := index . \"RecordData\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"response_code\": {{ $v :=\
-        \ index . \"ResponseCode\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"protocol\": {{ $v := index . \"\
-        Protocol\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzone/{id}/features:
     post:
@@ -3624,9 +2705,9 @@ paths:
         description: The ID of the hosted zone for which you want to update features. This is the unique identifier for your
           hosted zone.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -3643,8 +2724,6 @@ paths:
       x-stackql-method: update_hosted_zone_features
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateHostedZoneFeaturesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
 components:
   parameters:
@@ -3701,19 +2780,19 @@ components:
     ChangeInfoDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: This element contains an ID that you use when performing a GetChange action to get detailed information
             about the change.
-        status:
+        Status:
           type: string
           description: The current state of the request. PENDING indicates that this request has not yet been applied to all
             Amazon Route 53 DNS servers.
-        submitted_at:
+        SubmittedAt:
           type: string
           description: The date and time that the change request was submitted in ISO 8601 format and Coordinated Universal
             Time (UTC). For example, the value 2017-03-27T17:48:16.751Z represents March 27, 2017 at 17:48:16.751 UTC.
-        comment:
+        Comment:
           type: string
           description: A comment you can provide.
     ActivateKeySigningKeyOutputDisplay:
@@ -3848,7 +2927,7 @@ components:
     ChangeCidrCollectionResponseDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID that is returned by ChangeCidrCollection. You can use it as input to GetChange to see if a CIDR
             collection change has propagated or not.
@@ -4551,10 +3630,10 @@ components:
     CreateCidrCollectionResponseDisplay:
       type: object
       properties:
-        collection:
+        Collection:
           type: string
           description: A complex type that contains information about the CIDR collection.
-        location:
+        Location:
           type: string
           description: A unique URL that represents the location for the CIDR collection.
     CreateCidrCollectionOutputDisplay:
@@ -4893,26 +3972,26 @@ components:
     HealthCheckDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The identifier that Amazon Route 53 assigned to the health check when you created it. When you add
             or update a resource record set, you use this value to specify which health check to use. The value can be up
             to 64 characters long.
-        caller_reference:
+        CallerReference:
           type: string
           description: A unique string that you specified when you created the health check.
-        linked_service:
+        LinkedService:
           type: string
           description: If the health check was created by another service, the service that created the health check. When
             a health check is created by another service, you can't edit or delete it using Amazon Route 53.
-        health_check_config:
+        HealthCheckConfig:
           type: string
           description: A complex type that contains detailed information about one health check.
-        health_check_version:
+        HealthCheckVersion:
           type: integer
           description: The version of the health check. You can optionally pass this value in a call to UpdateHealthCheck
             to prevent overwriting another change to the health check.
-        cloud_watch_alarm_configuration:
+        CloudWatchAlarmConfiguration:
           type: string
           description: A complex type that contains information about the CloudWatch alarm that Amazon Route 53 is monitoring
             for this health check.
@@ -4943,29 +4022,29 @@ components:
     HostedZoneDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID that Amazon Route 53 assigned to the hosted zone when you created it.
-        name:
+        Name:
           type: string
           description: The name of the domain. For public hosted zones, this is the name that you have registered with your
             DNS registrar. For information about how to specify characters other than a-z, 0-9, and - (hyphen) and how to
             specify internationalized domain names, see CreateHostedZone.
-        caller_reference:
+        CallerReference:
           type: string
           description: The value that you specified for CallerReference when you created the hosted zone.
-        config:
+        Config:
           type: string
           description: A complex type that includes the Comment and PrivateZone elements. If you omitted the HostedZoneConfig
             and Comment elements from the request, the Config and Comment elements don't appear in the response.
-        resource_record_set_count:
+        ResourceRecordSetCount:
           type: integer
           description: The number of resource record sets in the hosted zone.
-        linked_service:
+        LinkedService:
           type: string
           description: If the hosted zone was created by another service, the service that created the hosted zone. When a
             hosted zone is created by another service, you can't edit or delete it using Route 53.
-        features:
+        Features:
           type: string
           description: The features configuration for the hosted zone, including accelerated recovery settings and status
             information.
@@ -4985,11 +4064,11 @@ components:
     KeySigningKeyDisplay:
       type: object
       properties:
-        name:
+        Name:
           type: string
           description: A string used to identify a key-signing key (KSK). Name can include numbers, letters, and underscores
             (_). Name must be unique for each key-signing key in the same hosted zone.
-        kms_arn:
+        KmsArn:
           type: string
           description: 'The Amazon resource name (ARN) used to identify the customer managed key in Key Management Service
             (KMS). The KmsArn must be unique for each key-signing key (KSK) in a single hosted zone. You must configure the
@@ -4997,44 +4076,44 @@ components:
             key policy must give permission for the following actions: DescribeKey GetPublicKey Sign The key policy must also
             include the Amazon Route 53 service in the principal for your account. Specify the following: "Service": "dnssec-route53.amazonaws.com"
             For more information about working with the customer managed key in KMS, see Key Management Service concepts.'
-        flag:
+        Flag:
           type: integer
           description: An integer that specifies how the key is used. For key-signing key (KSK), this value is always 257.
-        signing_algorithm_mnemonic:
+        SigningAlgorithmMnemonic:
           type: string
           description: A string used to represent the signing algorithm. This value must follow the guidelines provided by
             RFC-8624 Section 3.1.
-        signing_algorithm_type:
+        SigningAlgorithmType:
           type: integer
           description: An integer used to represent the signing algorithm. This value must follow the guidelines provided
             by RFC-8624 Section 3.1.
-        digest_algorithm_mnemonic:
+        DigestAlgorithmMnemonic:
           type: string
           description: A string used to represent the delegation signer digest algorithm. This value must follow the guidelines
             provided by RFC-8624 Section 3.3.
-        digest_algorithm_type:
+        DigestAlgorithmType:
           type: integer
           description: An integer used to represent the delegation signer digest algorithm. This value must follow the guidelines
             provided by RFC-8624 Section 3.3.
-        key_tag:
+        KeyTag:
           type: integer
           description: An integer used to identify the DNSSEC record for the domain name. The process used to calculate the
             value is described in RFC-4034 Appendix B.
-        digest_value:
+        DigestValue:
           type: string
           description: A cryptographic digest of a DNSKEY resource record (RR). DNSKEY records are used to publish the public
             key that resolvers can use to verify DNSSEC signatures that are used to secure certain kinds of information provided
             by the DNS system.
-        public_key:
+        PublicKey:
           type: string
           description: The public key, represented as a Base64 encoding, as required by RFC-4034 Page 5.
-        ds_record:
+        DSRecord:
           type: string
           description: A string that represents a delegation signer (DS) record.
-        dnskey_record:
+        DNSKEYRecord:
           type: string
           description: A string that represents a DNSKEY record.
-        status:
+        Status:
           type: string
           description: 'A string that represents the current key-signing key (KSK) status. Status can have one of the following
             values: ACTIVE The KSK is being used for signing. INACTIVE The KSK is not being used for signing. DELETING The
@@ -5043,15 +4122,15 @@ components:
             managed key might have been changed. INTERNAL_FAILURE There was an error during a request. Before you can continue
             to work with DNSSEC signing, including actions that involve this KSK, you must correct the problem. For example,
             you may need to activate or deactivate the KSK.'
-        status_message:
+        StatusMessage:
           type: string
           description: 'The status message provided for the following key-signing key (KSK) statuses: ACTION_NEEDED or INTERNAL_FAILURE.
             The status message includes information about what the problem might be and steps that you can take to correct
             the issue.'
-        created_date:
+        CreatedDate:
           type: string
           description: The date when the key-signing key (KSK) was created.
-        last_modified_date:
+        LastModifiedDate:
           type: string
           description: The last time that the key-signing key (KSK) was changed.
     CreateKeySigningKeyOutputDisplay:
@@ -5066,13 +4145,13 @@ components:
     QueryLoggingConfigDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID for a configuration for DNS query logging.
-        hosted_zone_id:
+        HostedZoneId:
           type: string
           description: The ID of the hosted zone that CloudWatch Logs is logging queries for.
-        cloud_watch_logs_log_group_arn:
+        CloudWatchLogsLogGroupArn:
           type: string
           description: The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 is publishing
             logs to.
@@ -5086,10 +4165,10 @@ components:
     CreateReusableDelegationSetResponseDisplay:
       type: object
       properties:
-        delegation_set:
+        DelegationSet:
           type: string
           description: A complex type that contains name server information.
-        location:
+        Location:
           type: string
           description: The unique URL representing the new reusable delegation set.
     CreateReusableDelegationSetOutputDisplay:
@@ -5111,26 +4190,26 @@ components:
     TrafficPolicyDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID that Amazon Route 53 assigned to a traffic policy when you created it.
-        version:
+        Version:
           type: integer
           description: The version number that Amazon Route 53 assigns to a traffic policy. For a new traffic policy, the
             value of Version is always 1.
-        name:
+        Name:
           type: string
           description: The name that you specified when you created the traffic policy.
-        type:
+        Type:
           type: string
           description: The DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy
             to create a traffic policy instance.
-        document:
+        Document:
           type: string
           description: The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic
             policy in the CreateTrafficPolicy request. For more information about the JSON format, see Traffic Policy Document
             Format.
-        comment:
+        Comment:
           type: string
           description: The comment that you specify in the CreateTrafficPolicy request, if any.
     CreateTrafficPolicyOutputDisplay:
@@ -5151,40 +4230,40 @@ components:
     TrafficPolicyInstanceDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID that Amazon Route 53 assigned to the new traffic policy instance.
-        hosted_zone_id:
+        HostedZoneId:
           type: string
           description: The ID of the hosted zone that Amazon Route 53 created resource record sets in.
-        name:
+        Name:
           type: string
           description: The DNS name, such as www.example.com, for which Amazon Route 53 responds to queries by using the resource
             record sets that are associated with this traffic policy instance.
-        ttl:
+        TTL:
           type: integer
           description: The TTL that Amazon Route 53 assigned to all of the resource record sets that it created in the specified
             hosted zone.
-        state:
+        State:
           type: string
           description: 'The value of State is one of the following values: Applied Amazon Route 53 has finished creating resource
             record sets, and changes have propagated to all Route 53 edge locations. Creating Route 53 is creating the resource
             record sets. Use GetTrafficPolicyInstance to confirm that the CreateTrafficPolicyInstance request completed successfully.
             Failed Route 53 wasn''t able to create or update the resource record sets. When the value of State is Failed,
             see Message for an explanation of what caused the request to fail.'
-        message:
+        Message:
           type: string
           description: If State is Failed, an explanation of the reason for the failure. If State is another value, Message
             is empty.
-        traffic_policy_id:
+        TrafficPolicyId:
           type: string
           description: The ID of the traffic policy that Amazon Route 53 used to create resource record sets in the specified
             hosted zone.
-        traffic_policy_version:
+        TrafficPolicyVersion:
           type: integer
           description: The version of the traffic policy that Amazon Route 53 used to create resource record sets in the specified
             hosted zone.
-        traffic_policy_type:
+        TrafficPolicyType:
           type: string
           description: The DNS type that Amazon Route 53 assigned to all of the resource record sets that it created for this
             traffic policy instance.
@@ -5198,10 +4277,10 @@ components:
     CreateTrafficPolicyVersionResponseDisplay:
       type: object
       properties:
-        traffic_policy:
+        TrafficPolicy:
           type: string
           description: A complex type that contains settings for the new version of the traffic policy.
-        location:
+        Location:
           type: string
           description: A unique URL that represents a new traffic policy version.
     CreateTrafficPolicyVersionOutputDisplay:
@@ -5214,10 +4293,10 @@ components:
     CreateVPCAssociationAuthorizationResponseDisplay:
       type: object
       properties:
-        hosted_zone_id:
+        HostedZoneId:
           type: string
           description: The ID of the hosted zone that you authorized associating a VPC with.
-        vpc:
+        VPC:
           type: string
           description: The VPC that you authorized associating with a hosted zone.
     CreateVPCAssociationAuthorizationOutputDisplay:
@@ -5356,12 +4435,12 @@ components:
     GetAccountLimitResponseDisplay:
       type: object
       properties:
-        limit:
+        Limit:
           type: string
           description: The current setting for the specified limit. For example, if you specified MAX_HEALTH_CHECKS_BY_OWNER
             for the value of Type in the request, the value of Limit is the maximum number of health checks that you can create
             using the current account.
-        count:
+        Count:
           type: integer
           description: The current number of entities that you have created of the specified type. For example, if you specified
             MAX_HEALTH_CHECKS_BY_OWNER for the value of Type in the request, the value of Count is the current number of health
@@ -5387,7 +4466,7 @@ components:
     GetCheckerIpRangesResponseDisplay:
       type: object
       properties:
-        checker_ip_ranges:
+        CheckerIpRanges:
           type: string
           description: A complex type that contains sorted list of IP ranges in CIDR format for Amazon Route 53 health checkers.
     GetCheckerIpRangesOutputDisplay:
@@ -5400,10 +4479,10 @@ components:
     GetDNSSECResponseDisplay:
       type: object
       properties:
-        status:
+        Status:
           type: string
           description: A string representing the status of DNSSEC.
-        key_signing_keys:
+        KeySigningKeys:
           type: string
           description: The key-signing keys (KSKs) in your account.
     GetDNSSECOutputDisplay:
@@ -5416,24 +4495,24 @@ components:
     GeoLocationDetailsDisplay:
       type: object
       properties:
-        continent_code:
+        ContinentCode:
           type: string
           description: The two-letter code for the continent.
-        continent_name:
+        ContinentName:
           type: string
           description: The full name of the continent.
-        country_code:
+        CountryCode:
           type: string
           description: The two-letter code for the country.
-        country_name:
+        CountryName:
           type: string
           description: The name of the country.
-        subdivision_code:
+        SubdivisionCode:
           type: string
           description: 'The code for the subdivision, such as a particular state within the United States. For a list of US
             state abbreviations, see Appendix B: Two–Letter State and Possession Abbreviations on the United States Postal
             Service website. For a list of all supported subdivision codes, use the ListGeoLocations API.'
-        subdivision_name:
+        SubdivisionName:
           type: string
           description: The full name of the subdivision. Route 53 currently supports only states in the United States.
     GetGeoLocationOutputDisplay:
@@ -5453,7 +4532,7 @@ components:
     GetHealthCheckCountResponseDisplay:
       type: object
       properties:
-        health_check_count:
+        HealthCheckCount:
           type: integer
           description: The number of health checks associated with the current Amazon Web Services account.
     GetHealthCheckCountOutputDisplay:
@@ -5466,7 +4545,7 @@ components:
     GetHealthCheckLastFailureReasonResponseDisplay:
       type: object
       properties:
-        health_check_observations:
+        HealthCheckObservations:
           type: string
           description: A list that contains one Observation element for each Amazon Route 53 health checker that is reporting
             a last failure reason.
@@ -5480,7 +4559,7 @@ components:
     GetHealthCheckStatusResponseDisplay:
       type: object
       properties:
-        health_check_observations:
+        HealthCheckObservations:
           type: string
           description: A list that contains one HealthCheckObservation element for each Amazon Route 53 health checker that
             is reporting a status about the health check endpoint.
@@ -5501,7 +4580,7 @@ components:
     GetHostedZoneCountResponseDisplay:
       type: object
       properties:
-        hosted_zone_count:
+        HostedZoneCount:
           type: integer
           description: The total number of public and private hosted zones that are associated with the current Amazon Web
             Services account.
@@ -5520,12 +4599,12 @@ components:
     GetHostedZoneLimitResponseDisplay:
       type: object
       properties:
-        limit:
+        Limit:
           type: string
           description: The current setting for the specified limit. For example, if you specified MAX_RRSETS_BY_ZONE for the
             value of Type in the request, the value of Limit is the maximum number of records that you can create in the specified
             hosted zone.
-        count:
+        Count:
           type: integer
           description: The current number of entities that you have created of the specified type. For example, if you specified
             MAX_RRSETS_BY_ZONE for the value of Type in the request, the value of Count is the current number of records that
@@ -5547,13 +4626,13 @@ components:
     DelegationSetDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID that Amazon Route 53 assigns to a reusable delegation set.
-        caller_reference:
+        CallerReference:
           type: string
           description: The value that you specified for CallerReference when you created the reusable delegation set.
-        name_servers:
+        NameServers:
           type: string
           description: A complex type that contains a list of the authoritative name servers for a hosted zone or for a reusable
             delegation set.
@@ -5571,11 +4650,11 @@ components:
     GetReusableDelegationSetLimitResponseDisplay:
       type: object
       properties:
-        limit:
+        Limit:
           type: string
           description: The current setting for the limit on hosted zones that you can associate with the specified reusable
             delegation set.
-        count:
+        Count:
           type: integer
           description: The current number of hosted zones that you can associate with the specified reusable delegation set.
     GetReusableDelegationSetLimitOutputDisplay:
@@ -5602,7 +4681,7 @@ components:
     GetTrafficPolicyInstanceCountResponseDisplay:
       type: object
       properties:
-        traffic_policy_instance_count:
+        TrafficPolicyInstanceCount:
           type: integer
           description: The number of traffic policy instances that are associated with the current Amazon Web Services account.
     GetTrafficPolicyInstanceCountOutputDisplay:
@@ -5620,10 +4699,10 @@ components:
     CidrBlockSummaryDisplay:
       type: object
       properties:
-        cidr_block:
+        CidrBlock:
           type: string
           description: Value for the CIDR block.
-        location_name:
+        LocationName:
           type: string
           description: The location name of the CIDR block.
     ListCidrBlocksOutputDisplay:
@@ -5636,16 +4715,16 @@ components:
     CollectionSummaryDisplay:
       type: object
       properties:
-        arn:
+        Arn:
           type: string
           description: The ARN of the collection summary. Can be used to reference the collection in IAM policy or cross-account.
-        id:
+        Id:
           type: string
           description: Unique ID for the CIDR collection.
-        name:
+        Name:
           type: string
           description: The name of a CIDR collection.
-        version:
+        Version:
           type: integer
           description: A sequential counter that Route 53 sets to 1 when you create a CIDR collection and increments by 1
             each time you update settings for the CIDR collection.
@@ -5659,7 +4738,7 @@ components:
     LocationSummaryDisplay:
       type: object
       properties:
-        location_name:
+        LocationName:
           type: string
           description: A string that specifies a location name.
     ListCidrLocationsOutputDisplay:
@@ -5709,13 +4788,13 @@ components:
     HostedZoneSummaryDisplay:
       type: object
       properties:
-        hosted_zone_id:
+        HostedZoneId:
           type: string
           description: The Route 53 hosted zone ID of a private hosted zone that the specified VPC is associated with.
-        name:
+        Name:
           type: string
           description: The name of the private hosted zone, such as example.com.
-        owner:
+        Owner:
           type: string
           description: The owner of a private hosted zone that the specified VPC is associated with. The owner can be either
             an Amazon Web Services account or an Amazon Web Services service.
@@ -5736,7 +4815,7 @@ components:
     ResourceRecordSetDisplay:
       type: object
       properties:
-        name:
+        Name:
           type: string
           description: 'For ChangeResourceRecordSets requests, the name of the record that you want to create, update, or
             delete. For ListResourceRecordSets responses, the name of a record in the specified hosted zone. ChangeResourceRecordSets
@@ -5750,7 +4829,7 @@ components:
             prod*.example.com. The * can''t replace any of the middle labels, for example, marketing.*.example.com. If you
             include * in any position other than the leftmost label in a domain name, DNS treats it as an * character (ASCII
             42), not as a wildcard. You can''t use the * wildcard for resource records sets that have a type of NS.'
-        type:
+        Type:
           type: string
           description: 'The DNS record type. For information about different record types and how data is encoded for them,
             see Supported DNS Resource Record Types in the Amazon Route 53 Developer Guide. Valid values for basic resource
@@ -5774,14 +4853,14 @@ components:
             a record for which the value of Type is CNAME. This is because the alias record must have the same type as the
             record you''re routing traffic to, and creating a CNAME record for the zone apex isn''t supported even for an
             alias record.'
-        set_identifier:
+        SetIdentifier:
           type: string
           description: 'Resource record sets that have a routing policy other than simple: An identifier that differentiates
             among multiple resource record sets that have the same combination of name and type, such as multiple weighted
             resource record sets named acme.example.com that have a type of A. In a group of resource record sets that have
             the same name and type, the value of SetIdentifier must be unique for each resource record set. For information
             about routing policies, see Choosing a Routing Policy in the Amazon Route 53 Developer Guide.'
-        weight:
+        Weight:
           type: integer
           description: 'Weighted resource record sets only: Among resource record sets that have the same combination of DNS
             name and type, a value that determines the proportion of DNS queries that Amazon Route 53 responds to using the
@@ -5797,7 +4876,7 @@ components:
             name and type, traffic is routed to all resources with equal probability. The effect of setting Weight to 0 is
             different when you associate health checks with weighted resource record sets. For more information, see Options
             for Configuring Route 53 Active-Active and Active-Passive Failover in the Amazon Route 53 Developer Guide.'
-        region:
+        Region:
           type: string
           description: 'Latency-based resource record sets only: The Amazon EC2 Region where you created the resource that
             this resource record set refers to. The resource typically is an Amazon Web Services resource, such as an EC2
@@ -5810,7 +4889,7 @@ components:
             latency resource record sets for all Amazon EC2 Regions. Route 53 will choose the region with the best latency
             from among the regions that you create latency resource record sets for. You can''t create non-latency resource
             record sets that have the same values for the Name and Type elements as latency resource record sets.'
-        geo_location:
+        GeoLocation:
           type: string
           description: 'Geolocation resource record sets only: A complex type that lets you control how Amazon Route 53 responds
             to DNS queries based on the geographic origin of the query. For example, if you want all queries from Africa to
@@ -5829,7 +4908,7 @@ components:
             record sets and queries from IP addresses that aren''t mapped to a location. If you don''t create a * resource
             record set, Route 53 returns a "no answer" response for queries from those locations. You can''t create non-geolocation
             resource record sets that have the same values for the Name and Type elements as geolocation resource record sets.'
-        failover:
+        Failover:
           type: string
           description: 'Failover resource record sets only: To configure failover, you add the Failover element to two resource
             record sets. For one resource record set, you specify PRIMARY as the value for Failover; for the other resource
@@ -5849,7 +4928,7 @@ components:
             element and set the value to true. For more information about configuring failover for Route 53, see the following
             topics in the Amazon Route 53 Developer Guide: Route 53 Health Checks and DNS Failover Configuring Failover in
             a Private Hosted Zone'
-        multi_value_answer:
+        MultiValueAnswer:
           type: boolean
           description: 'Multivalue answer resource record sets only: To route traffic approximately randomly to multiple resources,
             such as web servers, create one multivalue answer record for each resource and specify true for MultiValueAnswer.
@@ -5862,7 +4941,7 @@ components:
             are unhealthy, Route 53 responds to DNS queries with up to eight unhealthy records. If a resource becomes unavailable
             after a resolver caches a response, client software typically tries another of the IP addresses in the response.
             You can''t create multivalue answer alias records.'
-        ttl:
+        TTL:
           type: integer
           description: 'The resource record cache time to live (TTL), in seconds. Note the following: If you''re creating
             or updating an alias resource record set, omit TTL. Amazon Route 53 uses the value of TTL for the alias target.
@@ -5873,18 +4952,18 @@ components:
             the alias target is an ELB load balancer, we recommend that you specify a TTL of 60 seconds for all of the non-alias
             weighted resource record sets that have the same name and type. Values other than 60 seconds (the TTL for load
             balancers) will change the effect of the values that you specify for Weight.'
-        resource_records:
+        ResourceRecords:
           type: string
           description: Information about the resource records to act upon. If you're creating an alias resource record set,
             omit ResourceRecords.
-        alias_target:
+        AliasTarget:
           type: string
           description: 'Alias resource record sets only: Information about the Amazon Web Services resource, such as a CloudFront
             distribution or an Amazon S3 bucket, that you want to route traffic to. If you''re creating resource records sets
             for a private hosted zone, note the following: You can''t create an alias resource record set in a private hosted
             zone to route traffic to a CloudFront distribution. For information about creating failover resource record sets
             in a private hosted zone, see Configuring Failover in a Private Hosted Zone in the Amazon Route 53 Developer Guide.'
-        health_check_id:
+        HealthCheckId:
           type: string
           description: 'If you want Amazon Route 53 to return this resource record set in response to a DNS query only when
             the status of a health check is healthy, include the HealthCheckId element and specify the ID of the applicable
@@ -5928,7 +5007,7 @@ components:
             not the name of the resource record sets (www.example.com). Health check results will be unpredictable if you
             do the following: Create a health check that has the same value for FullyQualifiedDomainName as the name of a
             resource record set. Associate that health check with the resource record set.'
-        traffic_policy_instance_id:
+        TrafficPolicyInstanceId:
           type: string
           description: When you create a traffic policy instance, Amazon Route 53 automatically creates a resource record
             set. TrafficPolicyInstanceId is the ID of the traffic policy instance that Route 53 created this resource record
@@ -5936,12 +5015,12 @@ components:
             Route 53 will delete the resource record set automatically. If you delete the resource record set by using ChangeResourceRecordSets,
             Route 53 doesn't automatically delete the traffic policy instance, and you'll continue to be charged for it even
             though it's no longer in use.
-        cidr_routing_config:
+        CidrRoutingConfig:
           type: string
           description: The object that is specified in resource record set object when you are linking a resource record set
             to a CIDR location. A LocationName with an asterisk “*” can be used to create a default CIDR record. CollectionId
             is still required for default record.
-        geo_proximity_location:
+        GeoProximityLocation:
           type: string
           description: 'GeoproximityLocation resource record sets only: A complex type that lets you control how Route 53
             responds to DNS queries based on the geographic origin of the query and your resources.'
@@ -5962,14 +5041,14 @@ components:
     ResourceTagSetDisplay:
       type: object
       properties:
-        resource_type:
+        ResourceType:
           type: string
           description: The type of the resource. The resource type for health checks is healthcheck. The resource type for
             hosted zones is hostedzone.
-        resource_id:
+        ResourceId:
           type: string
           description: The ID for the specified resource.
-        tags:
+        Tags:
           type: string
           description: The tags associated with the specified resource.
     ListTagsForResourceOutputDisplay:
@@ -5993,20 +5072,20 @@ components:
     TrafficPolicySummaryDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID that Amazon Route 53 assigned to the traffic policy when you created it.
-        name:
+        Name:
           type: string
           description: The name that you specified for the traffic policy when you created it.
-        type:
+        Type:
           type: string
           description: The DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy
             to create a traffic policy instance.
-        latest_version:
+        LatestVersion:
           type: integer
           description: The version number of the latest version of the traffic policy.
-        traffic_policy_count:
+        TrafficPolicyCount:
           type: integer
           description: The number of traffic policies that are associated with the current Amazon Web Services account.
     ListTrafficPoliciesOutputDisplay:
@@ -6050,10 +5129,10 @@ components:
     VPCDisplay:
       type: object
       properties:
-        vpc_region:
+        VPCRegion:
           type: string
           description: (Private hosted zones only) The region that an Amazon VPC was created in.
-        vpc_id:
+        VPCId:
           type: string
           description: (Private hosted zones only) The ID of an Amazon VPC.
     ListVPCAssociationAuthorizationsOutputDisplay:
@@ -6070,24 +5149,24 @@ components:
     TestDNSAnswerResponseDisplay:
       type: object
       properties:
-        nameserver:
+        Nameserver:
           type: string
           description: The Amazon Route 53 name server used to respond to the request.
-        record_name:
+        RecordName:
           type: string
           description: The name of the resource record set that you submitted a request for.
-        record_type:
+        RecordType:
           type: string
           description: The type of the resource record set that you submitted a request for.
-        record_data:
+        RecordData:
           type: string
           description: A list that contains values that Amazon Route 53 returned for this resource record set.
-        response_code:
+        ResponseCode:
           type: string
           description: A code that indicates whether the request is valid or not. The most common response code is NOERROR,
             meaning that the request is valid. If the response is not valid, Amazon Route 53 returns a response code that
             describes the error. For a list of possible response codes, see DNS RCODES on the IANA website.
-        protocol:
+        Protocol:
           type: string
           description: The protocol that Amazon Route 53 used to respond to the request, either UDP or TCP.
     TestDNSAnswerOutputDisplay:

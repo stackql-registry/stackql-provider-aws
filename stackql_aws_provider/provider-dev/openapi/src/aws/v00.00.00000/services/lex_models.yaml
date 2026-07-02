@@ -29,7 +29,7 @@ paths:
             $ref: "#/components/schemas/BotName"
           description: The name of the bot that you want to create a new version of. The name is case sensitive.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -56,7 +56,7 @@ paths:
             $ref: "#/components/schemas/IntentName"
           description: The name of the intent that you want to create a new version of. The name is case sensitive.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -83,7 +83,7 @@ paths:
             $ref: "#/components/schemas/SlotTypeName"
           description: The name of the slot type that you want to create a new version for. The name is case sensitive.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1102,7 +1102,7 @@ paths:
             $ref: "#/components/schemas/IntentName"
           description: The name of the intent. The name is not case sensitive. The name can't match a built-in intent name, or a built-in intent name with "AMAZON." removed. For example, because there is a built-in intent called AMAZON.HelpIntent, you can't create a custom intent called HelpIntent. For a list of built-in intents, see Standard Built-in Intents in the Alexa Skills Kit.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1157,7 +1157,7 @@ paths:
             $ref: "#/components/schemas/SlotTypeName"
           description: The name of the slot type. The name is not case sensitive. The name can't match a built-in slot type name, or a built-in slot type name with "AMAZON." removed. For example, because there is a built-in slot type called AMAZON.DATE, you can't create a custom slot type called DATE. For a list of built-in slot types, see Slot Type Reference in the Alexa Skills Kit.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3083,6 +3083,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3098,6 +3100,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.bots
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/bot_versions/methods/get_bot_versions"
@@ -3117,6 +3121,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3132,6 +3138,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.intents
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/intent_versions/methods/get_intent_versions"
@@ -3151,6 +3159,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3166,6 +3176,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.slotTypes
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/slot_type_versions/methods/get_slot_type_versions"
@@ -3197,12 +3209,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.bots
+          request:
+            nativeCasing: pascal
         put_bot:
           operation:
             $ref: "#/paths/~1bots~1{name}~1versions~1$LATEST/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3238,6 +3254,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3273,6 +3291,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.botChannelAssociations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/bot_channel_associations/methods/get_bot_channel_association"
@@ -3304,12 +3324,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.intents
+          request:
+            nativeCasing: pascal
         put_intent:
           operation:
             $ref: "#/paths/~1intents~1{name}~1versions~1$LATEST/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3346,12 +3370,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.slotTypes
+          request:
+            nativeCasing: pascal
         put_slot_type:
           operation:
             $ref: "#/paths/~1slottypes~1{name}~1versions~1$LATEST/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3393,6 +3421,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.BotAliases
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/bot_aliases/methods/get_bot_aliases"
@@ -3417,6 +3447,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.intents
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/builtin_intents/methods/get_builtin_intent"
@@ -3436,6 +3468,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.slotTypes
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/builtin_slot_types/methods/get_builtin_slot_types"
@@ -3453,6 +3487,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/exports/methods/get_export"
@@ -3493,6 +3529,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/migrations/methods/get_migration"
@@ -3511,6 +3549,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/utterances_views/methods/get_utterances_view"
@@ -3545,6 +3585,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3554,6 +3596,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

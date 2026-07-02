@@ -994,6 +994,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1004,6 +1006,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.findings
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/findings/methods/batch_get_findings"
@@ -1022,6 +1026,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1032,12 +1038,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.summaries
+          request:
+            nativeCasing: pascal
         get_scan:
           operation:
             $ref: "#/paths/~1scans~1{scan_name}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/scans/methods/get_scan"
@@ -1057,6 +1067,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1083,6 +1095,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1104,6 +1118,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/metrics_summaries/methods/get_metrics_summary"
@@ -1122,6 +1138,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.findingsMetrics
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/findings_metrics/methods/list_findings_metrics"
@@ -1156,6 +1174,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1165,6 +1185,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

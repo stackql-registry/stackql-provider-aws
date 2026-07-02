@@ -396,7 +396,7 @@ paths:
           $ref: '#/components/schemas/DeviceId'
         description: The device's ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -511,7 +511,7 @@ paths:
           $ref: '#/components/schemas/NodePackagePatchVersion'
         description: A patch version.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

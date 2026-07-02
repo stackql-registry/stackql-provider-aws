@@ -247,7 +247,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: A token used to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -304,7 +304,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: A token used to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -361,7 +361,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: A token used to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -800,7 +800,7 @@ paths:
           $ref: '#/components/schemas/UpdateBridgeRequestBridgeArnString'
         description: TheAmazon Resource Name (ARN) of the bridge that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -880,7 +880,7 @@ paths:
           $ref: '#/components/schemas/UpdateFlowRequestFlowArnString'
         description: The Amazon Resource Name (ARN) of the flow that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1002,7 +1002,7 @@ paths:
           $ref: '#/components/schemas/RouterInputArn'
         description: The Amazon Resource Name (ARN) of the router input that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1085,7 +1085,7 @@ paths:
           $ref: '#/components/schemas/RouterNetworkInterfaceArn'
         description: The Amazon Resource Name (ARN) of the router network interface that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1157,7 +1157,7 @@ paths:
           $ref: '#/components/schemas/RouterOutputArn'
         description: The Amazon Resource Name (ARN) of the router output that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1245,7 +1245,7 @@ paths:
           $ref: '#/components/schemas/UpdateGatewayInstanceRequestGatewayInstanceArnString'
         description: The Amazon Resource Name (ARN) of the gateway instance that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1803,7 +1803,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: Tname of the output that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1865,7 +1865,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The name of the source that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1930,7 +1930,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The media stream that you updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2002,7 +2002,7 @@ paths:
           $ref: '#/components/schemas/UpdateFlowOutputRequestOutputArnString'
         description: The ARN of the output that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2108,7 +2108,7 @@ paths:
           $ref: '#/components/schemas/UpdateFlowSourceRequestSourceArnString'
         description: The ARN of the source that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2283,7 +2283,7 @@ paths:
           $ref: '#/components/schemas/UpdateFlowEntitlementRequestFlowArnString'
         description: The ARN of the flow that is associated with the entitlement that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2445,7 +2445,7 @@ paths:
           $ref: '#/components/schemas/RouterOutputArn'
         description: The Amazon Resource Name (ARN) of the router output that you want to associate with a router input.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

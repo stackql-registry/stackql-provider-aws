@@ -61,7 +61,7 @@ paths:
             $ref: "#/components/schemas/Identifier"
           description: The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the app authorization to use for the request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -153,7 +153,7 @@ paths:
       description: Creates an app bundle to collect data from an application using AppFabric.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -404,7 +404,7 @@ paths:
             $ref: "#/components/schemas/Identifier"
           description: The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the app authorization to use for the request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1520,6 +1520,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1529,6 +1531,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1549,6 +1553,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1559,6 +1565,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.appAuthorizationSummaryList
+          request:
+            nativeCasing: pascal
         delete_app_authorization:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1appauthorizations~1{app_authorization_identifier}/delete"
@@ -1577,6 +1585,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1601,6 +1611,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1611,6 +1623,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.appBundleSummaryList
+          request:
+            nativeCasing: pascal
         delete_app_bundle:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}/delete"
@@ -1643,6 +1657,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1653,6 +1669,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ingestions
+          request:
+            nativeCasing: pascal
         delete_ingestion:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1ingestions~1{ingestion_identifier}/delete"
@@ -1685,6 +1703,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1695,6 +1715,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ingestionDestinations
+          request:
+            nativeCasing: pascal
         delete_ingestion_destination:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1ingestions~1{ingestion_identifier}~1ingestiondestinations~1{ingestion_destination_identifier}/delete"
@@ -1713,6 +1735,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1754,6 +1778,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1763,6 +1789,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

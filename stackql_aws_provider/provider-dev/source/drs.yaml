@@ -80,7 +80,7 @@ paths:
       description: Creates a new Launch Configuration Template.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -431,7 +431,7 @@ paths:
         APIs available only to *Support* and only used in response to relevant support tickets.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -460,7 +460,7 @@ paths:
       description: Lists all Launch Configuration Templates, filtered by Launch Configuration Template IDs
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -489,7 +489,7 @@ paths:
       description: Lists all Recovery Instances or multiple Recovery Instances by ID.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -553,7 +553,7 @@ paths:
       description: Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -582,7 +582,7 @@ paths:
       description: Lists all Source Networks or multiple Source Networks filtered by ID.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -611,7 +611,7 @@ paths:
       description: Lists all Source Servers or multiple Source Servers filtered by ID.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

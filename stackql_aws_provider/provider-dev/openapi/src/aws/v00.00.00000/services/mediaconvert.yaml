@@ -466,7 +466,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The name of the job template you are modifying
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -586,7 +586,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The name of the preset you are modifying.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -651,7 +651,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The name of the queue that you are modifying.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -680,7 +680,7 @@ paths:
       description: Send a request with an empty body to the regional API endpoint to get your account API endpoint. Note that DescribeEndpoints is no longer required. We recommend that you send your requests directly to the regional endpoint instead.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -764,7 +764,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The Amazon Resource Name (ARN) of the resource that you want to remove tags from. To get the ARN, send a GET request with the resource name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -809,7 +809,7 @@ paths:
       description: Use Probe to obtain detailed information about your input media files. Probe returns a JSON that includes container, codec, frame rate, resolution, track count, audio layout, captions, and more. You can use this information to learn more about your media files, or to help make decisions while automating your transcoding workflow.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -878,7 +878,7 @@ paths:
       description: Start an asynchronous jobs query using the provided filters. To receive the list of jobs that match your query, call the GetJobsQueryResults API using the query ID returned by this API.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -10365,6 +10365,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10398,6 +10400,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10408,6 +10412,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Jobs
+          request:
+            nativeCasing: pascal
         search_jobs:
           operation:
             $ref: "#/paths/~12017-08-29~1search/get"
@@ -10415,6 +10421,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Jobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/get_job"
@@ -10434,6 +10442,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10444,6 +10454,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.JobTemplates
+          request:
+            nativeCasing: pascal
         delete_job_template:
           operation:
             $ref: "#/paths/~12017-08-29~1jobTemplates~1{name}/delete"
@@ -10462,6 +10474,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10486,6 +10500,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10496,6 +10512,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Presets
+          request:
+            nativeCasing: pascal
         delete_preset:
           operation:
             $ref: "#/paths/~12017-08-29~1presets~1{name}/delete"
@@ -10514,6 +10532,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10538,6 +10558,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10548,6 +10570,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Queues
+          request:
+            nativeCasing: pascal
         delete_queue:
           operation:
             $ref: "#/paths/~12017-08-29~1queues~1{name}/delete"
@@ -10566,6 +10590,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10590,6 +10616,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10622,6 +10650,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10646,6 +10676,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Endpoints
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10700,6 +10732,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10709,6 +10743,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10731,6 +10767,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Versions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/versions/methods/list_versions"

@@ -360,7 +360,7 @@ paths:
             $ref: "#/components/schemas/DeviceId"
           description: The device's ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -464,7 +464,7 @@ paths:
             $ref: "#/components/schemas/NodePackagePatchVersion"
           description: A patch version.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2780,6 +2780,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2789,6 +2791,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_application_instance:
           operation:
             $ref: "#/paths/~1application-instances~1{application_instance_id}/get"
@@ -2821,6 +2825,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2841,6 +2847,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/devices_jobs/methods/list_devices_jobs"
@@ -2858,6 +2866,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2867,6 +2877,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_node_from_template_job:
           operation:
             $ref: "#/paths/~1packages~1template-job~1{job_id}/get"
@@ -2892,6 +2904,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2901,12 +2915,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_package:
           operation:
             $ref: "#/paths/~1packages~1{package_id}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_package:
           operation:
             $ref: "#/paths/~1packages~1metadata~1{package_id}/get"
@@ -2933,6 +2951,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2942,6 +2962,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_package_import_job:
           operation:
             $ref: "#/paths/~1packages~1import-jobs~1{job_id}/get"
@@ -2979,12 +3001,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         provision_device:
           operation:
             $ref: "#/paths/~1devices/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3008,6 +3034,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3028,12 +3056,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         register_package_version:
           operation:
             $ref: "#/paths/~1packages~1{package_id}~1versions~1{package_version}~1patch~1{patch_version}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3043,6 +3075,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/package_versions/methods/describe_package_version"
@@ -3096,12 +3130,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_nodes:
           operation:
             $ref: "#/paths/~1nodes/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/nodes/methods/describe_node"
@@ -3120,6 +3158,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_instance_dependencies/methods/list_application_instance_dependencies"
@@ -3137,6 +3177,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_instance_node_instances/methods/list_application_instance_node_instances"
@@ -3171,6 +3213,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3180,6 +3224,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

@@ -427,7 +427,7 @@ paths:
           $ref: '#/components/schemas/MedicalScribeMediaEncoding'
         description: The encoding for the input audio
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

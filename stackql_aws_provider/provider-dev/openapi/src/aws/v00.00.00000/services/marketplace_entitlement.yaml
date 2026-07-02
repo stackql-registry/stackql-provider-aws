@@ -35,7 +35,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.1:
             schema:
               type: object
               properties:
@@ -199,6 +199,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Entitlements
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

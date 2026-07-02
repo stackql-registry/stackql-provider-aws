@@ -111,7 +111,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The semantic version of the new version.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -195,7 +195,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The Amazon Resource Name (ARN) of the application.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -258,7 +258,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The Amazon Resource Name (ARN) of the application.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1042,6 +1042,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1052,6 +1054,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Applications
+          request:
+            nativeCasing: pascal
         delete_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}/delete"
@@ -1063,12 +1067,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1093,6 +1101,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1103,6 +1113,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Versions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_versions/methods/list_application_versions"
@@ -1121,6 +1133,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1141,6 +1155,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1174,6 +1190,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1197,6 +1215,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Dependencies
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_dependencies/methods/list_application_dependencies"

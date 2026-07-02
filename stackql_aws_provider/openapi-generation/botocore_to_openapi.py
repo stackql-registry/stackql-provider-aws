@@ -612,266 +612,6 @@ def _flatten_input_to_query_params(input_shape: dict, walker: SchemaWalker) -> l
     return params
 
 
-def _is_mutable_verb(op_name: str) -> bool:
-    """True if the op's SQL verb is anything other than SELECT.
-
-    Used to decide whether an EC2 op should get the snake_case request-body
-    + form-urlencoded transform treatment. Read ops keep the GET-with-query
-    flow (they pull params from the WHERE clause and don't need a body
-    rewrite).
-    """
-    for prefix, sql_verb in VERB_PREFIXES:
-        if op_name.startswith(prefix) and len(op_name) > len(prefix):
-            return sql_verb != "SELECT"
-    # Unknown prefix - we already classify these as EXEC, which is mutable.
-    return True
-
-
-def _classify_ec2_input_shape(input_shape: dict | None, shapes: dict) -> str:
-    """Categorise the top-level structure of an EC2 op's input.
-
-    Returns one of:
-      - "no_input"        : op takes no input
-      - "scalar_only"     : every member is a primitive scalar
-      - "list_of_scalar"  : at least one list-of-primitive, no structs/maps/list-of-struct
-      - "nested_struct"   : at least one nested structure member (no list-of-struct)
-      - "list_of_struct"  : at least one list-of-structure member (the hardest tier)
-
-    Only "scalar_only" and "list_of_scalar" are currently supported by the
-    snake_case body-rewrite path. The other tiers fall back to the legacy
-    GET-with-query path until recursive struct serialisation is added.
-    """
-    if not input_shape or input_shape.get("type") != "structure":
-        return "no_input"
-    members = input_shape.get("members") or {}
-    if not members:
-        return "no_input"
-    has_struct = False
-    has_list_scalar = False
-    has_list_struct = False
-    for _, m in members.items():
-        ref = shapes.get(m["shape"], {})
-        kind = ref.get("type")
-        if kind == "structure":
-            has_struct = True
-        elif kind == "list":
-            elem = shapes.get((ref.get("member") or {}).get("shape", ""), {})
-            if elem.get("type") == "structure":
-                has_list_struct = True
-            else:
-                has_list_scalar = True
-        elif kind == "map":
-            # Maps are rare in EC2 inputs; treat like nested struct (fallback).
-            has_struct = True
-    if has_list_struct:
-        return "list_of_struct"
-    if has_struct:
-        return "nested_struct"
-    if has_list_scalar:
-        return "list_of_scalar"
-    return "scalar_only"
-
-
-# Botocore scalar types -> OpenAPI scalar types (for snake_case request-body
-# schema generation). Mirrors the read-side mapping in
-# _build_row_template_body but inverted (we're emitting a request body, not
-# parsing a response).
-_BOTOCORE_SCALAR_TO_OPENAPI = {
-    "string": "string",
-    "integer": "integer",
-    "long": "integer",
-    "float": "number",
-    "double": "number",
-    "boolean": "boolean",
-    "timestamp": "string",
-    "blob": "string",
-}
-
-
-def _build_ec2_mutable_request(
-    op_name: str,
-    input_shape: dict | None,
-    walker: SchemaWalker,
-    api_version: str,
-) -> tuple[dict | None, dict | None]:
-    """Build the snake_case requestBody schema + request.transform block for
-    an EC2 mutable op.
-
-    Returns (request_body_dict, request_transform_dict) for the path-level
-    POST and the method-level request.transform respectively, OR (None, None)
-    if the input shape is too complex for v1 (nested struct, list of struct).
-
-    The request body lives under content `application/x-www-form-urlencoded`
-    because stackql's loader matches the body schema content-key to the
-    method's `request.mediaType`. The schema is a flat snake_case object
-    even though the wire format is form-urlencoded - stackql builds the body
-    map from the SQL clause into JSON internally, then our template rewrites
-    it to AWS-canonical form bytes at send time.
-    """
-    if not input_shape or input_shape.get("type") != "structure":
-        return None, None
-    members = input_shape.get("members") or {}
-    if not members:
-        return None, None
-
-    klass = _classify_ec2_input_shape(input_shape, walker.shapes)
-    if klass not in ("scalar_only", "list_of_scalar", "nested_struct"):
-        # list_of_struct (TagSpecifications etc.) still needs recursive
-        # template generation. Punt - the op stays on the legacy
-        # GET-with-query path.
-        return None, None
-
-    required_set = set(input_shape.get("required") or [])
-
-    # ----- snake_case request body schema -----
-    # Schema entries by top-level member kind:
-    #   scalar     : flat OpenAPI scalar (string/integer/boolean/...)
-    #   list_scalar: array of scalars
-    #   struct     : type:object with nested snake_case properties (for the
-    #                nested_struct tier; AWS uses simple wrapper structs
-    #                like AttributeBooleanValue{Value: bool}). At the
-    #                user-facing SQL surface the user passes a JSON-string
-    #                value like `{"value":true}` (snake) or `{"Value":true}`
-    #                (PascalCase). The template handles both.
-    props: dict = {}
-    # snake_name -> (wire_name, kind, [(inner_snake_name, inner_wire_name), ...])
-    # The inner list is only populated for `struct` kind.
-    snake_to_wire: dict[str, tuple[str, str, list]] = {}
-    for wire_name, mdef in members.items():
-        ref = walker.shapes.get(mdef["shape"], {})
-        kind = ref.get("type")
-        snake_name = _to_snake(wire_name)
-        desc = clean_description(mdef.get("documentation"))
-        if kind == "list":
-            elem_ref = walker.shapes.get((ref.get("member") or {}).get("shape", ""), {})
-            elem_kind = elem_ref.get("type", "string")
-            openapi_elem = _BOTOCORE_SCALAR_TO_OPENAPI.get(elem_kind, "string")
-            schema: dict = {
-                "type": "array",
-                "items": {"type": openapi_elem},
-            }
-            snake_to_wire[snake_name] = (wire_name, "list_scalar", [])
-        elif kind == "structure":
-            # Nested struct: emit type:object with snake_case inner props.
-            # We only recurse one level for now - AWS's nested struct
-            # inputs in scope are all one-level wrappers
-            # (AttributeBooleanValue, AccessScope, etc.). Deeper nesting
-            # would need a richer recursion which we don't yet need.
-            inner_props: dict = {}
-            inner_pairs: list[tuple[str, str]] = []
-            for inner_wire, inner_mdef in (ref.get("members") or {}).items():
-                inner_ref = walker.shapes.get(inner_mdef["shape"], {})
-                inner_kind = inner_ref.get("type")
-                inner_snake = _to_snake(inner_wire)
-                inner_pairs.append((inner_snake, inner_wire))
-                inner_openapi = _BOTOCORE_SCALAR_TO_OPENAPI.get(inner_kind, "string")
-                inner_props[inner_snake] = {"type": inner_openapi}
-            schema = {"type": "object", "properties": inner_props}
-            snake_to_wire[snake_name] = (wire_name, "struct", inner_pairs)
-        else:
-            openapi_type = _BOTOCORE_SCALAR_TO_OPENAPI.get(kind, "string")
-            schema = {"type": openapi_type}
-            snake_to_wire[snake_name] = (wire_name, "scalar", [])
-        if desc:
-            schema["description"] = desc
-        props[snake_name] = schema
-
-    required_snake = sorted(_to_snake(w) for w in required_set if w in members)
-    body_schema: dict = {"type": "object", "properties": props}
-    if required_snake:
-        body_schema["required"] = required_snake
-
-    request_body = {
-        "required": bool(required_snake),
-        "content": {
-            "application/x-www-form-urlencoded": {"schema": body_schema}
-        },
-    }
-
-    # ----- request.transform template -----
-    # The template receives the JSON-stringified body map as `.`.
-    # We jsonMapFromString-decode it, then emit `Action=<op>&Version=<v>`
-    # plus a `&CamelKey=value` (or fan-out for lists/structs) per
-    # present field.
-    #
-    # For nested struct members the wire form is `Parent.Inner=value`.
-    # The user can pass the nested object value with snake_case OR
-    # CamelCase inner keys (`{"value":true}` and `{"Value":true}` both
-    # work) - the template probes both for tolerance.
-    #
-    # For booleans Go template renders true/false as the strings "true"/
-    # "false" which AWS accepts. For numerics it renders the literal value.
-    # Strings emit verbatim - we do not URL-encode here because EC2 values
-    # are token-shaped (IDs, CIDR blocks) and the AWS form parser will
-    # accept them. Values containing & or = are currently not encoded; this
-    # is acceptable for the param surface EC2 actually uses but is a known
-    # limitation we'd revisit if a real op surfaces a problematic value.
-    lines = [
-        "{{- $body := jsonMapFromString . -}}",
-        f"Action={op_name}&Version={api_version}",
-    ]
-    # Stable, deterministic ordering of snake keys for readable diffs.
-    for snake_name in sorted(snake_to_wire.keys()):
-        wire_name, kind, inner_pairs = snake_to_wire[snake_name]
-        if kind == "scalar":
-            lines.append(
-                "{{- $v := index $body " + _go_quote(snake_name) + " -}}"
-                "{{- if not (eq $v nil) -}}"
-                f"&{wire_name}={{{{ $v }}}}"
-                "{{- end -}}"
-            )
-        elif kind == "list_scalar":
-            lines.append(
-                "{{- $vs := index $body " + _go_quote(snake_name) + " -}}"
-                '{{- if eq (printf "%T" $vs) "[]interface {}" -}}'
-                "{{- range $i, $v := $vs -}}"
-                f"&{wire_name}.{{{{ plus1 $i }}}}={{{{ $v }}}}"
-                "{{- end -}}"
-                "{{- end -}}"
-            )
-        else:  # struct
-            # The nested value may have arrived as a JSON string (if the
-            # user passed it as a quoted JSON literal in SQL) or as a
-            # decoded map (if stackql parsed it). Normalise: when it's
-            # a string, re-parse it; when it's a map, use it directly.
-            # The `kindOf` helper from v0.3 returns "string" or "map" etc.
-            #
-            # For each inner field, try the snake-case key first then
-            # the CamelCase wire-name. Whichever is present wins.
-            frag = [
-                "{{- $sv := index $body " + _go_quote(snake_name) + " -}}",
-                # Decode if string; pass through if map.
-                '{{- if eq (kindOf $sv) "string" -}}',
-                "{{- $sv = jsonMapFromString $sv -}}",
-                "{{- end -}}",
-                '{{- if eq (kindOf $sv) "map" -}}',
-            ]
-            for inner_snake, inner_wire in inner_pairs:
-                # Probe snake first, then CamelCase fallback.
-                frag.append(
-                    "{{- $iv := index $sv " + _go_quote(inner_snake) + " -}}"
-                    "{{- if eq $iv nil -}}"
-                    "{{- $iv = index $sv " + _go_quote(inner_wire) + " -}}"
-                    "{{- end -}}"
-                    "{{- if not (eq $iv nil) -}}"
-                    f"&{wire_name}.{inner_wire}={{{{ $iv }}}}"
-                    "{{- end -}}"
-                )
-            frag.append("{{- end -}}")
-            lines.append("".join(frag))
-
-    body_template = "".join(lines)
-
-    request_transform = {
-        "mediaType": "application/x-www-form-urlencoded",
-        "transform": {
-            "type": "golang_template_text_v0.3.0",
-            "body": body_template,
-        },
-    }
-    return request_body, request_transform
-
-
 def _rest_param(name: str, location: str, mdef: dict, walker: SchemaWalker, required: bool) -> dict:
     out = {
         "name": name,
@@ -902,12 +642,13 @@ def _build_rest_op_block(
     body fields regardless of HTTP verb.
 
     For rest-xml, the operation gets stamped with
-    `x-stackql-responseEnvelope: <output_shape_name>` pointing at the
-    botocore output shape directly (no schema wrapping needed - per
-    botocore.parsers.RestXMLParser, the body root element IS the shape
-    and members map straight from XML children). The Node step uses the
-    breadcrumb to add `transform: toJson` + `mediaType: application/xml`
-    + `overrideMediaType: application/json` so stackql can read the XML.
+    `x-stackql-responseEnvelope: <OpName>OutputDisplay` (the synthesised
+    Display wrapper, rule 14) plus `x-stackql-responseObjectKey:
+    $.line_items`. The Node step folds these into the method's response
+    block: `schema_override` + the schema-driven XML transform +
+    `mediaType: application/xml` + `overrideMediaType: application/json`.
+    The walker (any-sdk pkg/stream_transform) projects rows straight off
+    the Display schema - no per-op template is emitted.
     """
     http = op_def.get("http") or {}
     method = (http.get("method") or "POST").lower()
@@ -986,6 +727,10 @@ def _build_rest_op_block(
     op_block["parameters"] = parameters or []
 
     # ----- request body -----
+    # The content key is the wire media type: rest-xml bodies marshal to XML
+    # (any-sdk's schema-driven JSON-map -> XML marshaller keys off the
+    # method's `request.mediaType`, which the loader must find as an exact
+    # content key to bind the body schema), rest-json bodies stay JSON.
     if body_members:
         body_props: dict[str, Any] = {}
         for mname, mdef in body_members.items():
@@ -993,27 +738,26 @@ def _build_rest_op_block(
         body_schema: dict = {"type": "object", "properties": body_props}
         if body_required:
             body_schema["required"] = body_required
+        body_content_key = (
+            "application/xml" if protocol == "rest-xml" else "application/json"
+        )
         op_block["requestBody"] = {
-            "required": True,
-            "content": {"application/json": {"schema": body_schema}},
+            "required": bool(body_required),
+            "content": {body_content_key: {"schema": body_schema}},
         }
 
     # ----- responses -----
     response_code = str(http.get("responseCode") or 200)
     response_block: dict = {"description": "Success"}
     output_ref = op_def.get("output")
-    # For rest-xml, synthesise the Display schema + per-row transform like
-    # query/ec2 (rule 15). Point the path-level response schema at the
-    # Display wrapper too (rule 16) so column inference converges on a
-    # single snake_case set.
+    # For rest-xml, synthesise the Display schemas like query/ec2 (rule
+    # 14). Point the path-level response schema at the Display wrapper too
+    # (rule 16 column convergence) so column inference converges on a
+    # single column set.
     rest_xml_display_list_name: str | None = None
-    rest_xml_transform_body: str | None = None
     if protocol == "rest-xml" and output_ref:
         rest_xml_display_list_name = _register_display_schemas(
             walker, op_name, output_ref["shape"], paginator
-        )
-        rest_xml_transform_body = _build_rest_xml_transform_body(
-            op_name, output_ref["shape"], walker, paginator
         )
 
     if output_ref:
@@ -1035,11 +779,10 @@ def _build_rest_op_block(
     output_shape = walker.shapes[output_ref["shape"]] if output_ref else None
     stack_tags = infer_stackql_tags(op_name, output_shape, paginator, walker.shapes, protocol)
     # rest-xml: stamp the response envelope as the synthesised Display
-    # wrapper plus the per-row transform body. Stage 2 reads these to set
-    # `schema_override`, the mxj transform, and `objectKey: $.line_items`.
-    if rest_xml_display_list_name and rest_xml_transform_body is not None:
+    # wrapper. Stage 2 reads these to set `schema_override`, the
+    # schema-driven XML transform, and `objectKey: $.line_items`.
+    if rest_xml_display_list_name:
         stack_tags["x-stackql-responseEnvelope"] = rest_xml_display_list_name
-        stack_tags["x-stackql-responseTransform"] = rest_xml_transform_body
         stack_tags["x-stackql-responseObjectKey"] = "$.line_items"
     op_block.update(stack_tags)
 
@@ -1053,6 +796,7 @@ def _build_awsjson_op_block(
     paginator: dict | None,
     api_version: str,
     target_prefix: str,
+    json_version: str = "1.0",
 ) -> tuple[str, str, dict, list[dict]]:
     """aws-json protocol: POST `/` with X-Amz-Target: <prefix>.<Op>."""
     op_block: dict = {
@@ -1104,14 +848,18 @@ def _build_awsjson_op_block(
             body_schema["properties"] = body_props
         if input_shape.get("required"):
             body_schema["required"] = list(input_shape["required"])
-        # Content type is just a routing pointer to the op for stackql -
-        # it doesn't parse aws-json variants differently from `application/json`.
-        # Emit a single `application/json` entry. Stackql's required-param
-        # scan only walks this content type; emitting `application/x-amz-json-*`
-        # variants in addition would just duplicate the schema for no benefit.
+        # The content key is the amz-json wire content type (e.g.
+        # `application/x-amz-json-1.0`). Stage 2 stamps the same string as
+        # the method's `request.mediaType`; the loader binds the body schema
+        # by EXACT content-key match against request.mediaType, and any-sdk's
+        # media fuzzy-matcher maps amz-json variants onto the JSON marshal
+        # path. Emit a single entry - duplicating an `application/json`
+        # variant would just bloat the spec.
         op_block["requestBody"] = {
             "required": True,
-            "content": {"application/json": {"schema": body_schema}},
+            "content": {
+                f"application/x-amz-json-{json_version}": {"schema": body_schema}
+            },
         }
 
     response_block: dict = {"description": "Success"}
@@ -1144,11 +892,6 @@ SCALAR_DISPLAY_TYPES = {
     "timestamp": "string",
     "blob": "string",
 }
-
-
-def _column_name(member_name: str) -> str:
-    """Convert a botocore member name to a snake_case SQL column name."""
-    return _to_snake(member_name)
 
 
 def _wire_name(member_name: str, mdef: dict) -> str:
@@ -1351,9 +1094,18 @@ def _build_row_template_body(
     """Return (display_properties_dict, row_template_body).
 
     `display_properties_dict` is the `properties` block for the row
-    Display schema; the keys are snake_case SQL column names. The
-    `row_template_body` is the Go-template `{{define "row"}}...{{end}}`
-    block that renders one row as JSON from an mxj-decoded XML map.
+    Display schema. The keys are the botocore member names verbatim
+    (`VpcId`, `Attachments`) - the casing engine snake-renders them at
+    the SQL surface. When the XML wire element name differs from the
+    member name (member `locationName`, e.g. EC2's `Attachments`
+    serialised as `<attachmentSet>`), the property carries an
+    `xml: {name: <wire>}` override; the schema-driven XML walker keys
+    row extraction on that override, and drm value extraction resolves
+    GetWireName first. The `row_template_body` is the Go-template
+    `{{define "row"}}...{{end}}` block that renders one row as JSON from
+    an mxj-decoded XML map (kept only for the fallback escape hatch; the
+    default response path is the schema-driven walker, which needs no
+    template).
     """
     members = row_shape.get("members") or {}
     if not members:
@@ -1362,7 +1114,7 @@ def _build_row_template_body(
     display_props: dict[str, Any] = {}
     column_lines: list[str] = []
     for mname, mdef in members.items():
-        col_name = _column_name(mname)
+        wire = _wire_name(mname, mdef)
         display_type, expr = _scalar_template_expr(mname, mdef, shapes)
         prop: dict[str, Any] = {"type": display_type}
         # Carry the member's documentation through to the Display schema
@@ -1374,8 +1126,13 @@ def _build_row_template_body(
             doc = clean_description(target.get("documentation"))
         if doc:
             prop["description"] = doc
-        display_props[col_name] = prop
-        column_lines.append(f'        "{col_name}": {expr}')
+        if wire != mname:
+            prop["xml"] = {"name": wire}
+        display_props[mname] = prop
+        # The fallback row template emits wire-name keys (matching the
+        # walker's projected-row keying, which drm extraction reads via
+        # GetWireName).
+        column_lines.append(f'        "{wire}": {expr}')
 
     body = (
         '{{define "row"}}\n'
@@ -1437,87 +1194,6 @@ def _register_display_schemas(
     return list_display_name
 
 
-def _build_rest_xml_transform_body(
-    op_name: str,
-    output_shape_name: str,
-    walker: SchemaWalker,
-    paginator: dict | None,
-) -> str:
-    """Build the per-row XML-to-line_items transform for rest-xml ops.
-
-    Rest-xml differs from query/ec2 in two ways:
-
-    1. There's no `<OpName>Response`/resultWrapper envelope. The XML root
-       element IS the response payload (botocore.parsers.RestXMLParser
-       reads members straight off the root). However, the XML root's tag
-       name is service-specific and NOT carried in `service-2.json` (S3's
-       ListBuckets returns `<ListAllMyBucketsResult>`, but botocore models
-       the output shape as `ListBucketsOutput`). To stay tolerant of these
-       hidden names, the template uses `{{ range $k, $v := . }}` to descend
-       the single top-level mxj key without naming it.
-
-    2. The members and list element wire names come from the output shape
-       and member `locationName`s. Same regime-a/b/c logic as query/ec2.
-    """
-    output_shape = walker.shapes[output_shape_name]
-    _row_member, list_wire, inner_wire, elem_shape_name, unwrap_wire = _pick_row_shape(
-        output_shape, walker.shapes, paginator, op_name
-    )
-    if elem_shape_name:
-        row_shape = walker.shapes[elem_shape_name]
-    else:
-        row_shape = output_shape
-
-    _, row_block = _build_row_template_body(row_shape, walker.shapes)
-
-    if list_wire:
-        # List response. Walk one synthetic step (`range $k, $v` over the
-        # outer XML root) then drill into <list_wire>.<inner_wire> just like
-        # query/ec2. mxj decodes a list of one element as a single map and a
-        # list of N>1 as []interface{}; the template handles both cases.
-        list_inner = inner_wire or "item"
-        body = (
-            '{\n'
-            '  "line_items": [\n'
-            '    {{- range $rk, $root := . -}}\n'
-            f'      {{{{- $list_parent := index $root {_go_quote(list_wire)} -}}}}\n'
-            '      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}\n'
-            f'        {{{{- $items := index $list_parent {_go_quote(list_inner)} -}}}}\n'
-            '        {{- if eq (printf "%T" $items) "map[string]interface {}" }}\n'
-            '          {{template "row" $items}}\n'
-            '        {{- else if eq (printf "%T" $items) "[]interface {}" }}\n'
-            '          {{- range $i, $v := $items }}\n'
-            '            {{- if $i}},{{end}}\n'
-            '            {{template "row" $v}}\n'
-            '          {{- end }}\n'
-            '        {{- end }}\n'
-            '      {{- end }}\n'
-            '    {{- end }}\n'
-            '  ]\n'
-            '}\n'
-            + row_block
-        )
-    else:
-        # Singleton response. For regime (b) descend one extra layer into
-        # unwrap_wire; for (c) the XML root members ARE the row.
-        body_pre = (
-            '{\n'
-            '  "line_items": [\n'
-            '    {{- range $rk, $root := . -}}\n'
-        )
-        if unwrap_wire:
-            body_inner = (
-                f'      {{{{- $row := index $root {_go_quote(unwrap_wire)} -}}}}\n'
-                '      {{- with $row }}{{template "row" .}}{{end}}\n'
-            )
-        else:
-            body_inner = (
-                '      {{- with $root }}{{template "row" .}}{{end}}\n'
-            )
-        body = body_pre + body_inner + '    {{- end }}\n  ]\n}\n' + row_block
-    return body
-
-
 def _build_transform_body(
     op_name: str,
     output_shape_name: str,
@@ -1527,6 +1203,14 @@ def _build_transform_body(
     result_wrapper: str | None,
 ) -> str:
     """Build the full Go-template body for an op's XML-to-line_items transform.
+
+    UNUSED FALLBACK ESCAPE HATCH. The default response path is the
+    schema-driven XML walker (`schema_driven_xml_v0.1.0` in any-sdk's
+    pkg/stream_transform), which projects rows directly off the Display
+    schema and needs no per-op template. This builder is retained only in
+    case a service surfaces an XML shape the walker cannot navigate; wire
+    it back up by stamping `x-stackql-responseTransform` on the op block
+    and emitting a `golang_template_mxj_v0.2.0` transform in stage 2.
 
     The template emits `{"line_items": [...]}` with one JSON-object row
     per XML `<item>` (for list responses) or one row for the singleton
@@ -1606,8 +1290,7 @@ def _build_query_op_block(
     paginator: dict | None,
     api_version: str,
     protocol: str,
-    service_name: str = "",
-) -> tuple[str, dict, dict, list[dict], bool]:
+) -> tuple[str, dict, dict, list[dict]]:
     """Return (path_key, get_block, post_block, path_level_params).
 
     Both GET and POST flavours are emitted to match the ref/ec2.yaml pattern,
@@ -1625,25 +1308,14 @@ def _build_query_op_block(
     # Build query params from input top-level structure members.
     query_params = _flatten_input_to_query_params(input_shape or {}, walker) if input_shape else []
 
-    # Synthesise `<RowShape>Display` + `<OpName>OutputDisplay` schemas and
-    # a Go template body that reshapes the mxj-decoded XML into a flat
-    # `{"line_items": [...]}` document. Stackql uses the Display schemas
-    # for column inference (DESCRIBE EXTENDED) and the transform to
-    # project rows at SELECT time.
+    # Synthesise `<RowShape>Display` + `<OpName>OutputDisplay` schemas.
+    # Stackql uses them for column inference (DESCRIBE EXTENDED) and the
+    # schema-driven XML walker projects rows off them at SELECT time - no
+    # per-op template needed.
     display_list_name = None
-    transform_body = None
     if output_ref:
-        result_wrapper = output_ref.get("resultWrapper")
         display_list_name = _register_display_schemas(
             walker, op_name, output_ref["shape"], paginator
-        )
-        transform_body = _build_transform_body(
-            op_name,
-            output_ref["shape"],
-            walker,
-            paginator,
-            protocol,
-            result_wrapper,
         )
 
     # Path-level response schema for both GET and POST. We point both at
@@ -1711,77 +1383,20 @@ def _build_query_op_block(
             "content": {"text/xml": {"schema": walker.ref(input_ref["shape"])}}
         }
 
-    # ----- EC2 snake_case mutable rewrite -----
-    # For EC2 mutable ops with a tractable input shape (scalars + lists of
-    # scalars), replace the path-level POST requestBody with a flat
-    # snake_case object schema under application/x-www-form-urlencoded, and
-    # stamp method-level breadcrumbs carrying the request.transform template
-    # body. Stage 2 (generate-provider.mjs) consumes those breadcrumbs, emits
-    # the method's `request:` block, repoints the method's $ref to POST, and
-    # drops `requestTranslate: get_query_to_post_form_utf_8` (the transform
-    # produces wire bytes directly).
-    #
-    # SELECT ops keep the GET-with-query path so the SQL WHERE clause -> URL
-    # parameter mapping continues to work.
-    #
-    # Out-of-scope tiers (nested_struct, list_of_struct) fall through to the
-    # legacy text/xml requestBody + standard requestTranslate flow; users
-    # still get the SQL surface but with PascalCase param names. Generalising
-    # to those tiers needs recursive struct fan-out in the template.
-    ec2_mutable_request_meta: dict | None = None
-    if (
-        protocol == "ec2"
-        and service_name == "ec2"
-        and _is_mutable_verb(op_name)
-        and input_ref is not None
-    ):
-        input_shape_full = walker.shapes.get(input_ref["shape"])
-        snake_request_body, snake_request_meta = _build_ec2_mutable_request(
-            op_name, input_shape_full, walker, api_version
-        )
-        if snake_request_body is not None and snake_request_meta is not None:
-            post_block["requestBody"] = snake_request_body
-            ec2_mutable_request_meta = snake_request_meta
-
     output_shape = walker.shapes[output_ref["shape"]] if output_ref else None
     stack_tags = infer_stackql_tags(op_name, output_shape, paginator, walker.shapes, protocol)
-    # Stamp the display schema name + Go template body + objectKey onto
-    # the operation so the Node provider-gen step can assemble the
-    # method's response block (schema_override + transform + objectKey).
-    # objectKey is always `$.line_items` because the template hoists
-    # rows to the top under that key.
-    if display_list_name and transform_body is not None:
+    # Stamp the display schema name + objectKey onto the operation so the
+    # Node provider-gen step can assemble the method's response block
+    # (schema_override + schema-driven transform + objectKey). objectKey
+    # is always `$.line_items` because the Display wrapper hoists rows to
+    # the top under that key.
+    if display_list_name:
         stack_tags["x-stackql-responseEnvelope"] = display_list_name
-        stack_tags["x-stackql-responseTransform"] = transform_body
         stack_tags["x-stackql-responseObjectKey"] = "$.line_items"
     get_block.update(stack_tags)
     post_block.update(stack_tags)
 
-    # For EC2 mutable ops with the snake_case rewrite, stamp request.transform
-    # breadcrumbs on the POST block only. Stage 2 (generate-provider.mjs)
-    # reads these to decide:
-    #   1. Repoint method.operation.$ref from .../get to .../post
-    #   2. Emit method.request = { mediaType, transform: { type, body } }
-    #   3. Skip the standard requestTranslate (the transform supplants it)
-    #   4. Add requestBodyTranslate: naive so SQL keys match the snake schema
-    if ec2_mutable_request_meta is not None:
-        post_block["x-stackql-request-mediatype"] = (
-            ec2_mutable_request_meta["mediaType"]
-        )
-        post_block["x-stackql-request-transform-type"] = (
-            ec2_mutable_request_meta["transform"]["type"]
-        )
-        post_block["x-stackql-request-transform-body"] = (
-            ec2_mutable_request_meta["transform"]["body"]
-        )
-
-    # If we rewrote this op as a snake_case POST with a request.transform,
-    # the GET form is dead - nothing in stackql ever reads it now, and
-    # leaving its PascalCase query params on the path produces NOCASE
-    # collisions with the snake_case body schema. Drop the GET form
-    # entirely. The spec is stackql-private; no server consumes it.
-    drop_get = ec2_mutable_request_meta is not None
-    return path_key, get_block, post_block, _common_aws_headers(), drop_get
+    return path_key, get_block, post_block, _common_aws_headers()
 
 
 # --------------------------------------------------------------------------- #
@@ -1830,40 +1445,25 @@ def build_service_openapi(service_name: str) -> dict:
     paths: dict[str, dict] = OrderedDict()
 
     target_prefix = metadata.get("targetPrefix") or metadata.get("serviceId") or service_name
-
-    # display_column_names: union of every snake_cased SQL column we will
-    # surface across this service's query/ec2 ops. Used after the per-op
-    # build to demote colliding request parameters to `required: false`
-    # so stackql's `GetUnionRequiredParameters()` doesn't add them to the
-    # CREATE TABLE column set (SQLite's NOCASE collation treats `Engine`
-    # and `engine` as duplicates, causing the table to refuse to create).
-    display_column_names: set[str] = set()
+    json_version = str(metadata.get("jsonVersion") or "1.0")
 
     for op_name in sorted(operations.keys()):
         op_def = operations[op_name]
         paginator = paginators.get(op_name)
 
         if protocol in {"query", "ec2"}:
-            path_key, get_block, post_block, path_level, drop_get = _build_query_op_block(
-                op_name, op_def, walker, paginator, version, protocol, service_name
+            path_key, get_block, post_block, path_level = _build_query_op_block(
+                op_name, op_def, walker, paginator, version, protocol
             )
-            # When the op has been rewritten to a snake_case POST with a
-            # request.transform (EC2 mutable rewrite, rule 20), drop the
-            # GET form. Its query params are stale - stackql now reads the
-            # POST body schema for the SQL surface, and the GET's PascalCase
-            # params would collide case-insensitively with the snake_case
-            # Display columns at DDL time. The spec is stackql-private; no
-            # server reads it.
-            path_entry = {
+            paths[path_key] = {
                 "parameters": path_level,
+                "get": get_block,
                 "post": post_block,
             }
-            if not drop_get:
-                path_entry["get"] = get_block
-            paths[path_key] = path_entry
         elif protocol == "json":
             path_key, http_method, op_block, _ = _build_awsjson_op_block(
-                op_name, op_def, walker, paginator, version, target_prefix
+                op_name, op_def, walker, paginator, version, target_prefix,
+                json_version,
             )
             entry = paths.setdefault(path_key, {})
             entry[http_method] = op_block
@@ -1893,46 +1493,37 @@ def build_service_openapi(service_name: str) -> dict:
             # Unknown / future protocol - emit as aws-json fallback so the
             # operation is at least visible.
             path_key, http_method, op_block, _ = _build_awsjson_op_block(
-                op_name, op_def, walker, paginator, version, target_prefix
+                op_name, op_def, walker, paginator, version, target_prefix,
+                json_version,
             )
             entry = paths.setdefault(path_key, {})
             entry[http_method] = op_block
 
-    # --- collision-demotion pass ---
+    # --- collision-demotion pass (rule 17) ---
     # Stackql builds the CREATE TABLE column set as `response columns +
     # union of required parameters across all methods on the resource`.
-    # Dedup is case-sensitive but SQLite NOCASE then collides
-    # case-equivalent names (`engine` vs `Engine`). We collect all
-    # snake_case Display columns AND their lowercased forms, then demote
-    # any required parameter or required requestBody-property whose
-    # lowercased name matches a Display column BUT whose exact-case name
-    # differs (i.e. only a case-collision, not a true duplicate).
-    #
-    # The exact-case check matters: an EC2 mutable's snake_case body has
-    # `vpc_id` required, and the response Display has `vpc_id` too. Same
-    # string, same case - SQLite's case-sensitive dedup folds them to one
-    # column and there's no collision. Demoting here would strip a real
-    # required parameter (the body wouldn't surface `vpc_id` as required
-    # in SHOW METHODS and stackql can't route the SQL to the body field).
+    # Response columns render as snake aliases (casing engine), so a
+    # required request parameter whose lowercased form equals a rendered
+    # snake column - but whose exact form differs - would collide under
+    # SQLite's NOCASE collation (`Attribute` vs rendered `attribute`).
+    # Demote such params to `required: false`; the WHERE clause still
+    # routes them into the request when present. Multi-word Pascal params
+    # (`VpcId`) never collide with their snake rendering (`vpc_id` -
+    # the underscore breaks NOCASE equality), so only single-word names
+    # are typically affected.
     #
     # Runs for any protocol that emits Display schemas (query/ec2/rest-xml).
     if protocol in {"query", "ec2", "rest-xml"}:
-        column_names: set[str] = set()      # exact-case Display names
-        column_lowercase: set[str] = set()  # lowercased for collision check
+        # Rendered snake column names. Display properties carry the
+        # botocore member names; _to_snake approximates the casing
+        # engine's ToSnake.
+        column_snake: set[str] = set()
         for schema_name, schema in walker.emitted.items():
             if not schema_name.endswith("Display") or schema_name.endswith("OutputDisplay"):
                 continue
             for col_name in (schema.get("properties") or {}).keys():
-                column_names.add(col_name)
-                column_lowercase.add(col_name.lower())
-        # A param/body field collides only if its lowercased form matches
-        # AND its exact-case form is NOT already a Display column name.
-        def _is_case_collision(name: str) -> bool:
-            return (
-                name.lower() in column_lowercase
-                and name not in column_names
-            )
-        if column_lowercase:
+                column_snake.add(_to_snake(col_name))
+        if column_snake:
             for path_item in paths.values():
                 for verb_key, op in path_item.items():
                     if verb_key == "parameters" or not isinstance(op, dict):
@@ -1958,12 +1549,18 @@ def build_service_openapi(service_name: str) -> dict:
                         # already required:false, but defend anyway.
                         if name.startswith("X-Amz-"):
                             continue
-                        if _is_case_collision(name):
+                        if name.lower() in column_snake and name not in column_snake:
                             p["required"] = False
-                    # Demote requestBody-required fields with colliding
-                    # names. The body schema is inlined under
-                    # content.<mt>.schema; the `required` list there is
-                    # what stackql's requiredParamsOf reads (per rule 12).
+                    # Demote requestBody-required fields with case-colliding
+                    # names. Single-word required body fields (route53
+                    # CreateHostedZone's `Name`) collide under NOCASE with
+                    # the rendered snake response column (`name`); multi-word
+                    # Pascal fields (`CallerReference` vs `caller_reference`)
+                    # never do - the underscore breaks NOCASE equality. The
+                    # body schema is inlined under content.<mt>.schema; the
+                    # `required` list there is what stackql's
+                    # requiredParamsOf reads (rule 11). Query/ec2 POST bodies
+                    # are `$ref`s - `required` absent - and skip through.
                     body = op.get("requestBody") or {}
                     content = body.get("content") or {}
                     for _, mt_block in content.items():
@@ -1975,7 +1572,11 @@ def build_service_openapi(service_name: str) -> dict:
                             continue
                         new_required = [
                             r for r in required_list
-                            if isinstance(r, str) and not _is_case_collision(r)
+                            if not (
+                                isinstance(r, str)
+                                and r.lower() in column_snake
+                                and r not in column_snake
+                            )
                         ]
                         if new_required != required_list:
                             if new_required:

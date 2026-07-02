@@ -727,7 +727,7 @@ paths:
             $ref: "#/components/schemas/IdType"
           description: The identifier of the FinSpace environment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1083,7 +1083,7 @@ paths:
             $ref: "#/components/schemas/IdType"
           description: A unique identifier for the kdb environment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1314,7 +1314,7 @@ paths:
             $ref: "#/components/schemas/KxVolumeName"
           description: A unique identifier for the volume.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1592,7 +1592,7 @@ paths:
             $ref: "#/components/schemas/IdType"
           description: A unique identifier for the kdb environment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4025,6 +4025,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4034,6 +4036,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_environment:
           operation:
             $ref: "#/paths/~1environment~1{environment_id}/delete"
@@ -4052,6 +4056,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4076,6 +4082,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4085,6 +4093,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_kx_changeset:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1databases~1{database_name}~1changesets~1{changeset_id}/get"
@@ -4110,6 +4120,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4119,12 +4131,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_kx_cluster:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1clusters~1{cluster_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_kx_cluster:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1clusters~1{cluster_name}/get"
@@ -4151,6 +4167,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4160,12 +4178,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_kx_database:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1databases~1{database_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_kx_database:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1databases~1{database_name}/get"
@@ -4178,6 +4200,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4202,6 +4226,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4211,12 +4237,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_kx_dataview:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1databases~1{database_name}~1dataviews~1{dataview_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_kx_dataview:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1databases~1{database_name}~1dataviews~1{dataview_name}/get"
@@ -4229,6 +4259,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4253,6 +4285,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4263,12 +4297,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.environments
+          request:
+            nativeCasing: pascal
         delete_kx_environment:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_kx_environment:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}/get"
@@ -4281,6 +4319,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4305,6 +4345,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4314,12 +4356,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_kx_scaling_group:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1scalingGroups~1{scaling_group_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_kx_scaling_group:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1scalingGroups~1{scaling_group_name}/get"
@@ -4346,6 +4392,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4355,12 +4403,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_kx_user:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1users~1{user_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_kx_user:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1users~1{user_name}/get"
@@ -4373,6 +4425,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4397,6 +4451,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4406,12 +4462,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_kx_volume:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1kxvolumes~1{volume_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_kx_volume:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1kxvolumes~1{volume_name}/get"
@@ -4424,6 +4484,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4454,6 +4516,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/kx_cluster_nodes/methods/list_kx_cluster_nodes"
@@ -4472,6 +4536,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/kx_connection_strings/methods/get_kx_connection_string"
@@ -4506,6 +4572,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4515,6 +4583,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -4533,6 +4603,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4553,6 +4625,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4573,6 +4647,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

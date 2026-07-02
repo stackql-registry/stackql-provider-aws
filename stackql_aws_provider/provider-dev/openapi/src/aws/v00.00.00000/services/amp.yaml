@@ -527,7 +527,7 @@ paths:
       description: Creates a Prometheus workspace. A workspace is a logical space dedicated to the storage and querying of Prometheus metrics. You can have one or more workspaces in each Region in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -880,7 +880,7 @@ paths:
             $ref: "#/components/schemas/ScraperId"
           description: The ID of the scraper to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1036,7 +1036,7 @@ paths:
             $ref: "#/components/schemas/WorkspaceId"
           description: The ID of the workspace that you want to update. To find the IDs of your workspaces, use the ListWorkspaces operation.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1148,7 +1148,7 @@ paths:
             $ref: "#/components/schemas/WorkspaceId"
           description: The ID of the workspace to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2666,6 +2666,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2674,6 +2676,8 @@ components:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1alertmanager~1definition/delete"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
         describe_alert_manager_definition:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1alertmanager~1definition/get"
@@ -2686,6 +2690,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2710,6 +2716,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2720,11 +2728,15 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.anomalyDetectors
+          request:
+            nativeCasing: pascal
         delete_anomaly_detector:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1anomalydetectors~1{anomaly_detector_id}/delete"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
         describe_anomaly_detector:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1anomalydetectors~1{anomaly_detector_id}/get"
@@ -2737,6 +2749,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2762,6 +2776,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2770,6 +2786,8 @@ components:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1logging/delete"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
         describe_logging_configuration:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1logging/get"
@@ -2782,6 +2800,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2805,6 +2825,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2813,6 +2835,8 @@ components:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1logging~1query/delete"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
         describe_query_logging_configuration:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1logging~1query/get"
@@ -2825,6 +2849,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2848,6 +2874,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2858,11 +2886,15 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ruleGroupsNamespaces
+          request:
+            nativeCasing: pascal
         delete_rule_groups_namespace:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1rulegroupsnamespaces~1{name}/delete"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
         describe_rule_groups_namespace:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1rulegroupsnamespaces~1{name}/get"
@@ -2875,6 +2907,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2900,6 +2934,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2910,12 +2946,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.scrapers
+          request:
+            nativeCasing: pascal
         delete_scraper:
           operation:
             $ref: "#/paths/~1scrapers~1{scraper_id}/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_scraper:
           operation:
             $ref: "#/paths/~1scrapers~1{scraper_id}/get"
@@ -2928,6 +2968,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2952,6 +2994,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2962,11 +3006,15 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.workspaces
+          request:
+            nativeCasing: pascal
         delete_workspace:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}/delete"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
         describe_workspace:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}/get"
@@ -2992,6 +3040,8 @@ components:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1policy/delete"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
         describe_resource_policy:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1policy/get"
@@ -3004,6 +3054,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3026,6 +3078,8 @@ components:
             $ref: "#/paths/~1scrapers~1{scraper_id}~1logging-configuration/delete"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
         describe_scraper_logging_configuration:
           operation:
             $ref: "#/paths/~1scrapers~1{scraper_id}~1logging-configuration/get"
@@ -3038,6 +3092,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3066,6 +3122,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3121,6 +3179,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3130,6 +3190,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -3147,6 +3209,8 @@ components:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1alias/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

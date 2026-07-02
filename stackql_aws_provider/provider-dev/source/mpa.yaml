@@ -232,7 +232,7 @@ paths:
           $ref: '#/components/schemas/ApprovalTeamArn'
         description: Amazon Resource Name (ARN) for the team.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -490,7 +490,7 @@ paths:
           $ref: '#/components/schemas/ApprovalTeamArn'
         description: Amazon Resource Name (ARN) for the approval team.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -611,7 +611,7 @@ paths:
           $ref: '#/components/schemas/ApprovalTeamArn'
         description: Amazon Resource Name (ARN) for the team.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -641,7 +641,7 @@ paths:
           $ref: '#/components/schemas/ApprovalTeamArn'
         description: Amazon Resource Name (ARN) for the approval team.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -214,7 +214,7 @@ paths:
       description: Put the account settings for Artifact.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

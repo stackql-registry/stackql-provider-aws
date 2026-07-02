@@ -121,7 +121,7 @@ paths:
       description: Deregisters the Active Directory identity provider from License Manager user-based subscriptions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -149,7 +149,7 @@ paths:
       description: Disassociates the user from an EC2 instance providing user-based subscriptions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -181,7 +181,7 @@ paths:
       description: Lists the Active Directory identity providers for user-based subscriptions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -210,7 +210,7 @@ paths:
       description: Lists the EC2 instances providing user-based subscriptions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -239,7 +239,7 @@ paths:
       description: List the Remote Desktop Services (RDS) License Server endpoints
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -489,7 +489,7 @@ paths:
       description: Stops a product subscription for a user with the specified identity provider.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

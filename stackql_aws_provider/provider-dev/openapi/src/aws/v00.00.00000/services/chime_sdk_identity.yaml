@@ -549,7 +549,7 @@ paths:
             $ref: "#/components/schemas/String64"
           description: The unique identifier of the AppInstanceUserEndpoint.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -713,7 +713,7 @@ paths:
             $ref: "#/components/schemas/ChimeArn"
           description: The ARN of the AppInstanceUser.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1474,6 +1474,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1483,6 +1485,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_app_instance:
           operation:
             $ref: "#/paths/~1app-instances~1{app_instance_arn}/delete"
@@ -1500,6 +1504,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1524,6 +1530,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1533,6 +1541,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_app_instance_admin:
           operation:
             $ref: "#/paths/~1app-instances~1{app_instance_arn}~1admins~1{app_instance_admin_arn}/delete"
@@ -1564,6 +1574,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1573,6 +1585,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_app_instance_bot:
           operation:
             $ref: "#/paths/~1app-instance-bots~1{app_instance_bot_arn}/delete"
@@ -1590,6 +1604,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1614,6 +1630,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1623,6 +1641,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_app_instance_user:
           operation:
             $ref: "#/paths/~1app-instance-users~1{app_instance_user_arn}/delete"
@@ -1640,6 +1660,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1675,6 +1697,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1684,12 +1708,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         register_app_instance_user_endpoint:
           operation:
             $ref: "#/paths/~1app-instance-users~1{app_instance_user_arn}~1endpoints/post"
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1720,6 +1748,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1742,6 +1772,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -1759,6 +1791,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1779,6 +1813,8 @@ components:
             $ref: "#/paths/~1tags?operation=tag-resource/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1787,6 +1823,8 @@ components:
             $ref: "#/paths/~1tags?operation=untag-resource/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

@@ -468,7 +468,7 @@ paths:
             $ref: "#/components/schemas/NextToken"
           description: The token used for pagination of results returned in the response. Use the token returned from the previous request to continue results where the previous request ended.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1690,6 +1690,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1700,6 +1702,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.datastoreSummaries
+          request:
+            nativeCasing: pascal
         delete_datastore:
           operation:
             $ref: "#/paths/~1datastore~1{datastore_id}/delete"
@@ -1738,6 +1742,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         search_image_sets:
           operation:
             $ref: "#/paths/~1datastore~1{datastore_id}~1searchImageSets/post"
@@ -1745,6 +1751,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.imageSetsMetadataSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1774,6 +1782,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dicom_import_jobs/methods/get_dicom_import_job"
@@ -1792,6 +1802,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1812,12 +1824,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_image_set_metadata:
           operation:
             $ref: "#/paths/~1datastore~1{datastore_id}~1imageSet~1{image_set_id}~1updateImageSetMetadata/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1840,6 +1856,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.imageSetPropertiesList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/image_set_versions/methods/list_image_set_versions"
@@ -1874,6 +1892,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1883,6 +1903,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

@@ -179,7 +179,7 @@ paths:
           $ref: '#/components/schemas/PolicyId'
         description: The identifier of the lifecycle policy.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -82,7 +82,7 @@ paths:
           $ref: '#/components/schemas/UuidString'
         description: The unique identifier of the workflow run to create the session in.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -149,7 +149,7 @@ paths:
           $ref: '#/components/schemas/NextToken'
         description: The token for retrieving the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -230,7 +230,7 @@ paths:
           $ref: '#/components/schemas/NextToken'
         description: The token for retrieving the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -372,7 +372,7 @@ paths:
           $ref: '#/components/schemas/NextToken'
         description: The token for retrieving the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -516,7 +516,7 @@ paths:
           $ref: '#/components/schemas/NextToken'
         description: The token for retrieving the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

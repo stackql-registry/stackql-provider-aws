@@ -45,7 +45,7 @@ paths:
         not restrict access through the CLI, SDKs, or other APIs.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

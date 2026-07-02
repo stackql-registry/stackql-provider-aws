@@ -23,7 +23,7 @@ paths:
       description: Create a new configuration set. After you create the configuration set, you can add one or more event destinations to it.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -73,7 +73,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: ConfigurationSetName
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -166,7 +166,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: EventDestinationName
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -187,7 +187,7 @@ paths:
       description: Create a new voice message and send it to a recipient's phone number.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -446,6 +446,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -455,6 +457,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_configuration_set:
           operation:
             $ref: "#/paths/~1v1~1sms-voice~1configuration-sets~1{configuration_set_name}/delete"
@@ -480,6 +484,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -501,6 +507,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

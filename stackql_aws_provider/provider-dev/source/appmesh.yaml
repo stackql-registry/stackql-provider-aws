@@ -897,7 +897,7 @@ paths:
           $ref: '#/components/schemas/ResourceName'
         description: The name of the service mesh to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

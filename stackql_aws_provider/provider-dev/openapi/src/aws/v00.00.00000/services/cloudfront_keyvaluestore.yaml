@@ -175,7 +175,7 @@ paths:
             $ref: "#/components/schemas/Etag"
           description: The current version (ETag) of the Key Value Store that you are updating keys of, which you can get using DescribeKeyValueStore.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -449,6 +449,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -459,12 +461,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         update_keys:
           operation:
             $ref: "#/paths/~1key-value-stores~1{kvs_arn}~1keys/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

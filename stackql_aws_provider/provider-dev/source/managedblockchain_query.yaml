@@ -24,7 +24,7 @@ paths:
         the request. Only the native tokens BTC and ETH, and the ERC-20, ERC-721, and ERC 1155 token standards are supported.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

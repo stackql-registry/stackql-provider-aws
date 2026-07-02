@@ -712,7 +712,7 @@ paths:
             $ref: "#/components/schemas/FunctionUrlQualifier"
           description: The alias name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -791,7 +791,7 @@ paths:
             $ref: "#/components/schemas/Alias"
           description: The name of the alias.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -858,7 +858,7 @@ paths:
             $ref: "#/components/schemas/CapacityProviderName"
           description: The name of the capacity provider to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -919,7 +919,7 @@ paths:
             $ref: "#/components/schemas/CodeSigningConfigArn"
           description: The The Amazon Resource Name (ARN) of the code signing configuration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -984,7 +984,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The identifier of the event source mapping.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1247,7 +1247,7 @@ paths:
             $ref: "#/components/schemas/NumericLatestPublishedOrAliasQualifier"
           description: A version number or alias name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1283,7 +1283,7 @@ paths:
             $ref: "#/components/schemas/NumericLatestPublishedOrAliasQualifier"
           description: A version number or alias name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1583,7 +1583,7 @@ paths:
             $ref: "#/components/schemas/FunctionName"
           description: The name or ARN of the Lambda function. Name formats Function name – my-function. Function ARN – arn:aws:lambda:us-west-2:123456789012:function:my-function. Partial ARN – 123456789012:function:my-function. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1723,7 +1723,7 @@ paths:
             $ref: "#/components/schemas/PublishedFunctionQualifier"
           description: Specify a version or alias to set the scaling configuration for a published version of the function.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1864,7 +1864,7 @@ paths:
             $ref: "#/components/schemas/TenantId"
           description: The identifier of the tenant in a multi-tenant Lambda function.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1950,7 +1950,7 @@ paths:
             $ref: "#/components/schemas/TenantId"
           description: The identifier of the tenant in a multi-tenant Lambda function.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2397,7 +2397,7 @@ paths:
             $ref: "#/components/schemas/FunctionName"
           description: The name or ARN of the Lambda function. Name formats Function name - MyFunction. Function ARN - arn:aws:lambda:us-west-2:123456789012:function:MyFunction. Partial ARN - 123456789012:function:MyFunction. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2494,7 +2494,7 @@ paths:
             $ref: "#/components/schemas/CallbackId"
           description: The unique identifier for the callback operation.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2539,7 +2539,7 @@ paths:
             $ref: "#/components/schemas/CallbackId"
           description: The unique identifier for the callback operation.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2566,7 +2566,7 @@ paths:
             $ref: "#/components/schemas/DurableExecutionArn"
           description: The Amazon Resource Name (ARN) of the durable execution.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2593,7 +2593,7 @@ paths:
             $ref: "#/components/schemas/FunctionName"
           description: The name or ARN of the Lambda function. Name formats Function name – my-function. Function ARN – arn:aws:lambda:us-west-2:123456789012:function:my-function. Partial ARN – 123456789012:function:my-function. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -6269,6 +6269,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6277,6 +6279,8 @@ components:
             $ref: "#/paths/~12018-10-31~1layers~1{layer_name}~1versions~1{version_number}~1policy~1{statement_id}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -6312,6 +6316,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6320,6 +6326,8 @@ components:
             $ref: "#/paths/~12015-03-31~1functions~1{function_name}~1policy~1{statement_id}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -6338,6 +6346,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policies/methods/get_policy"
@@ -6355,6 +6365,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6375,6 +6387,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6399,6 +6413,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Aliases
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/aliases/methods/list_aliases"
@@ -6416,6 +6432,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6426,6 +6444,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CapacityProviders
+          request:
+            nativeCasing: pascal
         delete_capacity_provider:
           operation:
             $ref: "#/paths/~12025-11-30~1capacity-providers~1{capacity_provider_name}/delete"
@@ -6444,6 +6464,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6468,6 +6490,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6478,6 +6502,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CodeSigningConfigs
+          request:
+            nativeCasing: pascal
         delete_code_signing_config:
           operation:
             $ref: "#/paths/~12020-04-22~1code-signing-configs~1{code_signing_config_arn}/delete"
@@ -6496,6 +6522,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6520,6 +6548,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6530,6 +6560,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.EventSourceMappings
+          request:
+            nativeCasing: pascal
         delete_event_source_mapping:
           operation:
             $ref: "#/paths/~12015-03-31~1event-source-mappings~1{uuid}/delete"
@@ -6548,6 +6580,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6572,6 +6606,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6582,18 +6618,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Functions
+          request:
+            nativeCasing: pascal
         delete_function:
           operation:
             $ref: "#/paths/~12015-03-31~1functions~1{function_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_function:
           operation:
             $ref: "#/paths/~12015-03-31~1functions~1{function_name}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/functions/methods/get_function"
@@ -6614,6 +6656,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6622,18 +6666,24 @@ components:
             $ref: "#/paths/~12021-10-31~1functions~1{function_name}~1url/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         get_function_url_config:
           operation:
             $ref: "#/paths/~12021-10-31~1functions~1{function_name}~1url/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_function_url_config:
           operation:
             $ref: "#/paths/~12021-10-31~1functions~1{function_name}~1url/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6644,6 +6694,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FunctionUrlConfigs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/function_url_configs/methods/get_function_url_config"
@@ -6675,6 +6727,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6703,6 +6757,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6731,18 +6787,24 @@ components:
             $ref: "#/paths/~12019-09-25~1functions~1{function_name}~1event-invoke-config/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         get_function_event_invoke_config:
           operation:
             $ref: "#/paths/~12019-09-25~1functions~1{function_name}~1event-invoke-config/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_function_event_invoke_config:
           operation:
             $ref: "#/paths/~12019-09-25~1functions~1{function_name}~1event-invoke-config/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6752,6 +6814,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6762,6 +6826,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FunctionEventInvokeConfigs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/function_event_invoke_configs/methods/get_function_event_invoke_config"
@@ -6795,6 +6861,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.LayerVersions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/layer_versions/methods/get_layer_version"
@@ -6813,18 +6881,24 @@ components:
             $ref: "#/paths/~12019-09-30~1functions~1{function_name}~1provisioned-concurrency/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         get_provisioned_concurrency_config:
           operation:
             $ref: "#/paths/~12019-09-30~1functions~1{function_name}~1provisioned-concurrency/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_provisioned_concurrency_config:
           operation:
             $ref: "#/paths/~12019-09-30~1functions~1{function_name}~1provisioned-concurrency/put"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6835,6 +6909,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ProvisionedConcurrencyConfigs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/provisioned_concurrency_configs/methods/get_provisioned_concurrency_config"
@@ -6891,6 +6967,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Events
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/durable_execution_histories/methods/get_durable_execution_history"
@@ -6909,6 +6987,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Operations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/durable_execution_states/methods/get_durable_execution_state"
@@ -6926,12 +7006,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_function_configuration:
           operation:
             $ref: "#/paths/~12015-03-31~1functions~1{function_name}~1configuration/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6959,6 +7043,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6981,12 +7067,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_function_scaling_config:
           operation:
             $ref: "#/paths/~12025-11-30~1functions~1{function_name}~1function-scaling-config/put"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7009,6 +7099,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/layer_version_by_arns/methods/get_layer_version_by_arn"
@@ -7026,12 +7118,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_runtime_management_config:
           operation:
             $ref: "#/paths/~12021-07-20~1functions~1{function_name}~1runtime-management-config/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7055,6 +7151,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DurableExecutions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/durable_executions_by_functions/methods/list_durable_executions_by_function"
@@ -7073,6 +7171,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FunctionVersions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/function_versions_by_capacity_providers/methods/list_function_versions_by_capacity_provider"
@@ -7091,6 +7191,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FunctionArns
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/functions_by_code_signing_configs/methods/list_functions_by_code_signing_config"
@@ -7109,6 +7211,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Layers
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/layers/methods/list_layers"
@@ -7142,6 +7246,8 @@ components:
             $ref: "#/paths/~12017-03-31~1tags~1{resource}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7150,6 +7256,8 @@ components:
             $ref: "#/paths/~12017-03-31~1tags~1{resource}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -7169,6 +7277,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Versions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/versions_by_functions/methods/list_versions_by_function"
@@ -7186,6 +7296,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

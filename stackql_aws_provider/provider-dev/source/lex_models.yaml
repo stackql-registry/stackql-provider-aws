@@ -34,7 +34,7 @@ paths:
           $ref: '#/components/schemas/BotName'
         description: The name of the bot that you want to create a new version of. The name is case sensitive.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -69,7 +69,7 @@ paths:
           $ref: '#/components/schemas/IntentName'
         description: The name of the intent that you want to create a new version of. The name is case sensitive.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -104,7 +104,7 @@ paths:
           $ref: '#/components/schemas/SlotTypeName'
         description: The name of the slot type that you want to create a new version for. The name is case sensitive.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1391,7 +1391,7 @@ paths:
           you can't create a custom intent called HelpIntent. For a list of built-in intents, see Standard Built-in Intents
           in the Alexa Skills Kit.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1458,7 +1458,7 @@ paths:
           AMAZON.DATE, you can't create a custom slot type called DATE. For a list of built-in slot types, see Slot Type Reference
           in the Alexa Skills Kit.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

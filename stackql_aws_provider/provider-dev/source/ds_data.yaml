@@ -372,7 +372,7 @@ paths:
           $ref: '#/components/schemas/DirectoryId'
         description: The identifier (ID) of the directory that's associated with the group.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -454,7 +454,7 @@ paths:
           $ref: '#/components/schemas/DirectoryId'
         description: The identifier (ID) of the directory that's associated with the user.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

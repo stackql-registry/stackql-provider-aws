@@ -847,7 +847,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The name of the topic to update configuration for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

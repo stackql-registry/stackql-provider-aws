@@ -3724,3 +3724,4 @@ config:
     type: aws_signing_v4
     credentialsenvvar: AWS_SECRET_ACCESS_KEY
     keyIDenvvar: AWS_ACCESS_KEY_ID
+  snake_case_aliases: true

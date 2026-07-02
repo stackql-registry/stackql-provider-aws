@@ -81,7 +81,7 @@ paths:
           $ref: '#/components/schemas/Version'
         description: The agent's version.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -164,7 +164,7 @@ paths:
           $ref: '#/components/schemas/Version'
         description: The version of the agent for which to return information about knowledge bases associated with it.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -255,7 +255,7 @@ paths:
       description: Lists the agents belonging to an account and information about each agent.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -355,7 +355,7 @@ paths:
           $ref: '#/components/schemas/Version'
         description: The version of the agent.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -427,7 +427,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The unique identifier of the agent.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -506,7 +506,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The unique identifier of the knowledge base for which to return a list of information.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -693,7 +693,7 @@ paths:
           $ref: '#/components/schemas/FlowIdentifier'
         description: The unique identifier of the flow that you want to create a version of.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -806,7 +806,7 @@ paths:
       description: Lists the knowledge bases in an account. The list also includesinformation about each knowledge base.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -919,7 +919,7 @@ paths:
           $ref: '#/components/schemas/PromptIdentifier'
         description: The unique identifier of the prompt that you want to create a version of.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2155,7 +2155,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The unique identifier of the knowledge base that has been associated with an agent.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2309,7 +2309,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The unique identifier of the data source that contains the documents.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2342,7 +2342,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The unique identifier of the agent.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2381,7 +2381,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The unique identifier of the data source for the list of data ingestion jobs.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2424,7 +2424,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The unique identifier of the data source you want to ingest into your knowledge base.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

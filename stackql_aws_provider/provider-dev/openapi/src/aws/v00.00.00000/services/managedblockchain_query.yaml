@@ -23,7 +23,7 @@ paths:
       description: Gets the token balance for a batch of tokens by using the BatchGetTokenBalance action for every token in the request. Only the native tokens BTC and ETH, and the ERC-20, ERC-721, and ERC 1155 token standards are supported.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -983,6 +983,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -992,6 +994,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1002,6 +1006,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.tokenBalances
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1024,6 +1030,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1034,6 +1042,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.contracts
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1055,6 +1065,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1065,6 +1077,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.transactions
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1087,6 +1101,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.events
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1108,6 +1124,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.events
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

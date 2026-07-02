@@ -183,7 +183,7 @@ paths:
         in Brazil. Use the Payment preferences page in the Billing and Cost Management console instead.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -237,7 +237,7 @@ paths:
       description: Retrieves tax registration for a single account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -289,7 +289,7 @@ paths:
       description: Retrieves supplemental tax registrations for a single account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -316,7 +316,7 @@ paths:
       description: Retrieves the tax exemption of accounts listed in a consolidated billing family. The IAM action is tax:GetExemptions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -343,7 +343,7 @@ paths:
         retrieve up to 100 accounts' tax registrations in one call (default 50).
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -432,7 +432,7 @@ paths:
       description: The updated tax inheritance status.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

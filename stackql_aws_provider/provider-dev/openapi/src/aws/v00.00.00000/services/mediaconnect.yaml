@@ -225,7 +225,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: A token used to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -275,7 +275,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: A token used to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -325,7 +325,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: A token used to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -702,7 +702,7 @@ paths:
             $ref: "#/components/schemas/UpdateBridgeRequestBridgeArnString"
           description: TheAmazon Resource Name (ARN) of the bridge that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -767,7 +767,7 @@ paths:
             $ref: "#/components/schemas/UpdateFlowRequestFlowArnString"
           description: The Amazon Resource Name (ARN) of the flow that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -873,7 +873,7 @@ paths:
             $ref: "#/components/schemas/RouterInputArn"
           description: The Amazon Resource Name (ARN) of the router input that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -946,7 +946,7 @@ paths:
             $ref: "#/components/schemas/RouterNetworkInterfaceArn"
           description: The Amazon Resource Name (ARN) of the router network interface that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1009,7 +1009,7 @@ paths:
             $ref: "#/components/schemas/RouterOutputArn"
           description: The Amazon Resource Name (ARN) of the router output that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1086,7 +1086,7 @@ paths:
             $ref: "#/components/schemas/UpdateGatewayInstanceRequestGatewayInstanceArnString"
           description: The Amazon Resource Name (ARN) of the gateway instance that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1534,7 +1534,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: Tname of the output that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1590,7 +1590,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The name of the source that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1648,7 +1648,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The media stream that you updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1712,7 +1712,7 @@ paths:
             $ref: "#/components/schemas/UpdateFlowOutputRequestOutputArnString"
           description: The ARN of the output that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1806,7 +1806,7 @@ paths:
             $ref: "#/components/schemas/UpdateFlowSourceRequestSourceArnString"
           description: The ARN of the source that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1962,7 +1962,7 @@ paths:
             $ref: "#/components/schemas/UpdateFlowEntitlementRequestFlowArnString"
           description: The ARN of the flow that is associated with the entitlement that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2103,7 +2103,7 @@ paths:
             $ref: "#/components/schemas/RouterOutputArn"
           description: The Amazon Resource Name (ARN) of the router output that you want to associate with a router input.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -7092,6 +7092,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7107,6 +7109,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7128,6 +7132,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7143,6 +7149,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7164,6 +7172,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7179,6 +7189,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7200,6 +7212,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7215,6 +7229,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7236,6 +7252,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7251,6 +7269,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7272,6 +7292,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7299,6 +7321,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_router_inputs:
           operation:
             $ref: "#/paths/~1v1~1routerInputs/post"
@@ -7306,6 +7330,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RouterInputs
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7315,6 +7341,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7336,6 +7364,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7361,6 +7391,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_router_network_interfaces:
           operation:
             $ref: "#/paths/~1v1~1routerNetworkInterfaces/post"
@@ -7368,6 +7400,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RouterNetworkInterfaces
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7377,6 +7411,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7398,6 +7434,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7423,6 +7461,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_router_outputs:
           operation:
             $ref: "#/paths/~1v1~1routerOutputs/post"
@@ -7430,6 +7470,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RouterOutputs
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7439,6 +7481,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7460,6 +7504,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7485,6 +7531,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7495,6 +7543,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Bridges
+          request:
+            nativeCasing: pascal
         delete_bridge:
           operation:
             $ref: "#/paths/~1v1~1bridges~1{bridge_arn}/delete"
@@ -7513,6 +7563,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7537,6 +7589,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7547,6 +7601,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Flows
+          request:
+            nativeCasing: pascal
         delete_flow:
           operation:
             $ref: "#/paths/~1v1~1flows~1{flow_arn}/delete"
@@ -7565,6 +7621,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7589,6 +7647,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7599,6 +7659,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Gateways
+          request:
+            nativeCasing: pascal
         delete_gateway:
           operation:
             $ref: "#/paths/~1v1~1gateways~1{gateway_arn}/delete"
@@ -7631,6 +7693,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_gateway_instance:
           operation:
             $ref: "#/paths/~1v1~1gateway-instances~1{gateway_instance_arn}/get"
@@ -7643,6 +7707,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7653,6 +7719,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Instances
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/gateway_instances/methods/describe_gateway_instance"
@@ -7714,6 +7782,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Offerings
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/offerings/methods/describe_offering"
@@ -7739,6 +7809,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Reservations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/reservations/methods/describe_reservation"
@@ -7792,6 +7864,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Entitlements
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/entitlements/methods/list_entitlements"
@@ -7825,6 +7899,8 @@ components:
             $ref: "#/paths/~1tags~1global~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7833,6 +7909,8 @@ components:
             $ref: "#/paths/~1tags~1global~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -7867,6 +7945,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7875,6 +7955,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -7899,6 +7981,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7919,6 +8003,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

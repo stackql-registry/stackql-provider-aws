@@ -251,7 +251,7 @@ paths:
         Route 53 Application Recovery Controller Developer Guide.'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -281,7 +281,7 @@ paths:
         for a safety rule. To make other updates, delete the safety rule and create a new one.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

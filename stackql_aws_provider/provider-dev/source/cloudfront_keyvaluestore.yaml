@@ -195,7 +195,7 @@ paths:
         description: The current version (ETag) of the Key Value Store that you are updating keys of, which you can get using
           DescribeKeyValueStore.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

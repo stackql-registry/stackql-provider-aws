@@ -398,7 +398,7 @@ paths:
             $ref: "#/components/schemas/Name"
           description: The name of the analyzer to modify.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2939,6 +2939,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/generated_policies/methods/get_generated_policy"
@@ -2956,6 +2958,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2966,12 +2970,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.accessPreviews
+          request:
+            nativeCasing: pascal
         get_access_preview:
           operation:
             $ref: "#/paths/~1access-preview~1{access_preview_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/access_previews/methods/get_access_preview"
@@ -2991,6 +2999,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3001,11 +3011,15 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.analyzers
+          request:
+            nativeCasing: pascal
         delete_analyzer:
           operation:
             $ref: "#/paths/~1analyzer~1{analyzer_name}/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
         get_analyzer:
           operation:
             $ref: "#/paths/~1analyzer~1{analyzer_name}/get"
@@ -3018,6 +3032,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3041,6 +3057,8 @@ components:
             $ref: "#/paths/~1analyzer~1{analyzer_name}~1archive-rule/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3051,11 +3069,15 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.archiveRules
+          request:
+            nativeCasing: pascal
         delete_archive_rule:
           operation:
             $ref: "#/paths/~1analyzer~1{analyzer_name}~1archive-rule~1{rule_name}/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
         get_archive_rule:
           operation:
             $ref: "#/paths/~1analyzer~1{analyzer_name}~1archive-rule~1{rule_name}/get"
@@ -3067,6 +3089,8 @@ components:
             $ref: "#/paths/~1analyzer~1{analyzer_name}~1archive-rule~1{rule_name}/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3092,6 +3116,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.recommendedSteps
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/finding_recommendations/methods/get_finding_recommendation"
@@ -3110,6 +3136,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.findings
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3130,6 +3158,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_analyzed_resources:
           operation:
             $ref: "#/paths/~1analyzed-resource/post"
@@ -3137,6 +3167,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.analyzedResources
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3158,6 +3190,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_findings:
           operation:
             $ref: "#/paths/~1finding/post"
@@ -3165,6 +3199,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.findings
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3173,6 +3209,8 @@ components:
             $ref: "#/paths/~1finding/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3196,6 +3234,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.findingDetails
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/finding_v2s/methods/get_finding_v2"
@@ -3213,6 +3253,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3234,6 +3276,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.findings
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3255,6 +3299,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.policyGenerations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_generations/methods/list_policy_generations"
@@ -3289,6 +3335,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3298,6 +3346,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

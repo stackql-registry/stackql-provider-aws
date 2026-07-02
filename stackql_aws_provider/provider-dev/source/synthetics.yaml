@@ -238,7 +238,7 @@ paths:
         description: The name of the canary that you want to update. To find the names of your canaries, use DescribeCanaries.
           You cannot change the name of a canary that has already been created.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -340,7 +340,7 @@ paths:
         which canaries that you are allowed to view. For more information, see Limiting a user to viewing specific canaries.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -373,7 +373,7 @@ paths:
         which canaries that you are allowed to view. For more information, see Limiting a user to viewing specific canaries.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -403,7 +403,7 @@ paths:
       description: Returns a list of Synthetics canary runtime versions. For more information, see Canary Runtime Versions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -467,7 +467,7 @@ paths:
           $ref: '#/components/schemas/CanaryName'
         description: The name of the canary that you want to see runs for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -504,7 +504,7 @@ paths:
           $ref: '#/components/schemas/CanaryArn'
         description: The ARN of the canary that you want to view groups for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -537,7 +537,7 @@ paths:
         description: Specifies the group to return information for. You can specify the group name, the ARN, or the group
           ID as the GroupIdentifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -564,7 +564,7 @@ paths:
         all Regions are returned.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -705,7 +705,7 @@ paths:
           $ref: '#/components/schemas/CanaryName'
         description: The name of the canary that you want to dry run. To find canary names, use DescribeCanaries.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

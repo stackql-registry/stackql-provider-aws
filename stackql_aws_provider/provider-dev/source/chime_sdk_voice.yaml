@@ -757,7 +757,7 @@ paths:
           $ref: '#/components/schemas/SensitiveNonEmptyString'
         description: The phone number ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -915,7 +915,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The SIP media application ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1196,7 +1196,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString128'
         description: The ID of the Voice Connector for which to add the external system configuration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1722,7 +1722,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString256'
         description: The domain ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1826,7 +1826,7 @@ paths:
       description: Updates global settings for the Amazon Chime SDK Voice Connectors in an AWS account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1936,7 +1936,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The SIP media application ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1986,7 +1986,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The SIP media application ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2281,7 +2281,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The Voice Connector ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

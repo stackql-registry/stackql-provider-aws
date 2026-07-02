@@ -234,16 +234,19 @@ if [[ "$MODE" != "describe" && "${AWS_RUN_DML_TESTS:-0}" == "1" ]]; then
     fi
 
     # ----- 4. UPDATE - toggle EnableDnsHostnames via modify_vpc_attribute -----
-    # The legacy CamelCase path: ModifyVpcAttribute body fields use the
-    # AttributeBooleanValue wrapper, expressed as `EnableDnsHostnames =
-    # {Value: true}`. EC2 mutables with nested-struct input shapes aren't
-    # yet on the snake_case rewrite path (per rule 20 v1 scope), so we
-    # interact with this method using its PascalCase surface.
+    # ModifyVpcAttribute takes the AttributeBooleanValue wrapper, expressed
+    # as `EnableDnsHostnames = JSON('{"Value": true}')` (wire-format inner
+    # keys, PascalCase). The JSON() function marks the value for the
+    # AWSCanonical query transpose, which fans the struct out to
+    # `EnableDnsHostnames.Value=true` on the wire; a bare string would be
+    # sent verbatim and AWS rejects it with InvalidRequest. The WHERE key
+    # uses snake_case (vpc_id) - step 3 uses it too, step 6 as well - and
+    # the casing engine reverse-resolves it to the VpcId wire param.
     #
     # Default VPC behaviour: EnableDnsHostnames=false at creation. We flip
     # it to true. The SELECT-after-update step then re-reads via
     # describe_vpc_attribute to confirm the change took effect.
-    update_query="UPDATE aws.ec2.vpc_attributes SET EnableDnsHostnames = '{\"Value\":true}' WHERE region = '${DML_REGION}' AND VpcId = '${vpc_id}'"
+    update_query="UPDATE aws.ec2.vpc_attributes SET EnableDnsHostnames = JSON('{\"Value\":true}') WHERE region = '${DML_REGION}' AND vpc_id = '${vpc_id}'"
     printf "  %-65s " "4. UPDATE aws.ec2.vpc_attributes (EnableDnsHostnames=true)"
     update_out=$("$STACKQL" --registry="$REG" exec "$update_query" 2>&1)
     if (( $? != 0 )) || echo "$update_out" | grep -qiE "error|fail|denied|invalid|exception"; then
@@ -273,7 +276,7 @@ if [[ "$MODE" != "describe" && "${AWS_RUN_DML_TESTS:-0}" == "1" ]]; then
     fi
 
     # ----- 6. DELETE - cleanup -----
-    # Uses snake_case vpc_id (snake-rewritten Delete* path, rule 20).
+    # Uses snake_case vpc_id (casing engine reverse-resolves to VpcId).
     delete_query="DELETE FROM aws.ec2.vpcs WHERE region = '${DML_REGION}' AND vpc_id = '${vpc_id}'"
     printf "  %-65s " "6. DELETE aws.ec2.vpcs (${vpc_id}, snake_case)"
     delete_out=$("$STACKQL" --registry="$REG" exec "$delete_query" 2>&1)
@@ -286,11 +289,271 @@ if [[ "$MODE" != "describe" && "${AWS_RUN_DML_TESTS:-0}" == "1" ]]; then
       echo "ok"
       ((PASS++)) || true
     fi
+
+    # ----- 7. SELECT after delete - confirm gone -----
+    gone_query="SELECT vpc_id FROM aws.ec2.vpcs WHERE region = '${DML_REGION}'"
+    printf "  %-65s " "7. SELECT aws.ec2.vpcs confirms ${vpc_id} gone"
+    gone_out=$("$STACKQL" --registry="$REG" exec "$gone_query" 2>&1)
+    if echo "$gone_out" | grep -qF "${vpc_id}"; then
+      echo "FAIL"
+      FAILURES+=("SELECT after DELETE still sees ${vpc_id}")
+      ((FAIL++)) || true
+    else
+      echo "ok"
+      ((PASS++)) || true
+    fi
   else
     echo "  SKIP: no vpc_id captured from INSERT - subsequent steps skipped"
   fi
 fi
 # --- end DML lifecycle ----------------------------------------------------
+
+# --- query-protocol DML lifecycle (sns.topics) -------------------------------
+# Exercises the plain query protocol end to end: CreateTopic (INSERT),
+# ListTopics row shape, SetTopicAttributes (UPDATE on the topic_attributes
+# resource), GetTopicAttributes verify, DeleteTopic (snake key), then a
+# list to confirm the topic is gone. SNS topics are free.
+if [[ "$MODE" != "describe" && "${AWS_RUN_DML_TESTS:-0}" == "1" ]]; then
+  echo "--- query-protocol DML lifecycle (sns.topics) ---"
+  SNS_TOPIC="${SNS_TEST_TOPIC:-stackql-harness-e2e-topic}"
+  SNS_REGION="${AWS_REGION:-ap-southeast-2}"
+
+  printf "  %-65s " "1. INSERT aws.sns.topics (CreateTopic)"
+  sns_out=$("$STACKQL" --registry="$REG" exec "INSERT INTO aws.sns.topics(region, Name) SELECT '${SNS_REGION}', '${SNS_TOPIC}'" 2>&1)
+  if (( $? != 0 )) || echo "$sns_out" | grep -qiE "error|exception|denied|invalid"; then
+    echo "FAIL"
+    FAILURES+=("INSERT sns.topics: $(echo "$sns_out" | head -5)")
+    ((FAIL++)) || true
+  else
+    echo "ok"
+    ((PASS++)) || true
+
+    sns_arn=$("$STACKQL" --registry="$REG" exec "SELECT topic_arn FROM aws.sns.topics WHERE region = '${SNS_REGION}'" 2>&1 | grep -oE "arn:aws:sns:[a-z0-9-]+:[0-9]+:${SNS_TOPIC}" | head -1)
+    printf "  %-65s " "2. SELECT aws.sns.topics (list) sees the topic arn"
+    if [[ -n "$sns_arn" ]]; then
+      echo "ok"
+      ((PASS++)) || true
+
+      printf "  %-65s " "3. UPDATE aws.sns.topic_attributes (DisplayName)"
+      sns_upd=$("$STACKQL" --registry="$REG" exec "UPDATE aws.sns.topic_attributes SET AttributeValue = 'stackql-harness-display' WHERE region = '${SNS_REGION}' AND TopicArn = '${sns_arn}' AND AttributeName = 'DisplayName'" 2>&1)
+      if (( $? != 0 )) || echo "$sns_upd" | grep -qiE "error|exception|denied|invalid"; then
+        echo "FAIL"
+        FAILURES+=("UPDATE sns.topic_attributes: $(echo "$sns_upd" | head -5)")
+        ((FAIL++)) || true
+      else
+        echo "ok"
+        ((PASS++)) || true
+      fi
+
+      printf "  %-65s " "4. SELECT aws.sns.topic_attributes confirms DisplayName"
+      sns_verify=$("$STACKQL" --registry="$REG" exec "SELECT * FROM aws.sns.topic_attributes WHERE region = '${SNS_REGION}' AND TopicArn = '${sns_arn}'" 2>&1)
+      if echo "$sns_verify" | grep -q "stackql-harness-display"; then
+        echo "ok"
+        ((PASS++)) || true
+      else
+        echo "FAIL"
+        FAILURES+=("SELECT sns.topic_attributes missing updated DisplayName: $(echo "$sns_verify" | head -3)")
+        ((FAIL++)) || true
+      fi
+
+      printf "  %-65s " "5. DELETE aws.sns.topics (snake key)"
+      sns_del=$("$STACKQL" --registry="$REG" exec "DELETE FROM aws.sns.topics WHERE region = '${SNS_REGION}' AND topic_arn = '${sns_arn}'" 2>&1)
+      if (( $? != 0 )) || echo "$sns_del" | grep -qiE "error|exception|denied|invalid"; then
+        echo "FAIL"
+        FAILURES+=("DELETE sns.topics: $(echo "$sns_del" | head -5)")
+        ((FAIL++)) || true
+      else
+        echo "ok"
+        ((PASS++)) || true
+      fi
+
+      printf "  %-65s " "6. SELECT aws.sns.topics confirms topic gone"
+      sns_gone=$("$STACKQL" --registry="$REG" exec "SELECT topic_arn FROM aws.sns.topics WHERE region = '${SNS_REGION}'" 2>&1)
+      if echo "$sns_gone" | grep -qF "$sns_arn"; then
+        echo "FAIL"
+        FAILURES+=("SELECT after DELETE still sees ${sns_arn}")
+        ((FAIL++)) || true
+      else
+        echo "ok"
+        ((PASS++)) || true
+      fi
+    else
+      echo "FAIL"
+      FAILURES+=("SELECT sns.topics did not find ${SNS_TOPIC}")
+      ((FAIL++)) || true
+    fi
+  fi
+fi
+# --- end query-protocol DML lifecycle ----------------------------------------
+
+# --- rest-xml DML lifecycle (s3.buckets) --------------------------------------
+# CreateBucket (INSERT, path-param routed, no body - us-east-1 needs no
+# LocationConstraint), list shape check, DeleteBucket, list confirms gone.
+# Bucket names are global; suffix with the account id to avoid collisions.
+if [[ "$MODE" != "describe" && "${AWS_RUN_DML_TESTS:-0}" == "1" ]]; then
+  echo "--- rest-xml DML lifecycle (s3.buckets) ---"
+  S3_REGION="us-east-1"
+  s3_acct=$("$STACKQL" --registry="$REG" exec "SELECT Account FROM aws.sts.caller_identities WHERE region = 'us-east-1'" 2>&1 | grep -oE '[0-9]{12}' | head -1)
+  S3_BUCKET="${S3_TEST_BUCKET:-stackql-harness-e2e-${s3_acct:-noacct}}"
+
+  printf "  %-65s " "1. INSERT aws.s3.buckets (CreateBucket ${S3_BUCKET})"
+  s3_out=$("$STACKQL" --registry="$REG" exec "INSERT INTO aws.s3.buckets(region, bucket) SELECT '${S3_REGION}', '${S3_BUCKET}'" 2>&1)
+  if (( $? != 0 )) || echo "$s3_out" | grep -qiE "error|exception|denied|invalid|malformed"; then
+    echo "FAIL"
+    FAILURES+=("INSERT s3.buckets: $(echo "$s3_out" | head -5)")
+    ((FAIL++)) || true
+  else
+    echo "ok"
+    ((PASS++)) || true
+
+    printf "  %-65s " "2. SELECT aws.s3.buckets (list) sees the bucket + arn"
+    s3_list=$("$STACKQL" --registry="$REG" exec "SELECT name, bucket_arn FROM aws.s3.buckets WHERE region = '${S3_REGION}'" 2>&1)
+    if echo "$s3_list" | grep -qF "arn:aws:s3:::${S3_BUCKET}"; then
+      echo "ok"
+      ((PASS++)) || true
+    else
+      echo "FAIL"
+      FAILURES+=("SELECT s3.buckets did not find ${S3_BUCKET}: $(echo "$s3_list" | head -3)")
+      ((FAIL++)) || true
+    fi
+
+    printf "  %-65s " "3. DELETE aws.s3.buckets (${S3_BUCKET})"
+    s3_del=$("$STACKQL" --registry="$REG" exec "DELETE FROM aws.s3.buckets WHERE region = '${S3_REGION}' AND bucket = '${S3_BUCKET}'" 2>&1)
+    if (( $? != 0 )) || echo "$s3_del" | grep -qiE "error|exception|denied|invalid"; then
+      echo "FAIL"
+      FAILURES+=("DELETE s3.buckets: $(echo "$s3_del" | head -5)")
+      ((FAIL++)) || true
+    else
+      echo "ok"
+      ((PASS++)) || true
+    fi
+
+    printf "  %-65s " "4. SELECT aws.s3.buckets confirms bucket gone"
+    s3_gone=$("$STACKQL" --registry="$REG" exec "SELECT name FROM aws.s3.buckets WHERE region = '${S3_REGION}'" 2>&1)
+    if echo "$s3_gone" | grep -qF "${S3_BUCKET}"; then
+      echo "FAIL"
+      FAILURES+=("SELECT after DELETE still sees ${S3_BUCKET}")
+      ((FAIL++)) || true
+    else
+      echo "ok"
+      ((PASS++)) || true
+    fi
+  fi
+fi
+# --- end rest-xml DML lifecycle -----------------------------------------------
+
+# --- aws-json DML lifecycle (dynamodb.tables) -------------------------------
+# Exercises the aws-json (POST-body) protocol end to end: CREATE with a
+# list-of-struct body field (KeySchema / AttributeDefinitions passed as JSON
+# strings, translated by `requestBodyTranslate: naive` + the spec's native
+# body schema), get-by-name, then DELETE. Opt-in via AWS_RUN_DML_TESTS=1.
+# PAY_PER_REQUEST billing so the empty table costs nothing while it exists.
+if [[ "$MODE" != "describe" && "${AWS_RUN_DML_TESTS:-0}" == "1" ]]; then
+  echo "--- aws-json DML lifecycle (dynamodb.tables: INSERT, SELECT get, DELETE) ---"
+  DDB_TABLE="${DDB_TEST_TABLE:-stackql-harness-ddb-test}"
+  DDB_REGION="${AWS_REGION:-ap-southeast-2}"
+
+  # ----- 1. INSERT (CreateTable) -----
+  ddb_insert_query="INSERT INTO aws.dynamodb.tables(region, TableName, KeySchema, AttributeDefinitions, BillingMode) SELECT '${DDB_REGION}', '${DDB_TABLE}', '[{\"AttributeName\":\"pk\",\"KeyType\":\"HASH\"}]', '[{\"AttributeName\":\"pk\",\"AttributeType\":\"S\"}]', 'PAY_PER_REQUEST'"
+  printf "  %-65s " "1. INSERT aws.dynamodb.tables (CreateTable)"
+  ddb_insert_out=$("$STACKQL" --registry="$REG" exec "$ddb_insert_query" 2>&1)
+  ddb_insert_status=$?
+  if (( ddb_insert_status != 0 )) || echo "$ddb_insert_out" | grep -qiE "error|exception|denied|invalid"; then
+    echo "FAIL"
+    FAILURES+=("INSERT dynamodb.tables: $(echo "$ddb_insert_out" | head -5)")
+    ((FAIL++)) || true
+  else
+    echo "ok"
+    ((PASS++)) || true
+
+    # ----- 2. SELECT get (DescribeTable) - wait for ACTIVE -----
+    # CreateTable is async; poll until table_status reads ACTIVE (or give
+    # up after ~60s) so the DELETE step doesn't race the creation.
+    printf "  %-65s " "2. SELECT aws.dynamodb.tables sees ${DDB_TABLE} ACTIVE"
+    ddb_seen=""
+    for _i in 1 2 3 4 5 6; do
+      ddb_get_out=$("$STACKQL" --registry="$REG" exec "SELECT * FROM aws.dynamodb.tables WHERE region = '${DDB_REGION}' AND TableName = '${DDB_TABLE}'" 2>&1)
+      if echo "$ddb_get_out" | grep -qF "$DDB_TABLE" && echo "$ddb_get_out" | grep -q "ACTIVE"; then
+        ddb_seen=1
+        break
+      fi
+      sleep 10
+    done
+    if [[ -n "$ddb_seen" ]]; then
+      echo "ok"
+      ((PASS++)) || true
+    else
+      echo "FAIL"
+      FAILURES+=("SELECT dynamodb.tables did not reach ACTIVE: $(echo "$ddb_get_out" | head -5)")
+      ((FAIL++)) || true
+    fi
+
+    # ----- 3. UPDATE (UpdateTable: TableClass, snake_case where key) -----
+    # A string-typed single-field update. (A boolean RHS like
+    # DeletionProtectionEnabled=true is not yet supported by stackql's
+    # UPDATE parser - sqlparser.BoolVal limitation.)
+    printf "  %-65s " "3. UPDATE aws.dynamodb.tables (TableClass)"
+    ddb_upd=$("$STACKQL" --registry="$REG" exec "UPDATE aws.dynamodb.tables SET TableClass = 'STANDARD_INFREQUENT_ACCESS' WHERE region = '${DDB_REGION}' AND table_name = '${DDB_TABLE}'" 2>&1)
+    if (( $? != 0 )) || echo "$ddb_upd" | grep -qiE "error|exception|denied|invalid"; then
+      echo "FAIL"
+      FAILURES+=("UPDATE dynamodb.tables: $(echo "$ddb_upd" | head -5)")
+      ((FAIL++)) || true
+    else
+      echo "ok"
+      ((PASS++)) || true
+    fi
+
+    # ----- 4. SELECT verify the update took -----
+    printf "  %-65s " "4. SELECT aws.dynamodb.tables confirms TableClass"
+    ddb_verify=""
+    for _i in 1 2 3; do
+      ddb_verify=$("$STACKQL" --registry="$REG" exec "SELECT * FROM aws.dynamodb.tables WHERE region = '${DDB_REGION}' AND TableName = '${DDB_TABLE}'" 2>&1)
+      echo "$ddb_verify" | grep -q "STANDARD_INFREQUENT_ACCESS" && break
+      sleep 5
+    done
+    if echo "$ddb_verify" | grep -q "STANDARD_INFREQUENT_ACCESS"; then
+      echo "ok"
+      ((PASS++)) || true
+    else
+      echo "FAIL"
+      FAILURES+=("SELECT verify did not see TableClass update: $(echo "$ddb_verify" | head -3)")
+      ((FAIL++)) || true
+    fi
+
+    # ----- 5. DELETE (DeleteTable, snake_case key) -----
+    printf "  %-65s " "5. DELETE aws.dynamodb.tables (${DDB_TABLE})"
+    ddb_delete_out=$("$STACKQL" --registry="$REG" exec "DELETE FROM aws.dynamodb.tables WHERE region = '${DDB_REGION}' AND table_name = '${DDB_TABLE}'" 2>&1)
+    ddb_delete_status=$?
+    if (( ddb_delete_status != 0 )) || echo "$ddb_delete_out" | grep -qiE "error|exception|denied|invalid"; then
+      echo "FAIL"
+      FAILURES+=("DELETE dynamodb.tables ${DDB_TABLE}: $(echo "$ddb_delete_out" | head -5)")
+      ((FAIL++)) || true
+    else
+      echo "ok"
+      ((PASS++)) || true
+    fi
+
+    # ----- 6. SELECT confirms the table is gone -----
+    # DescribeTable on a missing table returns ResourceNotFoundException;
+    # deletion takes a few seconds so poll briefly.
+    printf "  %-65s " "6. SELECT aws.dynamodb.tables confirms table gone"
+    ddb_gone=""
+    for _i in 1 2 3 4 5 6; do
+      ddb_gone=$("$STACKQL" --registry="$REG" exec "SELECT * FROM aws.dynamodb.tables WHERE region = '${DDB_REGION}' AND TableName = '${DDB_TABLE}'" 2>&1)
+      echo "$ddb_gone" | grep -q "ResourceNotFoundException" && break
+      sleep 8
+    done
+    if echo "$ddb_gone" | grep -q "ResourceNotFoundException"; then
+      echo "ok"
+      ((PASS++)) || true
+    else
+      echo "FAIL"
+      FAILURES+=("table still present after DELETE: $(echo "$ddb_gone" | head -3)")
+      ((FAIL++)) || true
+    fi
+  fi
+fi
+# --- end aws-json DML lifecycle ---------------------------------------------
 
 echo "--- query protocol regional (XML wrapped in resultWrapper) ---"
 run_test "DESCRIBE cloudformation.stacks"     describe "DESCRIBE EXTENDED aws.cloudformation.stacks"                                   "stack_name|StackName"

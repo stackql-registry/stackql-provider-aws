@@ -539,7 +539,7 @@ paths:
           $ref: '#/components/schemas/LinkId'
         description: The unique identifier of the link.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

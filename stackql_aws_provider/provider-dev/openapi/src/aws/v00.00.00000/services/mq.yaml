@@ -174,7 +174,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The Amazon Resource Name (ARN) of the resource tag.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -325,7 +325,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -392,7 +392,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The unique ID that Amazon MQ generates for the broker.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1711,6 +1711,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1721,6 +1723,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.BrokerSummaries
+          request:
+            nativeCasing: pascal
         delete_broker:
           operation:
             $ref: "#/paths/~1v1~1brokers~1{broker-id}/delete"
@@ -1739,6 +1743,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1763,6 +1769,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1772,6 +1780,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_configuration:
           operation:
             $ref: "#/paths/~1v1~1configurations~1{configuration-id}/delete"
@@ -1790,6 +1800,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1813,6 +1825,8 @@ components:
             $ref: "#/paths/~1v1~1tags~1{resource-arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1821,6 +1835,8 @@ components:
             $ref: "#/paths/~1v1~1tags~1{resource-arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         list_tags:
           operation:
             $ref: "#/paths/~1v1~1tags~1{resource-arn}/get"
@@ -1846,6 +1862,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1867,6 +1885,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1876,6 +1896,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/users/methods/describe_user"
@@ -1897,6 +1919,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/broker_engine_types/methods/describe_broker_engine_types"
@@ -1914,6 +1938,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/broker_instance_options/methods/describe_broker_instance_options"
@@ -1937,6 +1963,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/configuration_revisions/methods/describe_configuration_revision"

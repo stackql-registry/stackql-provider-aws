@@ -353,7 +353,7 @@ paths:
           $ref: '#/components/schemas/SpaceId'
         description: The unique ID of this private re:Post.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

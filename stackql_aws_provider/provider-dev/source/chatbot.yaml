@@ -448,7 +448,7 @@ paths:
       description: Lists Amazon Chime webhook configurations optionally filtered by ChatConfigurationArn
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -477,7 +477,7 @@ paths:
       description: Lists Slack channel configurations optionally filtered by ChatConfigurationArn
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -506,7 +506,7 @@ paths:
       description: Lists all Slack user identities with a mapped role.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -535,7 +535,7 @@ paths:
       description: List all authorized Slack workspaces connected to the AWS Account onboarded with AWS Chatbot.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -689,7 +689,7 @@ paths:
       description: Lists custom actions defined in this account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -716,7 +716,7 @@ paths:
       description: Lists all AWS Chatbot Microsoft Teams channel configurations in an AWS account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -745,7 +745,7 @@ paths:
       description: Lists all authorized Microsoft Teams for an AWS Account
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -772,7 +772,7 @@ paths:
       description: A list all Microsoft Teams user identities with a mapped role.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -888,7 +888,7 @@ paths:
       description: Updates AWS Chatbot account preferences.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

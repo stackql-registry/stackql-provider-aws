@@ -113,11 +113,6 @@ paths:
       x-stackql-method: abort_multipart_upload
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: AbortMultipartUploadOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"request_charged\": {{ $v := index .\
-        \ \"x-amz-request-charged\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     post:
       operationId: CompleteMultipartUpload
@@ -362,9 +357,9 @@ paths:
           was created using a checksum algorithm. For more information, see Protecting data using SSE-C keys in the Amazon
           S3 User Guide. This functionality is not supported for directory buckets.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -381,68 +376,6 @@ paths:
       x-stackql-method: complete_multipart_upload
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CompleteMultipartUploadOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"location\": {{ $v := index . \"Location\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket\": {{ $v := index . \"Bucket\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"key\": {{ $v := index . \"Key\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"expiration\": {{ $v := index . \"x-amz-expiration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\"\
-        ) }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\"\
-        \ }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"\
-        e_tag\": {{ $v := index . \"ETag\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_crc32\": {{ $v :=\
-        \ index . \"ChecksumCRC32\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_crc32_c\": {{ $v := index\
-        \ . \"ChecksumCRC32C\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_crc64_nvme\": {{ $v := index\
-        \ . \"ChecksumCRC64NVME\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha1\": {{ $v := index . \"\
-        ChecksumSHA1\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha256\": {{ $v := index . \"ChecksumSHA256\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha512\": {{ $v := index . \"ChecksumSHA512\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_md5\": {{ $v := index . \"ChecksumMD5\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash64\": {{ $v := index . \"ChecksumXXHASH64\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash3\": {{ $v := index . \"ChecksumXXHASH3\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash128\": {{ $v := index . \"ChecksumXXHASH128\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_type\": {{ $v := index . \"ChecksumType\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"server_side_encryption\": {{ $v := index . \"x-amz-server-side-encryption\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"version_id\": {{ $v := index . \"x-amz-version-id\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ssekms_key_id\": {{ $v := index . \"x-amz-server-side-encryption-aws-kms-key-id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_key_enabled\": {{ $v := index . \"x-amz-server-side-encryption-bucket-key-enabled\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"request_charged\": {{ $v := index . \"x-amz-request-charged\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: CopyObject
@@ -1008,38 +941,6 @@ paths:
       x-stackql-method: copy_object
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyObjectOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"copy_object_result\": {{ $v := index\
-        \ . \"CopyObjectResult\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }},\n        \"expiration\": {{ $v := index . \"x-amz-expiration\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"copy_source_version_id\": {{ $v := index . \"x-amz-copy-source-version-id\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"version_id\": {{ $v := index . \"x-amz-version-id\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"server_side_encryption\": {{ $v := index . \"x-amz-server-side-encryption\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"sse_customer_algorithm\": {{ $v := index . \"x-amz-server-side-encryption-customer-algorithm\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"sse_customer_key_md5\": {{ $v := index . \"x-amz-server-side-encryption-customer-key-MD5\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ssekms_key_id\": {{ $v := index . \"x-amz-server-side-encryption-aws-kms-key-id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ssekms_encryption_context\": {{ $v := index . \"x-amz-server-side-encryption-context\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_key_enabled\": {{ $v := index . \"x-amz-server-side-encryption-bucket-key-enabled\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"request_charged\": {{ $v := index . \"x-amz-request-charged\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetObject
@@ -1301,124 +1202,6 @@ paths:
       x-stackql-method: get_object
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetObjectOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"body\": {{ $v := index . \"Body\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"delete_marker\": {{ $v := index . \"x-amz-delete-marker\" }}{{\
-        \ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"accept_ranges\": {{ $v := index . \"accept-ranges\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"expiration\": {{ $v := index . \"x-amz-expiration\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"restore\": {{ $v := index . \"x-amz-restore\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"last_modified\": {{ $v := index . \"Last-Modified\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"content_length\": {{ $v := index . \"Content-Length\" }}{{ if eq $v nil }}null{{ else\
-        \ }}{{toInt $v}}{{ end }},\n        \"e_tag\": {{ $v := index . \"ETag\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }},\n        \"checksum_crc32\": {{ $v := index . \"x-amz-checksum-crc32\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"\
-        %T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"checksum_crc32_c\": {{ $v := index . \"x-amz-checksum-crc32c\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"checksum_crc64_nvme\": {{ $v := index . \"x-amz-checksum-crc64nvme\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"checksum_sha1\": {{ $v := index . \"x-amz-checksum-sha1\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"checksum_sha256\": {{ $v := index . \"x-amz-checksum-sha256\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"checksum_sha512\": {{ $v := index . \"x-amz-checksum-sha512\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"checksum_md5\": {{ $v := index . \"x-amz-checksum-md5\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"checksum_xxhash64\": {{ $v := index . \"x-amz-checksum-xxhash64\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash3\": {{ $v := index . \"x-amz-checksum-xxhash3\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{\
-        \ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash128\": {{ $v := index . \"x-amz-checksum-xxhash128\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_type\": {{ $v := index . \"x-amz-checksum-type\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"missing_meta\": {{ $v := index . \"x-amz-missing-meta\" }}{{ if\
-        \ eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"version_id\": {{ $v := index . \"x-amz-version-id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"cache_control\": {{ $v := index . \"Cache-Control\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"content_disposition\": {{ $v := index . \"Content-Disposition\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"content_encoding\": {{ $v := index . \"Content-Encoding\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"content_language\": {{ $v := index . \"Content-Language\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"content_range\": {{ $v := index . \"Content-Range\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"content_type\": {{ $v := index . \"Content-Type\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{\
-        \ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"expires\": {{ $v := index . \"Expires\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"\
-        %T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"website_redirect_location\": {{ $v := index . \"x-amz-website-redirect-location\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"server_side_encryption\": {{ $v := index . \"x-amz-server-side-encryption\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"metadata\": {{ $v := index . \"x-amz-meta-\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"sse_customer_algorithm\"\
-        : {{ $v := index . \"x-amz-server-side-encryption-customer-algorithm\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"sse_customer_key_md5\": {{ $v := index . \"x-amz-server-side-encryption-customer-key-MD5\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{\
-        \ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"ssekms_key_id\": {{ $v := index . \"x-amz-server-side-encryption-aws-kms-key-id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_key_enabled\": {{ $v := index . \"x-amz-server-side-encryption-bucket-key-enabled\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"storage_class\": {{ $v := index . \"x-amz-storage-class\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"request_charged\": {{ $v := index . \"x-amz-request-charged\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"replication_status\": {{ $v := index . \"x-amz-replication-status\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"parts_count\": {{ $v := index . \"x-amz-mp-parts-count\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"tag_count\": {{ $v := index . \"x-amz-tagging-count\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"object_lock_mode\": {{ $v := index . \"x-amz-object-lock-mode\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"object_lock_retain_until_date\": {{ $v := index . \"x-amz-object-lock-retain-until-date\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"object_lock_legal_hold_status\": {{ $v := index . \"x-amz-object-lock-legal-hold\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     head:
       operationId: HeadObject
@@ -1654,123 +1437,6 @@ paths:
       x-stackql-method: head_object
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: HeadObjectOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"delete_marker\": {{ $v := index . \"\
-        x-amz-delete-marker\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"accept_ranges\": {{ $v\
-        \ := index . \"accept-ranges\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"expiration\": {{ $v := index\
-        \ . \"x-amz-expiration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"restore\": {{ $v := index . \"x-amz-restore\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"archive_status\": {{ $v := index . \"x-amz-archive-status\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"last_modified\": {{ $v := index . \"Last-Modified\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"content_length\": {{ $v := index . \"Content-Length\" }}{{ if\
-        \ eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"checksum_crc32\": {{ $v := index . \"x-amz-checksum-crc32\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_crc32_c\": {{ $v := index . \"x-amz-checksum-crc32c\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_crc64_nvme\": {{ $v := index . \"x-amz-checksum-crc64nvme\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha1\": {{ $v := index . \"x-amz-checksum-sha1\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha256\": {{ $v := index . \"x-amz-checksum-sha256\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha512\": {{ $v := index . \"x-amz-checksum-sha512\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_md5\": {{ $v := index . \"x-amz-checksum-md5\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash64\": {{ $v := index . \"x-amz-checksum-xxhash64\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash3\": {{ $v := index . \"x-amz-checksum-xxhash3\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash128\": {{ $v := index . \"x-amz-checksum-xxhash128\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_type\": {{ $v := index . \"x-amz-checksum-type\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"e_tag\": {{ $v := index . \"ETag\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"missing_meta\": {{ $v := index . \"x-amz-missing-meta\" }}{{ if eq $v nil }}null{{\
-        \ else }}{{toInt $v}}{{ end }},\n        \"version_id\": {{ $v := index . \"x-amz-version-id\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"cache_control\": {{ $v := index . \"Cache-Control\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"content_disposition\": {{ $v := index . \"Content-Disposition\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"content_encoding\": {{ $v := index . \"Content-Encoding\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"content_language\": {{ $v := index . \"Content-Language\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"content_type\": {{ $v := index . \"Content-Type\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"content_range\": {{ $v := index . \"Content-Range\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\"\
-        ) }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\"\
-        \ }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"\
-        expires\": {{ $v := index . \"Expires\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"website_redirect_location\"\
-        : {{ $v := index . \"x-amz-website-redirect-location\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"server_side_encryption\"\
-        : {{ $v := index . \"x-amz-server-side-encryption\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"metadata\":\
-        \ {{ $v := index . \"x-amz-meta-\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }},\n        \"sse_customer_algorithm\": {{ $v := index . \"x-amz-server-side-encryption-customer-algorithm\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"sse_customer_key_md5\": {{ $v := index . \"x-amz-server-side-encryption-customer-key-MD5\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ssekms_key_id\": {{ $v := index . \"x-amz-server-side-encryption-aws-kms-key-id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_key_enabled\": {{ $v := index . \"x-amz-server-side-encryption-bucket-key-enabled\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"storage_class\": {{ $v := index . \"x-amz-storage-class\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"request_charged\": {{ $v := index . \"x-amz-request-charged\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"replication_status\": {{ $v := index . \"x-amz-replication-status\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"parts_count\": {{ $v := index . \"x-amz-mp-parts-count\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"tag_count\": {{ $v := index . \"x-amz-tagging-count\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"object_lock_mode\": {{ $v := index . \"x-amz-object-lock-mode\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"object_lock_retain_until_date\": {{ $v := index . \"x-amz-object-lock-retain-until-date\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"object_lock_legal_hold_status\": {{ $v := index . \"x-amz-object-lock-legal-hold\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}:
     put:
@@ -1909,9 +1575,9 @@ paths:
           see Account regional namespace naming rules in the Amazon S3 User Guide. This functionality is not supported for
           directory buckets.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1928,14 +1594,6 @@ paths:
       x-stackql-method: create_bucket
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateBucketOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"location\": {{ $v := index . \"Location\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_arn\": {{ $v := index . \"x-amz-bucket-arn\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     delete:
       operationId: DeleteBucket
@@ -2058,21 +1716,6 @@ paths:
       x-stackql-method: head_bucket
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: HeadBucketOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"bucket_arn\": {{ $v := index . \"x-amz-bucket-arn\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_location_type\": {{ $v := index . \"x-amz-bucket-location-type\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_location_name\": {{ $v := index . \"x-amz-bucket-location-name\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_region\": {{ $v := index . \"x-amz-bucket-region\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_point_alias\": {{ $v := index . \"x-amz-access-point-alias\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: ListObjects
@@ -2171,32 +1814,6 @@ paths:
       x-stackql-method: list_objects
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListObjectsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"Contents\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n        {{-\
-        \ $items := index $list_parent \"item\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface {}\"\
-        \ }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n \
-        \         {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n      \
-        \  \"key\": {{ $v := index . \"Key\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"last_modified\": {{ $v := index\
-        \ . \"LastModified\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"e_tag\": {{ $v := index . \"ETag\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_algorithm\": {{ $v := index . \"ChecksumAlgorithm\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n     \
-        \   \"checksum_type\": {{ $v := index . \"ChecksumType\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"size\"\
-        : {{ $v := index . \"Size\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"storage_class\": {{\
-        \ $v := index . \"StorageClass\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"owner\": {{ $v := index . \"\
-        Owner\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end\
-        \ }},\n        \"restore_status\": {{ $v := index . \"RestoreStatus\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?metadataConfiguration:
     post:
@@ -2245,7 +1862,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2328,11 +1945,6 @@ paths:
       x-stackql-method: get_bucket_metadata_configuration
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketMetadataConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"GetBucketMetadataConfigurationResult\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"metadata_configuration_result\": {{ $v := index . \"MetadataConfigurationResult\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n\
-        {{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?metadataTable:
     post:
@@ -2381,7 +1993,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2474,15 +2086,6 @@ paths:
       x-stackql-method: get_bucket_metadata_table_configuration
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketMetadataTableConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"GetBucketMetadataTableConfigurationResult\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{-\
-        \ end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"metadata_table_configuration_result\": {{ $v := index . \"MetadataTableConfigurationResult\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"error\": {{\
-        \ $v := index . \"Error\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}/{key}?uploads:
     post:
@@ -2919,48 +2522,6 @@ paths:
       x-stackql-method: create_multipart_upload
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateMultipartUploadOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"abort_date\": {{ $v := index . \"x-amz-abort-date\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"abort_rule_id\": {{ $v := index . \"x-amz-abort-rule-id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket\": {{ $v := index . \"Bucket\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"key\": {{ $v := index . \"Key\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"upload_id\": {{ $v := index . \"UploadId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"server_side_encryption\"\
-        : {{ $v := index . \"x-amz-server-side-encryption\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"sse_customer_algorithm\"\
-        : {{ $v := index . \"x-amz-server-side-encryption-customer-algorithm\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"sse_customer_key_md5\": {{ $v := index . \"x-amz-server-side-encryption-customer-key-MD5\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{\
-        \ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"ssekms_key_id\": {{ $v := index . \"x-amz-server-side-encryption-aws-kms-key-id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ssekms_encryption_context\": {{ $v := index . \"x-amz-server-side-encryption-context\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_key_enabled\": {{ $v := index . \"x-amz-server-side-encryption-bucket-key-enabled\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"request_charged\": {{ $v := index . \"x-amz-request-charged\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_algorithm\": {{ $v := index . \"x-amz-checksum-algorithm\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_type\": {{ $v := index . \"x-amz-checksum-type\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?session:
     get:
@@ -3106,21 +2667,6 @@ paths:
       x-stackql-method: create_session
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateSessionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"server_side_encryption\": {{ $v :=\
-        \ index . \"x-amz-server-side-encryption\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq\
-        \ (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"\
-        %q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ssekms_key_id\"\
-        : {{ $v := index . \"x-amz-server-side-encryption-aws-kms-key-id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\
-        \") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"\
-        float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n \
-        \       \"ssekms_encryption_context\": {{ $v := index . \"x-amz-server-side-encryption-context\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"bucket_key_enabled\": {{ $v := index . \"x-amz-server-side-encryption-bucket-key-enabled\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"credentials\": {{ $v := index . \"Credentials\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n\
-        {{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?analytics:
     delete:
@@ -3203,14 +2749,6 @@ paths:
       x-stackql-method: get_bucket_analytics_configuration
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketAnalyticsConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"AnalyticsConfiguration\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"filter\"\
-        : {{ $v := index . \"Filter\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }},\n        \"storage_class_analysis\": {{ $v := index . \"StorageClassAnalysis\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketAnalyticsConfiguration
@@ -3258,7 +2796,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -3342,10 +2880,6 @@ paths:
       x-stackql-method: get_bucket_cors
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketCorsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"cors_rules\": {{ $v := index . \"CORSRule\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n\
-        {{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketCors
@@ -3403,7 +2937,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -3514,10 +3048,6 @@ paths:
       x-stackql-method: get_bucket_encryption
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketEncryptionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ServerSideEncryptionConfiguration\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"rules\": {{ $v := index . \"Rule\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketEncryption
@@ -3608,7 +3138,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -3710,17 +3240,6 @@ paths:
       x-stackql-method: get_bucket_intelligent_tiering_configuration
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketIntelligentTieringConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"IntelligentTieringConfiguration\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n \
-        \ ]\n}\n{{define \"row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"filter\": {{ $v := index . \"Filter\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"tierings\": {{ $v := index . \"Tiering\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketIntelligentTieringConfiguration
@@ -3767,7 +3286,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -3894,21 +3413,6 @@ paths:
       x-stackql-method: get_bucket_inventory_configuration
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketInventoryConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"InventoryConfiguration\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"destination\": {{ $v := index . \"Destination\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"is_enabled\": {{ $v := index . \"\
-        IsEnabled\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"filter\": {{ $v := index . \"Filter\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"included_object_versions\"\
-        : {{ $v := index . \"IncludedObjectVersions\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"optional_fields\"\
-        : {{ $v := index . \"OptionalFields\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"schedule\": {{ $v := index . \"Schedule\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketInventoryConfiguration
@@ -3978,7 +3482,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -4077,10 +3581,6 @@ paths:
       x-stackql-method: get_bucket_lifecycle
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketLifecycleOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"rules\": {{ $v := index . \"Rule\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n\
-        {{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketLifecycle
@@ -4135,9 +3635,9 @@ paths:
         description: The account ID of the expected bucket owner. If the account ID that you provide does not match the actual
           owner of the bucket, the request fails with the HTTP status code 403 Forbidden (access denied).
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -4268,13 +3768,6 @@ paths:
       x-stackql-method: get_bucket_metrics_configuration
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketMetricsConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"MetricsConfiguration\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"filter\"\
-        : {{ $v := index . \"Filter\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketMetricsConfiguration
@@ -4333,7 +3826,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -4413,10 +3906,6 @@ paths:
       x-stackql-method: get_bucket_ownership_controls
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketOwnershipControlsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"OwnershipControls\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"rules\": {{ $v := index . \"Rule\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketOwnershipControls
@@ -4460,7 +3949,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -4592,11 +4081,6 @@ paths:
       x-stackql-method: get_bucket_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketPolicyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"policy\": {{ $v := index . \"Policy\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketPolicy
@@ -4679,7 +4163,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -4761,13 +4245,6 @@ paths:
       x-stackql-method: get_bucket_replication
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketReplicationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ReplicationConfiguration\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n\
-        {{define \"row\"}}\n{\n        \"role\": {{ $v := index . \"Role\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\
-        \") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"\
-        float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n \
-        \       \"rules\": {{ $v := index . \"Rule\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{\
-        \ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketReplication
@@ -4839,7 +4316,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -4917,10 +4394,6 @@ paths:
       x-stackql-method: get_bucket_tagging
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketTaggingOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"tag_set\": {{ $v := index . \"TagSet\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n\
-        {{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketTagging
@@ -4980,7 +4453,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -5062,14 +4535,6 @@ paths:
       x-stackql-method: get_bucket_website
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketWebsiteOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"redirect_all_requests_to\": {{ $v :=\
-        \ index . \"RedirectAllRequestsTo\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"index_document\": {{ $v := index . \"IndexDocument\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"error_document\"\
-        : {{ $v := index . \"ErrorDocument\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"routing_rules\": {{ $v := index . \"RoutingRules\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketWebsite
@@ -5127,7 +4592,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -5290,15 +4755,6 @@ paths:
       x-stackql-method: delete_object
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteObjectOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"delete_marker\": {{ $v := index . \"\
-        x-amz-delete-marker\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"version_id\": {{ $v :=\
-        \ index . \"x-amz-version-id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"request_charged\": {{ $v :=\
-        \ index . \"x-amz-request-charged\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}/{key}?tagging:
     delete:
@@ -5358,11 +4814,6 @@ paths:
       x-stackql-method: delete_object_tagging
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteObjectTaggingOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"version_id\": {{ $v := index . \"x-amz-version-id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetObjectTagging
@@ -5429,12 +4880,6 @@ paths:
       x-stackql-method: get_object_tagging
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetObjectTaggingOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"version_id\": {{ $v := index . \"x-amz-version-id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"tag_set\": {{ $v := index . \"TagSet\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutObjectTagging
@@ -5517,7 +4962,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -5536,11 +4981,6 @@ paths:
       x-stackql-method: put_object_tagging
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutObjectTaggingOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"version_id\": {{ $v := index . \"x-amz-version-id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?delete:
     post:
@@ -5659,7 +5099,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -5678,14 +5118,6 @@ paths:
       x-stackql-method: delete_objects
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteObjectsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"deleted\": {{ $v := index . \"Deleted\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"request_charged\": {{ $v := index . \"x-amz-request-charged\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }},\n        \"errors\": {{ $v := index . \"Error\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?publicAccessBlock:
     delete:
@@ -5758,13 +5190,6 @@ paths:
       x-stackql-method: get_public_access_block
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetPublicAccessBlockOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"PublicAccessBlockConfiguration\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n\
-        }\n{{define \"row\"}}\n{\n        \"block_public_acls\": {{ $v := index . \"BlockPublicAcls\" }}{{ if eq $v nil }}null{{\
-        \ else }}{{toBool $v}}{{ end }},\n        \"ignore_public_acls\": {{ $v := index . \"IgnorePublicAcls\" }}{{ if eq\
-        \ $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"block_public_policy\": {{ $v := index . \"BlockPublicPolicy\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"restrict_public_buckets\": {{ $v := index .\
-        \ \"RestrictPublicBuckets\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutPublicAccessBlock
@@ -5813,7 +5238,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -5857,11 +5282,6 @@ paths:
       x-stackql-method: get_bucket_abac
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketAbacOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"AbacStatus\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketAbac
@@ -5900,7 +5320,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -5960,14 +5380,6 @@ paths:
       x-stackql-method: get_bucket_accelerate_configuration
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketAccelerateConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"status\": {{ $v := index . \"Status\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"request_charged\": {{ $v := index . \"x-amz-request-charged\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketAccelerateConfiguration
@@ -6012,7 +5424,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -6071,11 +5483,6 @@ paths:
       x-stackql-method: get_bucket_acl
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketAclOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"owner\": {{ $v := index . \"Owner\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"grants\": {{ $v := index . \"AccessControlList\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketAcl
@@ -6196,9 +5603,9 @@ paths:
         description: The account ID of the expected bucket owner. If the account ID that you provide does not match the actual
           owner of the bucket, the request fails with the HTTP status code 403 Forbidden (access denied).
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -6267,13 +5674,6 @@ paths:
       x-stackql-method: get_bucket_lifecycle_configuration
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketLifecycleConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"rules\": {{ $v := index . \"Rule\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"transition_default_minimum_object_size\": {{ $v := index . \"x-amz-transition-default-minimum-object-size\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?location:
     get:
@@ -6323,11 +5723,6 @@ paths:
       x-stackql-method: get_bucket_location
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketLocationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"location_constraint\": {{ $v := index\
-        \ . \"LocationConstraint\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?logging:
     get:
@@ -6361,18 +5756,6 @@ paths:
       x-stackql-method: get_bucket_logging
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketLoggingOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"LoggingEnabled\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"target_bucket\": {{ $v := index . \"TargetBucket\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }},\n        \"target_grants\": {{ $v := index . \"TargetGrants\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"target_prefix\": {{ $v := index . \"\
-        TargetPrefix\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"target_object_key_format\": {{ $v := index .\
-        \ \"TargetObjectKeyFormat\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketLogging
@@ -6437,7 +5820,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -6484,13 +5867,6 @@ paths:
       x-stackql-method: get_bucket_notification
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketNotificationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"topic_configuration\": {{ $v := index\
-        \ . \"TopicConfiguration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }},\n        \"queue_configuration\": {{ $v := index . \"QueueConfiguration\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"cloud_function_configuration\"\
-        : {{ $v := index . \"CloudFunctionConfiguration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketNotification
@@ -6530,7 +5906,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -6589,15 +5965,6 @@ paths:
       x-stackql-method: get_bucket_notification_configuration
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketNotificationConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"topic_configurations\": {{ $v := index\
-        \ . \"TopicConfiguration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }},\n        \"queue_configurations\": {{ $v := index . \"QueueConfiguration\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"lambda_function_configurations\"\
-        : {{ $v := index . \"CloudFunctionConfiguration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"event_bridge_configuration\": {{ $v := index . \"EventBridgeConfiguration\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n\
-        {{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?policyStatus:
     get:
@@ -6634,10 +6001,6 @@ paths:
       x-stackql-method: get_bucket_policy_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketPolicyStatusOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"PolicyStatus\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"is_public\": {{ $v := index . \"IsPublic\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end\
-        \ }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?requestPayment:
     get:
@@ -6672,11 +6035,6 @@ paths:
       x-stackql-method: get_bucket_request_payment
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketRequestPaymentOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"payer\": {{ $v := index . \"Payer\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketRequestPayment
@@ -6722,7 +6080,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -6770,14 +6128,6 @@ paths:
       x-stackql-method: get_bucket_versioning
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketVersioningOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"status\": {{ $v := index . \"Status\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"mfa_delete\": {{ $v := index . \"MfaDelete\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketVersioning
@@ -6845,7 +6195,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -6922,14 +6272,6 @@ paths:
       x-stackql-method: get_object_acl
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetObjectAclOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"owner\": {{ $v := index . \"Owner\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"grants\": {{ $v := index . \"AccessControlList\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"request_charged\": {{ $v := index . \"x-amz-request-charged\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutObjectAcl
@@ -7084,9 +6426,9 @@ paths:
         description: The account ID of the expected bucket owner. If the account ID that you provide does not match the actual
           owner of the bucket, the request fails with the HTTP status code 403 Forbidden (access denied).
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -7103,11 +6445,6 @@ paths:
       x-stackql-method: put_object_acl
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutObjectAclOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"request_charged\": {{ $v := index .\
-        \ \"x-amz-request-charged\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}/{key}?attributes:
     get:
@@ -7274,28 +6611,6 @@ paths:
       x-stackql-method: get_object_attributes
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetObjectAttributesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"delete_marker\": {{ $v := index . \"\
-        x-amz-delete-marker\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"last_modified\": {{ $v\
-        \ := index . \"Last-Modified\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"version_id\": {{ $v := index\
-        \ . \"x-amz-version-id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"request_charged\": {{ $v := index .\
-        \ \"x-amz-request-charged\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"e_tag\": {{ $v := index . \"ETag\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum\": {{ $v := index . \"Checksum\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"object_parts\"\
-        : {{ $v := index . \"ObjectParts\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }},\n        \"storage_class\": {{ $v := index . \"StorageClass\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"object_size\": {{ $v := index . \"ObjectSize\" }}{{ if eq $v nil }}null{{ else }}{{toInt\
-        \ $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}/{key}?legal-hold:
     get:
@@ -7354,11 +6669,6 @@ paths:
       x-stackql-method: get_object_legal_hold
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetObjectLegalHoldOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"LegalHold\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutObjectLegalHold
@@ -7422,9 +6732,9 @@ paths:
         description: The account ID of the expected bucket owner. If the account ID that you provide does not match the actual
           owner of the bucket, the request fails with the HTTP status code 403 Forbidden (access denied).
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -7441,11 +6751,6 @@ paths:
       x-stackql-method: put_object_legal_hold
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutObjectLegalHoldOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"request_charged\": {{ $v := index .\
-        \ \"x-amz-request-charged\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?object-lock:
     get:
@@ -7487,13 +6792,6 @@ paths:
       x-stackql-method: get_object_lock_configuration
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetObjectLockConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ObjectLockConfiguration\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"object_lock_enabled\": {{ $v := index . \"ObjectLockEnabled\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"rule\": {{ $v := index . \"Rule\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\"\
-        ) }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutObjectLockConfiguration
@@ -7547,9 +6845,9 @@ paths:
         description: The account ID of the expected bucket owner. If the account ID that you provide does not match the actual
           owner of the bucket, the request fails with the HTTP status code 403 Forbidden (access denied).
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -7566,11 +6864,6 @@ paths:
       x-stackql-method: put_object_lock_configuration
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutObjectLockConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"request_charged\": {{ $v := index .\
-        \ \"x-amz-request-charged\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}/{key}?retention:
     get:
@@ -7629,14 +6922,6 @@ paths:
       x-stackql-method: get_object_retention
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetObjectRetentionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"Retention\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"mode\": {{ $v := index . \"Mode\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"retain_until_date\"\
-        : {{ $v := index . \"RetainUntilDate\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutObjectRetention
@@ -7708,9 +6993,9 @@ paths:
         description: The account ID of the expected bucket owner. If the account ID that you provide does not match the actual
           owner of the bucket, the request fails with the HTTP status code 403 Forbidden (access denied).
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -7727,11 +7012,6 @@ paths:
       x-stackql-method: put_object_retention
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutObjectRetentionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"request_charged\": {{ $v := index .\
-        \ \"x-amz-request-charged\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}/{key}?torrent:
     get:
@@ -7779,14 +7059,6 @@ paths:
       x-stackql-method: get_object_torrent
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetObjectTorrentOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"body\": {{ $v := index . \"Body\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"request_charged\": {{ $v := index . \"x-amz-request-charged\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?analytics&x-id=ListBucketAnalyticsConfigurations:
     get:
@@ -7835,18 +7107,6 @@ paths:
       x-stackql-method: list_bucket_analytics_configurations
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListBucketAnalyticsConfigurationsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"AnalyticsConfiguration\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n\
-        \        {{- $items := index $list_parent \"item\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"filter\": {{ $v := index .\
-        \ \"Filter\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"storage_class_analysis\": {{ $v := index . \"StorageClassAnalysis\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?intelligent-tiering&x-id=ListBucketIntelligentTieringConfigurations:
     get:
@@ -7895,21 +7155,6 @@ paths:
       x-stackql-method: list_bucket_intelligent_tiering_configurations
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListBucketIntelligentTieringConfigurationsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"IntelligentTieringConfiguration\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n        {{- $items := index $list_parent \"item\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"filter\": {{ $v := index .\
-        \ \"Filter\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"tierings\"\
-        : {{ $v := index . \"Tiering\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?inventory&x-id=ListBucketInventoryConfigurations:
     get:
@@ -7976,25 +7221,6 @@ paths:
       x-stackql-method: list_bucket_inventory_configurations
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListBucketInventoryConfigurationsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"InventoryConfiguration\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n\
-        \        {{- $items := index $list_parent \"item\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"destination\": {{ $v := index . \"Destination\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"is_enabled\": {{ $v := index . \"IsEnabled\" }}{{ if\
-        \ eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"filter\": {{ $v := index . \"Filter\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"id\":\
-        \ {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"included_object_versions\": {{ $v :=\
-        \ index . \"IncludedObjectVersions\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"optional_fields\": {{ $v :=\
-        \ index . \"OptionalFields\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }},\n        \"schedule\": {{ $v := index . \"Schedule\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?metrics&x-id=ListBucketMetricsConfigurations:
     get:
@@ -8064,17 +7290,6 @@ paths:
       x-stackql-method: list_bucket_metrics_configurations
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListBucketMetricsConfigurationsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"MetricsConfiguration\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n\
-        \        {{- $items := index $list_parent \"item\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"filter\": {{ $v := index .\
-        \ \"Filter\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /:
     get:
@@ -8135,24 +7350,6 @@ paths:
       x-stackql-method: list_buckets
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListBucketsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"Buckets\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n        {{-\
-        \ $items := index $list_parent \"Bucket\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface {}\"\
-        \ }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n \
-        \         {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n      \
-        \  \"name\": {{ $v := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"creation_date\": {{ $v := index\
-        \ . \"CreationDate\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_region\": {{ $v := index . \"\
-        BucketRegion\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_arn\": {{ $v := index . \"BucketArn\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /?x-id=ListDirectoryBuckets:
     get:
@@ -8199,24 +7396,6 @@ paths:
       x-stackql-method: list_directory_buckets
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDirectoryBucketsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"Buckets\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n        {{-\
-        \ $items := index $list_parent \"Bucket\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface {}\"\
-        \ }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n \
-        \         {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n      \
-        \  \"name\": {{ $v := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"creation_date\": {{ $v := index\
-        \ . \"CreationDate\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_region\": {{ $v := index . \"\
-        BucketRegion\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_arn\": {{ $v := index . \"BucketArn\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?uploads:
     get:
@@ -8362,33 +7541,6 @@ paths:
       x-stackql-method: list_multipart_uploads
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListMultipartUploadsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"Upload\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n        {{- $items\
-        \ := index $list_parent \"item\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface {}\" }}\n  \
-        \        {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n      \
-        \    {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n       \
-        \   {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"upload_id\"\
-        : {{ $v := index . \"UploadId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"key\": {{ $v := index . \"\
-        Key\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"initiated\": {{ $v := index . \"Initiated\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"storage_class\": {{ $v := index . \"StorageClass\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{\
-        \ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"owner\": {{ $v := index . \"Owner\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"initiator\": {{ $v := index . \"\
-        Initiator\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"checksum_algorithm\": {{ $v := index . \"ChecksumAlgorithm\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"checksum_type\": {{ $v := index . \"ChecksumType\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?versions:
     get:
@@ -8482,36 +7634,6 @@ paths:
       x-stackql-method: list_object_versions
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListObjectVersionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"Version\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n        {{-\
-        \ $items := index $list_parent \"item\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface {}\"\
-        \ }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n \
-        \         {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n      \
-        \  \"e_tag\": {{ $v := index . \"ETag\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_algorithm\": {{ $v\
-        \ := index . \"ChecksumAlgorithm\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }},\n        \"checksum_type\": {{ $v := index . \"ChecksumType\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"size\": {{ $v := index . \"Size\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{\
-        \ end }},\n        \"storage_class\": {{ $v := index . \"StorageClass\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }},\n        \"key\": {{ $v := index . \"Key\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"version_id\"\
-        : {{ $v := index . \"VersionId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"is_latest\": {{ $v := index\
-        \ . \"IsLatest\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"last_modified\": {{ $v := index\
-        \ . \"LastModified\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"owner\": {{ $v := index . \"Owner\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"restore_status\": {{ $v := index . \"RestoreStatus\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\"\
-        ) }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?list-type=2:
     get:
@@ -8661,32 +7783,6 @@ paths:
       x-stackql-method: list_objects_v2
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListObjectsV2OutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"Contents\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n        {{-\
-        \ $items := index $list_parent \"item\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface {}\"\
-        \ }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n \
-        \         {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n      \
-        \  \"key\": {{ $v := index . \"Key\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"last_modified\": {{ $v := index\
-        \ . \"LastModified\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"e_tag\": {{ $v := index . \"ETag\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_algorithm\": {{ $v := index . \"ChecksumAlgorithm\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n     \
-        \   \"checksum_type\": {{ $v := index . \"ChecksumType\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"size\"\
-        : {{ $v := index . \"Size\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"storage_class\": {{\
-        \ $v := index . \"StorageClass\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"owner\": {{ $v := index . \"\
-        Owner\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end\
-        \ }},\n        \"restore_status\": {{ $v := index . \"RestoreStatus\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}/{key}?x-id=ListParts:
     get:
@@ -8813,50 +7909,6 @@ paths:
       x-stackql-method: list_parts
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListPartsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"Part\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n        {{- $items\
-        \ := index $list_parent \"item\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface {}\" }}\n  \
-        \        {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n      \
-        \    {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n       \
-        \   {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"part_number\"\
-        : {{ $v := index . \"PartNumber\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"last_modified\"\
-        : {{ $v := index . \"LastModified\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"e_tag\": {{ $v := index . \"\
-        ETag\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"size\": {{ $v := index . \"Size\" }}{{ if eq $v nil\
-        \ }}null{{ else }}{{toInt $v}}{{ end }},\n        \"checksum_crc32\": {{ $v := index . \"ChecksumCRC32\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_crc32_c\": {{ $v := index . \"ChecksumCRC32C\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_crc64_nvme\": {{ $v := index . \"ChecksumCRC64NVME\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha1\": {{ $v := index . \"ChecksumSHA1\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha256\": {{ $v := index . \"ChecksumSHA256\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha512\": {{ $v := index . \"ChecksumSHA512\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_md5\": {{ $v := index . \"ChecksumMD5\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash64\": {{ $v := index . \"ChecksumXXHASH64\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash3\": {{ $v := index . \"ChecksumXXHASH3\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"checksum_xxhash128\": {{ $v := index . \"ChecksumXXHASH128\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?lifecycle&x-id=PutBucketLifecycleConfiguration:
     put:
@@ -8941,9 +7993,9 @@ paths:
           size for any transition you can add a filter that specifies a custom ObjectSizeGreaterThan or ObjectSizeLessThan
           in the body of your transition rule. Custom filters always take precedence over the default transition behavior.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -8960,12 +8012,6 @@ paths:
       x-stackql-method: put_bucket_lifecycle_configuration
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutBucketLifecycleConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"transition_default_minimum_object_size\"\
-        : {{ $v := index . \"x-amz-transition-default-minimum-object-size\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n\
-        }\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?notification&x-id=PutBucketNotificationConfiguration:
     put:
@@ -9017,7 +8063,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -9512,9 +8558,9 @@ paths:
         description: The account ID of the expected bucket owner. If the account ID that you provide does not match the actual
           owner of the bucket, the request fails with the HTTP status code 403 Forbidden (access denied).
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -9531,70 +8577,6 @@ paths:
       x-stackql-method: put_object
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutObjectOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"expiration\": {{ $v := index . \"x-amz-expiration\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"e_tag\": {{ $v := index . \"ETag\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"checksum_crc32\": {{ $v := index . \"x-amz-checksum-crc32\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"checksum_crc32_c\": {{ $v := index . \"x-amz-checksum-crc32c\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"checksum_crc64_nvme\": {{ $v := index . \"x-amz-checksum-crc64nvme\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha1\": {{ $v := index . \"x-amz-checksum-sha1\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha256\": {{ $v := index . \"x-amz-checksum-sha256\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha512\": {{ $v := index . \"x-amz-checksum-sha512\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_md5\": {{ $v := index . \"x-amz-checksum-md5\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash64\": {{ $v := index . \"x-amz-checksum-xxhash64\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash3\": {{ $v := index . \"x-amz-checksum-xxhash3\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash128\": {{ $v := index . \"x-amz-checksum-xxhash128\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_type\": {{ $v := index . \"x-amz-checksum-type\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"server_side_encryption\": {{ $v := index . \"x-amz-server-side-encryption\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"version_id\": {{ $v := index . \"x-amz-version-id\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"sse_customer_algorithm\": {{ $v := index . \"x-amz-server-side-encryption-customer-algorithm\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"sse_customer_key_md5\": {{ $v := index . \"x-amz-server-side-encryption-customer-key-MD5\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ssekms_key_id\": {{ $v := index . \"x-amz-server-side-encryption-aws-kms-key-id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ssekms_encryption_context\": {{ $v := index . \"x-amz-server-side-encryption-context\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_key_enabled\": {{ $v := index . \"x-amz-server-side-encryption-bucket-key-enabled\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"size\": {{ $v := index . \"x-amz-object-size\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"request_charged\": {{ $v := index . \"x-amz-request-charged\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}/{key}?renameObject:
     put:
@@ -9719,8 +8701,6 @@ paths:
       x-stackql-method: rename_object
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RenameObjectOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}/{key}?restore:
     post:
@@ -9834,9 +8814,9 @@ paths:
         description: The account ID of the expected bucket owner. If the account ID that you provide does not match the actual
           owner of the bucket, the request fails with the HTTP status code 403 Forbidden (access denied).
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -9853,14 +8833,6 @@ paths:
       x-stackql-method: restore_object
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreObjectOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"request_charged\": {{ $v := index .\
-        \ \"x-amz-request-charged\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"restore_output_path\": {{ $v :=\
-        \ index . \"x-amz-restore-output-path\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}/{key}?select&select-type=2:
     post:
@@ -9945,7 +8917,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -9977,15 +8949,6 @@ paths:
       x-stackql-method: select_object_content
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SelectObjectContentOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"Payload\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n\
-        {\n        \"records\": {{ $v := index . \"Records\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"stats\": {{ $v := index . \"Stats\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"progress\"\
-        : {{ $v := index . \"Progress\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }},\n        \"cont\": {{ $v := index . \"Cont\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"end\": {{ $v := index . \"End\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}?metadataInventoryTable:
     put:
@@ -10031,7 +8994,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -10086,7 +9049,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -10208,7 +9171,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -10227,11 +9190,6 @@ paths:
       x-stackql-method: update_object_encryption
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateObjectEncryptionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"request_charged\": {{ $v := index .\
-        \ \"x-amz-request-charged\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}/{key}?x-id=UploadPart:
     put:
@@ -10484,9 +9442,9 @@ paths:
         description: The account ID of the expected bucket owner. If the account ID that you provide does not match the actual
           owner of the bucket, the request fails with the HTTP status code 403 Forbidden (access denied).
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -10503,57 +9461,6 @@ paths:
       x-stackql-method: upload_part
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: UploadPartOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"server_side_encryption\": {{ $v :=\
-        \ index . \"x-amz-server-side-encryption\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq\
-        \ (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"\
-        %q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"e_tag\": {{ $v :=\
-        \ index . \"ETag\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_crc32\": {{ $v := index . \"x-amz-checksum-crc32\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_crc32_c\": {{ $v := index . \"x-amz-checksum-crc32c\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_crc64_nvme\": {{ $v := index . \"x-amz-checksum-crc64nvme\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha1\": {{ $v := index . \"x-amz-checksum-sha1\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha256\": {{ $v := index . \"x-amz-checksum-sha256\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_sha512\": {{ $v := index . \"x-amz-checksum-sha512\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_md5\": {{ $v := index . \"x-amz-checksum-md5\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash64\": {{ $v := index . \"x-amz-checksum-xxhash64\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash3\": {{ $v := index . \"x-amz-checksum-xxhash3\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"checksum_xxhash128\": {{ $v := index . \"x-amz-checksum-xxhash128\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"sse_customer_algorithm\": {{ $v := index . \"x-amz-server-side-encryption-customer-algorithm\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"sse_customer_key_md5\": {{ $v := index . \"x-amz-server-side-encryption-customer-key-MD5\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ssekms_key_id\": {{ $v := index . \"x-amz-server-side-encryption-aws-kms-key-id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_key_enabled\": {{ $v := index . \"x-amz-server-side-encryption-bucket-key-enabled\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"request_charged\": {{ $v := index . \"x-amz-request-charged\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /{bucket}/{key}?x-id=UploadPartCopy:
     put:
@@ -10813,29 +9720,6 @@ paths:
       x-stackql-method: upload_part_copy
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: UploadPartCopyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"copy_source_version_id\": {{ $v :=\
-        \ index . \"x-amz-copy-source-version-id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq\
-        \ (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"\
-        %q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"copy_part_result\"\
-        : {{ $v := index . \"CopyPartResult\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"server_side_encryption\": {{ $v := index . \"x-amz-server-side-encryption\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"sse_customer_algorithm\": {{ $v := index . \"x-amz-server-side-encryption-customer-algorithm\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"sse_customer_key_md5\": {{ $v := index . \"x-amz-server-side-encryption-customer-key-MD5\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"ssekms_key_id\": {{ $v := index . \"x-amz-server-side-encryption-aws-kms-key-id\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_key_enabled\": {{ $v := index . \"x-amz-server-side-encryption-bucket-key-enabled\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"request_charged\": {{ $v := index . \"x-amz-request-charged\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /WriteGetObjectResponse:
     post:
@@ -11190,9 +10074,9 @@ paths:
         description: Indicates whether the object stored in Amazon S3 uses an S3 bucket key for server-side encryption with
           Amazon Web Services KMS (SSE-KMS).
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -11945,7 +10829,7 @@ components:
     AbacStatusDisplay:
       type: object
       properties:
-        status:
+        Status:
           type: string
           description: The ABAC status of the general purpose bucket.
     GetBucketAbacOutputDisplay:
@@ -11972,15 +10856,15 @@ components:
     AnalyticsConfigurationDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID that identifies the analytics configuration.
-        filter:
+        Filter:
           type: string
           description: The filter used to describe a set of objects for analyses. A filter must have exactly one prefix, one
             tag, or one conjunction (AnalyticsAndOperator). If no filter is provided, all objects will be considered in any
             analysis.
-        storage_class_analysis:
+        StorageClassAnalysis:
           type: string
           description: Contains data related to access patterns to be collected and made available to analyze the tradeoffs
             between different storage classes.
@@ -12001,9 +10885,11 @@ components:
     ServerSideEncryptionConfigurationDisplay:
       type: object
       properties:
-        rules:
+        Rules:
           type: string
           description: Container for information about a particular server-side encryption configuration rule.
+          xml:
+            name: Rule
     GetBucketEncryptionOutputDisplay:
       type: object
       properties:
@@ -12014,18 +10900,20 @@ components:
     IntelligentTieringConfigurationDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID used to identify the S3 Intelligent-Tiering configuration.
-        filter:
+        Filter:
           type: string
           description: Specifies a bucket filter. The configuration only includes objects that meet the filter's criteria.
-        status:
+        Status:
           type: string
           description: Specifies the status of the configuration.
-        tierings:
+        Tierings:
           type: string
           description: Specifies the S3 Intelligent-Tiering storage class tier of the configuration.
+          xml:
+            name: Tiering
     GetBucketIntelligentTieringConfigurationOutputDisplay:
       type: object
       properties:
@@ -12036,31 +10924,31 @@ components:
     InventoryConfigurationDisplay:
       type: object
       properties:
-        destination:
+        Destination:
           type: string
           description: Contains information about where to publish the inventory results.
-        is_enabled:
+        IsEnabled:
           type: boolean
           description: Specifies whether the inventory is enabled or disabled. If set to True, an inventory list is generated.
             If set to False, no inventory list is generated.
-        filter:
+        Filter:
           type: string
           description: Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria.
-        id:
+        Id:
           type: string
           description: The ID used to identify the inventory configuration.
-        included_object_versions:
+        IncludedObjectVersions:
           type: string
           description: Object versions to include in the inventory list. If set to All, the list includes all the object versions,
             which adds the version-related fields VersionId, IsLatest, and DeleteMarker to the list. If set to Current, the
             list does not contain these version-related fields.
-        optional_fields:
+        OptionalFields:
           type: string
           description: Contains the optional fields that are included in the inventory results. The following optional fields
             are supported for directory buckets Size | LastModifiedDate | StorageClass | ETag | IsMultipartUploaded | EncryptionStatus
             | BucketKeyStatus | ChecksumAlgorithm | LifecycleExpirationDate. Throws MalformedXML error if unsupported optional
             field is provided.
-        schedule:
+        Schedule:
           type: string
           description: Specifies the schedule for generating inventory results.
     GetBucketInventoryConfigurationOutputDisplay:
@@ -12094,22 +10982,22 @@ components:
     LoggingEnabledDisplay:
       type: object
       properties:
-        target_bucket:
+        TargetBucket:
           type: string
           description: Specifies the bucket where you want Amazon S3 to store server access logs. You can have your logs delivered
             to any bucket that you own, including the same bucket that is being logged. You can also configure multiple buckets
             to deliver their logs to the same target bucket. In this case, you should choose a different TargetPrefix for
             each source bucket so that the delivered log files can be distinguished by key.
-        target_grants:
+        TargetGrants:
           type: string
           description: Container for granting information. Buckets that use the bucket owner enforced setting for Object Ownership
             don't support target grants. For more information, see Permissions for server access log delivery in the Amazon
             S3 User Guide.
-        target_prefix:
+        TargetPrefix:
           type: string
           description: A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single
             bucket, you can use a prefix to distinguish which log files came from which bucket.
-        target_object_key_format:
+        TargetObjectKeyFormat:
           type: string
           description: Amazon S3 key format for log objects.
     GetBucketLoggingOutputDisplay:
@@ -12122,7 +11010,7 @@ components:
     GetBucketMetadataConfigurationResultDisplay:
       type: object
       properties:
-        metadata_configuration_result:
+        MetadataConfigurationResult:
           type: string
           description: The metadata configuration for a general purpose bucket.
     GetBucketMetadataConfigurationOutputDisplay:
@@ -12135,16 +11023,16 @@ components:
     GetBucketMetadataTableConfigurationResultDisplay:
       type: object
       properties:
-        metadata_table_configuration_result:
+        MetadataTableConfigurationResult:
           type: string
           description: The V1 S3 Metadata configuration for a general purpose bucket.
-        status:
+        Status:
           type: string
           description: 'The status of the metadata table. The status values are: CREATING - The metadata table is in the process
             of being created in the specified table bucket. ACTIVE - The metadata table has been created successfully, and
             records are being delivered to the table. FAILED - Amazon S3 is unable to create the metadata table, or Amazon
             S3 is unable to deliver records. See ErrorDetails for details.'
-        error:
+        Error:
           type: string
           description: If the CreateBucketMetadataTableConfiguration request succeeds, but S3 Metadata was unable to create
             the table, this structure contains the error code and error message.
@@ -12158,11 +11046,11 @@ components:
     MetricsConfigurationDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID used to identify the metrics configuration. The ID has a 64 character limit and can only contain
             letters, numbers, periods, dashes, and underscores.
-        filter:
+        Filter:
           type: string
           description: Specifies a metrics configuration filter. The metrics configuration will only include objects that
             meet the filter's criteria. A filter must be a prefix, an object tag, an access point ARN, or a conjunction (MetricsAndOperator).
@@ -12177,15 +11065,15 @@ components:
     NotificationConfigurationDeprecatedDisplay:
       type: object
       properties:
-        topic_configuration:
+        TopicConfiguration:
           type: string
           description: This data type is deprecated. A container for specifying the configuration for publication of messages
             to an Amazon Simple Notification Service (Amazon SNS) topic when Amazon S3 detects specified events.
-        queue_configuration:
+        QueueConfiguration:
           type: string
           description: This data type is deprecated. This data type specifies the configuration for publishing messages to
             an Amazon Simple Queue Service (Amazon SQS) queue when Amazon S3 detects specified events.
-        cloud_function_configuration:
+        CloudFunctionConfiguration:
           type: string
           description: Container for specifying the Lambda notification configuration.
     GetBucketNotificationOutputDisplay:
@@ -12198,16 +11086,22 @@ components:
     NotificationConfigurationDisplay:
       type: object
       properties:
-        topic_configurations:
+        TopicConfigurations:
           type: string
           description: The topic to which notifications are sent and the events for which notifications are generated.
-        queue_configurations:
+          xml:
+            name: TopicConfiguration
+        QueueConfigurations:
           type: string
           description: The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.
-        lambda_function_configurations:
+          xml:
+            name: QueueConfiguration
+        LambdaFunctionConfigurations:
           type: string
           description: Describes the Lambda functions to invoke and the events for which to invoke them.
-        event_bridge_configuration:
+          xml:
+            name: CloudFunctionConfiguration
+        EventBridgeConfiguration:
           type: string
           description: Enables delivery of events to Amazon EventBridge.
     GetBucketNotificationConfigurationOutputDisplay:
@@ -12220,9 +11114,11 @@ components:
     OwnershipControlsDisplay:
       type: object
       properties:
-        rules:
+        Rules:
           type: string
           description: The container element for an ownership control rule.
+          xml:
+            name: Rule
     GetBucketOwnershipControlsOutputDisplay:
       type: object
       properties:
@@ -12240,7 +11136,7 @@ components:
     PolicyStatusDisplay:
       type: object
       properties:
-        is_public:
+        IsPublic:
           type: boolean
           description: The policy status for this bucket. TRUE indicates that this bucket is public. FALSE indicates that
             the bucket is not public.
@@ -12254,14 +11150,16 @@ components:
     ReplicationConfigurationDisplay:
       type: object
       properties:
-        role:
+        Role:
           type: string
           description: The Amazon Resource Name (ARN) of the Identity and Access Management (IAM) role that Amazon S3 assumes
             when replicating objects. For more information, see How to Set Up Replication in the Amazon S3 User Guide.
-        rules:
+        Rules:
           type: string
           description: A container for one or more replication rules. A replication configuration must have at least one rule
             and can contain a maximum of 1,000 rules.
+          xml:
+            name: Rule
     GetBucketReplicationOutputDisplay:
       type: object
       properties:
@@ -12362,7 +11260,7 @@ components:
     ObjectLockLegalHoldDisplay:
       type: object
       properties:
-        status:
+        Status:
           type: string
           description: Indicates whether the specified object has a legal hold in place.
     GetObjectLegalHoldOutputDisplay:
@@ -12375,11 +11273,11 @@ components:
     ObjectLockConfigurationDisplay:
       type: object
       properties:
-        object_lock_enabled:
+        ObjectLockEnabled:
           type: string
           description: Indicates whether this bucket has an Object Lock configuration enabled. Enable ObjectLockEnabled when
             you apply ObjectLockConfiguration to a bucket.
-        rule:
+        Rule:
           type: string
           description: Specifies the Object Lock rule for the specified object. Enable the this rule when you apply ObjectLockConfiguration
             to a bucket. Bucket settings require both a mode and a period. The period can be either Days or Years but you
@@ -12394,10 +11292,10 @@ components:
     ObjectLockRetentionDisplay:
       type: object
       properties:
-        mode:
+        Mode:
           type: string
           description: Indicates the Retention mode for the specified object.
-        retain_until_date:
+        RetainUntilDate:
           type: string
           description: The date on which this Object Lock Retention will expire.
     GetObjectRetentionOutputDisplay:
@@ -12424,24 +11322,24 @@ components:
     PublicAccessBlockConfigurationDisplay:
       type: object
       properties:
-        block_public_acls:
+        BlockPublicAcls:
           type: boolean
           description: 'Specifies whether Amazon S3 should block public access control lists (ACLs) for this bucket and objects
             in this bucket. Setting this element to TRUE causes the following behavior: PUT Bucket ACL and PUT Object ACL
             calls fail if the specified ACL is public. PUT Object calls fail if the request includes a public ACL. PUT Bucket
             calls fail if the request includes a public ACL. Enabling this setting doesn''t affect existing policies or ACLs.'
-        ignore_public_acls:
+        IgnorePublicAcls:
           type: boolean
           description: Specifies whether Amazon S3 should ignore public ACLs for this bucket and objects in this bucket. Setting
             this element to TRUE causes Amazon S3 to ignore all public ACLs on this bucket and objects in this bucket. Enabling
             this setting doesn't affect the persistence of any existing ACLs and doesn't prevent new public ACLs from being
             set.
-        block_public_policy:
+        BlockPublicPolicy:
           type: boolean
           description: Specifies whether Amazon S3 should block public bucket policies for this bucket. Setting this element
             to TRUE causes Amazon S3 to reject calls to PUT Bucket policy if the specified bucket policy allows public access.
             Enabling this setting doesn't affect existing bucket policies.
-        restrict_public_buckets:
+        RestrictPublicBuckets:
           type: boolean
           description: Specifies whether Amazon S3 should restrict public bucket policies for this bucket. Setting this element
             to TRUE restricts access to this bucket to only Amazon Web Services service principals and authorized users within
@@ -12510,18 +11408,18 @@ components:
     BucketDisplay:
       type: object
       properties:
-        name:
+        Name:
           type: string
           description: The name of the bucket.
-        creation_date:
+        CreationDate:
           type: string
           description: Date the bucket was created. This date can change when making changes to your bucket, such as editing
             its bucket policy.
-        bucket_region:
+        BucketRegion:
           type: string
           description: BucketRegion indicates the Amazon Web Services region where the bucket is located. If the request contains
             at least one valid parameter, it is included in the response.
-        bucket_arn:
+        BucketArn:
           type: string
           description: The Amazon Resource Name (ARN) of the S3 bucket. ARNs uniquely identify Amazon Web Services resources
             across all of Amazon Web Services. This parameter is only supported for S3 directory buckets. For more information,
@@ -12570,31 +11468,31 @@ components:
     MultipartUploadDisplay:
       type: object
       properties:
-        upload_id:
+        UploadId:
           type: string
           description: Upload ID that identifies the multipart upload.
-        key:
+        Key:
           type: string
           description: Key of the object for which the multipart upload was initiated.
-        initiated:
+        Initiated:
           type: string
           description: Date and time at which the multipart upload was initiated.
-        storage_class:
+        StorageClass:
           type: string
           description: The class of storage used to store the object. Directory buckets - Directory buckets only support EXPRESS_ONEZONE
             (the S3 Express One Zone storage class) in Availability Zones and ONEZONE_IA (the S3 One Zone-Infrequent Access
             storage class) in Dedicated Local Zones.
-        owner:
+        Owner:
           type: string
           description: Specifies the owner of the object that is part of the multipart upload. Directory buckets - The bucket
             owner is returned as the object owner for all the objects.
-        initiator:
+        Initiator:
           type: string
           description: Identifies who initiated the multipart upload.
-        checksum_algorithm:
+        ChecksumAlgorithm:
           type: string
           description: The algorithm that was used to create a checksum of the object.
-        checksum_type:
+        ChecksumType:
           type: string
           description: The checksum type that is used to calculate the object’s checksum value. For more information, see
             Checking object integrity in the Amazon S3 User Guide.
@@ -12620,38 +11518,38 @@ components:
     ObjectVersionDisplay:
       type: object
       properties:
-        e_tag:
+        ETag:
           type: string
           description: The entity tag is an MD5 hash of that version of the object.
-        checksum_algorithm:
+        ChecksumAlgorithm:
           type: string
           description: The algorithm that was used to create a checksum of the object.
-        checksum_type:
+        ChecksumType:
           type: string
           description: The checksum type that is used to calculate the object’s checksum value. For more information, see
             Checking object integrity in the Amazon S3 User Guide.
-        size:
+        Size:
           type: integer
           description: Size in bytes of the object.
-        storage_class:
+        StorageClass:
           type: string
           description: The class of storage used to store the object.
-        key:
+        Key:
           type: string
           description: The object key.
-        version_id:
+        VersionId:
           type: string
           description: Version ID of an object.
-        is_latest:
+        IsLatest:
           type: boolean
           description: Specifies whether the object is (true) or is not (false) the latest version of an object.
-        last_modified:
+        LastModified:
           type: string
           description: Date and time when the object was last modified.
-        owner:
+        Owner:
           type: string
           description: Specifies the owner of the object.
-        restore_status:
+        RestoreStatus:
           type: string
           description: Specifies the restoration status of an object. Objects in certain storage classes must be restored
             before they can be retrieved. For more information about these storage classes and how to work with archived objects,
@@ -12668,13 +11566,13 @@ components:
     ObjectDisplay:
       type: object
       properties:
-        key:
+        Key:
           type: string
           description: The name that you assign to an object. You use the object key to retrieve the object.
-        last_modified:
+        LastModified:
           type: string
           description: Creation date of the object.
-        e_tag:
+        ETag:
           type: string
           description: 'The entity tag is a hash of the object. The ETag reflects changes only to the contents of an object,
             not its metadata. The ETag may or may not be an MD5 digest of the object data. Whether or not it is depends on
@@ -12687,25 +11585,25 @@ components:
             is larger than 16 MB, the Amazon Web Services Management Console will upload or copy that object as a Multipart
             Upload, and therefore the ETag will not be an MD5 digest. Directory buckets - MD5 is not supported by directory
             buckets.'
-        checksum_algorithm:
+        ChecksumAlgorithm:
           type: string
           description: The algorithm that was used to create a checksum of the object.
-        checksum_type:
+        ChecksumType:
           type: string
           description: The checksum type that is used to calculate the object’s checksum value. For more information, see
             Checking object integrity in the Amazon S3 User Guide.
-        size:
+        Size:
           type: integer
           description: Size in bytes of the object
-        storage_class:
+        StorageClass:
           type: string
           description: The class of storage used to store the object. Directory buckets - Directory buckets only support EXPRESS_ONEZONE
             (the S3 Express One Zone storage class) in Availability Zones and ONEZONE_IA (the S3 One Zone-Infrequent Access
             storage class) in Dedicated Local Zones.
-        owner:
+        Owner:
           type: string
           description: The owner of the object Directory buckets - The bucket owner is returned as the object owner.
-        restore_status:
+        RestoreStatus:
           type: string
           description: Specifies the restoration status of an object. Objects in certain storage classes must be restored
             before they can be retrieved. For more information about these storage classes and how to work with archived objects,
@@ -12733,63 +11631,63 @@ components:
     PartDisplay:
       type: object
       properties:
-        part_number:
+        PartNumber:
           type: integer
           description: Part number identifying the part. This is a positive integer between 1 and 10,000.
-        last_modified:
+        LastModified:
           type: string
           description: Date and time at which the part was uploaded.
-        e_tag:
+        ETag:
           type: string
           description: Entity tag returned when the part was uploaded.
-        size:
+        Size:
           type: integer
           description: Size in bytes of the uploaded part data.
-        checksum_crc32:
+        ChecksumCRC32:
           type: string
           description: The Base64 encoded, 32-bit CRC32 checksum of the part. This checksum is present if the object was uploaded
             with the CRC32 checksum algorithm. For more information, see Checking object integrity in the Amazon S3 User Guide.
-        checksum_crc32_c:
+        ChecksumCRC32C:
           type: string
           description: The Base64 encoded, 32-bit CRC32C checksum of the part. This checksum is present if the object was
             uploaded with the CRC32C checksum algorithm. For more information, see Checking object integrity in the Amazon
             S3 User Guide.
-        checksum_crc64_nvme:
+        ChecksumCRC64NVME:
           type: string
           description: The Base64 encoded, 64-bit CRC64NVME checksum of the part. This checksum is present if the multipart
             upload request was created with the CRC64NVME checksum algorithm, or if the object was uploaded without a checksum
             (and Amazon S3 added the default checksum, CRC64NVME, to the uploaded object). For more information, see Checking
             object integrity in the Amazon S3 User Guide.
-        checksum_sha1:
+        ChecksumSHA1:
           type: string
           description: The Base64 encoded, 160-bit SHA1 checksum of the part. This checksum is present if the object was uploaded
             with the SHA1 checksum algorithm. For more information, see Checking object integrity in the Amazon S3 User Guide.
-        checksum_sha256:
+        ChecksumSHA256:
           type: string
           description: The Base64 encoded, 256-bit SHA256 checksum of the part. This checksum is present if the object was
             uploaded with the SHA256 checksum algorithm. For more information, see Checking object integrity in the Amazon
             S3 User Guide.
-        checksum_sha512:
+        ChecksumSHA512:
           type: string
           description: The Base64 encoded, 512-bit SHA512 digest of the part. This checksum is present if the multipart upload
             request was created with the SHA512 checksum algorithm. For more information, see Checking object integrity in
             the Amazon S3 User Guide.
-        checksum_md5:
+        ChecksumMD5:
           type: string
           description: The Base64 encoded, 128-bit MD5 digest of the part. This checksum is present if the multipart upload
             request was created with the MD5 checksum algorithm. For more information, see Checking object integrity in the
             Amazon S3 User Guide.
-        checksum_xxhash64:
+        ChecksumXXHASH64:
           type: string
           description: The Base64 encoded, 64-bit XXHASH64 checksum of the part. This checksum is present if the multipart
             upload request was created with the XXHASH64 checksum algorithm. For more information, see Checking object integrity
             in the Amazon S3 User Guide.
-        checksum_xxhash3:
+        ChecksumXXHASH3:
           type: string
           description: The Base64 encoded, 64-bit XXHASH3 checksum of the part. This checksum is present if the multipart
             upload request was created with the XXHASH3 checksum algorithm. For more information, see Checking object integrity
             in the Amazon S3 User Guide.
-        checksum_xxhash128:
+        ChecksumXXHASH128:
           type: string
           description: The Base64 encoded, 128-bit XXHASH128 checksum of the part. This checksum is present if the multipart
             upload request was created with the XXHASH128 checksum algorithm. For more information, see Checking object integrity
@@ -15123,19 +14021,19 @@ components:
     SelectObjectContentEventStreamDisplay:
       type: object
       properties:
-        records:
+        Records:
           type: string
           description: The Records Event.
-        stats:
+        Stats:
           type: string
           description: The Stats Event.
-        progress:
+        Progress:
           type: string
           description: The Progress Event.
-        cont:
+        Cont:
           type: string
           description: The Continuation Event.
-        end:
+        End:
           type: string
           description: The End Event.
     SelectObjectContentOutputDisplay:
@@ -15203,11 +14101,13 @@ components:
     UpdateObjectEncryptionResponseDisplay:
       type: object
       properties:
-        request_charged:
+        RequestCharged:
           type: string
           description: If present, indicates that the requester was successfully charged for the request. For more information,
             see Using Requester Pays buckets for storage transfers and usage in the Amazon Simple Storage Service user guide.
             This functionality is not supported for directory buckets.
+          xml:
+            name: x-amz-request-charged
     UpdateObjectEncryptionOutputDisplay:
       type: object
       properties:

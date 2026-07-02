@@ -282,6 +282,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/role_credentials/methods/get_role_credentials"
@@ -300,6 +302,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.roleList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/account_roles/methods/list_account_roles"
@@ -318,6 +322,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.accountList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/accounts/methods/list_accounts"

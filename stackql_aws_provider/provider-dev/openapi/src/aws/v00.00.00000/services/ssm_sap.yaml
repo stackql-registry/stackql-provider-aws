@@ -72,7 +72,7 @@ paths:
       description: Gets an application registered with AWS Systems Manager for SAP. It also returns the components of the application.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -146,7 +146,7 @@ paths:
       description: Gets the SAP HANA database of an application registered with AWS Systems Manager for SAP.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -221,7 +221,7 @@ paths:
       description: Lists all the applications registered with AWS Systems Manager for SAP.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -246,7 +246,7 @@ paths:
       description: Lists all the components registered with AWS Systems Manager for SAP.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -271,7 +271,7 @@ paths:
       description: Lists all configuration check types supported by AWS Systems Manager for SAP.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -325,7 +325,7 @@ paths:
       description: Lists the SAP HANA databases of an application registered with AWS Systems Manager for SAP.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1840,6 +1840,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1849,6 +1851,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1858,6 +1862,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1881,6 +1887,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1890,6 +1898,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1900,6 +1910,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Applications
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1909,6 +1921,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1931,6 +1945,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1941,6 +1957,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Components
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1962,6 +1980,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1972,6 +1992,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ConfigurationCheckOperations
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1993,6 +2015,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2003,6 +2027,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Databases
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2023,6 +2049,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2033,6 +2061,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Operations
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2055,6 +2085,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ConfigurationChecks
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2076,6 +2108,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.OperationEvents
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2097,6 +2131,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.SubCheckResults
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2118,6 +2154,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RuleResults
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2155,6 +2193,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2164,6 +2204,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -2182,6 +2224,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

@@ -211,7 +211,7 @@ paths:
       description: Provides summary information about the campaigns under the specified Amazon Connect account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -426,7 +426,7 @@ paths:
           schema:
             $ref: "#/components/schemas/CampaignId"
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -984,6 +984,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1005,6 +1007,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.campaignSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1101,6 +1105,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1137,6 +1143,8 @@ components:
             $ref: "#/paths/~1tags~1{arn}/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1145,6 +1153,8 @@ components:
             $ref: "#/paths/~1tags~1{arn}/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -1163,6 +1173,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1183,6 +1195,8 @@ components:
             $ref: "#/paths/~1campaigns~1{id}~1dialer-config/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1202,6 +1216,8 @@ components:
             $ref: "#/paths/~1campaigns~1{id}~1name/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1221,6 +1237,8 @@ components:
             $ref: "#/paths/~1campaigns~1{id}~1outbound-call-config/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

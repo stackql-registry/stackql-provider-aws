@@ -41,7 +41,7 @@ paths:
       description: Starts delete of resources.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -68,7 +68,7 @@ paths:
       description: Starts existing resources
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -91,7 +91,7 @@ paths:
       description: Stops running resources
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -120,7 +120,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: Id of the channel whose schedule is being updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -205,7 +205,7 @@ paths:
       description: Send a request to claim an AWS Elemental device that you have purchased from a third-party vendor. After the request succeeds, you will own the device.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -226,7 +226,7 @@ paths:
       description: Creates a new channel
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -312,7 +312,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the cluster.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -529,7 +529,7 @@ paths:
       description: Create a new Cluster.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -711,7 +711,7 @@ paths:
       description: Create an input
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -785,7 +785,7 @@ paths:
       description: Creates a Input Security Group
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -950,7 +950,7 @@ paths:
       description: Create as many Networks as you need. You will associate one or more Clusters with each Network.Each Network provides MediaLive Anywhere with required information about the network in your organization that you are using for video encoding using MediaLive.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1008,7 +1008,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the cluster.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1072,7 +1072,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the cluster
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1107,7 +1107,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: Unique ID of the input.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1130,7 +1130,7 @@ paths:
       description: Create an SdiSource for each video source that uses the SDI protocol. You will reference the SdiSource when you create an SDI input in MediaLive. You will also reference it in an SdiSourceMapping, in order to create a connection between the logical SdiSource and the physical SDI card and port that the physical SDI source uses.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1257,7 +1257,7 @@ paths:
           schema:
             $ref: "#/components/schemas/__string"
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1348,7 +1348,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: channel ID
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1457,7 +1457,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the cluster.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1516,7 +1516,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: A cloudwatch alarm template's identifier. Can be either be its id or current name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1595,7 +1595,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: A cloudwatch alarm template group's identifier. Can be either be its id or current name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1656,7 +1656,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the cluster
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1715,7 +1715,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: An eventbridge rule template's identifier. Can be either be its id or current name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1780,7 +1780,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: An eventbridge rule template group's identifier. Can be either be its id or current name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1841,7 +1841,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: Unique ID of the input.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1924,7 +1924,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The id of the Input Security Group to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1987,7 +1987,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: ID of the multiplex to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2070,7 +2070,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The name of the program to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2131,7 +2131,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the network
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2214,7 +2214,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the node.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2279,7 +2279,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: Unique reservation ID, e.g. '1234567'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2342,7 +2342,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the SdiSource
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2403,7 +2403,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: A signal map's identifier. Can be either be its id or current name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2445,7 +2445,7 @@ paths:
       description: Update account configuration
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2489,7 +2489,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The unique ID of the input device. For example, hd-123456789abcdef.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2954,7 +2954,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The unique ID of the input device to reboot. For example, hd-123456789abcdef.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2999,7 +2999,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: ID of channel
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3061,7 +3061,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: A signal map's identifier. Can be either be its id or current name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3196,7 +3196,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The unique ID of this input device. For example, hd-123456789abcdef.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3264,7 +3264,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the node.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -15091,6 +15091,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ScheduleActions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/schedules/methods/describe_schedule"
@@ -15109,6 +15111,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15119,6 +15123,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Channels
+          request:
+            nativeCasing: pascal
         delete_channel:
           operation:
             $ref: "#/paths/~1prod~1channels~1{channel_id}/delete"
@@ -15137,6 +15143,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15161,6 +15169,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15171,6 +15181,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ChannelPlacementGroups
+          request:
+            nativeCasing: pascal
         delete_channel_placement_group:
           operation:
             $ref: "#/paths/~1prod~1clusters~1{cluster_id}~1channelplacementgroups~1{channel_placement_group_id}/delete"
@@ -15189,6 +15201,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15213,6 +15227,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15223,6 +15239,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CloudWatchAlarmTemplates
+          request:
+            nativeCasing: pascal
         delete_cloud_watch_alarm_template:
           operation:
             $ref: "#/paths/~1prod~1cloudwatch-alarm-templates~1{identifier}/delete"
@@ -15240,6 +15258,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15264,6 +15284,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15274,6 +15296,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CloudWatchAlarmTemplateGroups
+          request:
+            nativeCasing: pascal
         delete_cloud_watch_alarm_template_group:
           operation:
             $ref: "#/paths/~1prod~1cloudwatch-alarm-template-groups~1{identifier}/delete"
@@ -15291,6 +15315,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15315,6 +15341,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15325,6 +15353,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Clusters
+          request:
+            nativeCasing: pascal
         delete_cluster:
           operation:
             $ref: "#/paths/~1prod~1clusters~1{cluster_id}/delete"
@@ -15343,6 +15373,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15367,6 +15399,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15377,6 +15411,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.EventBridgeRuleTemplates
+          request:
+            nativeCasing: pascal
         delete_event_bridge_rule_template:
           operation:
             $ref: "#/paths/~1prod~1eventbridge-rule-templates~1{identifier}/delete"
@@ -15394,6 +15430,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15418,6 +15456,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15428,6 +15468,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.EventBridgeRuleTemplateGroups
+          request:
+            nativeCasing: pascal
         delete_event_bridge_rule_template_group:
           operation:
             $ref: "#/paths/~1prod~1eventbridge-rule-template-groups~1{identifier}/delete"
@@ -15445,6 +15487,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15469,6 +15513,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15479,6 +15525,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Inputs
+          request:
+            nativeCasing: pascal
         delete_input:
           operation:
             $ref: "#/paths/~1prod~1inputs~1{input_id}/delete"
@@ -15497,6 +15545,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15521,6 +15571,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15531,6 +15583,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.InputSecurityGroups
+          request:
+            nativeCasing: pascal
         delete_input_security_group:
           operation:
             $ref: "#/paths/~1prod~1inputSecurityGroups~1{input_security_group_id}/delete"
@@ -15549,6 +15603,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15573,6 +15629,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15583,6 +15641,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Multiplexes
+          request:
+            nativeCasing: pascal
         delete_multiplex:
           operation:
             $ref: "#/paths/~1prod~1multiplexes~1{multiplex_id}/delete"
@@ -15601,6 +15661,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15625,6 +15687,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15635,6 +15699,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.MultiplexPrograms
+          request:
+            nativeCasing: pascal
         delete_multiplex_program:
           operation:
             $ref: "#/paths/~1prod~1multiplexes~1{multiplex_id}~1programs~1{program_name}/delete"
@@ -15653,6 +15719,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15677,6 +15745,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15687,6 +15757,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Networks
+          request:
+            nativeCasing: pascal
         delete_network:
           operation:
             $ref: "#/paths/~1prod~1networks~1{network_id}/delete"
@@ -15705,6 +15777,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15729,6 +15803,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15739,6 +15815,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Nodes
+          request:
+            nativeCasing: pascal
         delete_node:
           operation:
             $ref: "#/paths/~1prod~1clusters~1{cluster_id}~1nodes~1{node_id}/delete"
@@ -15757,6 +15835,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15781,6 +15861,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15801,6 +15883,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15821,6 +15905,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15831,6 +15917,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.SdiSources
+          request:
+            nativeCasing: pascal
         delete_sdi_source:
           operation:
             $ref: "#/paths/~1prod~1sdiSources~1{sdi_source_id}/delete"
@@ -15849,6 +15937,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15873,6 +15963,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15883,6 +15975,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.SignalMaps
+          request:
+            nativeCasing: pascal
         delete_signal_map:
           operation:
             $ref: "#/paths/~1prod~1signal-maps~1{identifier}/delete"
@@ -15913,6 +16007,8 @@ components:
             $ref: "#/paths/~1prod~1tags~1{resource-arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15921,6 +16017,8 @@ components:
             $ref: "#/paths/~1prod~1tags~1{resource-arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert:
@@ -15968,6 +16066,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15978,6 +16078,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Reservations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/reservations/methods/describe_reservation"
@@ -16004,6 +16106,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -16031,6 +16135,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -16041,6 +16147,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.InputDevices
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/input_devices/methods/describe_input_device"
@@ -16084,6 +16192,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Offerings
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/offerings/methods/describe_offering"
@@ -16102,6 +16212,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/thumbnails/methods/describe_thumbnails"
@@ -16120,6 +16232,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Alerts
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/alerts/methods/list_alerts"
@@ -16138,6 +16252,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Alerts
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cluster_alerts/methods/list_cluster_alerts"
@@ -16156,6 +16272,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.InputDeviceTransfers
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/input_device_transfers/methods/list_input_device_transfers"
@@ -16174,6 +16292,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Alerts
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/multiplex_alerts/methods/list_multiplex_alerts"
@@ -16208,6 +16328,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -16228,6 +16350,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

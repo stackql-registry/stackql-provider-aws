@@ -275,7 +275,7 @@ paths:
           $ref: '#/components/schemas/ClientToken'
         description: A token that you provide to identify the chat input.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -358,7 +358,7 @@ paths:
           $ref: '#/components/schemas/UserGroups'
         description: The group names that a user associated with the chat input belongs to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -464,7 +464,7 @@ paths:
           $ref: '#/components/schemas/WebExperienceId'
         description: The identifier of the web experience.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1193,7 +1193,7 @@ paths:
           $ref: '#/components/schemas/ApplicationId'
         description: The identifier of the Amazon Q Business web experience.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1322,7 +1322,7 @@ paths:
           $ref: '#/components/schemas/ApplicationId'
         description: The identifier of the Amazon Q Business application.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1460,7 +1460,7 @@ paths:
           $ref: '#/components/schemas/ApplicationId'
         description: The identifier of the application for which the chat controls are configured.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1859,7 +1859,7 @@ paths:
           $ref: '#/components/schemas/DataSourceId'
         description: The identifier of the data source connector.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2047,7 +2047,7 @@ paths:
           $ref: '#/components/schemas/IndexId'
         description: The identifier of the Amazon Q Business index.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2141,7 +2141,7 @@ paths:
           $ref: '#/components/schemas/PluginId'
         description: The identifier of the plugin.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2237,7 +2237,7 @@ paths:
           $ref: '#/components/schemas/RetrieverId'
         description: The identifier of your retriever.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2329,7 +2329,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The email id attached to the user.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2419,7 +2419,7 @@ paths:
           $ref: '#/components/schemas/WebExperienceId'
         description: The identifier of the Amazon Q Business web experience.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3064,7 +3064,7 @@ paths:
           $ref: '#/components/schemas/SystemMessageId'
         description: The identifier of the chat message that the feedback was given for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -22,7 +22,7 @@ paths:
       description: "The CreateCluster API allows you to create both single-Region clusters and multi-Region clusters. With the addition of the multiRegionProperties parameter, you can create a cluster with witness Region support and establish peer relationships with clusters in other Regions during creation. Creating multi-Region clusters requires additional IAM permissions beyond those needed for single-Region clusters, as detailed in the Required permissions section below. Required permissions dsql:CreateCluster Required to create a cluster. Resources: arn:aws:dsql:region:account-id:cluster/* dsql:TagResource Permission to add tags to a resource. Resources: arn:aws:dsql:region:account-id:cluster/* dsql:PutMultiRegionProperties Permission to configure multi-Region properties for a cluster. Resources: arn:aws:dsql:region:account-id:cluster/* dsql:AddPeerCluster When specifying multiRegionProperties.clusters, permission to add peer clusters. Resources: Local cluster: arn:aws:dsql:region:account-id:cluster/* Each peer cluster: exact ARN of each specified peer cluster dsql:PutWitnessRegion When specifying multiRegionProperties.witnessRegion, permission to set a witness Region. This permission is checked both in the cluster Region and in the witness Region. Resources: arn:aws:dsql:region:account-id:cluster/* Condition Keys: dsql:WitnessRegion (matching the specified witness region) The witness Region specified in multiRegionProperties.witnessRegion cannot be the same as the cluster's Region."
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -192,7 +192,7 @@ paths:
             $ref: "#/components/schemas/ClusterId"
           description: The ID of the cluster you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1042,6 +1042,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1052,12 +1054,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.clusters
+          request:
+            nativeCasing: pascal
         delete_cluster:
           operation:
             $ref: "#/paths/~1cluster~1{identifier}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_cluster:
           operation:
             $ref: "#/paths/~1cluster~1{identifier}/get"
@@ -1070,6 +1076,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1094,6 +1102,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1104,12 +1114,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.streams
+          request:
+            nativeCasing: pascal
         delete_stream:
           operation:
             $ref: "#/paths/~1stream~1{cluster_identifier}~1{stream_identifier}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_stream:
           operation:
             $ref: "#/paths/~1stream~1{cluster_identifier}~1{stream_identifier}/get"
@@ -1136,6 +1150,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_cluster_policy:
           operation:
             $ref: "#/paths/~1cluster~1{identifier}~1policy/get"
@@ -1148,6 +1164,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1204,6 +1222,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1212,6 +1232,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

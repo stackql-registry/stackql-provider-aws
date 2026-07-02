@@ -138,6 +138,7 @@ function requiredParamsOf(op, spec) {
 function rewriteService(spec, serviceAlias) {
   const stackqlResources = {};
   const protocol = (spec.info && spec.info['x-protocol']) || '';
+  const jsonVersion = (spec.info && spec.info['x-jsonVersion']) || '1.0';
 
   // Side-table indexed by (resource, verb) carrying per-method metadata we
   // need to sort and dedupe sqlVerbs entries at the end of the pass.
@@ -157,16 +158,7 @@ function rewriteService(spec, serviceAlias) {
       const verb = op['x-stackql-verb'];
       const objectKey = op['x-stackql-objectKey'];
       const responseEnvelope = op['x-stackql-responseEnvelope'];
-      const responseTransform = op['x-stackql-responseTransform'];
       const responseObjectKey = op['x-stackql-responseObjectKey'];
-      // EC2 snake_case mutable rewrite breadcrumbs. Only set on the POST
-      // entry of EC2 mutable ops with tractable input shapes. When present,
-      // the method's $ref is pointed at the POST, the request block is
-      // emitted with this transform, and the standard requestTranslate is
-      // skipped (the transform supplants it).
-      const requestMediaType = op['x-stackql-request-mediatype'];
-      const requestTransformType = op['x-stackql-request-transform-type'];
-      const requestTransformBody = op['x-stackql-request-transform-body'];
 
       // Strip x-stackql-* tags from the operation regardless of whether
       // we register them (keeps output clean).
@@ -175,11 +167,7 @@ function rewriteService(spec, serviceAlias) {
       delete op['x-stackql-verb'];
       delete op['x-stackql-objectKey'];
       delete op['x-stackql-responseEnvelope'];
-      delete op['x-stackql-responseTransform'];
       delete op['x-stackql-responseObjectKey'];
-      delete op['x-stackql-request-mediatype'];
-      delete op['x-stackql-request-transform-type'];
-      delete op['x-stackql-request-transform-body'];
 
       if (!resource || !method || !verb) continue;
 
@@ -199,43 +187,27 @@ function rewriteService(spec, serviceAlias) {
       if (mediaType) responseBlock.mediaType = mediaType;
       if (objectKey) responseBlock.objectKey = objectKey;
 
-      // XML response handling.
+      // XML response handling (query / ec2 / rest-xml).
       //
-      // For query/ec2 protocols, Python stamps three breadcrumbs:
+      // Python stamps two breadcrumbs on every XML op with an output shape:
       //   - x-stackql-responseEnvelope: the <OpName>OutputDisplay schema
       //     ({line_items: [<RowShape>Display]})
-      //   - x-stackql-responseTransform: a Go template body that reshapes
-      //     the mxj-decoded XML into {"line_items": [...]} with one
-      //     JSON-object row per AWS list element (or the singleton
-      //     response as a single row)
       //   - x-stackql-responseObjectKey: always $.line_items
       //
-      // For rest-xml, Python stamps only x-stackql-responseEnvelope (the
-      // operation's own output shape) because the body root IS the
-      // shape per botocore.parsers.RestXMLParser. The transform is the
-      // naive toJson dump for now; per-row projection for rest-xml is
-      // future work.
+      // The schema-driven XML walker (any-sdk pkg/stream_transform) reads
+      // the schema_override, navigates the mxj-decoded XML using the
+      // spec's info.x-protocol hint, and emits {"line_items": [...]} -
+      // one row per list element (or the singleton as a single row). No
+      // per-op template body is needed; the schema drives the projection.
       if (responseEnvelope) {
         responseBlock.mediaType = 'application/xml';
         responseBlock.overrideMediaType = 'application/json';
         responseBlock.schema_override = {
           $ref: `#/components/schemas/${responseEnvelope}`,
         };
-        if (responseTransform) {
-          // v0.2.0 supports toJson, toInt, toBool, toFloat - we need
-          // toJson for stringifying complex (structure/list/map) columns
-          // so users can JSON_EXTRACT them. v0.1.0 lacks toJson.
-          responseBlock.transform = {
-            body: responseTransform,
-            type: 'golang_template_mxj_v0.2.0',
-          };
-        } else {
-          // rest-xml fallback - no per-row template yet.
-          responseBlock.transform = {
-            body: '{{ toJson . }}',
-            type: 'golang_template_mxj_v0.2.0',
-          };
-        }
+        responseBlock.transform = {
+          type: 'schema_driven_xml_v0.1.0',
+        };
         if (responseObjectKey) {
           responseBlock.objectKey = responseObjectKey;
         }
@@ -255,18 +227,13 @@ function rewriteService(spec, serviceAlias) {
         sqlVerbs: { select: [], insert: [], update: [], replace: [], delete: [] },
       });
 
-      // Precedence: usually prefer GET (it surfaces every input as a typed
-      // RequiredParam in SHOW METHODS). EXCEPTION: when a POST carries the
-      // EC2 snake_case request-transform breadcrumbs, the POST wins because
-      // the new flow uses the requestBody schema to drive the SQL surface,
-      // not the GET's path-level query parameters.
+      // Precedence: prefer GET (it surfaces every input as a typed
+      // RequiredParam in SHOW METHODS; the POST variant hides inputs in a
+      // requestBody and would produce method tables with no
+      // required-params).
       const existing = bucket.methods[method];
-      const hasRequestTransform = !!(
-        requestMediaType && requestTransformType && requestTransformBody
-      );
-      if (existing && httpMethod === 'post' && !hasRequestTransform) {
-        // GET was registered first and the POST has no transform-rewrite
-        // - leave the GET in place.
+      if (existing && httpMethod === 'post') {
+        // GET was registered first - leave it in place.
         continue;
       }
 
@@ -275,53 +242,63 @@ function rewriteService(spec, serviceAlias) {
         response: responseBlock,
       };
 
-      // Branch A: EC2 snake_case mutable rewrite. The POST carries a
-      // form-urlencoded body produced by a per-op Go template (the
-      // request.transform). SQL clause keys (snake_case) are matched
-      // against the requestBody schema by the `naive` translator and
-      // plumbed into the JSON body map fed to the template.
-      //
-      // The standard `requestTranslate: get_query_to_post_form_utf_8` is
-      // omitted here - that transform reads the GET's path-level query
-      // parameters into a POST form body, which would conflict with our
-      // custom-templated body (and the GET path won't even have the
-      // snake_case params).
-      if (hasRequestTransform) {
-        methodEntry.request = {
-          mediaType: requestMediaType,
-          transform: {
-            type: requestTransformType,
-            body: requestTransformBody,
-          },
-        };
+      // Casing engine opt-in (rule: naming and case). Every method whose
+      // inputs live in query params or a request body gets
+      // `request.nativeCasing: pascal` - the engine reverse-transforms a
+      // snake SQL key (vpc_id) to the AWS wire casing (VpcId) when an
+      // exact match fails. Path params are excluded (already snake in the
+      // spec; substituted verbatim into the URI template).
+      const hasQueryParams = (op.parameters || []).some(
+        (p) => p && p.in === 'query' && !SIGNATURE_IGNORE.has(p.name),
+      );
+      if (hasQueryParams || op.requestBody) {
+        methodEntry.request = { nativeCasing: 'pascal' };
+      }
+      // aws-json (X-Amz-Target routed) services require a JSON body on every
+      // request - a no-input op must still send literal '{}'. request.base is
+      // the fallback body sent verbatim when no SQL-supplied body fields
+      // exist (and merged UNDER supplied fields when they do), and
+      // request.mediaType carries the amz-json content type (matches the
+      // canonical aws test-registry cloud_control pattern; the loader binds
+      // the body schema by exact content-key match against it). NOTE:
+      // request.default is NOT usable here - it diverts supplied body params
+      // in any-sdk's armoury flow.
+      if (protocol === 'json') {
+        methodEntry.request = methodEntry.request || {};
+        methodEntry.request.mediaType = `application/x-amz-json-${jsonVersion}`;
+        methodEntry.request.base = '{}';
+      }
+      // rest-xml request bodies go to the wire as XML: request.mediaType
+      // activates any-sdk's schema-driven JSON-map -> XML body marshalling
+      // (matches the canonical aws test-registry s3 pattern; per-op
+      // request transforms remain available as overrides).
+      if (protocol === 'rest-xml' && op.requestBody) {
+        methodEntry.request = methodEntry.request || {};
+        methodEntry.request.mediaType = 'application/xml';
+      }
+
+      // For query/ec2 protocols, the `$ref` points at the GET form so
+      // stackql can surface every query-string param as a typed
+      // RequiredParam in SHOW METHODS. On the wire, AWS expects a
+      // sigv4-signed POST with a form-encoded body - long parameter sets
+      // (filters, tag specs, ID lists) overflow URL length limits if sent
+      // as GET. The config block below tells stackql to translate the
+      // GET-with-query into a POST-with-form at request time.
+      // See ref/ec2.yaml `volumes_presented` for the canonical pattern.
+      if (protocol === 'query' || protocol === 'ec2') {
         methodEntry.config = methodEntry.config || {};
         methodEntry.config.queryParamTranspose = { algorithm: 'AWSCanonical' };
-        methodEntry.config.requestBodyTranslate = { algorithm: 'naive' };
-      } else {
-        // Branch B: legacy GET-with-query path. For query/ec2 protocols,
-        // the `$ref` points at the GET form so stackql can surface every
-        // query-string param as a typed RequiredParam in SHOW METHODS.
-        // On the wire, AWS expects a sigv4-signed POST with a form-encoded
-        // body - long parameter sets (filters, tag specs, ID lists)
-        // overflow URL length limits if sent as GET. The config block
-        // below tells stackql to translate the GET-with-query into a
-        // POST-with-form at request time.
-        // See ref/ec2.yaml `volumes_presented` for the canonical pattern.
-        if (protocol === 'query' || protocol === 'ec2') {
-          methodEntry.config = methodEntry.config || {};
-          methodEntry.config.queryParamTranspose = { algorithm: 'AWSCanonical' };
-          methodEntry.config.requestTranslate = { algorithm: 'get_query_to_post_form_utf_8' };
-        }
+        methodEntry.config.requestTranslate = { algorithm: 'get_query_to_post_form_utf_8' };
+      }
 
-        // Any method that carries a requestBody gets `requestBodyTranslate:
-        // naive`. This tells stackql to pass the SQL clause's keys straight
-        // through to the JSON body unchanged, and - crucially - drops the
-        // `data__` prefix from required body-fields in SHOW METHODS output.
-        // The two configs are orthogonal: aws-query POSTs get both.
-        if (op.requestBody) {
-          methodEntry.config = methodEntry.config || {};
-          methodEntry.config.requestBodyTranslate = { algorithm: 'naive' };
-        }
+      // Any method that carries a requestBody gets `requestBodyTranslate:
+      // naive`. This tells stackql to pass the SQL clause's keys straight
+      // through to the JSON body unchanged, and - crucially - drops the
+      // `data__` prefix from required body-fields in SHOW METHODS output.
+      // The two configs are orthogonal: aws-query POSTs get both.
+      if (op.requestBody) {
+        methodEntry.config = methodEntry.config || {};
+        methodEntry.config.requestBodyTranslate = { algorithm: 'naive' };
       }
 
       bucket.methods[method] = methodEntry;
@@ -578,6 +555,10 @@ const providerYaml = {
       credentialsenvvar: 'AWS_SECRET_ACCESS_KEY',
       keyIDenvvar: 'AWS_ACCESS_KEY_ID',
     },
+    // Casing engine opt-in: response columns render as snake aliases and
+    // snake SQL keys reverse-resolve to wire params (with each method's
+    // request.nativeCasing declaring the wire convention).
+    snake_case_aliases: true,
   },
 };
 

@@ -617,7 +617,7 @@ paths:
           $ref: '#/components/schemas/String64'
         description: The unique identifier of the AppInstanceUserEndpoint.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -803,7 +803,7 @@ paths:
           $ref: '#/components/schemas/ChimeArn'
         description: The ARN of the AppInstanceUser.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

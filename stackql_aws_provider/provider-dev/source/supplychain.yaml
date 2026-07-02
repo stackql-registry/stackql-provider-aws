@@ -174,7 +174,7 @@ paths:
           $ref: '#/components/schemas/DataIntegrationFlowName'
         description: The name of the DataIntegrationFlow to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -224,7 +224,7 @@ paths:
         description: The name of the dataset. For asc name space, the name must be one of the supported data entities under
           https://docs.aws.amazon.com/aws-supply-chain/latest/userguide/data-model-asc.html.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -348,7 +348,7 @@ paths:
         description: The name of the dataset. For asc namespace, the name must be one of the supported data entities under
           https://docs.aws.amazon.com/aws-supply-chain/latest/userguide/data-model-asc.html.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -386,7 +386,7 @@ paths:
         description: The name of the namespace. Noted you cannot create namespace with name starting with asc, default, scn,
           aws, amazon, amzn
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -482,7 +482,7 @@ paths:
         description: The name of the namespace. Noted you cannot update namespace with name starting with asc, default, scn,
           aws, amazon, amzn
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -512,7 +512,7 @@ paths:
         on the mitigation from the error message.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -639,7 +639,7 @@ paths:
           $ref: '#/components/schemas/UUID'
         description: The AWS Supply Chain instance identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

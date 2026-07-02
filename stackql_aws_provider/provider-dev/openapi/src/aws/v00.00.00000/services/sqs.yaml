@@ -35,7 +35,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -76,7 +76,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -109,7 +109,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -146,7 +146,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -183,7 +183,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -222,7 +222,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -255,7 +255,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -292,7 +292,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -321,7 +321,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -357,7 +357,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -393,7 +393,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -432,7 +432,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -468,7 +468,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -501,7 +501,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -538,7 +538,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -567,7 +567,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -621,7 +621,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -654,7 +654,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -706,7 +706,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -743,7 +743,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -776,7 +776,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -815,7 +815,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -848,7 +848,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/x-amz-json-1.0:
             schema:
               type: object
               properties:
@@ -1369,6 +1369,10 @@ components:
             $ref: "#/paths/~1AddPermission/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1377,6 +1381,10 @@ components:
             $ref: "#/paths/~1RemovePermission/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1398,6 +1406,10 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1406,6 +1418,10 @@ components:
             $ref: "#/paths/~1DeleteQueue/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1416,6 +1432,10 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.QueueUrls
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1424,6 +1444,10 @@ components:
             $ref: "#/paths/~1TagQueue/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1432,6 +1456,10 @@ components:
             $ref: "#/paths/~1UntagQueue/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1455,6 +1483,10 @@ components:
             $ref: "#/paths/~1DeleteMessage/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1475,6 +1507,10 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1495,6 +1531,10 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1503,6 +1543,10 @@ components:
             $ref: "#/paths/~1SetQueueAttributes/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1524,6 +1568,10 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1545,6 +1593,10 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.queueUrls
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1565,6 +1617,10 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1585,6 +1641,10 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive

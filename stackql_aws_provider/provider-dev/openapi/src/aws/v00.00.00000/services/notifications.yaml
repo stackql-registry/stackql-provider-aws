@@ -318,7 +318,7 @@ paths:
             $ref: "#/components/schemas/EventRuleArn"
           description: The Amazon Resource Name (ARN) to use to update the EventRule.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -381,7 +381,7 @@ paths:
             $ref: "#/components/schemas/NotificationConfigurationArn"
           description: The Amazon Resource Name (ARN) used to update the NotificationConfiguration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2721,6 +2721,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2730,6 +2732,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2740,6 +2744,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.channels
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channels/methods/list_channels"
@@ -2758,6 +2764,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2767,6 +2775,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2787,6 +2797,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2796,6 +2808,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2816,6 +2830,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2825,6 +2841,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2835,6 +2853,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.organizationalUnits
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organizational_units/methods/list_organizational_units"
@@ -2853,6 +2873,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2863,6 +2885,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.eventRules
+          request:
+            nativeCasing: pascal
         delete_event_rule:
           operation:
             $ref: "#/paths/~1event-rules~1{arn}/delete"
@@ -2881,6 +2905,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2905,6 +2931,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2915,6 +2943,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.notificationConfigurations
+          request:
+            nativeCasing: pascal
         delete_notification_configuration:
           operation:
             $ref: "#/paths/~1notification-configurations~1{arn}/delete"
@@ -2933,6 +2963,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2964,12 +2996,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.notificationHubs
+          request:
+            nativeCasing: pascal
         register_notification_hub:
           operation:
             $ref: "#/paths/~1notification-hubs/post"
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3009,6 +3045,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_managed_notification_child_events:
           operation:
             $ref: "#/paths/~1list-managed-notification-child-events~1{aggregate_managed_notification_event_arn}/get"
@@ -3016,6 +3054,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.managedNotificationChildEvents
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_notification_child_events/methods/get_managed_notification_child_event"
@@ -3041,6 +3081,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.managedNotificationConfigurations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_notification_configurations/methods/get_managed_notification_configuration"
@@ -3059,6 +3101,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_managed_notification_events:
           operation:
             $ref: "#/paths/~1managed-notification-events/get"
@@ -3066,6 +3110,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.managedNotificationEvents
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_notification_events/methods/get_managed_notification_event"
@@ -3084,6 +3130,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_notification_events:
           operation:
             $ref: "#/paths/~1notification-events/get"
@@ -3091,6 +3139,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.notificationEvents
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/notification_events/methods/get_notification_event"
@@ -3110,6 +3160,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.channelAssociations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_notification_channel_associations/methods/list_managed_notification_channel_associations"
@@ -3128,6 +3180,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.memberAccounts
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/member_accounts/methods/list_member_accounts"
@@ -3162,6 +3216,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3171,6 +3227,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

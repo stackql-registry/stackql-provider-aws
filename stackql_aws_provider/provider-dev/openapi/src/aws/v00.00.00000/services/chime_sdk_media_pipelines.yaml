@@ -485,7 +485,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The unique identifier of the requested resource. Valid values include the name and ARN of the media pipeline Kinesis Video Stream pool.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2722,6 +2722,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2731,6 +2733,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_media_capture_pipeline:
           operation:
             $ref: "#/paths/~1sdk-media-capture-pipelines~1{media_pipeline_id}/delete"
@@ -2762,6 +2766,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2782,6 +2788,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2802,6 +2810,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2811,6 +2821,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_media_insights_pipeline_configuration:
           operation:
             $ref: "#/paths/~1media-insights-pipeline-configurations~1{identifier}/delete"
@@ -2828,6 +2840,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2852,6 +2866,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2872,6 +2888,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2881,6 +2899,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_media_pipeline_kinesis_video_stream_pool:
           operation:
             $ref: "#/paths/~1media-pipeline-kinesis-video-stream-pools~1{identifier}/delete"
@@ -2898,6 +2918,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2922,6 +2944,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2953,6 +2977,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/media_pipelines/methods/get_media_pipeline"
@@ -3006,6 +3032,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -3023,6 +3051,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3032,6 +3062,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3052,6 +3084,8 @@ components:
             $ref: "#/paths/~1media-insights-pipeline-status~1{identifier}/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

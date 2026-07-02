@@ -395,7 +395,7 @@ paths:
           $ref: '#/components/schemas/GraphIdentifier'
         description: The unique identifier of the Neptune Analytics graph.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -545,7 +545,7 @@ paths:
           $ref: '#/components/schemas/GraphIdentifier'
         description: The unique identifier of the Neptune Analytics graph.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

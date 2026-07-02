@@ -1250,7 +1250,7 @@ paths:
           $ref: '#/components/schemas/ResourceConfigurationIdentifier'
         description: The ID of the resource configuration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1345,7 +1345,7 @@ paths:
           $ref: '#/components/schemas/ResourceGatewayIdentifier'
         description: The ID or ARN of the resource gateway.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1531,7 +1531,7 @@ paths:
           $ref: '#/components/schemas/RuleIdentifier'
         description: The ID or ARN of the rule.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1608,7 +1608,7 @@ paths:
           $ref: '#/components/schemas/ServiceIdentifier'
         description: The ID or ARN of the service.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2213,7 +2213,7 @@ paths:
           $ref: '#/components/schemas/NextToken'
         description: A pagination token for the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

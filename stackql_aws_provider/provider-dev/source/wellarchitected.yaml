@@ -802,7 +802,7 @@ paths:
           $ref: '#/components/schemas/ProfileArn'
         description: The profile ARN.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -904,7 +904,7 @@ paths:
           $ref: '#/components/schemas/TemplateArn'
         description: The review template ARN.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1009,7 +1009,7 @@ paths:
         schema:
           $ref: '#/components/schemas/WorkloadId'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1262,7 +1262,7 @@ paths:
         schema:
           $ref: '#/components/schemas/QuestionId'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1348,7 +1348,7 @@ paths:
         features.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1411,7 +1411,7 @@ paths:
         schema:
           $ref: '#/components/schemas/LensAlias'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1587,7 +1587,7 @@ paths:
         schema:
           $ref: '#/components/schemas/QuestionId'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1655,7 +1655,7 @@ paths:
         schema:
           $ref: '#/components/schemas/LensAlias'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1996,7 +1996,7 @@ paths:
         schema:
           $ref: '#/components/schemas/WorkloadId'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2022,7 +2022,7 @@ paths:
       description: List lens notifications.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2297,7 +2297,7 @@ paths:
       description: Paginated list of workloads.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2433,7 +2433,7 @@ paths:
           $ref: '#/components/schemas/ProfileArn'
         description: The profile ARN.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2466,7 +2466,7 @@ paths:
         schema:
           $ref: '#/components/schemas/LensAlias'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -312,7 +312,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The current version of the connector that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

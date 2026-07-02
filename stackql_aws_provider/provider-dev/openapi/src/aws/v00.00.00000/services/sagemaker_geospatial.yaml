@@ -259,7 +259,7 @@ paths:
       description: Use this operation to get a list of the Earth Observation jobs associated with the calling Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -381,7 +381,7 @@ paths:
       description: Retrieves a list of vector enrichment jobs.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2092,6 +2092,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.EarthObservationJobSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2127,6 +2129,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.VectorEnrichmentJobSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2156,12 +2160,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RasterDataCollectionSummaries
+          request:
+            nativeCasing: pascal
         search_raster_data_collection:
           operation:
             $ref: "#/paths/~1search-raster-data-collection/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2184,6 +2192,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tiles/methods/get_tile"
@@ -2218,6 +2228,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2227,6 +2239,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

@@ -331,7 +331,7 @@ paths:
       description: Gets a list of available bots.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -404,7 +404,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The identifier of the bot to list aliases for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -490,7 +490,7 @@ paths:
             $ref: "#/components/schemas/BotVersion"
           description: The version of the bot to list locales for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -599,7 +599,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The identifier of the bot to list versions for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -651,7 +651,7 @@ paths:
       description: Lists the exports for a bot, bot locale, or custom vocabulary. Exports are kept in the list for 7 days.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -770,7 +770,7 @@ paths:
             $ref: "#/components/schemas/LocaleId"
           description: The identifier of the language and locale of the intents to list. The string must match one of the supported locales. For more information, see Supported languages.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1029,7 +1029,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The unique identifier of the intent that contains the slot.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1126,7 +1126,7 @@ paths:
             $ref: "#/components/schemas/LocaleId"
           description: The identifier of the language and locale of the slot types to list. The string must match one of the supported locales. For more information, see Supported languages.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1571,7 +1571,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The unique identifier Amazon Lex assigned to the export.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2178,7 +2178,7 @@ paths:
             $ref: "#/components/schemas/UUID"
           description: The unique identifier of the analysis request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2518,7 +2518,7 @@ paths:
             $ref: "#/components/schemas/ReplicaRegion"
           description: The request for the secondary region of the replicated bot created from the source bot alias.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2547,7 +2547,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The unique identifier of the bot.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2592,7 +2592,7 @@ paths:
             $ref: "#/components/schemas/LocaleId"
           description: The identifier of the language and locale of the bot recommendation list.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2675,7 +2675,7 @@ paths:
             $ref: "#/components/schemas/LocaleId"
           description: The locale of the bot whose generation requests you want to view.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2712,7 +2712,7 @@ paths:
             $ref: "#/components/schemas/ReplicaRegion"
           description: The request for the region used in the list of replicated bots.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2743,7 +2743,7 @@ paths:
             $ref: "#/components/schemas/LocaleId"
           description: The identifier of the language and locale of the intents to list. The string must match one of the supported locales. For more information, see Supported languages.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2774,7 +2774,7 @@ paths:
             $ref: "#/components/schemas/LocaleId"
           description: The identifier of the language and locale of the slot types to list. The string must match one of the supported locales. For more information, see Supported languages.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2817,7 +2817,7 @@ paths:
             $ref: "#/components/schemas/LocaleId"
           description: The identifier of the language and locale where this custom vocabulary is used. The string must match one of the supported locales. For more information, see Supported languages (https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2840,7 +2840,7 @@ paths:
       description: Lists the imports for a bot, bot locale, or custom vocabulary. Imports are kept in the list for 7 days.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3054,7 +3054,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The identifier of the bot recommendation that contains the recommended intents.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3264,7 +3264,7 @@ paths:
       description: The list of test set executions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3295,7 +3295,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The identifier of the test set to list its test set records.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3318,7 +3318,7 @@ paths:
       description: The list of the test sets
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -11339,6 +11339,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11348,6 +11350,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11357,6 +11361,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11381,6 +11387,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11390,6 +11398,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11399,6 +11409,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_bot:
           operation:
             $ref: "#/paths/~1bots~1{bot_id}~1/get"
@@ -11411,6 +11423,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11435,6 +11449,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11444,6 +11460,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_bot_alias:
           operation:
             $ref: "#/paths/~1bots~1{bot_id}~1botaliases~1{bot_alias_id}~1/get"
@@ -11456,6 +11474,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11479,6 +11499,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11499,6 +11521,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11540,6 +11564,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11549,6 +11575,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11558,6 +11586,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_bot_version:
           operation:
             $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1/get"
@@ -11584,6 +11614,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11593,6 +11625,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11614,6 +11648,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11638,6 +11674,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11647,6 +11685,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11667,6 +11707,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11691,6 +11733,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11700,6 +11744,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_resource_policy:
           operation:
             $ref: "#/paths/~1policy~1{resource_arn}~1/get"
@@ -11712,6 +11758,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11735,6 +11783,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11744,6 +11794,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert:
@@ -11762,6 +11814,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11771,6 +11825,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11791,6 +11847,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11815,6 +11873,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11824,6 +11884,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11832,6 +11894,8 @@ components:
             $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1botlocales~1{locale_id}~1slottypes~1{slot_type_id}~1/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         describe_slot_type:
           operation:
             $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1botlocales~1{locale_id}~1slottypes~1{slot_type_id}~1/get"
@@ -11844,6 +11908,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11868,6 +11934,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11919,6 +11987,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.botAnalyzerRecommendationList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11969,6 +12039,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12002,6 +12074,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12011,6 +12085,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12034,6 +12110,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -12057,6 +12135,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12066,6 +12146,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12094,6 +12176,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12138,6 +12222,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12193,6 +12279,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12213,6 +12301,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12234,6 +12324,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.botAnalyzerHistoryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12254,6 +12346,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12274,6 +12368,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12294,6 +12390,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12314,6 +12412,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12334,6 +12434,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12354,6 +12456,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12374,6 +12478,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12394,6 +12500,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12414,6 +12522,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12434,6 +12544,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12471,6 +12583,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12480,6 +12594,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -12498,6 +12614,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12518,6 +12636,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12538,6 +12658,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12558,6 +12680,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12578,6 +12702,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

@@ -748,7 +748,7 @@ paths:
           $ref: '#/components/schemas/ResourceName'
         description: The name of the geofence collection to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -832,7 +832,7 @@ paths:
           $ref: '#/components/schemas/ResourceName'
         description: The name of the API key resource to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -931,7 +931,7 @@ paths:
           $ref: '#/components/schemas/ResourceName'
         description: The name of the map resource to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1027,7 +1027,7 @@ paths:
           $ref: '#/components/schemas/ResourceName'
         description: The name of the place index resource to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1123,7 +1123,7 @@ paths:
           $ref: '#/components/schemas/ResourceName'
         description: The name of the route calculator resource to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1197,7 +1197,7 @@ paths:
           $ref: '#/components/schemas/ResourceName'
         description: The name of the tracker resource to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1351,7 +1351,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The device whose position history you want to retrieve.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1733,7 +1733,7 @@ paths:
           $ref: '#/components/schemas/ResourceName'
         description: The tracker resource containing the requested devices.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1762,7 +1762,7 @@ paths:
       description: Lists geofence collections in your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1795,7 +1795,7 @@ paths:
           $ref: '#/components/schemas/ResourceName'
         description: The name of the geofence collection storing the list of geofences.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1823,7 +1823,7 @@ paths:
         see Job concepts in the Amazon Location Service Developer Guide.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1853,7 +1853,7 @@ paths:
         authenticate in the Amazon Location Service Developer Guide.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1889,7 +1889,7 @@ paths:
         Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1923,7 +1923,7 @@ paths:
         or the Developer Guide. Lists place index resources in your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1957,7 +1957,7 @@ paths:
         V2 API Reference or the Developer Guide. Lists route calculator resources in your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2074,7 +2074,7 @@ paths:
           $ref: '#/components/schemas/ResourceName'
         description: The tracker resource whose associated geofence collections you want to list.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2101,7 +2101,7 @@ paths:
       description: Lists tracker resources in your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

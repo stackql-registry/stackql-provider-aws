@@ -81,7 +81,7 @@ paths:
             $ref: "#/components/schemas/ComponentTypeId"
           description: The ID of the component type.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -175,7 +175,7 @@ paths:
             $ref: "#/components/schemas/ComponentTypeId"
           description: The ID of the component type.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -387,7 +387,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The ID of the workspace.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -453,7 +453,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The ID of the workspace.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -542,7 +542,7 @@ paths:
             $ref: "#/components/schemas/EntityId"
           description: The ID of the entity.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -629,7 +629,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The ID of the scene.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -870,7 +870,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The ID of the workspace.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -907,7 +907,7 @@ paths:
             $ref: "#/components/schemas/EntityId"
           description: The ID for the entity whose metadata (component/properties) is returned by the operation.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -938,7 +938,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The ID of the workspace.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1038,7 +1038,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The ID of the workspace that contains the scenes.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1067,7 +1067,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The ID of the workspace that contains the sync job.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1102,7 +1102,7 @@ paths:
             $ref: "#/components/schemas/SyncSource"
           description: The sync source. Currently the only supported syncSource is SITEWISE .
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1154,7 +1154,7 @@ paths:
       description: Retrieves information about workspaces in the current account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3242,6 +3242,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3263,6 +3265,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3272,6 +3276,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3296,6 +3302,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3305,6 +3313,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_entity:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1entities~1{entity_id}/get"
@@ -3317,6 +3327,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3326,6 +3338,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3350,6 +3364,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3365,6 +3381,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3387,6 +3405,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3408,6 +3428,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3417,6 +3439,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3441,6 +3465,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3456,12 +3482,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_sync_jobs:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1sync-jobs-list/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3485,6 +3515,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3506,6 +3538,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3515,6 +3549,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3545,6 +3581,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3566,6 +3604,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3586,6 +3626,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3606,6 +3648,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3626,6 +3670,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3646,6 +3692,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3666,6 +3714,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3686,6 +3736,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3695,6 +3747,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

@@ -344,7 +344,7 @@ paths:
             $ref: "#/components/schemas/FileSystemId"
           description: The ID of the file system that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -467,7 +467,7 @@ paths:
       description: Returns the account preferences settings for the Amazon Web Services account associated with the user making the request, in the current Amazon Web Services Region.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -627,7 +627,7 @@ paths:
             $ref: "#/components/schemas/MountTargetId"
           description: The ID of the mount target whose security groups you want to modify.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -783,7 +783,7 @@ paths:
             $ref: "#/components/schemas/FileSystemId"
           description: The ID of the file system to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1615,6 +1615,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1625,6 +1627,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AccessPoints
+          request:
+            nativeCasing: pascal
         delete_access_point:
           operation:
             $ref: "#/paths/~12015-02-01~1access-points~1{access_point_id}/delete"
@@ -1649,6 +1653,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1659,6 +1665,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FileSystems
+          request:
+            nativeCasing: pascal
         delete_file_system:
           operation:
             $ref: "#/paths/~12015-02-01~1file-systems~1{file_system_id}/delete"
@@ -1670,6 +1678,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1693,6 +1703,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1703,6 +1715,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.MountTargets
+          request:
+            nativeCasing: pascal
         delete_mount_target:
           operation:
             $ref: "#/paths/~12015-02-01~1mount-targets~1{mount_target_id}/delete"
@@ -1727,6 +1741,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1735,6 +1751,8 @@ components:
             $ref: "#/paths/~12015-02-01~1file-systems~1{source_file_system_id}~1replication-configuration/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         describe_replication_configurations:
           operation:
             $ref: "#/paths/~12015-02-01~1file-systems~1replication-configurations/get"
@@ -1742,6 +1760,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Replications
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/replication_configurations/methods/describe_replication_configurations"
@@ -1760,6 +1780,8 @@ components:
             $ref: "#/paths/~12015-02-01~1create-tags~1{file_system_id}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1768,6 +1790,8 @@ components:
             $ref: "#/paths/~12015-02-01~1delete-tags~1{file_system_id}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1778,6 +1802,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Tags
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags/methods/describe_tags"
@@ -1808,6 +1834,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1831,6 +1859,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1840,6 +1870,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1868,6 +1900,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1896,6 +1930,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1923,6 +1959,8 @@ components:
             $ref: "#/paths/~12015-02-01~1mount-targets~1{mount_target_id}~1security-groups/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1944,6 +1982,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -1960,6 +2000,8 @@ components:
             $ref: "#/paths/~12015-02-01~1resource-tags~1{resource_id}/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1968,6 +2010,8 @@ components:
             $ref: "#/paths/~12015-02-01~1resource-tags~1{resource_id}/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -1986,6 +2030,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

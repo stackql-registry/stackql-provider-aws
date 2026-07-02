@@ -362,7 +362,7 @@ paths:
           $ref: '#/components/schemas/EventRuleArn'
         description: The Amazon Resource Name (ARN) to use to update the EventRule.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -434,7 +434,7 @@ paths:
           $ref: '#/components/schemas/NotificationConfigurationArn'
         description: The Amazon Resource Name (ARN) used to update the NotificationConfiguration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

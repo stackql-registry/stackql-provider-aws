@@ -794,7 +794,7 @@ paths:
             $ref: "#/components/schemas/BotId"
           description: The unique identifier of the bot to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -956,7 +956,7 @@ paths:
             $ref: "#/components/schemas/GenericString"
           description: The unique identifier of the security group to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3083,12 +3083,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.users
+          request:
+            nativeCasing: pascal
         update_user:
           operation:
             $ref: "#/paths/~1networks~1{network_id}~1users/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3098,6 +3102,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/users/methods/get_user"
@@ -3118,6 +3124,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.devices
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/devices_for_users/methods/list_devices_for_user"
@@ -3135,6 +3143,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3145,6 +3155,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.bots
+          request:
+            nativeCasing: pascal
         delete_bot:
           operation:
             $ref: "#/paths/~1networks~1{network_id}~1bots~1{bot_id}/delete"
@@ -3163,6 +3175,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3218,6 +3232,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3255,6 +3271,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3265,6 +3283,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.networks
+          request:
+            nativeCasing: pascal
         delete_network:
           operation:
             $ref: "#/paths/~1networks~1{network_id}/delete"
@@ -3283,6 +3303,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3307,6 +3329,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3317,6 +3341,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.securityGroups
+          request:
+            nativeCasing: pascal
         delete_security_group:
           operation:
             $ref: "#/paths/~1networks~1{network_id}~1security-groups~1{group_id}/delete"
@@ -3335,6 +3361,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3399,6 +3427,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3420,6 +3450,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/oidc_infos/methods/get_oidc_info"
@@ -3443,6 +3475,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3482,6 +3516,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.blocklist
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/blocked_guest_users/methods/list_blocked_guest_users"
@@ -3500,12 +3536,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.guestlist
+          request:
+            nativeCasing: pascal
         update_guest_user:
           operation:
             $ref: "#/paths/~1networks~1{network_id}~1guest-users~1{username_hash}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3528,6 +3568,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.users
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/security_group_users/methods/list_security_group_users"
@@ -3545,6 +3587,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3565,6 +3609,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

@@ -25,32 +25,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_BuildSuggesters
-      description: Indexes the search suggestions. For more information, see Configuring Suggesters in the Amazon CloudSearch
-        Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/BuildSuggestersOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/BuildSuggestersRequest'
-      x-stackql-resource: build_suggesters
-      x-stackql-method: build_suggesters
-      x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: BuildSuggestersOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"BuildSuggestersResponse\" \"BuildSuggestersResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"field_names\":\
-        \ {{ $v := index . \"FieldNames\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_BuildSuggesters
       description: Indexes the search suggestions. For more information, see Configuring Suggesters in the Amazon CloudSearch
@@ -72,10 +46,28 @@ paths:
       x-stackql-method: build_suggesters
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BuildSuggestersOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"BuildSuggestersResponse\" \"BuildSuggestersResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"field_names\":\
-        \ {{ $v := index . \"FieldNames\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_BuildSuggesters
+      description: Indexes the search suggestions. For more information, see Configuring Suggesters in the Amazon CloudSearch
+        Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/BuildSuggestersOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/BuildSuggestersRequest'
+      x-stackql-resource: build_suggesters
+      x-stackql-method: build_suggesters
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: BuildSuggestersOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=CreateDomain&Version=2013-01-01:
     parameters:
@@ -86,53 +78,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_CreateDomain
-      description: Creates a new search domain. For more information, see Creating a Search Domain in the Amazon CloudSearch
-        Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateDomainOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/CreateDomainRequest'
-      x-stackql-resource: domains
-      x-stackql-method: create_domain
-      x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateDomainOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CreateDomainResponse\" \"CreateDomainResult\"\
-        \ \"DomainStatus\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n       \
-        \ \"domain_id\": {{ $v := index . \"DomainId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"domain_name\"\
-        : {{ $v := index . \"DomainName\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"arn\": {{ $v := index . \"\
-        ARN\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"created\": {{ $v := index . \"Created\" }}{{ if eq $v nil\
-        \ }}null{{ else }}{{toBool $v}}{{ end }},\n        \"deleted\": {{ $v := index . \"Deleted\" }}{{ if eq $v nil }}null{{\
-        \ else }}{{toBool $v}}{{ end }},\n        \"doc_service\": {{ $v := index . \"DocService\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"search_service\"\
-        : {{ $v := index . \"SearchService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"requires_index_documents\": {{ $v := index . \"RequiresIndexDocuments\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"processing\": {{ $v := index . \"Processing\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"search_instance_type\": {{ $v := index . \"\
-        SearchInstanceType\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"search_partition_count\": {{ $v := index\
-        \ . \"SearchPartitionCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"search_instance_count\"\
-        : {{ $v := index . \"SearchInstanceCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"limits\"\
-        : {{ $v := index . \"Limits\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_CreateDomain
       description: Creates a new search domain. For more information, see Creating a Search Domain in the Amazon CloudSearch
@@ -156,31 +101,28 @@ paths:
       x-stackql-method: create_domain
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateDomainOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CreateDomainResponse\" \"CreateDomainResult\"\
-        \ \"DomainStatus\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n       \
-        \ \"domain_id\": {{ $v := index . \"DomainId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"domain_name\"\
-        : {{ $v := index . \"DomainName\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"arn\": {{ $v := index . \"\
-        ARN\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"created\": {{ $v := index . \"Created\" }}{{ if eq $v nil\
-        \ }}null{{ else }}{{toBool $v}}{{ end }},\n        \"deleted\": {{ $v := index . \"Deleted\" }}{{ if eq $v nil }}null{{\
-        \ else }}{{toBool $v}}{{ end }},\n        \"doc_service\": {{ $v := index . \"DocService\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"search_service\"\
-        : {{ $v := index . \"SearchService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"requires_index_documents\": {{ $v := index . \"RequiresIndexDocuments\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"processing\": {{ $v := index . \"Processing\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"search_instance_type\": {{ $v := index . \"\
-        SearchInstanceType\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"search_partition_count\": {{ $v := index\
-        \ . \"SearchPartitionCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"search_instance_count\"\
-        : {{ $v := index . \"SearchInstanceCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"limits\"\
-        : {{ $v := index . \"Limits\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_CreateDomain
+      description: Creates a new search domain. For more information, see Creating a Search Domain in the Amazon CloudSearch
+        Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CreateDomainOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/CreateDomainRequest'
+      x-stackql-resource: domains
+      x-stackql-method: create_domain
+      x-stackql-verb: INSERT
+      x-stackql-responseEnvelope: CreateDomainOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DefineAnalysisScheme&Version=2013-01-01:
     parameters:
@@ -191,34 +133,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DefineAnalysisScheme
-      description: Configures an analysis scheme that can be applied to a text or text-array field to define language-specific
-        text processing options. For more information, see Configuring Analysis Schemes in the Amazon CloudSearch Developer
-        Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DefineAnalysisSchemeOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DefineAnalysisSchemeRequest'
-      x-stackql-resource: define_analysis_scheme
-      x-stackql-method: define_analysis_scheme
-      x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: DefineAnalysisSchemeOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DefineAnalysisSchemeResponse\" \"DefineAnalysisSchemeResult\"\
-        \ \"AnalysisScheme\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{\
-        \ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DefineAnalysisScheme
       description: Configures an analysis scheme that can be applied to a text or text-array field to define language-specific
@@ -246,11 +160,29 @@ paths:
       x-stackql-method: define_analysis_scheme
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DefineAnalysisSchemeOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DefineAnalysisSchemeResponse\" \"DefineAnalysisSchemeResult\"\
-        \ \"AnalysisScheme\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{\
-        \ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DefineAnalysisScheme
+      description: Configures an analysis scheme that can be applied to a text or text-array field to define language-specific
+        text processing options. For more information, see Configuring Analysis Schemes in the Amazon CloudSearch Developer
+        Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DefineAnalysisSchemeOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DefineAnalysisSchemeRequest'
+      x-stackql-resource: define_analysis_scheme
+      x-stackql-method: define_analysis_scheme
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: DefineAnalysisSchemeOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DefineExpression&Version=2013-01-01:
     parameters:
@@ -261,34 +193,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DefineExpression
-      description: Configures an Expression for the search domain. Used to create new expressions and modify existing ones.
-        If the expression exists, the new configuration replaces the old one. For more information, see Configuring Expressions
-        in the Amazon CloudSearch Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DefineExpressionOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DefineExpressionRequest'
-      x-stackql-resource: define_expression
-      x-stackql-method: define_expression
-      x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: DefineExpressionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DefineExpressionResponse\" \"DefineExpressionResult\"\
-        \ \"Expression\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"\
-        options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DefineExpression
       description: Configures an Expression for the search domain. Used to create new expressions and modify existing ones.
@@ -316,11 +220,29 @@ paths:
       x-stackql-method: define_expression
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DefineExpressionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DefineExpressionResponse\" \"DefineExpressionResult\"\
-        \ \"Expression\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"\
-        options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DefineExpression
+      description: Configures an Expression for the search domain. Used to create new expressions and modify existing ones.
+        If the expression exists, the new configuration replaces the old one. For more information, see Configuring Expressions
+        in the Amazon CloudSearch Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DefineExpressionOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DefineExpressionRequest'
+      x-stackql-resource: define_expression
+      x-stackql-method: define_expression
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: DefineExpressionOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DefineIndexField&Version=2013-01-01:
     parameters:
@@ -331,36 +253,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DefineIndexField
-      description: Configures an IndexField for the search domain. Used to create new fields and modify existing ones. You
-        must specify the name of the domain you are configuring and an index field configuration. The index field configuration
-        specifies a unique name, the index field type, and the options you want to configure for the field. The options you
-        can specify depend on the IndexFieldType. If the field exists, the new configuration replaces the old one. For more
-        information, see Configuring Index Fields in the Amazon CloudSearch Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DefineIndexFieldOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DefineIndexFieldRequest'
-      x-stackql-resource: define_index_field
-      x-stackql-method: define_index_field
-      x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: DefineIndexFieldOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DefineIndexFieldResponse\" \"DefineIndexFieldResult\"\
-        \ \"IndexField\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"\
-        options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DefineIndexField
       description: Configures an IndexField for the search domain. Used to create new fields and modify existing ones. You
@@ -391,11 +283,31 @@ paths:
       x-stackql-method: define_index_field
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DefineIndexFieldOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DefineIndexFieldResponse\" \"DefineIndexFieldResult\"\
-        \ \"IndexField\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"\
-        options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DefineIndexField
+      description: Configures an IndexField for the search domain. Used to create new fields and modify existing ones. You
+        must specify the name of the domain you are configuring and an index field configuration. The index field configuration
+        specifies a unique name, the index field type, and the options you want to configure for the field. The options you
+        can specify depend on the IndexFieldType. If the field exists, the new configuration replaces the old one. For more
+        information, see Configuring Index Fields in the Amazon CloudSearch Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DefineIndexFieldOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DefineIndexFieldRequest'
+      x-stackql-resource: define_index_field
+      x-stackql-method: define_index_field
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: DefineIndexFieldOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DefineSuggester&Version=2013-01-01:
     parameters:
@@ -406,35 +318,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DefineSuggester
-      description: Configures a suggester for a domain. A suggester enables you to display possible matches before users finish
-        typing their queries. When you configure a suggester, you must specify the name of the text field you want to search
-        for possible matches and a unique name for the suggester. For more information, see Getting Search Suggestions in
-        the Amazon CloudSearch Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DefineSuggesterOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DefineSuggesterRequest'
-      x-stackql-resource: define_suggester
-      x-stackql-method: define_suggester
-      x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: DefineSuggesterOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DefineSuggesterResponse\" \"DefineSuggesterResult\"\
-        \ \"Suggester\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"\
-        options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DefineSuggester
       description: Configures a suggester for a domain. A suggester enables you to display possible matches before users finish
@@ -463,11 +346,30 @@ paths:
       x-stackql-method: define_suggester
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DefineSuggesterOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DefineSuggesterResponse\" \"DefineSuggesterResult\"\
-        \ \"Suggester\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"\
-        options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DefineSuggester
+      description: Configures a suggester for a domain. A suggester enables you to display possible matches before users finish
+        typing their queries. When you configure a suggester, you must specify the name of the text field you want to search
+        for possible matches and a unique name for the suggester. For more information, see Getting Search Suggestions in
+        the Amazon CloudSearch Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DefineSuggesterOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DefineSuggesterRequest'
+      x-stackql-resource: define_suggester
+      x-stackql-method: define_suggester
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: DefineSuggesterOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteAnalysisScheme&Version=2013-01-01:
     parameters:
@@ -478,33 +380,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DeleteAnalysisScheme
-      description: Deletes an analysis scheme. For more information, see Configuring Analysis Schemes in the Amazon CloudSearch
-        Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteAnalysisSchemeOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DeleteAnalysisSchemeRequest'
-      x-stackql-resource: analysis_schemes
-      x-stackql-method: delete_analysis_scheme
-      x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteAnalysisSchemeOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DeleteAnalysisSchemeResponse\" \"DeleteAnalysisSchemeResult\"\
-        \ \"AnalysisScheme\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{\
-        \ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DeleteAnalysisScheme
       description: Deletes an analysis scheme. For more information, see Configuring Analysis Schemes in the Amazon CloudSearch
@@ -532,11 +407,28 @@ paths:
       x-stackql-method: delete_analysis_scheme
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteAnalysisSchemeOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DeleteAnalysisSchemeResponse\" \"DeleteAnalysisSchemeResult\"\
-        \ \"AnalysisScheme\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{\
-        \ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DeleteAnalysisScheme
+      description: Deletes an analysis scheme. For more information, see Configuring Analysis Schemes in the Amazon CloudSearch
+        Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DeleteAnalysisSchemeOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DeleteAnalysisSchemeRequest'
+      x-stackql-resource: analysis_schemes
+      x-stackql-method: delete_analysis_scheme
+      x-stackql-verb: DELETE
+      x-stackql-responseEnvelope: DeleteAnalysisSchemeOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteDomain&Version=2013-01-01:
     parameters:
@@ -547,53 +439,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DeleteDomain
-      description: Permanently deletes a search domain and all of its data. Once a domain has been deleted, it cannot be recovered.
-        For more information, see Deleting a Search Domain in the Amazon CloudSearch Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteDomainOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DeleteDomainRequest'
-      x-stackql-resource: domains
-      x-stackql-method: delete_domain
-      x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteDomainOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DeleteDomainResponse\" \"DeleteDomainResult\"\
-        \ \"DomainStatus\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n       \
-        \ \"domain_id\": {{ $v := index . \"DomainId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"domain_name\"\
-        : {{ $v := index . \"DomainName\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"arn\": {{ $v := index . \"\
-        ARN\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"created\": {{ $v := index . \"Created\" }}{{ if eq $v nil\
-        \ }}null{{ else }}{{toBool $v}}{{ end }},\n        \"deleted\": {{ $v := index . \"Deleted\" }}{{ if eq $v nil }}null{{\
-        \ else }}{{toBool $v}}{{ end }},\n        \"doc_service\": {{ $v := index . \"DocService\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"search_service\"\
-        : {{ $v := index . \"SearchService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"requires_index_documents\": {{ $v := index . \"RequiresIndexDocuments\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"processing\": {{ $v := index . \"Processing\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"search_instance_type\": {{ $v := index . \"\
-        SearchInstanceType\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"search_partition_count\": {{ $v := index\
-        \ . \"SearchPartitionCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"search_instance_count\"\
-        : {{ $v := index . \"SearchInstanceCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"limits\"\
-        : {{ $v := index . \"Limits\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DeleteDomain
       description: Permanently deletes a search domain and all of its data. Once a domain has been deleted, it cannot be recovered.
@@ -616,31 +461,28 @@ paths:
       x-stackql-method: delete_domain
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteDomainOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DeleteDomainResponse\" \"DeleteDomainResult\"\
-        \ \"DomainStatus\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n       \
-        \ \"domain_id\": {{ $v := index . \"DomainId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"domain_name\"\
-        : {{ $v := index . \"DomainName\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"arn\": {{ $v := index . \"\
-        ARN\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"created\": {{ $v := index . \"Created\" }}{{ if eq $v nil\
-        \ }}null{{ else }}{{toBool $v}}{{ end }},\n        \"deleted\": {{ $v := index . \"Deleted\" }}{{ if eq $v nil }}null{{\
-        \ else }}{{toBool $v}}{{ end }},\n        \"doc_service\": {{ $v := index . \"DocService\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"search_service\"\
-        : {{ $v := index . \"SearchService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"requires_index_documents\": {{ $v := index . \"RequiresIndexDocuments\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"processing\": {{ $v := index . \"Processing\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"search_instance_type\": {{ $v := index . \"\
-        SearchInstanceType\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"\
-        string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"search_partition_count\": {{ $v := index\
-        \ . \"SearchPartitionCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"search_instance_count\"\
-        : {{ $v := index . \"SearchInstanceCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"limits\"\
-        : {{ $v := index . \"Limits\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DeleteDomain
+      description: Permanently deletes a search domain and all of its data. Once a domain has been deleted, it cannot be recovered.
+        For more information, see Deleting a Search Domain in the Amazon CloudSearch Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DeleteDomainOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DeleteDomainRequest'
+      x-stackql-resource: domains
+      x-stackql-method: delete_domain
+      x-stackql-verb: DELETE
+      x-stackql-responseEnvelope: DeleteDomainOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteExpression&Version=2013-01-01:
     parameters:
@@ -651,33 +493,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DeleteExpression
-      description: Removes an Expression from the search domain. For more information, see Configuring Expressions in the
-        Amazon CloudSearch Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteExpressionOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DeleteExpressionRequest'
-      x-stackql-resource: expressions
-      x-stackql-method: delete_expression
-      x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteExpressionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DeleteExpressionResponse\" \"DeleteExpressionResult\"\
-        \ \"Expression\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"\
-        options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DeleteExpression
       description: Removes an Expression from the search domain. For more information, see Configuring Expressions in the
@@ -705,11 +520,28 @@ paths:
       x-stackql-method: delete_expression
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteExpressionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DeleteExpressionResponse\" \"DeleteExpressionResult\"\
-        \ \"Expression\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"\
-        options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DeleteExpression
+      description: Removes an Expression from the search domain. For more information, see Configuring Expressions in the
+        Amazon CloudSearch Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DeleteExpressionOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DeleteExpressionRequest'
+      x-stackql-resource: expressions
+      x-stackql-method: delete_expression
+      x-stackql-verb: DELETE
+      x-stackql-responseEnvelope: DeleteExpressionOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteIndexField&Version=2013-01-01:
     parameters:
@@ -720,33 +552,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DeleteIndexField
-      description: Removes an IndexField from the search domain. For more information, see Configuring Index Fields in the
-        Amazon CloudSearch Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteIndexFieldOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DeleteIndexFieldRequest'
-      x-stackql-resource: index_fields
-      x-stackql-method: delete_index_field
-      x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteIndexFieldOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DeleteIndexFieldResponse\" \"DeleteIndexFieldResult\"\
-        \ \"IndexField\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"\
-        options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DeleteIndexField
       description: Removes an IndexField from the search domain. For more information, see Configuring Index Fields in the
@@ -774,11 +579,28 @@ paths:
       x-stackql-method: delete_index_field
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteIndexFieldOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DeleteIndexFieldResponse\" \"DeleteIndexFieldResult\"\
-        \ \"IndexField\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"\
-        options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DeleteIndexField
+      description: Removes an IndexField from the search domain. For more information, see Configuring Index Fields in the
+        Amazon CloudSearch Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DeleteIndexFieldOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DeleteIndexFieldRequest'
+      x-stackql-resource: index_fields
+      x-stackql-method: delete_index_field
+      x-stackql-verb: DELETE
+      x-stackql-responseEnvelope: DeleteIndexFieldOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteSuggester&Version=2013-01-01:
     parameters:
@@ -789,33 +611,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DeleteSuggester
-      description: Deletes a suggester. For more information, see Getting Search Suggestions in the Amazon CloudSearch Developer
-        Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteSuggesterOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DeleteSuggesterRequest'
-      x-stackql-resource: suggesters
-      x-stackql-method: delete_suggester
-      x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteSuggesterOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DeleteSuggesterResponse\" \"DeleteSuggesterResult\"\
-        \ \"Suggester\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"\
-        options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DeleteSuggester
       description: Deletes a suggester. For more information, see Getting Search Suggestions in the Amazon CloudSearch Developer
@@ -843,11 +638,28 @@ paths:
       x-stackql-method: delete_suggester
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteSuggesterOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DeleteSuggesterResponse\" \"DeleteSuggesterResult\"\
-        \ \"Suggester\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"\
-        options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DeleteSuggester
+      description: Deletes a suggester. For more information, see Getting Search Suggestions in the Amazon CloudSearch Developer
+        Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DeleteSuggesterOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DeleteSuggesterRequest'
+      x-stackql-resource: suggesters
+      x-stackql-method: delete_suggester
+      x-stackql-verb: DELETE
+      x-stackql-responseEnvelope: DeleteSuggesterOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeAnalysisSchemes&Version=2013-01-01:
     parameters:
@@ -858,40 +670,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DescribeAnalysisSchemes
-      description: Gets the analysis schemes configured for a domain. An analysis scheme defines language-specific text processing
-        options for a text field. Can be limited to specific analysis schemes by name. By default, shows all analysis schemes
-        and includes any pending changes to the configuration. Set the Deployed option to true to show the active configuration
-        and exclude pending changes. For more information, see Configuring Analysis Schemes in the Amazon CloudSearch Developer
-        Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DescribeAnalysisSchemesOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DescribeAnalysisSchemesRequest'
-      x-stackql-resource: analysis_schemes
-      x-stackql-method: describe_analysis_schemes
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: DescribeAnalysisSchemesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"DescribeAnalysisSchemesResponse\"\
-        \ \"DescribeAnalysisSchemesResult\" \"AnalysisSchemes\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index\
-        \ . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DescribeAnalysisSchemes
       description: Gets the analysis schemes configured for a domain. An analysis scheme defines language-specific text processing
@@ -930,15 +708,31 @@ paths:
       x-stackql-method: describe_analysis_schemes
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeAnalysisSchemesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"DescribeAnalysisSchemesResponse\"\
-        \ \"DescribeAnalysisSchemesResult\" \"AnalysisSchemes\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index\
-        \ . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DescribeAnalysisSchemes
+      description: Gets the analysis schemes configured for a domain. An analysis scheme defines language-specific text processing
+        options for a text field. Can be limited to specific analysis schemes by name. By default, shows all analysis schemes
+        and includes any pending changes to the configuration. Set the Deployed option to true to show the active configuration
+        and exclude pending changes. For more information, see Configuring Analysis Schemes in the Amazon CloudSearch Developer
+        Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeAnalysisSchemesOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DescribeAnalysisSchemesRequest'
+      x-stackql-resource: analysis_schemes
+      x-stackql-method: describe_analysis_schemes
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeAnalysisSchemesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeAvailabilityOptions&Version=2013-01-01:
     parameters:
@@ -949,34 +743,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DescribeAvailabilityOptions
-      description: Gets the availability options configured for a domain. By default, shows the configuration with any pending
-        changes. Set the Deployed option to true to show the active configuration and exclude pending changes. For more information,
-        see Configuring Availability Options in the Amazon CloudSearch Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DescribeAvailabilityOptionsOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DescribeAvailabilityOptionsRequest'
-      x-stackql-resource: availability_options
-      x-stackql-method: describe_availability_options
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: DescribeAvailabilityOptionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DescribeAvailabilityOptionsResponse\"\
-        \ \"DescribeAvailabilityOptionsResult\" \"AvailabilityOptions\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if eq $v nil }}null{{ else\
-        \ }}{{toBool $v}}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DescribeAvailabilityOptions
       description: Gets the availability options configured for a domain. By default, shows the configuration with any pending
@@ -1007,11 +773,29 @@ paths:
       x-stackql-method: describe_availability_options
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeAvailabilityOptionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DescribeAvailabilityOptionsResponse\"\
-        \ \"DescribeAvailabilityOptionsResult\" \"AvailabilityOptions\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if eq $v nil }}null{{ else\
-        \ }}{{toBool $v}}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DescribeAvailabilityOptions
+      description: Gets the availability options configured for a domain. By default, shows the configuration with any pending
+        changes. Set the Deployed option to true to show the active configuration and exclude pending changes. For more information,
+        see Configuring Availability Options in the Amazon CloudSearch Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeAvailabilityOptionsOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DescribeAvailabilityOptionsRequest'
+      x-stackql-resource: availability_options
+      x-stackql-method: describe_availability_options
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeAvailabilityOptionsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeDomainEndpointOptions&Version=2013-01-01:
     parameters:
@@ -1022,34 +806,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DescribeDomainEndpointOptions
-      description: Returns the domain's endpoint options, specifically whether all requests to the domain must arrive over
-        HTTPS. For more information, see Configuring Domain Endpoint Options in the Amazon CloudSearch Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DescribeDomainEndpointOptionsOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DescribeDomainEndpointOptionsRequest'
-      x-stackql-resource: domain_endpoint_options
-      x-stackql-method: describe_domain_endpoint_options
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: DescribeDomainEndpointOptionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DescribeDomainEndpointOptionsResponse\"\
-        \ \"DescribeDomainEndpointOptionsResult\" \"DomainEndpointOptions\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index .\
-        \ \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DescribeDomainEndpointOptions
       description: Returns the domain's endpoint options, specifically whether all requests to the domain must arrive over
@@ -1079,12 +835,28 @@ paths:
       x-stackql-method: describe_domain_endpoint_options
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeDomainEndpointOptionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DescribeDomainEndpointOptionsResponse\"\
-        \ \"DescribeDomainEndpointOptionsResult\" \"DomainEndpointOptions\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index .\
-        \ \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DescribeDomainEndpointOptions
+      description: Returns the domain's endpoint options, specifically whether all requests to the domain must arrive over
+        HTTPS. For more information, see Configuring Domain Endpoint Options in the Amazon CloudSearch Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeDomainEndpointOptionsOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DescribeDomainEndpointOptionsRequest'
+      x-stackql-resource: domain_endpoint_options
+      x-stackql-method: describe_domain_endpoint_options
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeDomainEndpointOptionsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeDomains&Version=2013-01-01:
     parameters:
@@ -1095,59 +867,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DescribeDomains
-      description: 'Gets information about the search domains owned by this account. Can be limited to specific domains. Shows
-        all domains by default. To get the number of searchable documents in a domain, use the console or submit a matchall
-        request to your domain''s search endpoint: q=matchall&amp;q.parser=structured&amp;size=0. For more information, see
-        Getting Information about a Search Domain in the Amazon CloudSearch Developer Guide.'
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DescribeDomainsOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DescribeDomainsRequest'
-      x-stackql-resource: domains
-      x-stackql-method: describe_domains
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: DescribeDomainsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"DescribeDomainsResponse\" \"\
-        DescribeDomainsResult\" \"DomainStatusList\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"domain_id\": {{ $v := index\
-        \ . \"DomainId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"domain_name\": {{ $v := index . \"DomainName\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"arn\": {{ $v := index . \"ARN\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"created\": {{ $v := index . \"Created\" }}{{ if eq $v nil }}null{{ else }}{{toBool\
-        \ $v}}{{ end }},\n        \"deleted\": {{ $v := index . \"Deleted\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{\
-        \ end }},\n        \"doc_service\": {{ $v := index . \"DocService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"search_service\": {{ $v := index . \"\
-        SearchService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"requires_index_documents\": {{ $v := index . \"RequiresIndexDocuments\" }}{{ if eq $v nil }}null{{\
-        \ else }}{{toBool $v}}{{ end }},\n        \"processing\": {{ $v := index . \"Processing\" }}{{ if eq $v nil }}null{{\
-        \ else }}{{toBool $v}}{{ end }},\n        \"search_instance_type\": {{ $v := index . \"SearchInstanceType\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"search_partition_count\": {{ $v := index . \"SearchPartitionCount\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"search_instance_count\": {{ $v := index . \"\
-        SearchInstanceCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"limits\": {{ $v := index\
-        \ . \"Limits\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DescribeDomains
       description: 'Gets information about the search domains owned by this account. Can be limited to specific domains. Shows
@@ -1172,35 +891,30 @@ paths:
       x-stackql-method: describe_domains
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeDomainsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"DescribeDomainsResponse\" \"\
-        DescribeDomainsResult\" \"DomainStatusList\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"domain_id\": {{ $v := index\
-        \ . \"DomainId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"domain_name\": {{ $v := index . \"DomainName\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"arn\": {{ $v := index . \"ARN\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"created\": {{ $v := index . \"Created\" }}{{ if eq $v nil }}null{{ else }}{{toBool\
-        \ $v}}{{ end }},\n        \"deleted\": {{ $v := index . \"Deleted\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{\
-        \ end }},\n        \"doc_service\": {{ $v := index . \"DocService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"search_service\": {{ $v := index . \"\
-        SearchService\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"requires_index_documents\": {{ $v := index . \"RequiresIndexDocuments\" }}{{ if eq $v nil }}null{{\
-        \ else }}{{toBool $v}}{{ end }},\n        \"processing\": {{ $v := index . \"Processing\" }}{{ if eq $v nil }}null{{\
-        \ else }}{{toBool $v}}{{ end }},\n        \"search_instance_type\": {{ $v := index . \"SearchInstanceType\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"search_partition_count\": {{ $v := index . \"SearchPartitionCount\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"search_instance_count\": {{ $v := index . \"\
-        SearchInstanceCount\" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},\n        \"limits\": {{ $v := index\
-        \ . \"Limits\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DescribeDomains
+      description: 'Gets information about the search domains owned by this account. Can be limited to specific domains. Shows
+        all domains by default. To get the number of searchable documents in a domain, use the console or submit a matchall
+        request to your domain''s search endpoint: q=matchall&amp;q.parser=structured&amp;size=0. For more information, see
+        Getting Information about a Search Domain in the Amazon CloudSearch Developer Guide.'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeDomainsOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DescribeDomainsRequest'
+      x-stackql-resource: domains
+      x-stackql-method: describe_domains
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeDomainsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeExpressions&Version=2013-01-01:
     parameters:
@@ -1211,39 +925,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DescribeExpressions
-      description: Gets the expressions configured for the search domain. Can be limited to specific expressions by name.
-        By default, shows all expressions and includes any pending changes to the configuration. Set the Deployed option to
-        true to show the active configuration and exclude pending changes. For more information, see Configuring Expressions
-        in the Amazon CloudSearch Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DescribeExpressionsOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DescribeExpressionsRequest'
-      x-stackql-resource: expressions
-      x-stackql-method: describe_expressions
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: DescribeExpressionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"DescribeExpressionsResponse\"\
-        \ \"DescribeExpressionsResult\" \"Expressions\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index\
-        \ . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DescribeExpressions
       description: Gets the expressions configured for the search domain. Can be limited to specific expressions by name.
@@ -1282,15 +963,30 @@ paths:
       x-stackql-method: describe_expressions
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeExpressionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"DescribeExpressionsResponse\"\
-        \ \"DescribeExpressionsResult\" \"Expressions\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index\
-        \ . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DescribeExpressions
+      description: Gets the expressions configured for the search domain. Can be limited to specific expressions by name.
+        By default, shows all expressions and includes any pending changes to the configuration. Set the Deployed option to
+        true to show the active configuration and exclude pending changes. For more information, see Configuring Expressions
+        in the Amazon CloudSearch Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeExpressionsOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DescribeExpressionsRequest'
+      x-stackql-resource: expressions
+      x-stackql-method: describe_expressions
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeExpressionsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeIndexFields&Version=2013-01-01:
     parameters:
@@ -1301,39 +997,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DescribeIndexFields
-      description: Gets information about the index fields configured for the search domain. Can be limited to specific fields
-        by name. By default, shows all fields and includes any pending changes to the configuration. Set the Deployed option
-        to true to show the active configuration and exclude pending changes. For more information, see Getting Domain Information
-        in the Amazon CloudSearch Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DescribeIndexFieldsOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DescribeIndexFieldsRequest'
-      x-stackql-resource: index_fields
-      x-stackql-method: describe_index_fields
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: DescribeIndexFieldsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"DescribeIndexFieldsResponse\"\
-        \ \"DescribeIndexFieldsResult\" \"IndexFields\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index\
-        \ . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DescribeIndexFields
       description: Gets information about the index fields configured for the search domain. Can be limited to specific fields
@@ -1372,15 +1035,30 @@ paths:
       x-stackql-method: describe_index_fields
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeIndexFieldsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"DescribeIndexFieldsResponse\"\
-        \ \"DescribeIndexFieldsResult\" \"IndexFields\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index\
-        \ . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DescribeIndexFields
+      description: Gets information about the index fields configured for the search domain. Can be limited to specific fields
+        by name. By default, shows all fields and includes any pending changes to the configuration. Set the Deployed option
+        to true to show the active configuration and exclude pending changes. For more information, see Getting Domain Information
+        in the Amazon CloudSearch Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeIndexFieldsOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DescribeIndexFieldsRequest'
+      x-stackql-resource: index_fields
+      x-stackql-method: describe_index_fields
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeIndexFieldsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeScalingParameters&Version=2013-01-01:
     parameters:
@@ -1391,35 +1069,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DescribeScalingParameters
-      description: Gets the scaling parameters configured for a domain. A domain's scaling parameters specify the desired
-        search instance type and replication count. For more information, see Configuring Scaling Options in the Amazon CloudSearch
-        Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DescribeScalingParametersOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DescribeScalingParametersRequest'
-      x-stackql-resource: scaling_parameters
-      x-stackql-method: describe_scaling_parameters
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: DescribeScalingParametersOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DescribeScalingParametersResponse\"\
-        \ \"DescribeScalingParametersResult\" \"ScalingParameters\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index .\
-        \ \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DescribeScalingParameters
       description: Gets the scaling parameters configured for a domain. A domain's scaling parameters specify the desired
@@ -1442,12 +1091,29 @@ paths:
       x-stackql-method: describe_scaling_parameters
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeScalingParametersOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DescribeScalingParametersResponse\"\
-        \ \"DescribeScalingParametersResult\" \"ScalingParameters\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index .\
-        \ \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DescribeScalingParameters
+      description: Gets the scaling parameters configured for a domain. A domain's scaling parameters specify the desired
+        search instance type and replication count. For more information, see Configuring Scaling Options in the Amazon CloudSearch
+        Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeScalingParametersOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DescribeScalingParametersRequest'
+      x-stackql-resource: scaling_parameters
+      x-stackql-method: describe_scaling_parameters
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeScalingParametersOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeServiceAccessPolicies&Version=2013-01-01:
     parameters:
@@ -1458,37 +1124,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DescribeServiceAccessPolicies
-      description: Gets information about the access policies that control access to the domain's document and search endpoints.
-        By default, shows the configuration with any pending changes. Set the Deployed option to true to show the active configuration
-        and exclude pending changes. For more information, see Configuring Access for a Search Domain in the Amazon CloudSearch
-        Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DescribeServiceAccessPoliciesOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DescribeServiceAccessPoliciesRequest'
-      x-stackql-resource: service_access_policies
-      x-stackql-method: describe_service_access_policies
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: DescribeServiceAccessPoliciesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DescribeServiceAccessPoliciesResponse\"\
-        \ \"DescribeServiceAccessPoliciesResult\" \"AccessPolicies\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DescribeServiceAccessPolicies
       description: Gets information about the access policies that control access to the domain's document and search endpoints.
@@ -1520,13 +1155,30 @@ paths:
       x-stackql-method: describe_service_access_policies
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeServiceAccessPoliciesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DescribeServiceAccessPoliciesResponse\"\
-        \ \"DescribeServiceAccessPoliciesResult\" \"AccessPolicies\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DescribeServiceAccessPolicies
+      description: Gets information about the access policies that control access to the domain's document and search endpoints.
+        By default, shows the configuration with any pending changes. Set the Deployed option to true to show the active configuration
+        and exclude pending changes. For more information, see Configuring Access for a Search Domain in the Amazon CloudSearch
+        Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeServiceAccessPoliciesOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DescribeServiceAccessPoliciesRequest'
+      x-stackql-resource: service_access_policies
+      x-stackql-method: describe_service_access_policies
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeServiceAccessPoliciesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeSuggesters&Version=2013-01-01:
     parameters:
@@ -1537,40 +1189,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DescribeSuggesters
-      description: Gets the suggesters configured for a domain. A suggester enables you to display possible matches before
-        users finish typing their queries. Can be limited to specific suggesters by name. By default, shows all suggesters
-        and includes any pending changes to the configuration. Set the Deployed option to true to show the active configuration
-        and exclude pending changes. For more information, see Getting Search Suggestions in the Amazon CloudSearch Developer
-        Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DescribeSuggestersOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DescribeSuggestersRequest'
-      x-stackql-resource: suggesters
-      x-stackql-method: describe_suggesters
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: DescribeSuggestersOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"DescribeSuggestersResponse\"\
-        \ \"DescribeSuggestersResult\" \"Suggesters\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index\
-        \ . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DescribeSuggesters
       description: Gets the suggesters configured for a domain. A suggester enables you to display possible matches before
@@ -1609,15 +1227,31 @@ paths:
       x-stackql-method: describe_suggesters
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeSuggestersOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"DescribeSuggestersResponse\"\
-        \ \"DescribeSuggestersResult\" \"Suggesters\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index\
-        \ . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DescribeSuggesters
+      description: Gets the suggesters configured for a domain. A suggester enables you to display possible matches before
+        users finish typing their queries. Can be limited to specific suggesters by name. By default, shows all suggesters
+        and includes any pending changes to the configuration. Set the Deployed option to true to show the active configuration
+        and exclude pending changes. For more information, see Getting Search Suggestions in the Amazon CloudSearch Developer
+        Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeSuggestersOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DescribeSuggestersRequest'
+      x-stackql-resource: suggesters
+      x-stackql-method: describe_suggesters
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeSuggestersOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=IndexDocuments&Version=2013-01-01:
     parameters:
@@ -1628,32 +1262,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_IndexDocuments
-      description: Tells the search domain to start indexing its documents using the latest indexing options. This operation
-        must be invoked to activate options whose OptionStatus is RequiresIndexDocuments.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/IndexDocumentsOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/IndexDocumentsRequest'
-      x-stackql-resource: index_documents
-      x-stackql-method: index_documents
-      x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: IndexDocumentsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"IndexDocumentsResponse\" \"IndexDocumentsResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"field_names\":\
-        \ {{ $v := index . \"FieldNames\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_IndexDocuments
       description: Tells the search domain to start indexing its documents using the latest indexing options. This operation
@@ -1675,10 +1283,28 @@ paths:
       x-stackql-method: index_documents
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: IndexDocumentsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"IndexDocumentsResponse\" \"IndexDocumentsResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"field_names\":\
-        \ {{ $v := index . \"FieldNames\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_IndexDocuments
+      description: Tells the search domain to start indexing its documents using the latest indexing options. This operation
+        must be invoked to activate options whose OptionStatus is RequiresIndexDocuments.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/IndexDocumentsOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/IndexDocumentsRequest'
+      x-stackql-resource: index_documents
+      x-stackql-method: index_documents
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: IndexDocumentsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=ListDomainNames&Version=2013-01-01:
     parameters:
@@ -1689,26 +1315,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_ListDomainNames
-      description: Lists all search domains owned by an account.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ListDomainNamesOutputDisplay'
-      parameters: []
-      x-stackql-resource: domain_names
-      x-stackql-method: list_domain_names
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: ListDomainNamesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"ListDomainNamesResponse\" \"ListDomainNamesResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"domain_names\"\
-        : {{ $v := index . \"DomainNames\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_ListDomainNames
       description: Lists all search domains owned by an account.
@@ -1724,10 +1330,22 @@ paths:
       x-stackql-method: list_domain_names
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDomainNamesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"ListDomainNamesResponse\" \"ListDomainNamesResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"domain_names\"\
-        : {{ $v := index . \"DomainNames\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_ListDomainNames
+      description: Lists all search domains owned by an account.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ListDomainNamesOutputDisplay'
+      parameters: []
+      x-stackql-resource: domain_names
+      x-stackql-method: list_domain_names
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListDomainNamesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=UpdateAvailabilityOptions&Version=2013-01-01:
     parameters:
@@ -1738,35 +1356,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_UpdateAvailabilityOptions
-      description: Configures the availability options for a domain. Enabling the Multi-AZ option expands an Amazon CloudSearch
-        domain to an additional Availability Zone in the same Region to increase fault tolerance in the event of a service
-        disruption. Changes to the Multi-AZ option can take about half an hour to become active. For more information, see
-        Configuring Availability Options in the Amazon CloudSearch Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateAvailabilityOptionsOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/UpdateAvailabilityOptionsRequest'
-      x-stackql-resource: availability_options
-      x-stackql-method: update_availability_options
-      x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateAvailabilityOptionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"UpdateAvailabilityOptionsResponse\"\
-        \ \"UpdateAvailabilityOptionsResult\" \"AvailabilityOptions\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if eq $v nil }}null{{ else\
-        \ }}{{toBool $v}}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_UpdateAvailabilityOptions
       description: Configures the availability options for a domain. Enabling the Multi-AZ option expands an Amazon CloudSearch
@@ -1798,11 +1387,30 @@ paths:
       x-stackql-method: update_availability_options
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateAvailabilityOptionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"UpdateAvailabilityOptionsResponse\"\
-        \ \"UpdateAvailabilityOptionsResult\" \"AvailabilityOptions\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if eq $v nil }}null{{ else\
-        \ }}{{toBool $v}}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_UpdateAvailabilityOptions
+      description: Configures the availability options for a domain. Enabling the Multi-AZ option expands an Amazon CloudSearch
+        domain to an additional Availability Zone in the same Region to increase fault tolerance in the event of a service
+        disruption. Changes to the Multi-AZ option can take about half an hour to become active. For more information, see
+        Configuring Availability Options in the Amazon CloudSearch Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/UpdateAvailabilityOptionsOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/UpdateAvailabilityOptionsRequest'
+      x-stackql-resource: availability_options
+      x-stackql-method: update_availability_options
+      x-stackql-verb: UPDATE
+      x-stackql-responseEnvelope: UpdateAvailabilityOptionsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=UpdateDomainEndpointOptions&Version=2013-01-01:
     parameters:
@@ -1813,34 +1421,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_UpdateDomainEndpointOptions
-      description: Updates the domain's endpoint options, specifically whether all requests to the domain must arrive over
-        HTTPS. For more information, see Configuring Domain Endpoint Options in the Amazon CloudSearch Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateDomainEndpointOptionsOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/UpdateDomainEndpointOptionsRequest'
-      x-stackql-resource: domain_endpoint_options
-      x-stackql-method: update_domain_endpoint_options
-      x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateDomainEndpointOptionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"UpdateDomainEndpointOptionsResponse\"\
-        \ \"UpdateDomainEndpointOptionsResult\" \"DomainEndpointOptions\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index .\
-        \ \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_UpdateDomainEndpointOptions
       description: Updates the domain's endpoint options, specifically whether all requests to the domain must arrive over
@@ -1870,12 +1450,28 @@ paths:
       x-stackql-method: update_domain_endpoint_options
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateDomainEndpointOptionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"UpdateDomainEndpointOptionsResponse\"\
-        \ \"UpdateDomainEndpointOptionsResult\" \"DomainEndpointOptions\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index .\
-        \ \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_UpdateDomainEndpointOptions
+      description: Updates the domain's endpoint options, specifically whether all requests to the domain must arrive over
+        HTTPS. For more information, see Configuring Domain Endpoint Options in the Amazon CloudSearch Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/UpdateDomainEndpointOptionsOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/UpdateDomainEndpointOptionsRequest'
+      x-stackql-resource: domain_endpoint_options
+      x-stackql-method: update_domain_endpoint_options
+      x-stackql-verb: UPDATE
+      x-stackql-responseEnvelope: UpdateDomainEndpointOptionsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=UpdateScalingParameters&Version=2013-01-01:
     parameters:
@@ -1886,37 +1482,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_UpdateScalingParameters
-      description: Configures scaling parameters for a domain. A domain's scaling parameters specify the desired search instance
-        type and replication count. Amazon CloudSearch will still automatically scale your domain based on the volume of data
-        and traffic, but not below the desired instance type and replication count. If the Multi-AZ option is enabled, these
-        values control the resources used per Availability Zone. For more information, see Configuring Scaling Options in
-        the Amazon CloudSearch Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateScalingParametersOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/UpdateScalingParametersRequest'
-      x-stackql-resource: scaling_parameters
-      x-stackql-method: update_scaling_parameters
-      x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateScalingParametersOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"UpdateScalingParametersResponse\" \"\
-        UpdateScalingParametersResult\" \"ScalingParameters\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n\
-        }\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"\
-        Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end\
-        \ }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_UpdateScalingParameters
       description: Configures scaling parameters for a domain. A domain's scaling parameters specify the desired search instance
@@ -1946,12 +1511,31 @@ paths:
       x-stackql-method: update_scaling_parameters
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateScalingParametersOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"UpdateScalingParametersResponse\" \"\
-        UpdateScalingParametersResult\" \"ScalingParameters\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n\
-        }\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status\": {{ $v := index . \"\
-        Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end\
-        \ }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_UpdateScalingParameters
+      description: Configures scaling parameters for a domain. A domain's scaling parameters specify the desired search instance
+        type and replication count. Amazon CloudSearch will still automatically scale your domain based on the volume of data
+        and traffic, but not below the desired instance type and replication count. If the Multi-AZ option is enabled, these
+        values control the resources used per Availability Zone. For more information, see Configuring Scaling Options in
+        the Amazon CloudSearch Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/UpdateScalingParametersOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/UpdateScalingParametersRequest'
+      x-stackql-resource: scaling_parameters
+      x-stackql-method: update_scaling_parameters
+      x-stackql-verb: UPDATE
+      x-stackql-responseEnvelope: UpdateScalingParametersOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=UpdateServiceAccessPolicies&Version=2013-01-01:
     parameters:
@@ -1962,35 +1546,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_UpdateServiceAccessPolicies
-      description: Configures the access rules that control access to the domain's document and search endpoints. For more
-        information, see Configuring Access for an Amazon CloudSearch Domain.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateServiceAccessPoliciesOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/UpdateServiceAccessPoliciesRequest'
-      x-stackql-resource: service_access_policies
-      x-stackql-method: update_service_access_policies
-      x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateServiceAccessPoliciesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"UpdateServiceAccessPoliciesResponse\"\
-        \ \"UpdateServiceAccessPoliciesResult\" \"AccessPolicies\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_UpdateServiceAccessPolicies
       description: Configures the access rules that control access to the domain's document and search endpoints. For more
@@ -2018,13 +1573,28 @@ paths:
       x-stackql-method: update_service_access_policies
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateServiceAccessPoliciesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"UpdateServiceAccessPoliciesResponse\"\
-        \ \"UpdateServiceAccessPoliciesResult\" \"AccessPolicies\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n\
-        \  ]\n}\n{{define \"row\"}}\n{\n        \"options\": {{ $v := index . \"Options\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_UpdateServiceAccessPolicies
+      description: Configures the access rules that control access to the domain's document and search endpoints. For more
+        information, see Configuring Access for an Amazon CloudSearch Domain.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/UpdateServiceAccessPoliciesOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/UpdateServiceAccessPoliciesRequest'
+      x-stackql-resource: service_access_policies
+      x-stackql-method: update_service_access_policies
+      x-stackql-verb: UPDATE
+      x-stackql-responseEnvelope: UpdateServiceAccessPoliciesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
 components:
   parameters:
@@ -2082,7 +1652,7 @@ components:
     BuildSuggestersResponseDisplay:
       type: object
       properties:
-        field_names:
+        FieldNames:
           type: string
           description: A list of field names.
     BuildSuggestersOutputDisplay:
@@ -2104,50 +1674,50 @@ components:
     DomainStatusDisplay:
       type: object
       properties:
-        domain_id:
+        DomainId:
           type: string
           description: An internally generated unique identifier for a domain.
-        domain_name:
+        DomainName:
           type: string
           description: 'A string that represents the name of a domain. Domain names are unique across the domains owned by
             an account within an AWS region. Domain names start with a letter or number and can contain the following characters:
             a-z (lowercase), 0-9, and - (hyphen).'
-        arn:
+        ARN:
           type: string
           description: The Amazon Resource Name (ARN) of the search domain. See Identifiers for IAM Entities in Using AWS
             Identity and Access Management for more information.
-        created:
+        Created:
           type: boolean
           description: True if the search domain is created. It can take several minutes to initialize a domain when CreateDomain
             is called. Newly created search domains are returned from DescribeDomains with a false value for Created until
             domain creation is complete.
-        deleted:
+        Deleted:
           type: boolean
           description: True if the search domain has been deleted. The system must clean up resources dedicated to the search
             domain when DeleteDomain is called. Newly deleted search domains are returned from DescribeDomains with a true
             value for IsDeleted for several minutes until resource cleanup is complete.
-        doc_service:
+        DocService:
           type: string
           description: The service endpoint for updating documents in a search domain.
-        search_service:
+        SearchService:
           type: string
           description: The service endpoint for requesting search results from a search domain.
-        requires_index_documents:
+        RequiresIndexDocuments:
           type: boolean
           description: True if IndexDocuments needs to be called to activate the current domain configuration.
-        processing:
+        Processing:
           type: boolean
           description: True if processing is being done to activate the current domain configuration.
-        search_instance_type:
+        SearchInstanceType:
           type: string
           description: The instance type that is being used to process search requests.
-        search_partition_count:
+        SearchPartitionCount:
           type: integer
           description: The number of partitions across which the search index is spread.
-        search_instance_count:
+        SearchInstanceCount:
           type: integer
           description: The number of search instances that are available to process search requests.
-        limits:
+        Limits:
           type: string
     CreateDomainOutputDisplay:
       type: object
@@ -2272,12 +1842,12 @@ components:
     AnalysisSchemeStatusDisplay:
       type: object
       properties:
-        options:
+        Options:
           type: string
           description: 'Configuration information for an analysis scheme. Each analysis scheme has a unique name and specifies
             the language of the text to be processed. The following options can be configured for an analysis scheme: Synonyms,
             Stopwords, StemmingDictionary, JapaneseTokenizationDictionary and AlgorithmicStemming.'
-        status:
+        Status:
           type: string
           description: The status of domain configuration option.
     DefineAnalysisSchemeOutputDisplay:
@@ -2320,10 +1890,10 @@ components:
     ExpressionStatusDisplay:
       type: object
       properties:
-        options:
+        Options:
           type: string
           description: The expression that is evaluated for sorting while processing a search request.
-        status:
+        Status:
           type: string
           description: The status of domain configuration option.
     DefineExpressionOutputDisplay:
@@ -2679,11 +2249,11 @@ components:
     IndexFieldStatusDisplay:
       type: object
       properties:
-        options:
+        Options:
           type: string
           description: Configuration information for a field in the index, including its name, type, and options. The supported
             options depend on the IndexFieldType.
-        status:
+        Status:
           type: string
           description: The status of domain configuration option.
     DefineIndexFieldOutputDisplay:
@@ -2748,12 +2318,12 @@ components:
     SuggesterStatusDisplay:
       type: object
       properties:
-        options:
+        Options:
           type: string
           description: 'Configuration information for a search suggester. Each suggester has a unique name and specifies the
             text field you want to use for suggestions. The following options can be configured for a suggester: FuzzyMatching,
             SortExpression.'
-        status:
+        Status:
           type: string
           description: The status of domain configuration option.
     DefineSuggesterOutputDisplay:
@@ -2905,10 +2475,10 @@ components:
     AvailabilityOptionsStatusDisplay:
       type: object
       properties:
-        options:
+        Options:
           type: boolean
           description: The availability options configured for the domain.
-        status:
+        Status:
           type: string
           description: The status of domain configuration option.
     DescribeAvailabilityOptionsOutputDisplay:
@@ -2936,10 +2506,10 @@ components:
     DomainEndpointOptionsStatusDisplay:
       type: object
       properties:
-        options:
+        Options:
           type: string
           description: The domain endpoint options configured for the domain.
-        status:
+        Status:
           type: string
           description: The status of the configured domain endpoint options.
     DescribeDomainEndpointOptionsOutputDisplay:
@@ -3043,10 +2613,10 @@ components:
     ScalingParametersStatusDisplay:
       type: object
       properties:
-        options:
+        Options:
           type: string
           description: The desired instance type and desired number of replicas of each index partition.
-        status:
+        Status:
           type: string
           description: The status of domain configuration option.
     DescribeScalingParametersOutputDisplay:
@@ -3068,12 +2638,12 @@ components:
     AccessPoliciesStatusDisplay:
       type: object
       properties:
-        options:
+        Options:
           type: string
           description: Access rules for a domain's document or search service endpoints. For more information, see Configuring
             Access for a Search Domain in the Amazon CloudSearch Developer Guide. The maximum size of a policy document is
             100 KB.
-        status:
+        Status:
           type: string
           description: The status of domain configuration option.
     DescribeServiceAccessPoliciesOutputDisplay:
@@ -3126,7 +2696,7 @@ components:
     IndexDocumentsResponseDisplay:
       type: object
       properties:
-        field_names:
+        FieldNames:
           type: string
           description: The names of the fields that are currently being indexed.
     IndexDocumentsOutputDisplay:
@@ -3148,7 +2718,7 @@ components:
     ListDomainNamesResponseDisplay:
       type: object
       properties:
-        domain_names:
+        DomainNames:
           type: string
           description: The names of the search domains owned by an account.
     ListDomainNamesOutputDisplay:

@@ -160,7 +160,7 @@ paths:
             $ref: "#/components/schemas/ThingName"
           description: The name of the thing associated with the device.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -428,12 +428,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_job_execution:
           operation:
             $ref: "#/paths/~1things~1{thing_name}~1jobs~1{job_id}/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

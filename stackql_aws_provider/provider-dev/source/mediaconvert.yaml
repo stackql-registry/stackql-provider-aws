@@ -526,7 +526,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The name of the job template you are modifying
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -664,7 +664,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The name of the preset you are modifying.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -738,7 +738,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The name of the queue that you are modifying.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -772,7 +772,7 @@ paths:
         instead.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -873,7 +873,7 @@ paths:
         description: The Amazon Resource Name (ARN) of the resource that you want to remove tags from. To get the ARN, send
           a GET request with the resource name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -928,7 +928,7 @@ paths:
         to learn more about your media files, or to help make decisions while automating your transcoding workflow.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1010,7 +1010,7 @@ paths:
         query, call the GetJobsQueryResults API using the query ID returned by this API.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -76,7 +76,7 @@ paths:
             $ref: "#/components/schemas/Accept"
           description: "The message that Amazon Lex returns in the response can be either text or speech based depending on the value of this field. If the value is text/plain; charset=utf-8, Amazon Lex returns text in the response. If the value begins with audio/, Amazon Lex returns speech in the response. Amazon Lex uses Amazon Polly to generate the speech in the configuration that you specify. For example, if you specify audio/mpeg as the value, Amazon Lex returns speech in the MPEG format. If the value is audio/pcm, the speech is returned as audio/pcm in 16-bit, little endian format. The following are the accepted values: audio/mpeg audio/ogg audio/pcm audio/* (defaults to mpeg) text/plain; charset=utf-8"
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -794,6 +794,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -803,6 +805,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/get_session"

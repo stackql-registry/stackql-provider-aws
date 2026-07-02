@@ -121,7 +121,7 @@ paths:
             $ref: "#/components/schemas/DomainName"
           description: Name of the OpenSearch Service domain configuration request to cancel.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -519,7 +519,7 @@ paths:
             $ref: "#/components/schemas/DomainName"
           description: The name of the Elasticsearch domain that you are updating.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -623,7 +623,7 @@ paths:
       description: Lists all the inbound cross-cluster search connections for a destination domain.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -648,7 +648,7 @@ paths:
       description: Lists all the outbound cross-cluster search connections for a source domain.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -673,7 +673,7 @@ paths:
       description: Describes all packages available to Amazon ES. Includes options for filtering, limiting the number of results, and pagination.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3792,6 +3792,8 @@ components:
             $ref: "#/paths/~12015-01-01~1tags/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3801,11 +3803,15 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         remove_tags:
           operation:
             $ref: "#/paths/~12015-01-01~1tags-removal/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3834,6 +3840,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3849,6 +3857,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3858,6 +3868,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3882,6 +3894,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3891,12 +3905,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         revoke_vpc_endpoint_access:
           operation:
             $ref: "#/paths/~12015-01-01~1es~1domain~1{domain_name}~1revokeVpcEndpointAccess/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3918,6 +3936,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3939,6 +3959,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3962,6 +3984,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3977,6 +4001,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3999,6 +4025,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4008,6 +4036,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_vpc_endpoint:
           operation:
             $ref: "#/paths/~12015-01-01~1es~1vpcEndpoints~1{vpc_endpoint_id}/delete"
@@ -4020,6 +4050,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4029,6 +4061,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4075,6 +4109,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4096,6 +4132,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_auto_tunes/methods/describe_domain_auto_tunes"
@@ -4113,6 +4151,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_change_progress/methods/describe_domain_change_progress"
@@ -4136,6 +4176,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4157,6 +4199,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/elasticsearch_instance_type_limits/methods/describe_elasticsearch_instance_type_limits"
@@ -4175,6 +4219,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ReservedElasticsearchInstanceOfferings
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/reserved_elasticsearch_instance_offerings/methods/describe_reserved_elasticsearch_instance_offerings"
@@ -4193,6 +4239,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ReservedElasticsearchInstances
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/reserved_elasticsearch_instances/methods/describe_reserved_elasticsearch_instances"
@@ -4210,6 +4258,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/compatible_elasticsearch_versions/methods/get_compatible_elasticsearch_versions"
@@ -4227,6 +4277,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/package_version_histories/methods/get_package_version_history"
@@ -4245,6 +4297,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.UpgradeHistories
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/upgrade_histories/methods/get_upgrade_history"
@@ -4279,6 +4333,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_names/methods/list_domain_names"
@@ -4296,6 +4352,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domains_for_packages/methods/list_domains_for_package"
@@ -4314,6 +4372,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ElasticsearchInstanceTypes
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/elasticsearch_instance_types/methods/list_elasticsearch_instance_types"
@@ -4332,6 +4392,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ElasticsearchVersions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/elasticsearch_versions/methods/list_elasticsearch_versions"
@@ -4349,6 +4411,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/packages_for_domains/methods/list_packages_for_domain"
@@ -4366,6 +4430,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/vpc_endpoints_for_domains/methods/list_vpc_endpoints_for_domain"

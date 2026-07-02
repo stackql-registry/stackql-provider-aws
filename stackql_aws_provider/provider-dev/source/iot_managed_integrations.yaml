@@ -238,7 +238,7 @@ paths:
       description: Create a credential locker. This operation will not trigger the creation of all the manufacturing resources.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -703,7 +703,7 @@ paths:
       description: Create a configuraiton for the over-the-air (OTA) task.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -868,7 +868,7 @@ paths:
           $ref: '#/components/schemas/AccountAssociationId'
         description: The unique identifier of the account association to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -932,7 +932,7 @@ paths:
           $ref: '#/components/schemas/CloudConnectorId'
         description: The unique identifier of the cloud connector to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -997,7 +997,7 @@ paths:
           $ref: '#/components/schemas/ConnectorDestinationId'
         description: The unique identifier of the connector destination to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1105,7 +1105,7 @@ paths:
           $ref: '#/components/schemas/DestinationName'
         description: The name of the customer-managed destination.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1246,7 +1246,7 @@ paths:
           $ref: '#/components/schemas/ManagedThingId'
         description: The id of the managed thing.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1396,7 +1396,7 @@ paths:
           $ref: '#/components/schemas/OtaTaskId'
         description: The over-the-air (OTA) task id.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

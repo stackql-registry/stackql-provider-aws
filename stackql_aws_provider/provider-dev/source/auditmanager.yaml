@@ -881,7 +881,7 @@ paths:
         delegated administrator account at the time of deregistration.'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1712,7 +1712,7 @@ paths:
       description: Enables Audit Manager for the specified Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1834,7 +1834,7 @@ paths:
           $ref: '#/components/schemas/UUID'
         description: The unique identifier for the control.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1933,7 +1933,7 @@ paths:
       description: Updates Audit Manager settings for the current account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -270,7 +270,7 @@ paths:
             $ref: "#/components/schemas/VoiceId"
           description: The voice to use in synthesis. To get a list of available voice IDs, use the DescribeVoices operation.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1044,6 +1044,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1054,6 +1056,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Lexicons
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/lexicons/methods/get_lexicon"
@@ -1076,6 +1080,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Voices
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/voices/methods/describe_voices"
@@ -1100,6 +1106,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.SynthesisTasks
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/speech_synthesis_tasks/methods/get_speech_synthesis_task"

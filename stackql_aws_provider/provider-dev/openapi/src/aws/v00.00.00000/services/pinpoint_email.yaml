@@ -712,7 +712,7 @@ paths:
       description: Enable or disable the automatic warm-up feature for dedicated IP addresses.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -733,7 +733,7 @@ paths:
       description: Enable or disable the ability of your account to send email.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -760,7 +760,7 @@ paths:
             $ref: "#/components/schemas/ConfigurationSetName"
           description: The name of the configuration set that you want to associate with a dedicated IP pool.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -789,7 +789,7 @@ paths:
             $ref: "#/components/schemas/ConfigurationSetName"
           description: The name of the configuration set that you want to enable or disable reputation metric tracking for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -816,7 +816,7 @@ paths:
             $ref: "#/components/schemas/ConfigurationSetName"
           description: The name of the configuration set that you want to enable or disable email sending for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -843,7 +843,7 @@ paths:
             $ref: "#/components/schemas/ConfigurationSetName"
           description: The name of the configuration set that you want to add a custom tracking domain to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -927,7 +927,7 @@ paths:
             $ref: "#/components/schemas/Identity"
           description: The email identity that you want to change the DKIM settings for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -954,7 +954,7 @@ paths:
             $ref: "#/components/schemas/Identity"
           description: The email identity that you want to configure bounce and complaint feedback forwarding for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -981,7 +981,7 @@ paths:
             $ref: "#/components/schemas/Identity"
           description: The verified email identity that you want to set up the custom MAIL FROM domain for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2204,6 +2204,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2214,6 +2216,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ConfigurationSets
+          request:
+            nativeCasing: pascal
         delete_configuration_set:
           operation:
             $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}/delete"
@@ -2246,6 +2250,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2267,6 +2273,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2290,6 +2298,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2300,6 +2310,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DedicatedIpPools
+          request:
+            nativeCasing: pascal
         delete_dedicated_ip_pool:
           operation:
             $ref: "#/paths/~1v1~1email~1dedicated-ip-pools~1{pool_name}/delete"
@@ -2325,6 +2337,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2341,6 +2355,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DeliverabilityTestReports
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/deliverability_test_reports/methods/get_deliverability_test_report"
@@ -2360,6 +2376,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2370,6 +2388,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.EmailIdentities
+          request:
+            nativeCasing: pascal
         delete_email_identity:
           operation:
             $ref: "#/paths/~1v1~1email~1identities~1{email_identity}/delete"
@@ -2419,6 +2439,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/blacklist_reports/methods/get_blacklist_reports"
@@ -2443,6 +2465,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DedicatedIps
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dedicated_ips/methods/get_dedicated_ip"
@@ -2467,6 +2491,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2495,6 +2521,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_deliverability_campaigns/methods/list_domain_deliverability_campaigns"
@@ -2513,6 +2541,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_statistics_reports/methods/get_domain_statistics_report"
@@ -2530,6 +2560,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -2547,6 +2579,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2556,6 +2590,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -2574,6 +2610,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2595,6 +2633,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2616,6 +2656,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2637,6 +2679,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2658,6 +2702,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2679,6 +2725,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2700,6 +2748,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2721,6 +2771,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2742,6 +2794,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2763,6 +2817,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2784,6 +2840,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

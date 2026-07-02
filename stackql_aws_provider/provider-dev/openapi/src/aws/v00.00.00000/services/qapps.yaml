@@ -748,7 +748,7 @@ paths:
             $ref: "#/components/schemas/InstanceId"
           description: The unique identifier of the Amazon Q Business application environment instance.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2652,6 +2652,8 @@ components:
             $ref: "#/paths/~1catalog.associateItemRating/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2660,6 +2662,8 @@ components:
             $ref: "#/paths/~1catalog.disassociateItemRating/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2679,6 +2683,8 @@ components:
             $ref: "#/paths/~1apps.install/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2699,6 +2705,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2707,6 +2715,8 @@ components:
             $ref: "#/paths/~1catalog.deleteItem/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2716,6 +2726,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_library_items:
           operation:
             $ref: "#/paths/~1catalog.list/get"
@@ -2723,12 +2735,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.libraryItems
+          request:
+            nativeCasing: pascal
         update_library_item:
           operation:
             $ref: "#/paths/~1catalog.updateItem/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2753,6 +2769,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2773,6 +2791,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2781,6 +2801,8 @@ components:
             $ref: "#/paths/~1apps.delete/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2790,6 +2812,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_q_apps:
           operation:
             $ref: "#/paths/~1apps.list/get"
@@ -2797,12 +2821,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.apps
+          request:
+            nativeCasing: pascal
         update_q_app:
           operation:
             $ref: "#/paths/~1apps.update/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2827,12 +2855,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_q_app_permissions:
           operation:
             $ref: "#/paths/~1apps.updateQAppPermissions/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2853,6 +2885,8 @@ components:
             $ref: "#/paths/~1apps.uninstall/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2873,12 +2907,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_q_app_session:
           operation:
             $ref: "#/paths/~1runtime.updateQAppSession/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2900,12 +2938,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_q_app_session_metadata:
           operation:
             $ref: "#/paths/~1runtime.updateQAppSessionMetadata/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2944,6 +2986,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/q_app_session_datas/methods/list_q_app_session_data"
@@ -2978,6 +3022,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2987,6 +3033,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -3004,6 +3052,8 @@ components:
             $ref: "#/paths/~1catalog.updateItemMetadata/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

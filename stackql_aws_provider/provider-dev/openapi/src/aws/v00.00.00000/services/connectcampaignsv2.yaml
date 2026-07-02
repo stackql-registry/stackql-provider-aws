@@ -449,7 +449,7 @@ paths:
       description: Provides summary information about the campaigns under the specified Amazon Connect account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2038,6 +2038,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2059,6 +2061,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.campaignSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2081,11 +2085,15 @@ components:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1channel-subtype-config/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
         update_campaign_channel_subtype_config:
           operation:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1channel-subtype-config/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2106,11 +2114,15 @@ components:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1communication-limits/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
         update_campaign_communication_limits:
           operation:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1communication-limits/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2131,11 +2143,15 @@ components:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1communication-time/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
         update_campaign_communication_time:
           operation:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1communication-time/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2161,6 +2177,8 @@ components:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1entry-limits/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2181,6 +2199,8 @@ components:
             $ref: "#/paths/~1v2~1connect-instance~1{connect_instance_id}~1config/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
         get_connect_instance_config:
           operation:
             $ref: "#/paths/~1v2~1connect-instance~1{connect_instance_id}~1config/get"
@@ -2204,6 +2224,8 @@ components:
             $ref: "#/paths/~1v2~1connect-instance~1{connect_instance_id}~1integrations~1delete/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2214,11 +2236,15 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.integrationSummaryList
+          request:
+            nativeCasing: pascal
         put_connect_instance_integration:
           operation:
             $ref: "#/paths/~1v2~1connect-instance~1{connect_instance_id}~1integrations/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2292,6 +2318,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2317,6 +2345,8 @@ components:
             $ref: "#/paths/~1v2~1connect-instance~1{connect_instance_id}~1communication-limits/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2355,6 +2385,8 @@ components:
             $ref: "#/paths/~1v2~1tags~1{arn}/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2363,6 +2395,8 @@ components:
             $ref: "#/paths/~1v2~1tags~1{arn}/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -2381,6 +2415,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2402,6 +2438,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2422,6 +2460,8 @@ components:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1flow/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2441,6 +2481,8 @@ components:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1name/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2460,6 +2502,8 @@ components:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1schedule/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2479,6 +2523,8 @@ components:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1source/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

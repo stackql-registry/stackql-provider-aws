@@ -135,7 +135,7 @@ paths:
           $ref: '#/components/schemas/DomainName'
         description: Name of the OpenSearch Service domain configuration request to cancel.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -595,7 +595,7 @@ paths:
           $ref: '#/components/schemas/DomainName'
         description: The name of the Elasticsearch domain that you are updating.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -711,7 +711,7 @@ paths:
       description: Lists all the inbound cross-cluster search connections for a destination domain.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -739,7 +739,7 @@ paths:
       description: Lists all the outbound cross-cluster search connections for a source domain.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -768,7 +768,7 @@ paths:
         and pagination.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

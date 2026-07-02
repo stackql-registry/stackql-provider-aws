@@ -1389,6 +1389,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.organizationRecommendationSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organization_recommendations/methods/get_organization_recommendation"
@@ -1407,6 +1409,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_recommendations:
           operation:
             $ref: "#/paths/~1v1~1recommendations/get"
@@ -1414,6 +1418,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.recommendationSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommendations/methods/get_recommendation"
@@ -1433,6 +1439,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.checkSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/checks/methods/list_checks"
@@ -1451,6 +1459,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.accountRecommendationLifecycleSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organization_recommendation_accounts/methods/list_organization_recommendation_accounts"
@@ -1469,6 +1479,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.organizationRecommendationResourceSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organization_recommendation_resources/methods/list_organization_recommendation_resources"
@@ -1487,6 +1499,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.recommendationResourceSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommendation_resources/methods/list_recommendation_resources"
@@ -1503,6 +1517,8 @@ components:
             $ref: "#/paths/~1v1~1organization-recommendations~1{organization_recommendation_identifier}~1lifecycle/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1522,6 +1538,8 @@ components:
             $ref: "#/paths/~1v1~1recommendations~1{recommendation_identifier}~1lifecycle/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

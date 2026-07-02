@@ -350,7 +350,7 @@ paths:
           $ref: '#/components/schemas/Arn'
         description: The Amazon Resource Name (ARN) of the response plan with the attached resource policy.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -459,7 +459,7 @@ paths:
         of the incident record you want to update.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -519,7 +519,7 @@ paths:
       description: Lists details about the replication set configured in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -546,7 +546,7 @@ paths:
       description: Lists all response plans in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

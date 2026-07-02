@@ -52,7 +52,7 @@ paths:
       description: Retrieves details about a list of views.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -95,7 +95,7 @@ paths:
         afterwards.'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -227,7 +227,7 @@ paths:
         Regions or all Regions where Resource Explorer is configured.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -471,7 +471,7 @@ paths:
         information for Amazon Web Services Resource Explorer.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -536,7 +536,7 @@ paths:
         Web Services Region in which you call this operation.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -567,7 +567,7 @@ paths:
         Region in which you call this operation.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -599,7 +599,7 @@ paths:
         information about indexes including their ARNs, types, and Regions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -629,7 +629,7 @@ paths:
         returns the ARNs of available service views.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -658,7 +658,7 @@ paths:
         as they are indexed by Resource Explorer.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -685,7 +685,7 @@ paths:
       description: Retrieves a list of all resource types currently supported by Amazon Web Services Resource Explorer.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -738,7 +738,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The Amazon Resource Name (ARN) of the view or index that you want to attach tags to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -791,7 +791,7 @@ paths:
         response parameter value is null only when there are no more results to display.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

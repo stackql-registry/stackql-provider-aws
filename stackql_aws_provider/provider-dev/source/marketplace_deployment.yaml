@@ -50,7 +50,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The Amazon Resource Name (ARN) associated with the resource you want to tag.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

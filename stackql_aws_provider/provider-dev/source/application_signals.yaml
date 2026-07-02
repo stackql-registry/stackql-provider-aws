@@ -250,7 +250,7 @@ paths:
           $ref: '#/components/schemas/ServiceLevelObjectiveId'
         description: The Amazon Resource Name (ARN) or name of the service level objective that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -646,7 +646,7 @@ paths:
           $ref: '#/components/schemas/AwsAccountId'
         description: SLO's Amazon Web Services account ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

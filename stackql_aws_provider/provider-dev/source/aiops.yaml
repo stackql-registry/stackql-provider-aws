@@ -149,7 +149,7 @@ paths:
           $ref: '#/components/schemas/InvestigationGroupIdentifier'
         description: Specify either the name or the ARN of the investigation group that you want to modify.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

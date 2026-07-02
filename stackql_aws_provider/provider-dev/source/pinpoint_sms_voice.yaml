@@ -24,7 +24,7 @@ paths:
         to it.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -80,7 +80,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: ConfigurationSetName
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -188,7 +188,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: EventDestinationName
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -212,7 +212,7 @@ paths:
       description: Create a new voice message and send it to a recipient's phone number.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

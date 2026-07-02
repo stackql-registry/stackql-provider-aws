@@ -80,7 +80,7 @@ paths:
         application.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -163,7 +163,7 @@ paths:
       description: Gets the SAP HANA database of an application registered with AWS Systems Manager for SAP.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -247,7 +247,7 @@ paths:
       description: Lists all the applications registered with AWS Systems Manager for SAP.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -276,7 +276,7 @@ paths:
       description: Lists all the components registered with AWS Systems Manager for SAP.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -305,7 +305,7 @@ paths:
       description: Lists all configuration check types supported by AWS Systems Manager for SAP.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -367,7 +367,7 @@ paths:
       description: Lists the SAP HANA databases of an application registered with AWS Systems Manager for SAP.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

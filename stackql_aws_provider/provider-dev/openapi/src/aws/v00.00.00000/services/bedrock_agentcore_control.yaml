@@ -300,7 +300,7 @@ paths:
             $ref: "#/components/schemas/NextToken"
           description: A token to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1452,7 +1452,7 @@ paths:
             $ref: "#/components/schemas/EndpointName"
           description: The name of the AgentCore Runtime endpoint to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1669,7 +1669,7 @@ paths:
             $ref: "#/components/schemas/ConfigurationBundleId"
           description: The unique identifier of the configuration bundle to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1750,7 +1750,7 @@ paths:
             $ref: "#/components/schemas/EvaluatorId"
           description: The unique identifier of the evaluator to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1922,7 +1922,7 @@ paths:
             $ref: "#/components/schemas/GatewayRuleId"
           description: The unique identifier of the rule to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2087,7 +2087,7 @@ paths:
             $ref: "#/components/schemas/HarnessId"
           description: The ID of the harness to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2225,7 +2225,7 @@ paths:
             $ref: "#/components/schemas/OnlineEvaluationConfigId"
           description: The unique identifier of the online evaluation configuration to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2322,7 +2322,7 @@ paths:
             $ref: "#/components/schemas/PaymentConnectorId"
           description: The unique identifier of the payment connector to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2418,7 +2418,7 @@ paths:
             $ref: "#/components/schemas/PaymentManagerId"
           description: The unique identifier of the payment manager to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2505,7 +2505,7 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: The unique identifier of the policy to be updated. This must be a valid policy ID that exists within the specified policy engine.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2570,7 +2570,7 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: The unique identifier of the policy engine to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2631,7 +2631,7 @@ paths:
             $ref: "#/components/schemas/RegistryIdentifier"
           description: The identifier of the registry to update. You can specify either the Amazon Resource Name (ARN) or the ID of the registry.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2716,7 +2716,7 @@ paths:
             $ref: "#/components/schemas/RecordIdentifier"
           description: The identifier of the registry record to update. You can specify either the Amazon Resource Name (ARN) or the ID of the record.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3044,7 +3044,7 @@ paths:
       description: Retrieves information about a token vault.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3118,7 +3118,7 @@ paths:
       description: Lists all API key credential providers in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3159,7 +3159,7 @@ paths:
             $ref: "#/components/schemas/ListConfigurationBundleVersionsRequestMaxResultsInteger"
           description: The maximum number of results to return in the response. If the total number of results is greater than this value, use the token returned in the response in the nextToken field when making another request to return the next batch of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3228,7 +3228,7 @@ paths:
       description: Lists the available Amazon Bedrock AgentCore Memory resources in the current Amazon Web Services Region.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3251,7 +3251,7 @@ paths:
       description: Lists all OAuth2 credential providers in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3328,7 +3328,7 @@ paths:
       description: Lists all payment credential providers in the account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3636,7 +3636,7 @@ paths:
       description: Lists all workload identities in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3769,7 +3769,7 @@ paths:
             $ref: "#/components/schemas/MemoryId"
           description: The unique identifier of the memory to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -13799,6 +13799,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -13809,24 +13811,32 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.agentRuntimes
+          request:
+            nativeCasing: pascal
         delete_agent_runtime:
           operation:
             $ref: "#/paths/~1runtimes~1{agent_runtime_id}~1/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_agent_runtime:
           operation:
             $ref: "#/paths/~1runtimes~1{agent_runtime_id}~1/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_agent_runtime:
           operation:
             $ref: "#/paths/~1runtimes~1{agent_runtime_id}~1/put"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -13851,6 +13861,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -13861,12 +13873,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.runtimeEndpoints
+          request:
+            nativeCasing: pascal
         delete_agent_runtime_endpoint:
           operation:
             $ref: "#/paths/~1runtimes~1{agent_runtime_id}~1runtime-endpoints~1{endpoint_name}~1/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_agent_runtime_endpoint:
           operation:
             $ref: "#/paths/~1runtimes~1{agent_runtime_id}~1runtime-endpoints~1{endpoint_name}~1/get"
@@ -13879,6 +13895,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -13903,6 +13921,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -13912,6 +13932,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -13921,6 +13943,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -13931,6 +13955,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.credentialProviders
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -13940,6 +13966,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -13964,6 +13992,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -13974,12 +14004,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.browserSummaries
+          request:
+            nativeCasing: pascal
         delete_browser:
           operation:
             $ref: "#/paths/~1browsers~1{browser_id}/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_browser:
           operation:
             $ref: "#/paths/~1browsers~1{browser_id}/get"
@@ -14006,6 +14040,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14016,6 +14052,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.profileSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14025,6 +14063,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_browser_profile:
           operation:
             $ref: "#/paths/~1browser-profiles~1{profile_id}/get"
@@ -14051,6 +14091,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14061,12 +14103,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.codeInterpreterSummaries
+          request:
+            nativeCasing: pascal
         delete_code_interpreter:
           operation:
             $ref: "#/paths/~1code-interpreters~1{code_interpreter_id}/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_code_interpreter:
           operation:
             $ref: "#/paths/~1code-interpreters~1{code_interpreter_id}/get"
@@ -14093,6 +14139,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14108,12 +14156,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_configuration_bundle:
           operation:
             $ref: "#/paths/~1configuration-bundles~1{bundle_id}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14124,6 +14176,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.bundles
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/configuration_bundles/methods/get_configuration_bundle"
@@ -14145,6 +14199,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14160,12 +14216,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_evaluator:
           operation:
             $ref: "#/paths/~1evaluators~1{evaluator_id}/put"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14176,6 +14236,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.evaluators
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/evaluators/methods/get_evaluator"
@@ -14197,6 +14259,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14207,6 +14271,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_gateway:
           operation:
             $ref: "#/paths/~1gateways~1{gateway_identifier}~1/delete"
@@ -14225,6 +14291,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14249,6 +14317,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14259,6 +14329,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.gatewayRules
+          request:
+            nativeCasing: pascal
         delete_gateway_rule:
           operation:
             $ref: "#/paths/~1gateways~1{gateway_identifier}~1rules~1{rule_id}/delete"
@@ -14277,6 +14349,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14301,6 +14375,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14311,6 +14387,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_gateway_target:
           operation:
             $ref: "#/paths/~1gateways~1{gateway_identifier}~1targets~1{target_id}~1/delete"
@@ -14329,6 +14407,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14353,6 +14433,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14362,6 +14444,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_harness:
           operation:
             $ref: "#/paths/~1harnesses~1{harness_id}/get"
@@ -14374,6 +14458,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14398,6 +14484,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.harnesses
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/harnesses/methods/list_harnesses"
@@ -14415,6 +14503,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14424,12 +14514,16 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_memory:
           operation:
             $ref: "#/paths/~1memories~1{memory_id}~1details/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_memories:
           operation:
             $ref: "#/paths/~1memories~1/post"
@@ -14437,6 +14531,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.memories
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14446,6 +14542,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14470,6 +14568,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14479,6 +14579,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14488,6 +14590,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14498,6 +14602,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.credentialProviders
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14507,6 +14613,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14531,6 +14639,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14552,6 +14662,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14562,6 +14674,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.onlineEvaluationConfigs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/online_evaluation_configs/methods/get_online_evaluation_config"
@@ -14583,6 +14697,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14592,6 +14708,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_payment_connector:
           operation:
             $ref: "#/paths/~1payments~1managers~1{payment_manager_id}~1connectors~1{payment_connector_id}/get"
@@ -14604,6 +14722,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14614,6 +14734,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.paymentConnectors
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/payment_connectors/methods/get_payment_connector"
@@ -14635,6 +14757,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14644,6 +14768,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14653,6 +14779,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14663,6 +14791,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.credentialProviders
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14672,6 +14802,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14696,6 +14828,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14705,6 +14839,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_payment_manager:
           operation:
             $ref: "#/paths/~1payments~1managers~1{payment_manager_id}/get"
@@ -14717,6 +14853,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14727,6 +14865,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.paymentManagers
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/payment_managers/methods/get_payment_manager"
@@ -14748,6 +14888,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14758,6 +14900,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.policies
+          request:
+            nativeCasing: pascal
         delete_policy:
           operation:
             $ref: "#/paths/~1policy-engines~1{policy_engine_id}~1policies~1{policy_id}/delete"
@@ -14776,6 +14920,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14800,6 +14946,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14810,6 +14958,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.policyEngines
+          request:
+            nativeCasing: pascal
         delete_policy_engine:
           operation:
             $ref: "#/paths/~1policy-engines~1{policy_engine_id}/delete"
@@ -14828,6 +14978,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14852,6 +15004,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14862,6 +15016,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.registries
+          request:
+            nativeCasing: pascal
         delete_registry:
           operation:
             $ref: "#/paths/~1registries~1{registry_id}/delete"
@@ -14880,6 +15036,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14904,6 +15062,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14914,6 +15074,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.registryRecords
+          request:
+            nativeCasing: pascal
         delete_registry_record:
           operation:
             $ref: "#/paths/~1registries~1{registry_id}~1records~1{record_id}/delete"
@@ -14932,6 +15094,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14956,6 +15120,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14965,6 +15131,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14974,6 +15142,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14984,6 +15154,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.workloadIdentities
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -14993,6 +15165,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15029,6 +15203,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15059,6 +15235,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.versions
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15087,6 +15265,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.policyEngines
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_engine_summaries/methods/get_policy_engine_summary"
@@ -15112,6 +15292,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.policyGenerations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_generations/methods/get_policy_generation"
@@ -15137,6 +15319,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.policyGenerations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_generation_summaries/methods/get_policy_generation_summary"
@@ -15162,6 +15346,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.policies
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_summaries/methods/get_policy_summary"
@@ -15180,6 +15366,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15201,6 +15389,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.agentRuntimes
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/agent_runtime_versions/methods/list_agent_runtime_versions"
@@ -15219,6 +15409,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.policyGenerationAssets
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_generation_assets/methods/list_policy_generation_assets"
@@ -15253,6 +15445,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15262,6 +15456,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -15280,6 +15476,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -15300,6 +15498,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

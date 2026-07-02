@@ -22,7 +22,7 @@ paths:
       description: Create an ApiKey resource.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -275,7 +275,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The string identifier of the associated RestApi.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -789,7 +789,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The string identifier of the associated RestApi.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1298,7 +1298,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The identifier of the ApiKey resource to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1383,7 +1383,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: Specifies a test invoke authorizer request's Authorizer ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1428,7 +1428,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The identifier of the Authorizer resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1534,7 +1534,7 @@ paths:
         description: The base path of the BasePathMapping resource to change. To specify an empty base path, set this parameter
           to '(none)'.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1600,7 +1600,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The identifier of the ClientCertificate resource to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1695,7 +1695,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The replacement identifier for the Deployment resource to change information about.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1779,7 +1779,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The identifier of the to-be-updated documentation part.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1863,7 +1863,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The version identifier of the to-be-updated documentation version.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1947,7 +1947,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The identifier for the domain name resource. Supported only for private custom domain names.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2052,7 +2052,7 @@ paths:
           $ref: '#/components/schemas/GatewayResponseType'
         description: The response type of the associated GatewayResponse
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2091,7 +2091,7 @@ paths:
           $ref: '#/components/schemas/GatewayResponseType'
         description: The response type of the associated GatewayResponse.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2266,7 +2266,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: Represents an update integration request's HTTP method.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2386,7 +2386,7 @@ paths:
           $ref: '#/components/schemas/StatusCode'
         description: Specifies the status code that is used to map the integration response to an existing MethodResponse.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2439,7 +2439,7 @@ paths:
           $ref: '#/components/schemas/StatusCode'
         description: Specifies an update integration response request's status code.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2598,7 +2598,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: Specifies a test invoke method request's HTTP method.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2649,7 +2649,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The HTTP verb of the Method resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2769,7 +2769,7 @@ paths:
           $ref: '#/components/schemas/StatusCode'
         description: The method response's status code.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2818,7 +2818,7 @@ paths:
           $ref: '#/components/schemas/StatusCode'
         description: The status code for the MethodResponse resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2909,7 +2909,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The name of the model to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2993,7 +2993,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The identifier of RequestValidator to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3086,7 +3086,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The identifier of the Resource resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3207,7 +3207,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The string identifier of the associated RestApi.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3291,7 +3291,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The name of the Stage resource to change information about.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3357,7 +3357,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The Id of the to-be-updated usage plan.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3474,7 +3474,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The identifier of the VpcLink. It is used in an Integration to reference this VpcLink.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3544,7 +3544,7 @@ paths:
       description: Generates a ClientCertificate resource.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3611,7 +3611,7 @@ paths:
       description: Changes information about the current Account resource.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4142,7 +4142,7 @@ paths:
         description: The identifier of the API key associated with the usage plan in which a temporary extension is granted
           to the remaining quota.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

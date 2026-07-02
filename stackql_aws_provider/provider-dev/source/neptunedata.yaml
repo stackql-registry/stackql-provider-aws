@@ -399,7 +399,7 @@ paths:
         attached that allows the neptune-db:CreateMLEndpoint IAM action in that cluster.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -568,7 +568,7 @@ paths:
         allows the neptune-db:ManageStatistics IAM action in that cluster.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -624,7 +624,7 @@ paths:
         the neptune-db:ManageStatistics IAM action in that cluster.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

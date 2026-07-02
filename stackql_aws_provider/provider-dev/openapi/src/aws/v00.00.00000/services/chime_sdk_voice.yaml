@@ -658,7 +658,7 @@ paths:
             $ref: "#/components/schemas/SensitiveNonEmptyString"
           description: The phone number ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -798,7 +798,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The SIP media application ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1041,7 +1041,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString128"
           description: The ID of the Voice Connector for which to add the external system configuration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1489,7 +1489,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString256"
           description: The domain ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1581,7 +1581,7 @@ paths:
       description: Updates global settings for the Amazon Chime SDK Voice Connectors in an AWS account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1669,7 +1669,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The SIP media application ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1713,7 +1713,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The SIP media application ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1972,7 +1972,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The Voice Connector ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4161,6 +4161,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4181,6 +4183,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4201,6 +4205,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4210,6 +4216,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_phone_number_order:
           operation:
             $ref: "#/paths/~1phone-number-orders~1{phone_number_order_id}/get"
@@ -4235,6 +4243,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4244,6 +4254,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_proxy_session:
           operation:
             $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1proxy-sessions~1{proxy_session_id}/delete"
@@ -4261,6 +4273,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4285,6 +4299,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4295,6 +4311,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.SipMediaApplications
+          request:
+            nativeCasing: pascal
         delete_sip_media_application:
           operation:
             $ref: "#/paths/~1sip-media-applications~1{sip_media_application_id}/delete"
@@ -4312,6 +4330,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4336,6 +4356,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4345,6 +4367,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4366,6 +4390,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4376,6 +4402,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.SipRules
+          request:
+            nativeCasing: pascal
         delete_sip_rule:
           operation:
             $ref: "#/paths/~1sip-rules~1{sip_rule_id}/delete"
@@ -4393,6 +4421,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4417,6 +4447,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4426,6 +4458,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_voice_connector:
           operation:
             $ref: "#/paths/~1voice-connectors~1{voice_connector_id}/delete"
@@ -4443,6 +4477,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4467,6 +4503,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4476,6 +4514,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_voice_connector_group:
           operation:
             $ref: "#/paths/~1voice-connector-groups~1{voice_connector_group_id}/delete"
@@ -4493,6 +4533,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4517,6 +4559,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4526,6 +4570,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_voice_profile:
           operation:
             $ref: "#/paths/~1voice-profiles~1{voice_profile_id}/delete"
@@ -4543,6 +4589,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4567,6 +4615,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4576,6 +4626,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_voice_profile_domain:
           operation:
             $ref: "#/paths/~1voice-profile-domains~1{voice_profile_domain_id}/delete"
@@ -4593,6 +4645,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4628,6 +4682,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4637,6 +4693,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/get_phone_number"
@@ -4668,6 +4726,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4702,6 +4762,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4736,6 +4798,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4770,6 +4834,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4804,6 +4870,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4838,6 +4906,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4860,6 +4930,8 @@ components:
             $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1termination~1credentials?operation=delete/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4874,6 +4946,8 @@ components:
             $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1termination~1credentials?operation=put/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4897,6 +4971,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4917,6 +4993,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4942,6 +5020,8 @@ components:
             $ref: "#/paths/~1settings/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4968,6 +5048,8 @@ components:
             $ref: "#/paths/~1settings~1phone-number/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4995,6 +5077,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5023,6 +5107,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5068,6 +5154,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5107,6 +5195,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/voice_tone_analysis_tasks/methods/get_voice_tone_analysis_task"
@@ -5141,6 +5231,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/supported_phone_number_countries/methods/list_supported_phone_number_countries"
@@ -5158,6 +5250,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -5175,6 +5269,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/available_phone_numbers/methods/search_available_phone_numbers"
@@ -5191,6 +5287,8 @@ components:
             $ref: "#/paths/~1tags?operation=tag-resource/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5199,6 +5297,8 @@ components:
             $ref: "#/paths/~1tags?operation=untag-resource/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

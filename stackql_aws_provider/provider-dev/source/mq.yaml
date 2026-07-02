@@ -199,7 +199,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The Amazon Resource Name (ARN) of the resource tag.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -374,7 +374,7 @@ paths:
         description: The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods,
           underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -450,7 +450,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The unique ID that Amazon MQ generates for the broker.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

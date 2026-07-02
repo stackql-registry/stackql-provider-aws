@@ -29,7 +29,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the channel to log subscription.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -291,7 +291,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the Channel to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -352,7 +352,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the OriginEndpoint to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1588,6 +1588,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1598,6 +1600,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Channels
+          request:
+            nativeCasing: pascal
         delete_channel:
           operation:
             $ref: "#/paths/~1channels~1{id}/delete"
@@ -1616,6 +1620,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1640,6 +1646,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1650,6 +1658,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.HarvestJobs
+          request:
+            nativeCasing: pascal
         describe_harvest_job:
           operation:
             $ref: "#/paths/~1harvest_jobs~1{id}/get"
@@ -1675,6 +1685,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1685,6 +1697,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.OriginEndpoints
+          request:
+            nativeCasing: pascal
         delete_origin_endpoint:
           operation:
             $ref: "#/paths/~1origin_endpoints~1{id}/delete"
@@ -1703,6 +1717,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1743,6 +1759,8 @@ components:
             $ref: "#/paths/~1tags~1{resource-arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1751,6 +1769,8 @@ components:
             $ref: "#/paths/~1tags~1{resource-arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

@@ -338,7 +338,7 @@ paths:
             $ref: "#/components/schemas/OutpostId"
           description: The ID or ARN of the Outpost.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -403,7 +403,7 @@ paths:
             $ref: "#/components/schemas/SiteId"
           description: The ID or the Amazon Resource Name (ARN) of the site.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1030,7 +1030,7 @@ paths:
             $ref: "#/components/schemas/OutpostIdentifier"
           description: The ID or ARN of the Outpost that you want to decommission.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1057,7 +1057,7 @@ paths:
             $ref: "#/components/schemas/SiteId"
           description: The ID or the Amazon Resource Name (ARN) of the site.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2756,6 +2756,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CapacityTasks
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/capacity_tasks/methods/get_capacity_task"
@@ -2774,6 +2776,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2790,6 +2794,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Orders
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/orders/methods/get_order"
@@ -2809,6 +2815,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2819,6 +2827,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Outposts
+          request:
+            nativeCasing: pascal
         delete_outpost:
           operation:
             $ref: "#/paths/~1outposts~1{outpost_id}/delete"
@@ -2837,6 +2847,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2861,6 +2873,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2881,6 +2895,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2891,6 +2907,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Sites
+          request:
+            nativeCasing: pascal
         delete_site:
           operation:
             $ref: "#/paths/~1sites~1{site_id}/delete"
@@ -2909,6 +2927,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2940,6 +2960,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CatalogItems
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/catalog_items/methods/get_catalog_item"
@@ -2976,6 +2998,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Subscriptions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/outpost_billing_informations/methods/get_outpost_billing_information"
@@ -2994,6 +3018,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.InstanceTypes
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/outpost_instance_types/methods/get_outpost_instance_types"
@@ -3012,6 +3038,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.InstanceTypes
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/outpost_supported_instance_types/methods/get_outpost_supported_instance_types"
@@ -3046,12 +3074,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_site_address:
           operation:
             $ref: "#/paths/~1sites~1{site_id}~1address/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3074,6 +3106,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AssetInstances
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_instances/methods/list_asset_instances"
@@ -3092,6 +3126,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Assets
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/assets/methods/list_assets"
@@ -3110,6 +3146,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.BlockingInstances
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/blocking_instances_for_capacity_tasks/methods/list_blocking_instances_for_capacity_task"
@@ -3144,6 +3182,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3153,6 +3193,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -3171,6 +3213,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

@@ -277,7 +277,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The API identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1319,7 +1319,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The API identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1497,7 +1497,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The authorizer identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1604,7 +1604,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The deployment ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1661,7 +1661,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The domain name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1740,7 +1740,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The integration ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1865,7 +1865,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The integration response ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1948,7 +1948,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The model ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2011,7 +2011,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The portal identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2084,7 +2084,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The portal product identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2228,7 +2228,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The portal product identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2315,7 +2315,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The product REST endpoint identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2392,7 +2392,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The route ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2531,7 +2531,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The route response ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2739,7 +2739,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The stage name. Stage names can contain only alphanumeric characters, hyphens, and underscores, or be $default. Maximum length is 128 characters.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2814,7 +2814,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the VPC link.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2854,7 +2854,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The portal identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2969,7 +2969,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The resource ARN for the tag.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -6515,6 +6515,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6525,6 +6527,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_api:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}/delete"
@@ -6542,6 +6546,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6566,6 +6572,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6575,6 +6583,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_api_mapping:
           operation:
             $ref: "#/paths/~1v2~1domainnames~1{domain_name}~1apimappings~1{api_mapping_id}/delete"
@@ -6592,6 +6602,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6616,6 +6628,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6626,6 +6640,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_authorizer:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1authorizers~1{authorizer_id}/delete"
@@ -6643,6 +6659,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6667,6 +6685,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6677,6 +6697,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_deployment:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1deployments~1{deployment_id}/delete"
@@ -6694,6 +6716,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6718,6 +6742,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6728,6 +6754,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_domain_name:
           operation:
             $ref: "#/paths/~1v2~1domainnames~1{domain_name}/delete"
@@ -6745,6 +6773,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6769,6 +6799,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6779,6 +6811,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_integration:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1integrations~1{integration_id}/delete"
@@ -6796,6 +6830,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6820,6 +6856,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6830,6 +6868,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_integration_response:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1integrations~1{integration_id}~1integrationresponses~1{integration_response_id}/delete"
@@ -6847,6 +6887,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6871,6 +6913,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6881,6 +6925,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_model:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1models~1{model_id}/delete"
@@ -6898,6 +6944,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6922,6 +6970,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6932,6 +6982,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_portal:
           operation:
             $ref: "#/paths/~1v2~1portals~1{portal_id}/delete"
@@ -6949,6 +7001,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6973,6 +7027,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6983,6 +7039,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_portal_product:
           operation:
             $ref: "#/paths/~1v2~1portalproducts~1{portal_product_id}/delete"
@@ -6994,12 +7052,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_portal_product:
           operation:
             $ref: "#/paths/~1v2~1portalproducts~1{portal_product_id}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7024,6 +7086,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7034,6 +7098,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_product_page:
           operation:
             $ref: "#/paths/~1v2~1portalproducts~1{portal_product_id}~1productpages~1{product_page_id}/delete"
@@ -7045,12 +7111,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_product_page:
           operation:
             $ref: "#/paths/~1v2~1portalproducts~1{portal_product_id}~1productpages~1{product_page_id}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7075,6 +7145,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7085,6 +7157,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_product_rest_endpoint_page:
           operation:
             $ref: "#/paths/~1v2~1portalproducts~1{portal_product_id}~1productrestendpointpages~1{product_rest_endpoint_page_id}/delete"
@@ -7096,12 +7170,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_product_rest_endpoint_page:
           operation:
             $ref: "#/paths/~1v2~1portalproducts~1{portal_product_id}~1productrestendpointpages~1{product_rest_endpoint_page_id}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7126,6 +7204,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7136,6 +7216,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_route:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1routes~1{route_id}/delete"
@@ -7153,6 +7235,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7177,6 +7261,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7187,6 +7273,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_route_response:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1routes~1{route_id}~1routeresponses~1{route_response_id}/delete"
@@ -7204,6 +7292,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7228,6 +7318,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7238,23 +7330,31 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RoutingRules
+          request:
+            nativeCasing: pascal
         delete_routing_rule:
           operation:
             $ref: "#/paths/~1v2~1domainnames~1{domain_name}~1routingrules~1{routing_rule_id}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         get_routing_rule:
           operation:
             $ref: "#/paths/~1v2~1domainnames~1{domain_name}~1routingrules~1{routing_rule_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_routing_rule:
           operation:
             $ref: "#/paths/~1v2~1domainnames~1{domain_name}~1routingrules~1{routing_rule_id}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7280,6 +7380,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7290,6 +7392,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_stage:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1stages~1{stage_name}/delete"
@@ -7307,6 +7411,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7331,6 +7437,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7340,6 +7448,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_vpc_link:
           operation:
             $ref: "#/paths/~1v2~1vpclinks~1{vpc_link_id}/delete"
@@ -7358,6 +7468,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7425,6 +7537,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7514,6 +7628,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7522,6 +7638,8 @@ components:
             $ref: "#/paths/~1v2~1tags~1{resource-arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

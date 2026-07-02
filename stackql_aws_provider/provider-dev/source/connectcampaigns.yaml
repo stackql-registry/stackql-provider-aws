@@ -241,7 +241,7 @@ paths:
       description: Provides summary information about the campaigns under the specified Amazon Connect account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -490,7 +490,7 @@ paths:
         schema:
           $ref: '#/components/schemas/CampaignId'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

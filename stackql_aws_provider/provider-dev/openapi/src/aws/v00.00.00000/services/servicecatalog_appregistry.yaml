@@ -88,7 +88,7 @@ paths:
             $ref: "#/components/schemas/ResourceSpecifier"
           description: The name or ID of the resource of which the application will be associated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -334,7 +334,7 @@ paths:
             $ref: "#/components/schemas/ApplicationSpecifier"
           description: The name, ID, or ARN of the application that will be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -397,7 +397,7 @@ paths:
             $ref: "#/components/schemas/AttributeGroupSpecifier"
           description: The name, ID, or ARN of the attribute group that holds the attributes to describe the application.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1334,6 +1334,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1344,6 +1346,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.attributeGroups
+          request:
+            nativeCasing: pascal
         delete_attribute_group:
           operation:
             $ref: "#/paths/~1attribute-groups~1{attribute_group}/delete"
@@ -1362,6 +1366,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1387,6 +1393,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1402,6 +1410,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1411,6 +1421,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -1430,6 +1442,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_associated_resources:
           operation:
             $ref: "#/paths/~1applications~1{application}~1resources/get"
@@ -1437,6 +1451,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.resources
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/associated_resources/methods/get_associated_resource"
@@ -1455,6 +1471,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1465,6 +1483,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.applications
+          request:
+            nativeCasing: pascal
         delete_application:
           operation:
             $ref: "#/paths/~1applications~1{application}/delete"
@@ -1483,6 +1503,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1512,6 +1534,8 @@ components:
             $ref: "#/paths/~1configuration/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1535,6 +1559,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.attributeGroups
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/associated_attribute_groups/methods/list_associated_attribute_groups"
@@ -1553,6 +1579,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.attributeGroupsDetails
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/attribute_groups_for_applications/methods/list_attribute_groups_for_application"

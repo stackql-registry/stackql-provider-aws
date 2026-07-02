@@ -497,7 +497,7 @@ paths:
         returns quickly and successfully.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -159,7 +159,7 @@ paths:
             $ref: "#/components/schemas/string"
           description: Identifies the range of bytes in the assembled archive that will be uploaded in this part. Amazon Glacier uses this information to assemble the archive in the proper sequence. The format of this header follows RFC 2616. An example header is Content-Range:bytes 0-4194303/*.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -234,7 +234,7 @@ paths:
             $ref: "#/components/schemas/string"
           description: The name of the vault.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -267,7 +267,7 @@ paths:
             $ref: "#/components/schemas/string"
           description: The name of the vault.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -456,7 +456,7 @@ paths:
             $ref: "#/components/schemas/string"
           description: The name of the vault.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -527,7 +527,7 @@ paths:
             $ref: "#/components/schemas/string"
           description: The name of the vault.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -597,7 +597,7 @@ paths:
             $ref: "#/components/schemas/string"
           description: The AccountId value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '-' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -662,7 +662,7 @@ paths:
             $ref: "#/components/schemas/string"
           description: The name of the vault.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -902,7 +902,7 @@ paths:
             $ref: "#/components/schemas/string"
           description: The name of the vault.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -943,7 +943,7 @@ paths:
             $ref: "#/components/schemas/string"
           description: The SHA256 tree hash of the data being uploaded.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1724,6 +1724,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Parts
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/parts/methods/list_parts"
@@ -1757,6 +1759,8 @@ components:
             $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1tags?operation=add/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1795,6 +1799,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.VaultList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/vaults/methods/describe_vault"
@@ -1841,6 +1847,8 @@ components:
             $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1access-policy/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1873,6 +1881,8 @@ components:
             $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1notification-configuration/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1902,6 +1912,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.JobList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/describe_job"
@@ -1925,6 +1937,8 @@ components:
             $ref: "#/paths/~1{account_id}~1policies~1data-retrieval/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1964,6 +1978,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.UploadsList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/multipart_uploads/methods/list_multipart_uploads"
@@ -2014,6 +2030,8 @@ components:
             $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1tags?operation=remove/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

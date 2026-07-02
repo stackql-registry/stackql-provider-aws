@@ -205,7 +205,7 @@ paths:
           $ref: '#/components/schemas/ScheduleGroupName'
         description: The name of the schedule group that you are creating.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

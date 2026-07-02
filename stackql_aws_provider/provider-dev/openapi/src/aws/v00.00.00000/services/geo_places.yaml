@@ -73,7 +73,7 @@ paths:
             $ref: "#/components/schemas/ApiKey"
           description: "Optional: The API key to be used for authorization. Either an API key or valid SigV4 signature must be provided when making a request."
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -254,7 +254,7 @@ paths:
             $ref: "#/components/schemas/ApiKey"
           description: "Optional: The API key to be used for authorization. Either an API key or valid SigV4 signature must be provided when making a request."
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2526,6 +2526,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/places/methods/get_place"
@@ -2543,6 +2545,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2563,6 +2567,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

@@ -166,7 +166,7 @@ paths:
           $ref: '#/components/schemas/DirectoryRegistrationArn'
         description: The Amazon Resource Name (ARN) that was returned when you called CreateDirectoryRegistration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -502,7 +502,7 @@ paths:
           $ref: '#/components/schemas/TemplateArn'
         description: The Amazon Resource Name (ARN) that was returned when you called CreateTemplate.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -584,7 +584,7 @@ paths:
           $ref: '#/components/schemas/TemplateArn'
         description: The Amazon Resource Name (ARN) that was returned when you called CreateTemplate.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

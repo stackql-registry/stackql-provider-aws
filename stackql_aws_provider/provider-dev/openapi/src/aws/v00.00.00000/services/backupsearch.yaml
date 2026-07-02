@@ -996,6 +996,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.SearchJobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/search_jobs/methods/get_search_job"
@@ -1021,6 +1023,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ExportJobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/search_result_export_jobs/methods/get_search_result_export_job"
@@ -1040,6 +1044,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Results
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/search_job_backups/methods/list_search_job_backups"
@@ -1058,6 +1064,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Results
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/search_job_results/methods/list_search_job_results"
@@ -1092,6 +1100,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1101,6 +1111,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

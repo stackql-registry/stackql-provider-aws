@@ -491,7 +491,7 @@ paths:
             $ref: "#/components/schemas/LinkId"
           description: The unique identifier of the link.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2820,6 +2820,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2829,6 +2831,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -2847,6 +2851,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_certificate_associations:
           operation:
             $ref: "#/paths/~1responder-gateway~1{gateway_id}~1certificates/get"
@@ -2854,6 +2860,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.certificateAssociations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/certificate_associations/methods/get_certificate_association"
@@ -2872,6 +2880,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2906,6 +2916,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2927,6 +2939,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2937,6 +2951,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.links
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/links/methods/get_link"
@@ -2958,6 +2974,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2979,6 +2997,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2989,6 +3009,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.rules
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/link_routing_rules/methods/get_link_routing_rule"
@@ -3010,6 +3032,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3044,6 +3068,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3066,12 +3092,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.gatewayIds
+          request:
+            nativeCasing: pascal
         update_requester_gateway:
           operation:
             $ref: "#/paths/~1requester-gateway~1{gateway_id}~1update/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3096,6 +3126,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3118,12 +3150,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.gatewayIds
+          request:
+            nativeCasing: pascal
         update_responder_gateway:
           operation:
             $ref: "#/paths/~1responder-gateway~1{gateway_id}~1update/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3165,6 +3201,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3174,6 +3212,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -3192,6 +3232,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

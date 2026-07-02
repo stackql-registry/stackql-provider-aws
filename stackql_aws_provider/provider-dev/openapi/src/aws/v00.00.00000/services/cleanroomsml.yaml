@@ -705,7 +705,7 @@ paths:
             $ref: "#/components/schemas/ConfiguredAudienceModelArn"
           description: The Amazon Resource Name (ARN) of the configured audience model that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4968,6 +4968,8 @@ components:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1trained-models~1{trained_model_arn}/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -4985,12 +4987,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         create_trained_model:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1trained-models/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5001,6 +5007,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.trainedModels
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/trained_models/methods/get_trained_model"
@@ -5027,6 +5035,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.trainedModelInferenceJobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/trained_model_inference_jobs/methods/get_trained_model_inference_job"
@@ -5045,6 +5055,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5055,6 +5067,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.audienceModels
+          request:
+            nativeCasing: pascal
         delete_audience_model:
           operation:
             $ref: "#/paths/~1audience-model~1{audience_model_arn}/delete"
@@ -5086,6 +5100,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5096,6 +5112,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.configuredAudienceModels
+          request:
+            nativeCasing: pascal
         delete_configured_audience_model:
           operation:
             $ref: "#/paths/~1configured-audience-model~1{configured_audience_model_arn}/delete"
@@ -5113,6 +5131,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5137,6 +5157,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5147,6 +5169,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.configuredModelAlgorithms
+          request:
+            nativeCasing: pascal
         delete_configured_model_algorithm:
           operation:
             $ref: "#/paths/~1configured-model-algorithms~1{configured_model_algorithm_arn}/delete"
@@ -5178,6 +5202,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5188,6 +5214,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.configuredModelAlgorithmAssociations
+          request:
+            nativeCasing: pascal
         delete_configured_model_algorithm_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configured-model-algorithm-associations~1{configured_model_algorithm_association_arn}/delete"
@@ -5219,6 +5247,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5229,6 +5259,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.mlInputChannelsList
+          request:
+            nativeCasing: pascal
         get_ml_input_channel:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1ml-input-channels~1{ml_input_channel_arn}/get"
@@ -5254,6 +5286,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5264,6 +5298,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.trainingDatasets
+          request:
+            nativeCasing: pascal
         delete_training_dataset:
           operation:
             $ref: "#/paths/~1training-dataset~1{training_dataset_arn}/delete"
@@ -5307,6 +5343,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.audienceGenerationJobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/audience_generation_jobs/methods/get_audience_generation_job"
@@ -5337,6 +5375,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5370,6 +5410,8 @@ components:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1ml-configurations/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5416,6 +5458,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.collaborationConfiguredModelAlgorithmAssociations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_configured_model_algorithm_associations/methods/get_collaboration_configured_model_algorithm_association"
@@ -5441,6 +5485,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.collaborationMLInputChannelsList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_ml_input_channels/methods/get_collaboration_ml_input_channel"
@@ -5459,6 +5505,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_collaboration_trained_models:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}~1trained-models/get"
@@ -5466,6 +5514,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.collaborationTrainedModels
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_trained_models/methods/get_collaboration_trained_model"
@@ -5485,6 +5535,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.audienceExportJobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/audience_export_jobs/methods/list_audience_export_jobs"
@@ -5503,6 +5555,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.collaborationTrainedModelExportJobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_trained_model_export_jobs/methods/list_collaboration_trained_model_export_jobs"
@@ -5521,6 +5575,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.collaborationTrainedModelInferenceJobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_trained_model_inference_jobs/methods/list_collaboration_trained_model_inference_jobs"
@@ -5555,6 +5611,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5564,6 +5622,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -5583,6 +5643,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.trainedModels
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/trained_model_versions/methods/list_trained_model_versions"

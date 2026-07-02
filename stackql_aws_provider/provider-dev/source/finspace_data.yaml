@@ -35,7 +35,7 @@ paths:
           $ref: '#/components/schemas/UserId'
         description: The unique identifier for the user.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -575,7 +575,7 @@ paths:
           $ref: '#/components/schemas/PermissionGroupId'
         description: The unique identifier for the permission group to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -611,7 +611,7 @@ paths:
           $ref: '#/components/schemas/UserId'
         description: The unique identifier for the user that you want to deactivate.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -641,7 +641,7 @@ paths:
           $ref: '#/components/schemas/UserId'
         description: The unique identifier for the user that you want to activate.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -844,7 +844,7 @@ paths:
           $ref: '#/components/schemas/UserId'
         description: The unique identifier for the user that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -879,7 +879,7 @@ paths:
         a scratch space in FinSpace notebook.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -976,7 +976,7 @@ paths:
           $ref: '#/components/schemas/UserId'
         description: The unique identifier of the user that a temporary password is requested for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

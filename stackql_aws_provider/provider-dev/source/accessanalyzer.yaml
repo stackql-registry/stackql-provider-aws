@@ -457,7 +457,7 @@ paths:
           $ref: '#/components/schemas/Name'
         description: The name of the analyzer to modify.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

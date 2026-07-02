@@ -1368,6 +1368,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1378,6 +1380,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.accessPoints
+          request:
+            nativeCasing: pascal
         delete_access_point:
           operation:
             $ref: "#/paths/~1access-points~1{access_point_id}/delete"
@@ -1409,6 +1413,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1419,11 +1425,15 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.fileSystems
+          request:
+            nativeCasing: pascal
         delete_file_system:
           operation:
             $ref: "#/paths/~1file-systems~1{file_system_id}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         get_file_system:
           operation:
             $ref: "#/paths/~1file-systems~1{file_system_id}/get"
@@ -1450,6 +1460,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1460,6 +1472,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.mountTargets
+          request:
+            nativeCasing: pascal
         delete_mount_target:
           operation:
             $ref: "#/paths/~1mount-targets~1{mount_target_id}/delete"
@@ -1477,6 +1491,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1512,6 +1528,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1541,6 +1559,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1564,6 +1584,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.tags
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -1580,6 +1602,8 @@ components:
             $ref: "#/paths/~1resource-tags~1{resource_id}/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1588,6 +1612,8 @@ components:
             $ref: "#/paths/~1resource-tags~1{resource_id}/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

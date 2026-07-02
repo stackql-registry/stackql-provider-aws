@@ -45,7 +45,7 @@ paths:
       description: Returns a list of notification channels configured for DevOps Guru. Each notification channel is used to notify you when DevOps Guru generates an insight that contains information about how to improve your operations. The one supported notification channel is Amazon Simple Notification Service (Amazon SNS).
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -179,7 +179,7 @@ paths:
       description: Enables or disables integration with a service that can be integrated with DevOps Guru. The one service that can be integrated with DevOps Guru is Amazon CodeGuru Profiler, which can produce proactive recommendations which can be stored and viewed in DevOps Guru.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -200,7 +200,7 @@ paths:
       description: Returns the most recent feedback submitted in the current Amazon Web Services account and Region.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -220,7 +220,7 @@ paths:
       description: Collects customer feedback about the specified insight.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -241,7 +241,7 @@ paths:
       description: Returns active insights, predictive insights, and resource hours analyzed in last hour.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -454,7 +454,7 @@ paths:
             $ref: "#/components/schemas/InsightId"
           description: The ID of the insight. The returned anomalies belong to this insight.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -566,7 +566,7 @@ paths:
       description: Returns the list of all log groups that are being monitored and tagged by DevOps Guru.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3099,6 +3099,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3109,6 +3111,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Channels
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3143,6 +3147,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_insights:
           operation:
             $ref: "#/paths/~1insights/post"
@@ -3150,6 +3156,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ProactiveInsights
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3160,6 +3168,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ProactiveInsights
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3200,6 +3210,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3220,6 +3232,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/anomalies/methods/describe_anomaly"
@@ -3243,6 +3257,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3264,6 +3280,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3273,6 +3291,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3295,6 +3315,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3315,6 +3337,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3336,6 +3360,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CloudFormation
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3357,6 +3383,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CloudFormation
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resource_collection_healths/methods/describe_resource_collection_health"
@@ -3380,6 +3408,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3402,6 +3432,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Costs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cost_estimations/methods/get_cost_estimation"
@@ -3419,12 +3451,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_resource_collection:
           operation:
             $ref: "#/paths/~1resource-collections/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3447,6 +3483,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ReactiveAnomalies
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3467,6 +3505,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3488,6 +3528,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Events
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3509,6 +3551,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.MonitoredResourceIdentifiers
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3530,6 +3574,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ProactiveInsights
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3540,6 +3586,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ProactiveInsights
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3562,6 +3610,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Recommendations
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

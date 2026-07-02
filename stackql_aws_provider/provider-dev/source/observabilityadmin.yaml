@@ -484,7 +484,7 @@ paths:
         management account or a delegated administrator account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -516,7 +516,7 @@ paths:
         For more information, see Auditing CloudWatch telemetry configurations.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -552,7 +552,7 @@ paths:
         in the organization.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -590,7 +590,7 @@ paths:
         returns quickly and successfully.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -645,7 +645,7 @@ paths:
         pipelines exist, include the NextToken value from the response to retrieve the next set of results.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -672,7 +672,7 @@ paths:
       description: Lists all telemetry rules in your account. You can filter the results by specifying a rule name prefix.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -702,7 +702,7 @@ paths:
         management account or a delegated administrator account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -751,7 +751,7 @@ paths:
       description: This action begins onboarding the caller Amazon Web Services account to the telemetry config feature.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -773,7 +773,7 @@ paths:
       description: This actions begins onboarding the organization and all member accounts to the telemetry config feature.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -37,7 +37,7 @@ paths:
       description: Creates a function package. A function package is a .zip file in CSAR (Cloud Service Archive) format that contains a network function (an ETSI standard telecommunication application) and function package descriptor that uses the TOSCA standard to describe how the network functions should run on your network. For more information, see Function packages in the Amazon Web Services Telco Network Builder User Guide. Creating a function package is the first step for creating a network in AWS TNB. This request creates an empty container with an ID. The next step is to upload the actual CSAR zip file into that empty container. To upload function package content, see PutSolFunctionPackageContent.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -134,7 +134,7 @@ paths:
       description: Creates a network package. A network package is a .zip file in CSAR (Cloud Service Archive) format defines the function packages you want to deploy and the Amazon Web Services infrastructure you want to deploy them on. For more information, see Network instances in the Amazon Web Services Telco Network Builder User Guide. A network package consists of a network service descriptor (NSD) file (required) and any additional files (optional), such as scripts specific to your needs. For example, if you have multiple function packages in your network package, you can use the NSD to define which network functions should run in certain VPCs, subnets, or EKS clusters. This request creates an empty network package container with an ID. Once you create a network package, you can upload the network package content using PutSolNetworkPackageContent.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -533,7 +533,7 @@ paths:
             $ref: "#/components/schemas/NsInstanceId"
           description: ID of the network instance.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -685,7 +685,7 @@ paths:
             $ref: "#/components/schemas/NsInstanceId"
           description: ID of the network instance.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2194,6 +2194,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2204,6 +2206,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.functionPackages
+          request:
+            nativeCasing: pascal
         delete_sol_function_package:
           operation:
             $ref: "#/paths/~1sol~1vnfpkgm~1v1~1vnf_packages~1{vnf_pkg_id}/delete"
@@ -2221,6 +2225,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2245,6 +2251,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2255,6 +2263,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.networkInstances
+          request:
+            nativeCasing: pascal
         delete_sol_network_instance:
           operation:
             $ref: "#/paths/~1sol~1nslcm~1v1~1ns_instances~1{ns_instance_id}/delete"
@@ -2272,6 +2282,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2281,6 +2293,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2305,6 +2319,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2315,6 +2331,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.networkPackages
+          request:
+            nativeCasing: pascal
         delete_sol_network_package:
           operation:
             $ref: "#/paths/~1sol~1nsd~1v1~1ns_descriptors~1{nsd_info_id}/delete"
@@ -2332,6 +2350,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2363,6 +2383,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.functionInstances
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sol_function_instances/methods/get_sol_function_instance"
@@ -2387,6 +2409,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2433,6 +2457,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.networkOperations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sol_network_operations/methods/get_sol_network_operation"
@@ -2457,6 +2483,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2513,6 +2541,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2522,6 +2552,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

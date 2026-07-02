@@ -714,7 +714,7 @@ paths:
           $ref: '#/components/schemas/GlobalNetworkId'
         description: The ID of the global network.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -837,7 +837,7 @@ paths:
       description: Creates a new, empty global network.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1005,7 +1005,7 @@ paths:
           $ref: '#/components/schemas/GlobalNetworkId'
         description: The ID of the global network.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1316,7 +1316,7 @@ paths:
           $ref: '#/components/schemas/ConnectionId'
         description: The ID of the connection.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1391,7 +1391,7 @@ paths:
           $ref: '#/components/schemas/CoreNetworkId'
         description: The ID of a core network.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1508,7 +1508,7 @@ paths:
           $ref: '#/components/schemas/DeviceId'
         description: The ID of the device.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1573,7 +1573,7 @@ paths:
           $ref: '#/components/schemas/GlobalNetworkId'
         description: The ID of your global network.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1636,7 +1636,7 @@ paths:
           $ref: '#/components/schemas/LinkId'
         description: The ID of the link.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1799,7 +1799,7 @@ paths:
           $ref: '#/components/schemas/SiteId'
         description: The ID of your site.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2160,7 +2160,7 @@ paths:
           $ref: '#/components/schemas/AttachmentId'
         description: The ID of the Direct Connect gateway attachment for the updated edge locations.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2684,7 +2684,7 @@ paths:
           $ref: '#/components/schemas/AttachmentId'
         description: The ID of the attachment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

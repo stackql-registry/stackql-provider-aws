@@ -649,7 +649,7 @@ paths:
           $ref: '#/components/schemas/ChimeArn'
         description: The ARN of the AppInstanceUser or AppInstanceBot that makes the API call.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1728,7 +1728,7 @@ paths:
           $ref: '#/components/schemas/ChimeArn'
         description: The ARN of the AppInstanceUser or AppInstanceBot that makes the API call.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1772,7 +1772,7 @@ paths:
           $ref: '#/components/schemas/ChimeArn'
         description: The ARN of the AppInstanceUser or AppInstanceBot that makes the API call.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

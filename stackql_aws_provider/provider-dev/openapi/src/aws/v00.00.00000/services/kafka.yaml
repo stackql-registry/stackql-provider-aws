@@ -751,7 +751,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The name of the topic to update configuration for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4203,6 +4203,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.SecretArnList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/scram_secrets/methods/list_scram_secrets"
@@ -4220,6 +4222,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4230,12 +4234,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ClusterInfoList
+          request:
+            nativeCasing: pascal
         delete_cluster:
           operation:
             $ref: "#/paths/~1v1~1clusters~1{cluster_arn}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_cluster:
           operation:
             $ref: "#/paths/~1v1~1clusters~1{cluster_arn}/get"
@@ -4262,6 +4270,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4290,6 +4300,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ClusterInfoList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/clusters_v2s/methods/list_clusters_v2"
@@ -4307,6 +4319,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4317,6 +4331,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Configurations
+          request:
+            nativeCasing: pascal
         delete_configuration:
           operation:
             $ref: "#/paths/~1v1~1configurations~1{arn}/delete"
@@ -4335,6 +4351,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4359,6 +4377,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4369,12 +4389,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Replicators
+          request:
+            nativeCasing: pascal
         delete_replicator:
           operation:
             $ref: "#/paths/~1replication~1v1~1replicators~1{replicator_arn}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_replicator:
           operation:
             $ref: "#/paths/~1replication~1v1~1replicators~1{replicator_arn}/get"
@@ -4401,6 +4425,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4411,6 +4437,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Topics
+          request:
+            nativeCasing: pascal
         delete_topic:
           operation:
             $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1topics~1{topic_name}/delete"
@@ -4429,6 +4457,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4453,6 +4483,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4475,6 +4507,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.VpcConnections
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/vpc_connections/methods/describe_vpc_connection"
@@ -4507,6 +4541,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4537,6 +4573,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ClusterOperationInfoList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cluster_operations/methods/describe_cluster_operation"
@@ -4579,6 +4617,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Revisions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/configuration_revisions/methods/describe_configuration_revision"
@@ -4598,6 +4638,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Partitions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/topic_partitions/methods/describe_topic_partitions"
@@ -4632,6 +4674,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/compatible_kafka_versions/methods/get_compatible_kafka_versions"
@@ -4650,6 +4694,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ClientVpcConnections
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/client_vpc_connections/methods/list_client_vpc_connections"
@@ -4668,6 +4714,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ClusterOperationInfoList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cluster_operations_v2s/methods/list_cluster_operations_v2"
@@ -4686,6 +4734,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.KafkaVersions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/kafka_versions/methods/list_kafka_versions"
@@ -4704,6 +4754,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.NodeInfoList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/nodes/methods/list_nodes"
@@ -4737,6 +4789,8 @@ components:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4745,6 +4799,8 @@ components:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -4763,6 +4819,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4783,6 +4841,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4803,6 +4863,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4823,6 +4885,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4843,6 +4907,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4863,6 +4929,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4883,6 +4951,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4903,6 +4973,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4923,6 +4995,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4943,6 +5017,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4963,6 +5039,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

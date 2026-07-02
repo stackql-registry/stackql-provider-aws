@@ -202,7 +202,7 @@ paths:
             $ref: "#/components/schemas/BackupVaultName"
           description: The name of a logical container where backups are stored. Backup vaults are identified by names that are unique to the account used to create them and the Amazon Web Services Region where they are created. They consist of letters, numbers, and hyphens.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -762,7 +762,7 @@ paths:
             $ref: "#/components/schemas/BackupVaultName"
           description: The name of a logical container where backups are stored. Backup vaults are identified by names that are unique to the account used to create them and the Amazon Web Services Region where they are created.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -798,7 +798,7 @@ paths:
             $ref: "#/components/schemas/BackupVaultName"
           description: The Backup Vault Lock configuration that specifies the name of the backup vault it protects.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -913,7 +913,7 @@ paths:
             $ref: "#/components/schemas/FrameworkName"
           description: The unique name of a framework. This name is between 1 and 256 characters, starting with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and underscores (_).
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -998,7 +998,7 @@ paths:
             $ref: "#/components/schemas/ARN"
           description: An Amazon Resource Name (ARN) that uniquely identifies a recovery point; for example, arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1055,7 +1055,7 @@ paths:
             $ref: "#/components/schemas/ReportPlanName"
           description: The unique name of the report plan. This name is between 1 and 256 characters, starting with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and underscores (_).
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1341,7 +1341,7 @@ paths:
       description: Updates whether the Amazon Web Services account has enabled different cross-account management options, including cross-account backup, multi-party approval, and delegated administrator. Returns an error if the account is not an Organizations management account. Use the DescribeGlobalSettings API to determine the current settings.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1387,7 +1387,7 @@ paths:
       description: Updates the current service opt-in settings for the Region. Use the DescribeRegionSettings API to determine the resource types that are supported.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1466,7 +1466,7 @@ paths:
             $ref: "#/components/schemas/BackupVaultName"
           description: The name of the backup vault from which to disassociate the MPA approval team.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3006,7 +3006,7 @@ paths:
             $ref: "#/components/schemas/ReportPlanName"
           description: The unique name of a report plan.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -6966,6 +6966,8 @@ components:
             $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1mpaApprovalTeam/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6974,6 +6976,8 @@ components:
             $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1mpaApprovalTeam?delete/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6995,6 +6999,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7005,6 +7011,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.BackupPlansList
+          request:
+            nativeCasing: pascal
         delete_backup_plan:
           operation:
             $ref: "#/paths/~1backup~1plans~1{backup_plan_id}/delete"
@@ -7017,6 +7025,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7026,6 +7036,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/backup_plans/methods/get_backup_plan"
@@ -7047,6 +7059,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7057,6 +7071,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.BackupSelectionsList
+          request:
+            nativeCasing: pascal
         delete_backup_selection:
           operation:
             $ref: "#/paths/~1backup~1plans~1{backup_plan_id}~1selections~1{selection_id}/delete"
@@ -7088,6 +7104,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7102,6 +7120,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_backup_vaults:
           operation:
             $ref: "#/paths/~1backup-vaults~1/get"
@@ -7109,6 +7129,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.BackupVaultList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/backup_vaults/methods/describe_backup_vault"
@@ -7129,6 +7151,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7138,6 +7162,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_framework:
           operation:
             $ref: "#/paths/~1audit~1frameworks~1{framework_name}/delete"
@@ -7155,6 +7181,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7179,6 +7207,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7189,6 +7219,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.LegalHolds
+          request:
+            nativeCasing: pascal
         get_legal_hold:
           operation:
             $ref: "#/paths/~1legal-holds~1{legal_hold_id}~1/get"
@@ -7214,6 +7246,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7234,6 +7268,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7243,6 +7279,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_report_plan:
           operation:
             $ref: "#/paths/~1audit~1report-plans~1{report_plan_name}/delete"
@@ -7260,6 +7298,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7284,6 +7324,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7294,11 +7336,15 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RestoreAccessBackupVaults
+          request:
+            nativeCasing: pascal
         revoke_restore_access_backup_vault:
           operation:
             $ref: "#/paths/~1logically-air-gapped-backup-vaults~1{backup_vault_name}~1restore-access-backup-vaults~1{restore_access_backup_vault_arn}/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/restore_access_backup_vaults/methods/list_restore_access_backup_vaults"
@@ -7318,6 +7364,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7328,6 +7376,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RestoreTestingPlans
+          request:
+            nativeCasing: pascal
         delete_restore_testing_plan:
           operation:
             $ref: "#/paths/~1restore-testing~1plans~1{restore_testing_plan_name}/delete"
@@ -7345,6 +7395,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7369,6 +7421,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7379,6 +7433,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RestoreTestingSelections
+          request:
+            nativeCasing: pascal
         delete_restore_testing_selection:
           operation:
             $ref: "#/paths/~1restore-testing~1plans~1{restore_testing_plan_name}~1selections~1{restore_testing_selection_name}/delete"
@@ -7396,6 +7452,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7420,6 +7478,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7441,6 +7501,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7451,6 +7513,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TieringConfigurations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tiering_configurations/methods/get_tiering_configuration"
@@ -7482,6 +7546,8 @@ components:
             $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1access-policy/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7509,6 +7575,8 @@ components:
             $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1vault-lock/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7541,6 +7609,8 @@ components:
             $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1notification-configuration/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7569,6 +7639,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         disassociate_recovery_point:
           operation:
             $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1recovery-points~1{recovery_point_arn}~1disassociate/post"
@@ -7593,6 +7665,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7620,6 +7694,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.BackupJobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/backup_jobs/methods/describe_backup_job"
@@ -7645,6 +7721,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CopyJobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/copy_jobs/methods/describe_copy_job"
@@ -7668,6 +7746,8 @@ components:
             $ref: "#/paths/~1global-settings/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7696,6 +7776,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Results
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/protected_resources/methods/describe_protected_resource"
@@ -7719,6 +7801,8 @@ components:
             $ref: "#/paths/~1account-settings/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7746,6 +7830,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/report_jobs/methods/describe_report_job"
@@ -7771,6 +7857,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RestoreJobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/restore_jobs/methods/describe_restore_job"
@@ -7796,6 +7884,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ScanJobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/scan_jobs/methods/describe_scan_job"
@@ -7830,6 +7920,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7884,6 +7976,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7904,6 +7998,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recovery_point_restore_metadatas/methods/get_recovery_point_restore_metadata"
@@ -7938,6 +8034,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/restore_testing_inferred_metadatas/methods/get_restore_testing_inferred_metadata"
@@ -7972,6 +8070,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/backup_job_summaries/methods/list_backup_job_summaries"
@@ -7990,6 +8090,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.BackupPlanTemplatesList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/backup_plan_templates/methods/list_backup_plan_templates"
@@ -8008,6 +8110,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.BackupPlanVersionsList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/backup_plan_versions/methods/list_backup_plan_versions"
@@ -8025,6 +8129,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/copy_job_summaries/methods/list_copy_job_summaries"
@@ -8043,6 +8149,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.IndexedRecoveryPoints
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/indexed_recovery_points/methods/list_indexed_recovery_points"
@@ -8061,6 +8169,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Results
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/protected_resources_by_backup_vaults/methods/list_protected_resources_by_backup_vault"
@@ -8079,6 +8189,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RecoveryPoints
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recovery_points_by_backup_vaults/methods/list_recovery_points_by_backup_vault"
@@ -8097,6 +8209,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RecoveryPoints
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recovery_points_by_legal_holds/methods/list_recovery_points_by_legal_hold"
@@ -8115,6 +8229,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RecoveryPoints
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recovery_points_by_resources/methods/list_recovery_points_by_resource"
@@ -8132,6 +8248,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/restore_job_summaries/methods/list_restore_job_summaries"
@@ -8150,6 +8268,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RestoreJobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/restore_jobs_by_protected_resources/methods/list_restore_jobs_by_protected_resource"
@@ -8168,6 +8288,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ScanJobSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/scan_job_summaries/methods/list_scan_job_summaries"
@@ -8185,6 +8307,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags"
@@ -8201,6 +8325,8 @@ components:
             $ref: "#/paths/~1restore-jobs~1{restore_job_id}~1validations/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8221,6 +8347,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8229,6 +8357,8 @@ components:
             $ref: "#/paths/~1untag~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

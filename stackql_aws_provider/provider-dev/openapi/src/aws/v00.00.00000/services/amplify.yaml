@@ -287,7 +287,7 @@ paths:
             $ref: "#/components/schemas/BranchName"
           description: The name of the branch to use for the job.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -477,7 +477,7 @@ paths:
             $ref: "#/components/schemas/AppId"
           description: The unique ID for an Amplify app.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -643,7 +643,7 @@ paths:
             $ref: "#/components/schemas/BranchName"
           description: The name of the branch.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -756,7 +756,7 @@ paths:
             $ref: "#/components/schemas/DomainName"
           description: The name of the domain.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -884,7 +884,7 @@ paths:
             $ref: "#/components/schemas/WebhookId"
           description: The unique ID for a webhook.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1161,7 +1161,7 @@ paths:
             $ref: "#/components/schemas/BranchName"
           description: The name of the branch to use for the deployment job.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2696,6 +2696,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2706,6 +2708,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.apps
+          request:
+            nativeCasing: pascal
         delete_app:
           operation:
             $ref: "#/paths/~1apps~1{app_id}/delete"
@@ -2724,6 +2728,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2748,6 +2754,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2757,6 +2765,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_backend_environment:
           operation:
             $ref: "#/paths/~1apps~1{app_id}~1backendenvironments~1{environment_name}/delete"
@@ -2789,6 +2799,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2799,6 +2811,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.branches
+          request:
+            nativeCasing: pascal
         delete_branch:
           operation:
             $ref: "#/paths/~1apps~1{app_id}~1branches~1{branch_name}/delete"
@@ -2817,6 +2831,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2841,6 +2857,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2861,6 +2879,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2871,6 +2891,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.domainAssociations
+          request:
+            nativeCasing: pascal
         delete_domain_association:
           operation:
             $ref: "#/paths/~1apps~1{app_id}~1domains~1{domain_name}/delete"
@@ -2889,6 +2911,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2913,6 +2937,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2922,6 +2948,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_webhook:
           operation:
             $ref: "#/paths/~1webhooks~1{webhook_id}/delete"
@@ -2940,6 +2968,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2977,6 +3007,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/get_job"
@@ -3013,6 +3045,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/artifacts/methods/list_artifacts"
@@ -3047,6 +3081,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3056,6 +3092,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

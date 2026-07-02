@@ -416,7 +416,7 @@ paths:
         description: 'An Amazon Resource Name (ARN) or ID that uniquely identifies the application resource. Example ARN:
           arn:aws:gameliftstreams:us-west-2:111122223333:application/a-9ZY8X7Wv6. Example ID: a-9ZY8X7Wv6.'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -508,7 +508,7 @@ paths:
         description: 'An Amazon Resource Name (ARN) or ID that uniquely identifies the stream group resource. Example ARN:
           arn:aws:gameliftstreams:us-west-2:111122223333:streamgroup/sg-1AB2C3De4. Example ID: sg-1AB2C3De4.'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

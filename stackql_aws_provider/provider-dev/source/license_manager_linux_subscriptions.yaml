@@ -91,7 +91,7 @@ paths:
       description: Lists the running Amazon EC2 instances that were discovered with commercial Linux subscriptions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -121,7 +121,7 @@ paths:
         results will include data aggregated across your accounts in Organizations.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -150,7 +150,7 @@ paths:
       description: List Bring Your Own License (BYOL) subscription registration resources for your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

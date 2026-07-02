@@ -550,7 +550,7 @@ paths:
           $ref: '#/components/schemas/ResourceIdString'
         description: The unique identifier of the member.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -654,7 +654,7 @@ paths:
           $ref: '#/components/schemas/ResourceIdString'
         description: The unique identifier of the node.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

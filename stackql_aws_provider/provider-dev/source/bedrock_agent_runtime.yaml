@@ -32,7 +32,7 @@ paths:
         description: The unique identifier for the associated session for the invocation. You can specify either the session's
           sessionId or its Amazon Resource Name (ARN).
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -104,7 +104,7 @@ paths:
         API operation. Related APIs: ListSessions GetSession EndSession DeleteSession'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -309,7 +309,7 @@ paths:
         description: The unique identifier of the session to modify. You can specify either the session's sessionId or its
           Amazon Resource Name (ARN).
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -531,7 +531,7 @@ paths:
           $ref: '#/components/schemas/AWSResourceARN'
         description: The ARN of the resource making the request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -818,7 +818,7 @@ paths:
         description: The unique identifier for the session associated with the invocation steps. You can specify either the
           session's sessionId or its Amazon Resource Name (ARN).
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

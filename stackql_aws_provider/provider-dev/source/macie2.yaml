@@ -53,7 +53,7 @@ paths:
       description: Retrieves information about one or more custom data identifiers.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -77,7 +77,7 @@ paths:
       description: Changes the status of automated sensitive data discovery for one or more accounts.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -482,7 +482,7 @@ paths:
       description: Creates sample findings.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -706,7 +706,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The unique identifier for the Amazon Macie resource that the request applies to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -808,7 +808,7 @@ paths:
         monitors and analyzes for an account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -945,7 +945,7 @@ paths:
       description: Enables Amazon Macie and specifies the configuration settings for a Macie account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -986,7 +986,7 @@ paths:
       description: Suspends or re-enables Amazon Macie, or updates the configuration settings for a Macie account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1199,7 +1199,7 @@ paths:
         analyzes for an account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1289,7 +1289,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The unique identifier for the Amazon Macie resource that the request applies to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1387,7 +1387,7 @@ paths:
       description: Updates the configuration settings for publishing findings to Security Hub.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1470,7 +1470,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The Amazon Resource Name (ARN) of the S3 bucket that the request applies to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1606,7 +1606,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The unique identifier for the Amazon Macie resource that the request applies to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1634,7 +1634,7 @@ paths:
       description: Retrieves (queries) quotas and aggregated usage data for one or more accounts.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1690,7 +1690,7 @@ paths:
       description: Retrieves a subset of information about one or more classification jobs.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1749,7 +1749,7 @@ paths:
       description: Retrieves a subset of information about the custom data identifiers for an account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1776,7 +1776,7 @@ paths:
       description: Retrieves a subset of information about one or more findings.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1807,7 +1807,7 @@ paths:
       description: Retrieves information about all the managed data identifiers that Amazon Macie currently provides.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1900,7 +1900,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The Amazon Resource Name (ARN) of the S3 bucket that the request applies to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2032,7 +2032,7 @@ paths:
         Macie monitors and analyzes for an account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

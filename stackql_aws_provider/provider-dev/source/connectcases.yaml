@@ -568,7 +568,7 @@ paths:
           $ref: '#/components/schemas/CaseRuleId'
         description: Unique identifier of a case rule.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -688,7 +688,7 @@ paths:
           $ref: '#/components/schemas/FieldId'
         description: The unique identifier of a field.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -784,7 +784,7 @@ paths:
           $ref: '#/components/schemas/LayoutId'
         description: The unique identifier of the layout.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -966,7 +966,7 @@ paths:
           $ref: '#/components/schemas/TemplateId'
         description: A unique identifier for the template.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1014,7 +1014,7 @@ paths:
           $ref: '#/components/schemas/DomainId'
         description: The unique identifier of the Cases domain.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1434,7 +1434,7 @@ paths:
           $ref: '#/components/schemas/DomainId'
         description: The unique identifier of the Cases domain.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1473,7 +1473,7 @@ paths:
           $ref: '#/components/schemas/DomainId'
         description: The unique identifier of the Cases domain.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1521,7 +1521,7 @@ paths:
           $ref: '#/components/schemas/CaseId'
         description: A unique identifier of the case.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

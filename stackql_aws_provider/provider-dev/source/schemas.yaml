@@ -100,7 +100,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The name of the registry.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -167,7 +167,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The name of the registry.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -301,7 +301,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The name of the schema.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -373,7 +373,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the discoverer.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

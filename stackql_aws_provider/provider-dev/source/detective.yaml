@@ -107,7 +107,7 @@ paths:
         it always returns the same behavior graph ARN. It does not create a new behavior graph.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -427,7 +427,7 @@ paths:
         behavior graph within a Region, the results always contain a single behavior graph.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -529,7 +529,7 @@ paths:
         results also do not include behavior graphs that the member account resigned from or was removed from.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -588,7 +588,7 @@ paths:
         the organization management account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

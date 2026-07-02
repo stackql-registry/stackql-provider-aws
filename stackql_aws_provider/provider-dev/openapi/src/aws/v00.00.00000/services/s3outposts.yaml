@@ -391,6 +391,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -399,6 +401,8 @@ components:
             $ref: "#/paths/~1S3Outposts~1DeleteEndpoint/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
         list_endpoints:
           operation:
             $ref: "#/paths/~1S3Outposts~1ListEndpoints/get"
@@ -406,6 +410,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Endpoints
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/endpoints/methods/list_endpoints"
@@ -426,6 +432,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Outposts
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/outposts_with_s3s/methods/list_outposts_with_s3"
@@ -444,6 +452,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Endpoints
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/shared_endpoints/methods/list_shared_endpoints"

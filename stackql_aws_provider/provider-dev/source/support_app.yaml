@@ -164,7 +164,7 @@ paths:
       description: Lists the Slack channel configurations for an Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -188,7 +188,7 @@ paths:
       description: Lists the Slack workspace configurations for an Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

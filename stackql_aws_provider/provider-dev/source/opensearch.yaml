@@ -201,7 +201,7 @@ paths:
           $ref: '#/components/schemas/DomainName'
         description: Name of the domain to associate the package with.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -262,7 +262,7 @@ paths:
           $ref: '#/components/schemas/DomainName'
         description: The name of the OpenSearch Service domain to provide access to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -295,7 +295,7 @@ paths:
         schema:
           $ref: '#/components/schemas/DomainName'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -674,7 +674,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The unique identifier for the OpenSearch application to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1210,7 +1210,7 @@ paths:
           $ref: '#/components/schemas/DomainName'
         description: The name of the domain that you're updating.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1382,7 +1382,7 @@ paths:
         domain. For more information, see Cross-cluster search for Amazon OpenSearch Service.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1478,7 +1478,7 @@ paths:
         For more information, see Cross-cluster search for Amazon OpenSearch Service.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1507,7 +1507,7 @@ paths:
         OpenSearch Service.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2472,7 +2472,7 @@ paths:
           $ref: '#/components/schemas/DomainName'
         description: The name of the OpenSearch Service domain.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

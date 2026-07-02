@@ -88,7 +88,7 @@ paths:
             $ref: "#/components/schemas/UpdateConfigurationManagerInputManagerArnString"
           description: The ARN of the configuration manager.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -136,7 +136,7 @@ paths:
       description: Updates settings configured for Quick Setup.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -153,7 +153,7 @@ paths:
       description: Returns Quick Setup configuration managers.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -178,7 +178,7 @@ paths:
       description: Returns configurations deployed by Quick Setup in the requesting Amazon Web Services account and Amazon Web Services Region.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -292,7 +292,7 @@ paths:
             $ref: "#/components/schemas/UpdateConfigurationDefinitionInputManagerArnString"
           description: The ARN of the configuration manager associated with the definition to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -838,6 +838,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -857,6 +859,8 @@ components:
             $ref: "#/paths/~1configurationManager~1{manager_arn}/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -867,6 +871,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ConfigurationManagersList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -898,6 +904,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ConfigurationsList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -924,6 +932,8 @@ components:
             $ref: "#/paths/~1serviceSettings/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -978,6 +988,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -986,6 +998,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -1003,6 +1017,8 @@ components:
             $ref: "#/paths/~1configurationDefinition~1{manager_arn}~1{id}/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

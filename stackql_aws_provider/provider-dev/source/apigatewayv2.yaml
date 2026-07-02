@@ -303,7 +303,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The API identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1458,7 +1458,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The API identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1654,7 +1654,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The authorizer identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1773,7 +1773,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The deployment ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1839,7 +1839,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The domain name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1927,7 +1927,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The integration ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2061,7 +2061,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The integration response ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2153,7 +2153,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The model ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2225,7 +2225,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The portal identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2307,7 +2307,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The portal product identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2469,7 +2469,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The portal product identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2565,7 +2565,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The product REST endpoint identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2651,7 +2651,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The route ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2802,7 +2802,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The route response ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3035,7 +3035,7 @@ paths:
         description: The stage name. Stage names can contain only alphanumeric characters, hyphens, and underscores, or be
           $default. Maximum length is 128 characters.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3119,7 +3119,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the VPC link.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3165,7 +3165,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The portal identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3295,7 +3295,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The resource ARN for the tag.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

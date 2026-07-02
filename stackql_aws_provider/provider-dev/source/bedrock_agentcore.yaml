@@ -417,7 +417,7 @@ paths:
           $ref: '#/components/schemas/ABTestId'
         description: The unique identifier of the A/B test to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1605,7 +1605,7 @@ paths:
           $ref: '#/components/schemas/MemoryId'
         description: The identifier of the AgentCore Memory resource for which to list actors.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1713,7 +1713,7 @@ paths:
         description: The unique identifier of the browser to list sessions for. If specified, only sessions for this browser
           are returned. If not specified, sessions for all browsers are returned.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1753,7 +1753,7 @@ paths:
         description: The unique identifier of the code interpreter to list sessions for. If specified, only sessions for this
           code interpreter are returned. If not specified, sessions for all code interpreters are returned.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1801,7 +1801,7 @@ paths:
           $ref: '#/components/schemas/ActorId'
         description: The identifier of the actor for which to list events.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1839,7 +1839,7 @@ paths:
           $ref: '#/components/schemas/MemoryId'
         description: The unique identifier of the memory to list extraction jobs for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1876,7 +1876,7 @@ paths:
           $ref: '#/components/schemas/MemoryId'
         description: The identifier of the AgentCore Memory resource for which to list memory records.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2086,7 +2086,7 @@ paths:
           $ref: '#/components/schemas/ActorId'
         description: The identifier of the actor for which to list sessions.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2325,7 +2325,7 @@ paths:
         description: The unique identifier of the browser to use for this session. This identifier specifies which browser
           environment to initialize for the session.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2389,7 +2389,7 @@ paths:
         description: The unique identifier of the code interpreter to use for this session. This identifier specifies which
           code interpreter environment to initialize for the session.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2505,7 +2505,7 @@ paths:
           $ref: '#/components/schemas/BrowserSessionId'
         description: The unique identifier of the browser session to stop.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2557,7 +2557,7 @@ paths:
           $ref: '#/components/schemas/CodeInterpreterSessionId'
         description: The unique identifier of the code interpreter session to stop.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2600,7 +2600,7 @@ paths:
         description: Optional qualifier to specify an agent alias, such as prodcode> or dev. If you don't provide a value,
           the DEFAULT alias is used.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

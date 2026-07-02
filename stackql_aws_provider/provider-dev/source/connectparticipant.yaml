@@ -126,7 +126,7 @@ paths:
           $ref: '#/components/schemas/ParticipantToken'
         description: This is a header parameter. The ParticipantToken as obtained from StartChatContact API response.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -189,7 +189,7 @@ paths:
           $ref: '#/components/schemas/ParticipantToken'
         description: The authentication token associated with the participant's connection.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -303,7 +303,7 @@ paths:
           $ref: '#/components/schemas/ParticipantToken'
         description: The authentication token associated with the participant's connection.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

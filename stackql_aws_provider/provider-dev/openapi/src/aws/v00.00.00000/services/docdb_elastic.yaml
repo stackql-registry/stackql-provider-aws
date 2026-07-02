@@ -213,7 +213,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The ARN identifier of the elastic cluster.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1055,6 +1055,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1076,6 +1078,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1086,6 +1090,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.clusters
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/clusters/methods/get_cluster"
@@ -1107,6 +1113,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1129,6 +1137,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.snapshots
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cluster_snapshots/methods/get_cluster_snapshot"
@@ -1156,6 +1166,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.resourcePendingMaintenanceActions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/pending_maintenance_actions/methods/get_pending_maintenance_action"
@@ -1191,6 +1203,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1200,6 +1214,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

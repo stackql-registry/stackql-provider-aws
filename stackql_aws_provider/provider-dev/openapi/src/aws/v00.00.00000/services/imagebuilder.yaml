@@ -1166,7 +1166,7 @@ paths:
       description: Returns the list of component build versions for the specified component version Amazon Resource Name (ARN).
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1191,7 +1191,7 @@ paths:
       description: "Returns the list of components that can be filtered by name, or by using the listed filters to streamline results. Newly created components can take up to two minutes to appear in the ListComponents API Results. The semantic version has four nodes: `<major>`.`<minor>`.`<patch>`/`<build>`. You can assign values for the first three, and can filter on all of them. Filtering: With semantic versioning, you have the flexibility to use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards."
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1220,7 +1220,7 @@ paths:
       description: Returns a list of container recipes.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1247,7 +1247,7 @@ paths:
       description: Returns a list of distribution configurations.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1272,7 +1272,7 @@ paths:
       description: Returns a list of image build versions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1355,7 +1355,7 @@ paths:
       description: Returns a list of image pipelines.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1380,7 +1380,7 @@ paths:
       description: Returns a list of image recipes.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1407,7 +1407,7 @@ paths:
       description: "Returns a list of image scan aggregations for your account. You can filter by the type of key that Image Builder uses to group results. For example, if you want to get a list of findings by severity level for one of your pipelines, you might specify your pipeline with the imagePipelineArn filter. If you don't specify a filter, Image Builder returns an aggregation for your account. To streamline results, you can use the following filters in your request: accountId imageBuildVersionArn imagePipelineArn vulnerabilityId"
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1430,7 +1430,7 @@ paths:
       description: Returns a list of image scan findings for your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1455,7 +1455,7 @@ paths:
       description: Returns the list of images that you have access to. Newly created images can take up to two minutes to appear in the ListImages API Results.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1486,7 +1486,7 @@ paths:
       description: Returns a list of infrastructure configurations.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1567,7 +1567,7 @@ paths:
       description: Get a list of lifecycle policies in your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1661,7 +1661,7 @@ paths:
       description: Get a list of workflow steps that are waiting for action for workflows in your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1684,7 +1684,7 @@ paths:
       description: Returns a list of build versions for a specific workflow resource.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1763,7 +1763,7 @@ paths:
       description: Lists workflow build versions based on filtering parameters.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -6107,6 +6107,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6116,12 +6118,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_component:
           operation:
             $ref: "#/paths/~1GetComponent/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_components:
           operation:
             $ref: "#/paths/~1ListComponents/post"
@@ -6129,6 +6135,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.componentVersionList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6152,6 +6160,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6161,12 +6171,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_container_recipe:
           operation:
             $ref: "#/paths/~1GetContainerRecipe/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_container_recipes:
           operation:
             $ref: "#/paths/~1ListContainerRecipes/post"
@@ -6174,6 +6188,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.containerRecipeSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6197,6 +6213,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6206,12 +6224,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_distribution_configuration:
           operation:
             $ref: "#/paths/~1GetDistributionConfiguration/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_distribution_configurations:
           operation:
             $ref: "#/paths/~1ListDistributionConfigurations/post"
@@ -6219,6 +6241,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.distributionConfigurationSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6228,6 +6252,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6252,6 +6278,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6261,12 +6289,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_image:
           operation:
             $ref: "#/paths/~1GetImage/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_images:
           operation:
             $ref: "#/paths/~1ListImages/post"
@@ -6274,6 +6306,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.imageVersionList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6297,6 +6331,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6306,12 +6342,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_image_pipeline:
           operation:
             $ref: "#/paths/~1GetImagePipeline/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_image_pipelines:
           operation:
             $ref: "#/paths/~1ListImagePipelines/post"
@@ -6319,6 +6359,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.imagePipelineList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6328,6 +6370,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6352,6 +6396,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6361,12 +6407,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_image_recipe:
           operation:
             $ref: "#/paths/~1GetImageRecipe/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_image_recipes:
           operation:
             $ref: "#/paths/~1ListImageRecipes/post"
@@ -6374,6 +6424,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.imageRecipeSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6397,6 +6449,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6406,12 +6460,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_infrastructure_configuration:
           operation:
             $ref: "#/paths/~1GetInfrastructureConfiguration/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_infrastructure_configurations:
           operation:
             $ref: "#/paths/~1ListInfrastructureConfigurations/post"
@@ -6419,6 +6477,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.infrastructureConfigurationSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6428,6 +6488,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6452,6 +6514,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6461,12 +6525,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_lifecycle_policy:
           operation:
             $ref: "#/paths/~1GetLifecyclePolicy/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_lifecycle_policies:
           operation:
             $ref: "#/paths/~1ListLifecyclePolicies/post"
@@ -6474,6 +6542,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.lifecyclePolicySummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6483,6 +6553,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6507,6 +6579,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6516,12 +6590,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_workflow:
           operation:
             $ref: "#/paths/~1GetWorkflow/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_workflows:
           operation:
             $ref: "#/paths/~1ListWorkflows/post"
@@ -6529,6 +6607,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.workflowVersionList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6552,12 +6632,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_component_policy:
           operation:
             $ref: "#/paths/~1PutComponentPolicy/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6580,12 +6664,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_container_recipe_policy:
           operation:
             $ref: "#/paths/~1PutContainerRecipePolicy/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6608,12 +6696,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_image_policy:
           operation:
             $ref: "#/paths/~1PutImagePolicy/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6636,12 +6728,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_image_recipe_policy:
           operation:
             $ref: "#/paths/~1PutImageRecipePolicy/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6664,6 +6760,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_lifecycle_executions:
           operation:
             $ref: "#/paths/~1ListLifecycleExecutions/post"
@@ -6671,6 +6769,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.lifecycleExecutions
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6692,6 +6792,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6712,6 +6814,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_workflow_executions:
           operation:
             $ref: "#/paths/~1ListWorkflowExecutions/post"
@@ -6719,6 +6823,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.workflowExecutions
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6740,6 +6846,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_workflow_step_executions:
           operation:
             $ref: "#/paths/~1ListWorkflowStepExecutions/post"
@@ -6747,6 +6855,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.steps
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6769,6 +6879,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.componentSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6790,6 +6902,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.imageSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6811,6 +6925,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.imagePackageList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6832,6 +6948,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.imageSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6853,6 +6971,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.responses
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6874,6 +6994,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.findings
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6895,6 +7017,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.resources
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6932,6 +7056,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6941,6 +7067,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -6960,6 +7088,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.steps
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6981,6 +7111,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.workflowSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

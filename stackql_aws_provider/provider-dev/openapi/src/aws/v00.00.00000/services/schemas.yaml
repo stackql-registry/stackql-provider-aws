@@ -92,7 +92,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The name of the registry.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -150,7 +150,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The name of the registry.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -272,7 +272,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The name of the schema.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -335,7 +335,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the discoverer.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1433,6 +1433,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1443,6 +1445,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Discoverers
+          request:
+            nativeCasing: pascal
         delete_discoverer:
           operation:
             $ref: "#/paths/~1v1~1discoverers~1id~1{discoverer_id}/delete"
@@ -1460,6 +1464,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1484,6 +1490,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1504,6 +1512,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1514,6 +1524,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Registries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/registries/methods/describe_registry"
@@ -1535,6 +1547,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1549,12 +1563,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_schema:
           operation:
             $ref: "#/paths/~1v1~1registries~1name~1{registry_name}~1schemas~1name~1{schema_name}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1565,6 +1583,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Schemas
+          request:
+            nativeCasing: pascal
         search_schemas:
           operation:
             $ref: "#/paths/~1v1~1registries~1name~1{registry_name}~1schemas~1search/get"
@@ -1572,6 +1592,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Schemas
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/schemas/methods/describe_schema"
@@ -1593,18 +1615,24 @@ components:
             $ref: "#/paths/~1v1~1policy/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         get_resource_policy:
           operation:
             $ref: "#/paths/~1v1~1policy/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_resource_policy:
           operation:
             $ref: "#/paths/~1v1~1policy/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1634,6 +1662,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.SchemaVersions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/schema_versions/methods/list_schema_versions"
@@ -1652,12 +1682,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_code_binding:
           operation:
             $ref: "#/paths/~1v1~1registries~1name~1{registry_name}~1schemas~1name~1{schema_name}~1language~1{language}/post"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/code_bindings/methods/describe_code_binding"
@@ -1677,6 +1711,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/code_binding_sources/methods/get_code_binding_source"
@@ -1694,6 +1730,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1730,6 +1768,8 @@ components:
             $ref: "#/paths/~1tags~1{resource-arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1738,6 +1778,8 @@ components:
             $ref: "#/paths/~1tags~1{resource-arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

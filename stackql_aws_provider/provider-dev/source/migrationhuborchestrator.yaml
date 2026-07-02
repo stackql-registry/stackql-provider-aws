@@ -239,7 +239,7 @@ paths:
           $ref: '#/components/schemas/TemplateId'
         description: The ID of the request to update a migration workflow template.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -314,7 +314,7 @@ paths:
           $ref: '#/components/schemas/MigrationWorkflowId'
         description: The ID of the migration workflow.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -525,7 +525,7 @@ paths:
           $ref: '#/components/schemas/StepGroupId'
         description: The ID of the step group.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

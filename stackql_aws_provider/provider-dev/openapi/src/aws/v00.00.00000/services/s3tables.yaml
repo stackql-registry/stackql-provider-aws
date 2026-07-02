@@ -1259,7 +1259,7 @@ paths:
             $ref: "#/components/schemas/TableName"
           description: The current name of the table.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2479,6 +2479,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2489,6 +2491,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.namespaces
+          request:
+            nativeCasing: pascal
         delete_namespace:
           operation:
             $ref: "#/paths/~1namespaces~1{table_bucket_arn}~1{namespace}/delete"
@@ -2520,6 +2524,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2528,12 +2534,16 @@ components:
             $ref: "#/paths/~1tables~1{table_bucket_arn}~1{namespace}~1{name}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         get_table:
           operation:
             $ref: "#/paths/~1get-table/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_tables:
           operation:
             $ref: "#/paths/~1tables~1{table_bucket_arn}/get"
@@ -2541,6 +2551,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.tables
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tables/methods/list_tables"
@@ -2561,6 +2573,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2571,6 +2585,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.tableBuckets
+          request:
+            nativeCasing: pascal
         delete_table_bucket:
           operation:
             $ref: "#/paths/~1buckets~1{table_bucket_arn}/delete"
@@ -2612,6 +2628,8 @@ components:
             $ref: "#/paths/~1buckets~1{table_bucket_arn}~1encryption/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2675,6 +2693,8 @@ components:
             $ref: "#/paths/~1buckets~1{table_bucket_arn}~1policy/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2697,18 +2717,24 @@ components:
             $ref: "#/paths/~1table-bucket-replication/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         get_table_bucket_replication:
           operation:
             $ref: "#/paths/~1table-bucket-replication/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_table_bucket_replication:
           operation:
             $ref: "#/paths/~1table-bucket-replication/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2742,6 +2768,8 @@ components:
             $ref: "#/paths/~1tables~1{table_bucket_arn}~1{namespace}~1{name}~1policy/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2764,18 +2792,24 @@ components:
             $ref: "#/paths/~1table-replication/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         get_table_replication:
           operation:
             $ref: "#/paths/~1table-replication/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_table_replication:
           operation:
             $ref: "#/paths/~1table-replication/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2804,6 +2838,8 @@ components:
             $ref: "#/paths/~1buckets~1{table_bucket_arn}~1maintenance~1{type}/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2831,6 +2867,8 @@ components:
             $ref: "#/paths/~1buckets~1{table_bucket_arn}~1storage-class/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2875,6 +2913,8 @@ components:
             $ref: "#/paths/~1tables~1{table_bucket_arn}~1{namespace}~1{name}~1maintenance~1{type}/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2920,6 +2960,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2941,11 +2983,15 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_table_record_expiration_configuration:
           operation:
             $ref: "#/paths/~1table-record-expiration/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2968,6 +3014,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/table_record_expiration_job_status/methods/get_table_record_expiration_job_status"
@@ -2985,6 +3033,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/table_replication_status/methods/get_table_replication_status"
@@ -3036,6 +3086,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3045,6 +3097,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

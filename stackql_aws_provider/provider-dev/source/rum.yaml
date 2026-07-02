@@ -308,7 +308,7 @@ paths:
           $ref: '#/components/schemas/AppMonitorName'
         description: The name of the app monitor to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

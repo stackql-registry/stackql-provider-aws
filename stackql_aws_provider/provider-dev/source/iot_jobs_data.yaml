@@ -175,7 +175,7 @@ paths:
           $ref: '#/components/schemas/ThingName'
         description: The name of the thing associated with the device.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

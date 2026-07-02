@@ -121,7 +121,7 @@ paths:
             $ref: "#/components/schemas/InvestigationGroupIdentifier"
           description: Specify either the name or the ARN of the investigation group that you want to modify.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -533,6 +533,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -543,6 +545,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.investigationGroups
+          request:
+            nativeCasing: pascal
         delete_investigation_group:
           operation:
             $ref: "#/paths/~1investigationGroups~1{identifier}/delete"
@@ -560,6 +564,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -596,6 +602,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -636,6 +644,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -645,6 +655,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

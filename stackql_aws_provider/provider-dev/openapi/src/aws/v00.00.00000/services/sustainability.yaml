@@ -288,6 +288,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Results
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -309,6 +311,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Results
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

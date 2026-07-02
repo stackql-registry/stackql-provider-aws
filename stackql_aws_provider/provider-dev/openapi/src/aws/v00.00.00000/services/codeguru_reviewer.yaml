@@ -1351,6 +1351,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1379,6 +1381,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RepositoryAssociationSummaries
+          request:
+            nativeCasing: pascal
         describe_repository_association:
           operation:
             $ref: "#/paths/~1associations~1{association_arn}/get"
@@ -1403,6 +1407,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1412,6 +1418,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_code_review:
           operation:
             $ref: "#/paths/~1codereviews~1{code_review_arn}/get"
@@ -1437,18 +1445,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_recommendation_feedback:
           operation:
             $ref: "#/paths/~1feedback~1{code_review_arn}~1RecommendationFeedback/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_recommendation_feedback:
           operation:
             $ref: "#/paths/~1feedback/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1472,6 +1486,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommendations/methods/list_recommendations"
@@ -1506,6 +1522,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1515,6 +1533,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

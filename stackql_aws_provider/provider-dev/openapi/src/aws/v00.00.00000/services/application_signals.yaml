@@ -188,7 +188,7 @@ paths:
             $ref: "#/components/schemas/ServiceLevelObjectiveId"
           description: The Amazon Resource Name (ARN) or name of the service level objective that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -522,7 +522,7 @@ paths:
             $ref: "#/components/schemas/AwsAccountId"
           description: SLO's Amazon Web Services account ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2562,6 +2562,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2582,6 +2584,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2603,6 +2607,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2613,6 +2619,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.SloSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2643,6 +2651,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2665,6 +2675,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2675,6 +2687,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ServiceSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/services/methods/get_service"
@@ -2693,6 +2707,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2714,6 +2730,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ChangeEvents
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2734,6 +2752,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/grouping_attribute_definitions/methods/list_grouping_attribute_definitions"
@@ -2752,6 +2772,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ServiceDependencies
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2773,6 +2795,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ServiceDependents
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2794,6 +2818,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ExclusionWindows
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/service_level_objective_exclusion_windows/methods/list_service_level_objective_exclusion_windows"
@@ -2812,6 +2838,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ServiceOperations
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2833,6 +2861,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ServiceStates
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2853,6 +2883,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -2870,6 +2902,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2879,6 +2913,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

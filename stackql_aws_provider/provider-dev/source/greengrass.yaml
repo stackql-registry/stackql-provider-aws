@@ -159,7 +159,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -226,7 +226,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the connector definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -292,7 +292,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -360,7 +360,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the core definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -500,7 +500,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -567,7 +567,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the device definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -632,7 +632,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -699,7 +699,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the Lambda function definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -882,7 +882,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the Greengrass group.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -958,7 +958,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1025,7 +1025,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the logger definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1090,7 +1090,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1157,7 +1157,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the resource definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1269,7 +1269,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1336,7 +1336,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the subscription definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1439,7 +1439,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the connector definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1509,7 +1509,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the core definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1579,7 +1579,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the device definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1649,7 +1649,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the Lambda function definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1719,7 +1719,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the Greengrass group.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1789,7 +1789,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the logger definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1859,7 +1859,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the resource definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1929,7 +1929,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the subscription definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2001,7 +2001,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The thing name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2245,7 +2245,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the Greengrass group.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2427,7 +2427,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The thing name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2581,7 +2581,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The Amazon Resource Name (ARN) of the resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2635,7 +2635,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the Greengrass group.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

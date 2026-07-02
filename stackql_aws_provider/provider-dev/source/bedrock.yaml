@@ -783,7 +783,7 @@ paths:
           $ref: '#/components/schemas/GuardrailIdentifier'
         description: The unique identifier of the guardrail. This can be an ID or the ARN.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2343,7 +2343,7 @@ paths:
           $ref: '#/components/schemas/ProvisionedModelId'
         description: The Amazon Resource Name (ARN) or name of the Provisioned Throughput to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3496,7 +3496,7 @@ paths:
           $ref: '#/components/schemas/AutomatedReasoningPolicyBuildWorkflowId'
         description: The build workflow identifier. The build workflow must show a COMPLETED status before running tests.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

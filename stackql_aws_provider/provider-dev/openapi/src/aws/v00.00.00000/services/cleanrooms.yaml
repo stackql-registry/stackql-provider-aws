@@ -925,7 +925,7 @@ paths:
             $ref: "#/components/schemas/AnalysisTemplateIdentifier"
           description: The identifier for the analysis template resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -986,7 +986,7 @@ paths:
             $ref: "#/components/schemas/CollaborationIdentifier"
           description: The identifier for the collaboration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1069,7 +1069,7 @@ paths:
             $ref: "#/components/schemas/MembershipIdentifier"
           description: A unique identifier of the membership that contains the configured audience model association that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1132,7 +1132,7 @@ paths:
             $ref: "#/components/schemas/ConfiguredTableIdentifier"
           description: The identifier for the configured table to update. Currently accepts the configured table ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1302,7 +1302,7 @@ paths:
             $ref: "#/components/schemas/MembershipIdentifier"
           description: The unique ID for the membership that the configured table association belongs to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1482,7 +1482,7 @@ paths:
             $ref: "#/components/schemas/MembershipIdentifier"
           description: The unique identifier of the membership that contains the ID mapping table that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1563,7 +1563,7 @@ paths:
             $ref: "#/components/schemas/MembershipIdentifier"
           description: The unique identifier of the membership that contains the ID namespace association that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1652,7 +1652,7 @@ paths:
             $ref: "#/components/schemas/MembershipIdentifier"
           description: The unique identifier of the membership.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2579,7 +2579,7 @@ paths:
             $ref: "#/components/schemas/MembershipIdentifier"
           description: The unique identifier of the membership that contains the ID mapping table that you want to populate.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8293,6 +8293,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8309,6 +8311,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.collaborationAnalysisTemplateSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_analysis_templates/methods/batch_get_collaboration_analysis_template"
@@ -8328,6 +8332,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8344,6 +8350,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.schemaSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/schemas/methods/batch_get_schema"
@@ -8363,6 +8371,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8390,6 +8400,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8400,6 +8412,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.analysisTemplateSummaries
+          request:
+            nativeCasing: pascal
         delete_analysis_template:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1analysistemplates~1{analysis_template_identifier}/delete"
@@ -8418,6 +8432,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8442,6 +8458,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8452,6 +8470,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.collaborationList
+          request:
+            nativeCasing: pascal
         delete_collaboration:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}/delete"
@@ -8470,6 +8490,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8494,6 +8516,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8504,6 +8528,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.collaborationChangeRequestSummaries
+          request:
+            nativeCasing: pascal
         get_collaboration_change_request:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}~1changeRequests~1{change_request_identifier}/get"
@@ -8516,6 +8542,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8539,6 +8567,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8549,6 +8579,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.configuredAudienceModelAssociationSummaries
+          request:
+            nativeCasing: pascal
         delete_configured_audience_model_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configuredaudiencemodelassociations~1{configured_audience_model_association_identifier}/delete"
@@ -8567,6 +8599,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8591,6 +8625,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8601,6 +8637,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.configuredTableSummaries
+          request:
+            nativeCasing: pascal
         delete_configured_table:
           operation:
             $ref: "#/paths/~1configuredTables~1{configured_table_identifier}/delete"
@@ -8619,6 +8657,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8643,6 +8683,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8664,6 +8706,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8687,6 +8731,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8697,6 +8743,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.configuredTableAssociationSummaries
+          request:
+            nativeCasing: pascal
         delete_configured_table_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configuredTableAssociations~1{configured_table_association_identifier}/delete"
@@ -8715,6 +8763,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8739,6 +8789,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8760,6 +8812,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8783,6 +8837,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8793,6 +8849,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.idMappingTableSummaries
+          request:
+            nativeCasing: pascal
         delete_id_mapping_table:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1idmappingtables~1{id_mapping_table_identifier}/delete"
@@ -8811,6 +8869,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8835,6 +8895,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8845,6 +8907,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.idNamespaceAssociationSummaries
+          request:
+            nativeCasing: pascal
         delete_id_namespace_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1idnamespaceassociations~1{id_namespace_association_identifier}/delete"
@@ -8863,6 +8927,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8887,6 +8953,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8897,6 +8965,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.membershipSummaries
+          request:
+            nativeCasing: pascal
         delete_membership:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}/delete"
@@ -8915,6 +8985,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8939,6 +9011,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8949,6 +9023,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.privacyBudgetTemplateSummaries
+          request:
+            nativeCasing: pascal
         delete_privacy_budget_template:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1privacybudgettemplates~1{privacy_budget_template_identifier}/delete"
@@ -8967,6 +9043,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8998,6 +9076,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.memberSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/members/methods/list_members"
@@ -9023,6 +9103,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.collaborationConfiguredAudienceModelAssociationSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_configured_audience_model_associations/methods/get_collaboration_configured_audience_model_association"
@@ -9048,6 +9130,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.collaborationIdNamespaceAssociationSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_id_namespace_associations/methods/get_collaboration_id_namespace_association"
@@ -9073,6 +9157,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.collaborationPrivacyBudgetTemplateSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_privacy_budget_templates/methods/get_collaboration_privacy_budget_template"
@@ -9097,6 +9183,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9107,6 +9195,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.protectedJobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/protected_jobs/methods/get_protected_job"
@@ -9132,6 +9222,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9142,6 +9234,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.protectedQueries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/protected_queries/methods/get_protected_query"
@@ -9162,6 +9256,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.collaborationPrivacyBudgetSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_privacy_budgets/methods/list_collaboration_privacy_budgets"
@@ -9180,6 +9276,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.privacyBudgetSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/privacy_budgets/methods/list_privacy_budgets"
@@ -9214,6 +9312,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9223,6 +9323,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

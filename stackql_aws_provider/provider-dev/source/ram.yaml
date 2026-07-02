@@ -554,7 +554,7 @@ paths:
         when there are no more results to display.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -671,7 +671,7 @@ paths:
         parameter value is null only when there are no more results to display.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -745,7 +745,7 @@ paths:
         is null only when there are no more results to display.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -820,7 +820,7 @@ paths:
         response parameter value is null only when there are no more results to display.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -883,7 +883,7 @@ paths:
       description: Lists the resource types that can be shared by RAM.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -958,7 +958,7 @@ paths:
         status. We recommend using pagination to ensure that the operation returns quickly and successfully.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

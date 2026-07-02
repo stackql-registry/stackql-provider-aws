@@ -1252,7 +1252,7 @@ paths:
       description: Retrieves each Amazon Resource Name (ARN) of schemas in the development state.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1279,7 +1279,7 @@ paths:
       description: Lists directories created within an account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1351,7 +1351,7 @@ paths:
           $ref: '#/components/schemas/Arn'
         description: The Amazon Resource Name (ARN) to retrieve facet names from.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1468,7 +1468,7 @@ paths:
         the minor version revisions in that family are listed instead.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1811,7 +1811,7 @@ paths:
         the minor version revisions in that family are listed instead.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1917,7 +1917,7 @@ paths:
           $ref: '#/components/schemas/Arn'
         description: The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

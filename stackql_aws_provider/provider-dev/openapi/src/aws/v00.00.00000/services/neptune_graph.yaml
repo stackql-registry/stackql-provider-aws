@@ -337,7 +337,7 @@ paths:
             $ref: "#/components/schemas/GraphIdentifier"
           description: The unique identifier of the Neptune Analytics graph.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -465,7 +465,7 @@ paths:
             $ref: "#/components/schemas/GraphIdentifier"
           description: The unique identifier of the Neptune Analytics graph.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2553,6 +2553,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.tasks
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/export_tasks/methods/get_export_task"
@@ -2578,6 +2580,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.tasks
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/import_tasks/methods/get_import_task"
@@ -2602,6 +2606,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/queries/methods/get_query"
@@ -2620,6 +2626,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2630,12 +2638,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.graphs
+          request:
+            nativeCasing: pascal
         delete_graph:
           operation:
             $ref: "#/paths/~1graphs~1{graph_identifier}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_graph:
           operation:
             $ref: "#/paths/~1graphs~1{graph_identifier}/get"
@@ -2648,6 +2660,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2672,6 +2686,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2682,6 +2698,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.graphSnapshots
+          request:
+            nativeCasing: pascal
         delete_graph_snapshot:
           operation:
             $ref: "#/paths/~1snapshots~1{snapshot_identifier}/delete"
@@ -2714,6 +2732,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2734,6 +2754,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2744,6 +2766,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.privateGraphEndpoints
+          request:
+            nativeCasing: pascal
         delete_private_graph_endpoint:
           operation:
             $ref: "#/paths/~1graphs~1{graph_identifier}~1endpoints~1{vpc_id}/delete"
@@ -2776,6 +2800,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/graph_summaries/methods/get_graph_summary"
@@ -2810,6 +2836,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2819,6 +2847,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

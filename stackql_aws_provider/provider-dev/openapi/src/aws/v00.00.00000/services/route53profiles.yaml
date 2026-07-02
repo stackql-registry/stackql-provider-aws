@@ -237,7 +237,7 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: ID of the resource association.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -787,6 +787,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -796,6 +798,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -824,6 +828,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ProfileSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/profiles/methods/get_profile"
@@ -846,6 +852,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -890,6 +898,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ProfileAssociations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/profile_associations/methods/get_profile_association"
@@ -914,6 +924,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -924,6 +936,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ProfileResourceAssociations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/profile_resource_associations/methods/get_profile_resource_association"
@@ -960,6 +974,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -969,6 +985,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

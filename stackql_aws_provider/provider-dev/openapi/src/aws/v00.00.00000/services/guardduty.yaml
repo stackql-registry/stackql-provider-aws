@@ -533,7 +533,7 @@ paths:
             $ref: "#/components/schemas/DetectorId"
           description: The ID of the detector for which you need to create sample findings. To find the detectorId in the current Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -836,7 +836,7 @@ paths:
             $ref: "#/components/schemas/DetectorId"
           description: The unique ID of the detector to update. To find the detectorId in the current Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -921,7 +921,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The name of the filter.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1006,7 +1006,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The unique ID that specifies the IPSet that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1092,7 +1092,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: A unique identifier associated with the Malware Protection plan.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1200,7 +1200,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The ID of the publishing destination to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1279,7 +1279,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The ID returned by GuardDuty after updating the threat entity set resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1364,7 +1364,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The unique ID that specifies the ThreatIntelSet that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1449,7 +1449,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The ID returned by GuardDuty after updating the trusted entity set resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1482,7 +1482,7 @@ paths:
             $ref: "#/components/schemas/DetectorId"
           description: The unique ID of the detector that the request is associated with. To find the detectorId in the current Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1544,7 +1544,7 @@ paths:
             $ref: "#/components/schemas/DetectorId"
           description: The ID of the detector that configures the delegated administrator. To find the detectorId in the current Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1750,7 +1750,7 @@ paths:
             $ref: "#/components/schemas/DetectorId"
           description: The ID of the detector whose findings statistics you want to retrieve. To find the detectorId in the current Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1832,7 +1832,7 @@ paths:
             $ref: "#/components/schemas/DetectorId"
           description: The unique ID of the detector that specifies the GuardDuty service where you want to update scan settings. To find the detectorId in the current Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2031,7 +2031,7 @@ paths:
             $ref: "#/components/schemas/DetectorId"
           description: The unique ID of the detector whose coverage details you want to retrieve. To find the detectorId in the current Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2064,7 +2064,7 @@ paths:
             $ref: "#/components/schemas/DetectorId"
           description: The ID of the detector that specifies the GuardDuty service whose findings you want to list. To find the detectorId in the current Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2127,7 +2127,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the list action. For subsequent calls to the action, fill nextToken in the request with the value of NextToken from the previous response to continue listing results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2243,7 +2243,7 @@ paths:
       description: Initiates a malware scan for a specific S3 object. This API allows you to perform on-demand malware scanning of individual objects in S3 buckets that have Malware Protection for S3 enabled. When you use this API, the Amazon Web Services service terms for GuardDuty Malware Protection apply. For more information, see Amazon Web Services service terms for GuardDuty Malware Protection.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8164,6 +8164,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8174,6 +8176,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DetectorIds
+          request:
+            nativeCasing: pascal
         delete_detector:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}/delete"
@@ -8192,6 +8196,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8216,6 +8222,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8226,6 +8234,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FilterNames
+          request:
+            nativeCasing: pascal
         delete_filter:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1filter~1{filter_name}/delete"
@@ -8244,6 +8254,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8268,6 +8280,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8278,6 +8292,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.IpSetIds
+          request:
+            nativeCasing: pascal
         delete_ip_set:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1ipset~1{ip_set_id}/delete"
@@ -8296,6 +8312,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8320,6 +8338,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8329,6 +8349,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_malware_protection_plan:
           operation:
             $ref: "#/paths/~1malware-protection-plan~1{malware_protection_plan_id}/delete"
@@ -8345,6 +8367,8 @@ components:
             $ref: "#/paths/~1malware-protection-plan~1{malware_protection_plan_id}/patch"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8369,6 +8393,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8379,12 +8405,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Members
+          request:
+            nativeCasing: pascal
         delete_members:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1member~1delete/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8394,6 +8424,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8403,6 +8435,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8427,6 +8461,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8436,6 +8472,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_publishing_destination:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1publishingDestination~1{destination_id}/delete"
@@ -8454,6 +8492,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8478,6 +8518,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8498,6 +8540,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8508,6 +8552,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ThreatEntitySetIds
+          request:
+            nativeCasing: pascal
         delete_threat_entity_set:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1threatentityset~1{threat_entity_set_id}/delete"
@@ -8526,6 +8572,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8550,6 +8598,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8560,6 +8610,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ThreatIntelSetIds
+          request:
+            nativeCasing: pascal
         delete_threat_intel_set:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1threatintelset~1{threat_intel_set_id}/delete"
@@ -8578,6 +8630,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8602,6 +8656,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8612,6 +8668,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TrustedEntitySetIds
+          request:
+            nativeCasing: pascal
         delete_trusted_entity_set:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1trustedentityset~1{trusted_entity_set_id}/delete"
@@ -8630,6 +8688,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8654,6 +8714,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8664,6 +8726,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Invitations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/invitations/methods/list_invitations"
@@ -8683,6 +8747,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Scans
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8699,6 +8765,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Scans
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8721,12 +8789,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_organization_configuration:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1admin/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8782,6 +8854,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8802,6 +8876,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8812,6 +8888,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FindingIds
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8833,6 +8911,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8876,6 +8956,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8897,6 +8979,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8906,6 +8990,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8944,6 +9030,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8964,6 +9052,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8985,6 +9075,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Resources
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9006,6 +9098,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AdminAccounts
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organization_admin_accounts/methods/list_organization_admin_accounts"
@@ -9040,6 +9134,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9049,6 +9145,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -9067,6 +9165,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

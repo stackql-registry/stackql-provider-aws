@@ -269,7 +269,7 @@ paths:
           $ref: '#/components/schemas/ResourceId'
         description: ID of the resource association.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

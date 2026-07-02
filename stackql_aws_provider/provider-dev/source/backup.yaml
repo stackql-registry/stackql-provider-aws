@@ -234,7 +234,7 @@ paths:
           are unique to the account used to create them and the Amazon Web Services Region where they are created. They consist
           of letters, numbers, and hyphens.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -902,7 +902,7 @@ paths:
         description: The name of a logical container where backups are stored. Backup vaults are identified by names that
           are unique to the account used to create them and the Amazon Web Services Region where they are created.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -952,7 +952,7 @@ paths:
           $ref: '#/components/schemas/BackupVaultName'
         description: The Backup Vault Lock configuration that specifies the name of the backup vault it protects.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1089,7 +1089,7 @@ paths:
         description: The unique name of a framework. This name is between 1 and 256 characters, starting with a letter, and
           consisting of letters (a-z, A-Z), numbers (0-9), and underscores (_).
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1200,7 +1200,7 @@ paths:
           $ref: '#/components/schemas/ARN'
         description: An Amazon Resource Name (ARN) that uniquely identifies a recovery point; for example, arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1267,7 +1267,7 @@ paths:
         description: The unique name of the report plan. This name is between 1 and 256 characters, starting with a letter,
           and consisting of letters (a-z, A-Z), numbers (0-9), and underscores (_).
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1611,7 +1611,7 @@ paths:
         is not an Organizations management account. Use the DescribeGlobalSettings API to determine the current settings.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1671,7 +1671,7 @@ paths:
         the resource types that are supported.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1764,7 +1764,7 @@ paths:
           $ref: '#/components/schemas/BackupVaultName'
         description: The name of the backup vault from which to disassociate the MPA approval team.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3642,7 +3642,7 @@ paths:
           $ref: '#/components/schemas/ReportPlanName'
         description: The unique name of a report plan.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -2408,18 +2408,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_resource_policy:
           operation:
             $ref: "#/paths/~1GetResourcePolicy/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_resource_policy:
           operation:
             $ref: "#/paths/~1PutResourcePolicy/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2443,6 +2449,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_change_sets:
           operation:
             $ref: "#/paths/~1ListChangeSets/post"
@@ -2450,6 +2458,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ChangeSetSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2471,6 +2481,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_entities:
           operation:
             $ref: "#/paths/~1ListEntities/post"
@@ -2478,6 +2490,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.EntitySummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2499,6 +2513,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2519,6 +2535,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2528,6 +2546,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

@@ -186,7 +186,7 @@ paths:
             $ref: "#/components/schemas/ScheduleGroupName"
           description: The name of the schedule group that you are creating.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1138,6 +1138,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1147,18 +1149,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_schedule:
           operation:
             $ref: "#/paths/~1schedules~1{name}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_schedule:
           operation:
             $ref: "#/paths/~1schedules~1{name}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1169,6 +1177,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Schedules
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/schedules/methods/get_schedule"
@@ -1190,6 +1200,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1199,6 +1211,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_schedule_group:
           operation:
             $ref: "#/paths/~1schedule-groups~1{name}/get"
@@ -1212,6 +1226,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ScheduleGroups
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/schedule_groups/methods/get_schedule_group"
@@ -1249,6 +1265,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1258,6 +1276,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

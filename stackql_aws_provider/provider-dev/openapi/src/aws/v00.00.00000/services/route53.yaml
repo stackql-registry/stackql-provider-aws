@@ -54,7 +54,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -83,7 +83,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -160,7 +160,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -193,9 +193,9 @@ paths:
             $ref: "#/components/schemas/TagResourceId"
           description: The ID of the resource for which you want to add, change, or delete tags.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -241,7 +241,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -289,7 +289,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -338,7 +338,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -404,7 +404,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -437,7 +437,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -492,7 +492,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -540,7 +540,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -565,7 +565,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -604,7 +604,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -633,7 +633,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -745,9 +745,9 @@ paths:
             $ref: "#/components/schemas/HealthCheckId"
           description: The ID for the health check for which you want detailed information. When you created the health check, CreateHealthCheck returned the ID in the response, in the HealthCheckId element.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -836,9 +836,9 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: The ID for the hosted zone that you want to update the comment for.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1011,7 +1011,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1072,7 +1072,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1106,7 +1106,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1151,7 +1151,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1594,7 +1594,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1843,9 +1843,9 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: The ID of the hosted zone for which you want to update features. This is the unique identifier for your hosted zone.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1913,16 +1913,16 @@ components:
     ChangeInfoDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: This element contains an ID that you use when performing a GetChange action to get detailed information about the change.
-        status:
+        Status:
           type: string
           description: The current state of the request. PENDING indicates that this request has not yet been applied to all Amazon Route 53 DNS servers.
-        submitted_at:
+        SubmittedAt:
           type: string
           description: The date and time that the change request was submitted in ISO 8601 format and Coordinated Universal Time (UTC). For example, the value 2017-03-27T17:48:16.751Z represents March 27, 2017 at 17:48:16.751 UTC.
-        comment:
+        Comment:
           type: string
           description: A comment you can provide.
     ActivateKeySigningKeyOutputDisplay:
@@ -2055,7 +2055,7 @@ components:
     ChangeCidrCollectionResponseDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID that is returned by ChangeCidrCollection. You can use it as input to GetChange to see if a CIDR collection change has propagated or not.
     ChangeCidrCollectionOutputDisplay:
@@ -2440,10 +2440,10 @@ components:
     CreateCidrCollectionResponseDisplay:
       type: object
       properties:
-        collection:
+        Collection:
           type: string
           description: A complex type that contains information about the CIDR collection.
-        location:
+        Location:
           type: string
           description: A unique URL that represents the location for the CIDR collection.
     CreateCidrCollectionOutputDisplay:
@@ -2667,22 +2667,22 @@ components:
     HealthCheckDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or update a resource record set, you use this value to specify which health check to use. The value can be up to 64 characters long.
-        caller_reference:
+        CallerReference:
           type: string
           description: A unique string that you specified when you created the health check.
-        linked_service:
+        LinkedService:
           type: string
           description: If the health check was created by another service, the service that created the health check. When a health check is created by another service, you can't edit or delete it using Amazon Route 53.
-        health_check_config:
+        HealthCheckConfig:
           type: string
           description: A complex type that contains detailed information about one health check.
-        health_check_version:
+        HealthCheckVersion:
           type: integer
           description: The version of the health check. You can optionally pass this value in a call to UpdateHealthCheck to prevent overwriting another change to the health check.
-        cloud_watch_alarm_configuration:
+        CloudWatchAlarmConfiguration:
           type: string
           description: A complex type that contains information about the CloudWatch alarm that Amazon Route 53 is monitoring for this health check.
     CreateHealthCheckOutputDisplay:
@@ -2711,25 +2711,25 @@ components:
     HostedZoneDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID that Amazon Route 53 assigned to the hosted zone when you created it.
-        name:
+        Name:
           type: string
           description: The name of the domain. For public hosted zones, this is the name that you have registered with your DNS registrar. For information about how to specify characters other than a-z, 0-9, and - (hyphen) and how to specify internationalized domain names, see CreateHostedZone.
-        caller_reference:
+        CallerReference:
           type: string
           description: The value that you specified for CallerReference when you created the hosted zone.
-        config:
+        Config:
           type: string
           description: A complex type that includes the Comment and PrivateZone elements. If you omitted the HostedZoneConfig and Comment elements from the request, the Config and Comment elements don't appear in the response.
-        resource_record_set_count:
+        ResourceRecordSetCount:
           type: integer
           description: The number of resource record sets in the hosted zone.
-        linked_service:
+        LinkedService:
           type: string
           description: If the hosted zone was created by another service, the service that created the hosted zone. When a hosted zone is created by another service, you can't edit or delete it using Route 53.
-        features:
+        Features:
           type: string
           description: The features configuration for the hosted zone, including accelerated recovery settings and status information.
     CreateHostedZoneOutputDisplay:
@@ -2748,52 +2748,52 @@ components:
     KeySigningKeyDisplay:
       type: object
       properties:
-        name:
+        Name:
           type: string
           description: A string used to identify a key-signing key (KSK). Name can include numbers, letters, and underscores (_). Name must be unique for each key-signing key in the same hosted zone.
-        kms_arn:
+        KmsArn:
           type: string
           description: 'The Amazon resource name (ARN) used to identify the customer managed key in Key Management Service (KMS). The KmsArn must be unique for each key-signing key (KSK) in a single hosted zone. You must configure the customer managed key as follows: Status Enabled Key spec ECC_NIST_P256 Key usage Sign and verify Key policy The key policy must give permission for the following actions: DescribeKey GetPublicKey Sign The key policy must also include the Amazon Route 53 service in the principal for your account. Specify the following: "Service": "dnssec-route53.amazonaws.com" For more information about working with the customer managed key in KMS, see Key Management Service concepts.'
-        flag:
+        Flag:
           type: integer
           description: An integer that specifies how the key is used. For key-signing key (KSK), this value is always 257.
-        signing_algorithm_mnemonic:
+        SigningAlgorithmMnemonic:
           type: string
           description: A string used to represent the signing algorithm. This value must follow the guidelines provided by RFC-8624 Section 3.1.
-        signing_algorithm_type:
+        SigningAlgorithmType:
           type: integer
           description: An integer used to represent the signing algorithm. This value must follow the guidelines provided by RFC-8624 Section 3.1.
-        digest_algorithm_mnemonic:
+        DigestAlgorithmMnemonic:
           type: string
           description: A string used to represent the delegation signer digest algorithm. This value must follow the guidelines provided by RFC-8624 Section 3.3.
-        digest_algorithm_type:
+        DigestAlgorithmType:
           type: integer
           description: An integer used to represent the delegation signer digest algorithm. This value must follow the guidelines provided by RFC-8624 Section 3.3.
-        key_tag:
+        KeyTag:
           type: integer
           description: An integer used to identify the DNSSEC record for the domain name. The process used to calculate the value is described in RFC-4034 Appendix B.
-        digest_value:
+        DigestValue:
           type: string
           description: A cryptographic digest of a DNSKEY resource record (RR). DNSKEY records are used to publish the public key that resolvers can use to verify DNSSEC signatures that are used to secure certain kinds of information provided by the DNS system.
-        public_key:
+        PublicKey:
           type: string
           description: The public key, represented as a Base64 encoding, as required by RFC-4034 Page 5.
-        ds_record:
+        DSRecord:
           type: string
           description: A string that represents a delegation signer (DS) record.
-        dnskey_record:
+        DNSKEYRecord:
           type: string
           description: A string that represents a DNSKEY record.
-        status:
+        Status:
           type: string
           description: "A string that represents the current key-signing key (KSK) status. Status can have one of the following values: ACTIVE The KSK is being used for signing. INACTIVE The KSK is not being used for signing. DELETING The KSK is in the process of being deleted. ACTION_NEEDED There is a problem with the KSK that requires you to take action to resolve. For example, the customer managed key might have been deleted, or the permissions for the customer managed key might have been changed. INTERNAL_FAILURE There was an error during a request. Before you can continue to work with DNSSEC signing, including actions that involve this KSK, you must correct the problem. For example, you may need to activate or deactivate the KSK."
-        status_message:
+        StatusMessage:
           type: string
           description: "The status message provided for the following key-signing key (KSK) statuses: ACTION_NEEDED or INTERNAL_FAILURE. The status message includes information about what the problem might be and steps that you can take to correct the issue."
-        created_date:
+        CreatedDate:
           type: string
           description: The date when the key-signing key (KSK) was created.
-        last_modified_date:
+        LastModifiedDate:
           type: string
           description: The last time that the key-signing key (KSK) was changed.
     CreateKeySigningKeyOutputDisplay:
@@ -2808,13 +2808,13 @@ components:
     QueryLoggingConfigDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID for a configuration for DNS query logging.
-        hosted_zone_id:
+        HostedZoneId:
           type: string
           description: The ID of the hosted zone that CloudWatch Logs is logging queries for.
-        cloud_watch_logs_log_group_arn:
+        CloudWatchLogsLogGroupArn:
           type: string
           description: The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 is publishing logs to.
     CreateQueryLoggingConfigOutputDisplay:
@@ -2827,10 +2827,10 @@ components:
     CreateReusableDelegationSetResponseDisplay:
       type: object
       properties:
-        delegation_set:
+        DelegationSet:
           type: string
           description: A complex type that contains name server information.
-        location:
+        Location:
           type: string
           description: The unique URL representing the new reusable delegation set.
     CreateReusableDelegationSetOutputDisplay:
@@ -2852,22 +2852,22 @@ components:
     TrafficPolicyDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID that Amazon Route 53 assigned to a traffic policy when you created it.
-        version:
+        Version:
           type: integer
           description: The version number that Amazon Route 53 assigns to a traffic policy. For a new traffic policy, the value of Version is always 1.
-        name:
+        Name:
           type: string
           description: The name that you specified when you created the traffic policy.
-        type:
+        Type:
           type: string
           description: The DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy to create a traffic policy instance.
-        document:
+        Document:
           type: string
           description: The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic policy in the CreateTrafficPolicy request. For more information about the JSON format, see Traffic Policy Document Format.
-        comment:
+        Comment:
           type: string
           description: The comment that you specify in the CreateTrafficPolicy request, if any.
     CreateTrafficPolicyOutputDisplay:
@@ -2888,31 +2888,31 @@ components:
     TrafficPolicyInstanceDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID that Amazon Route 53 assigned to the new traffic policy instance.
-        hosted_zone_id:
+        HostedZoneId:
           type: string
           description: The ID of the hosted zone that Amazon Route 53 created resource record sets in.
-        name:
+        Name:
           type: string
           description: The DNS name, such as www.example.com, for which Amazon Route 53 responds to queries by using the resource record sets that are associated with this traffic policy instance.
-        ttl:
+        TTL:
           type: integer
           description: The TTL that Amazon Route 53 assigned to all of the resource record sets that it created in the specified hosted zone.
-        state:
+        State:
           type: string
           description: "The value of State is one of the following values: Applied Amazon Route 53 has finished creating resource record sets, and changes have propagated to all Route 53 edge locations. Creating Route 53 is creating the resource record sets. Use GetTrafficPolicyInstance to confirm that the CreateTrafficPolicyInstance request completed successfully. Failed Route 53 wasn't able to create or update the resource record sets. When the value of State is Failed, see Message for an explanation of what caused the request to fail."
-        message:
+        Message:
           type: string
           description: If State is Failed, an explanation of the reason for the failure. If State is another value, Message is empty.
-        traffic_policy_id:
+        TrafficPolicyId:
           type: string
           description: The ID of the traffic policy that Amazon Route 53 used to create resource record sets in the specified hosted zone.
-        traffic_policy_version:
+        TrafficPolicyVersion:
           type: integer
           description: The version of the traffic policy that Amazon Route 53 used to create resource record sets in the specified hosted zone.
-        traffic_policy_type:
+        TrafficPolicyType:
           type: string
           description: The DNS type that Amazon Route 53 assigned to all of the resource record sets that it created for this traffic policy instance.
     CreateTrafficPolicyInstanceOutputDisplay:
@@ -2925,10 +2925,10 @@ components:
     CreateTrafficPolicyVersionResponseDisplay:
       type: object
       properties:
-        traffic_policy:
+        TrafficPolicy:
           type: string
           description: A complex type that contains settings for the new version of the traffic policy.
-        location:
+        Location:
           type: string
           description: A unique URL that represents a new traffic policy version.
     CreateTrafficPolicyVersionOutputDisplay:
@@ -2941,10 +2941,10 @@ components:
     CreateVPCAssociationAuthorizationResponseDisplay:
       type: object
       properties:
-        hosted_zone_id:
+        HostedZoneId:
           type: string
           description: The ID of the hosted zone that you authorized associating a VPC with.
-        vpc:
+        VPC:
           type: string
           description: The VPC that you authorized associating with a hosted zone.
     CreateVPCAssociationAuthorizationOutputDisplay:
@@ -3083,10 +3083,10 @@ components:
     GetAccountLimitResponseDisplay:
       type: object
       properties:
-        limit:
+        Limit:
           type: string
           description: The current setting for the specified limit. For example, if you specified MAX_HEALTH_CHECKS_BY_OWNER for the value of Type in the request, the value of Limit is the maximum number of health checks that you can create using the current account.
-        count:
+        Count:
           type: integer
           description: The current number of entities that you have created of the specified type. For example, if you specified MAX_HEALTH_CHECKS_BY_OWNER for the value of Type in the request, the value of Count is the current number of health checks that you have created using the current account.
     GetAccountLimitOutputDisplay:
@@ -3110,7 +3110,7 @@ components:
     GetCheckerIpRangesResponseDisplay:
       type: object
       properties:
-        checker_ip_ranges:
+        CheckerIpRanges:
           type: string
           description: A complex type that contains sorted list of IP ranges in CIDR format for Amazon Route 53 health checkers.
     GetCheckerIpRangesOutputDisplay:
@@ -3123,10 +3123,10 @@ components:
     GetDNSSECResponseDisplay:
       type: object
       properties:
-        status:
+        Status:
           type: string
           description: A string representing the status of DNSSEC.
-        key_signing_keys:
+        KeySigningKeys:
           type: string
           description: The key-signing keys (KSKs) in your account.
     GetDNSSECOutputDisplay:
@@ -3139,22 +3139,22 @@ components:
     GeoLocationDetailsDisplay:
       type: object
       properties:
-        continent_code:
+        ContinentCode:
           type: string
           description: The two-letter code for the continent.
-        continent_name:
+        ContinentName:
           type: string
           description: The full name of the continent.
-        country_code:
+        CountryCode:
           type: string
           description: The two-letter code for the country.
-        country_name:
+        CountryName:
           type: string
           description: The name of the country.
-        subdivision_code:
+        SubdivisionCode:
           type: string
           description: "The code for the subdivision, such as a particular state within the United States. For a list of US state abbreviations, see Appendix B: Two–Letter State and Possession Abbreviations on the United States Postal Service website. For a list of all supported subdivision codes, use the ListGeoLocations API."
-        subdivision_name:
+        SubdivisionName:
           type: string
           description: The full name of the subdivision. Route 53 currently supports only states in the United States.
     GetGeoLocationOutputDisplay:
@@ -3174,7 +3174,7 @@ components:
     GetHealthCheckCountResponseDisplay:
       type: object
       properties:
-        health_check_count:
+        HealthCheckCount:
           type: integer
           description: The number of health checks associated with the current Amazon Web Services account.
     GetHealthCheckCountOutputDisplay:
@@ -3187,7 +3187,7 @@ components:
     GetHealthCheckLastFailureReasonResponseDisplay:
       type: object
       properties:
-        health_check_observations:
+        HealthCheckObservations:
           type: string
           description: A list that contains one Observation element for each Amazon Route 53 health checker that is reporting a last failure reason.
     GetHealthCheckLastFailureReasonOutputDisplay:
@@ -3200,7 +3200,7 @@ components:
     GetHealthCheckStatusResponseDisplay:
       type: object
       properties:
-        health_check_observations:
+        HealthCheckObservations:
           type: string
           description: A list that contains one HealthCheckObservation element for each Amazon Route 53 health checker that is reporting a status about the health check endpoint.
     GetHealthCheckStatusOutputDisplay:
@@ -3220,7 +3220,7 @@ components:
     GetHostedZoneCountResponseDisplay:
       type: object
       properties:
-        hosted_zone_count:
+        HostedZoneCount:
           type: integer
           description: The total number of public and private hosted zones that are associated with the current Amazon Web Services account.
     GetHostedZoneCountOutputDisplay:
@@ -3238,10 +3238,10 @@ components:
     GetHostedZoneLimitResponseDisplay:
       type: object
       properties:
-        limit:
+        Limit:
           type: string
           description: The current setting for the specified limit. For example, if you specified MAX_RRSETS_BY_ZONE for the value of Type in the request, the value of Limit is the maximum number of records that you can create in the specified hosted zone.
-        count:
+        Count:
           type: integer
           description: The current number of entities that you have created of the specified type. For example, if you specified MAX_RRSETS_BY_ZONE for the value of Type in the request, the value of Count is the current number of records that you have created in the specified hosted zone.
     GetHostedZoneLimitOutputDisplay:
@@ -3261,13 +3261,13 @@ components:
     DelegationSetDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID that Amazon Route 53 assigns to a reusable delegation set.
-        caller_reference:
+        CallerReference:
           type: string
           description: The value that you specified for CallerReference when you created the reusable delegation set.
-        name_servers:
+        NameServers:
           type: string
           description: A complex type that contains a list of the authoritative name servers for a hosted zone or for a reusable delegation set.
     GetReusableDelegationSetOutputDisplay:
@@ -3284,10 +3284,10 @@ components:
     GetReusableDelegationSetLimitResponseDisplay:
       type: object
       properties:
-        limit:
+        Limit:
           type: string
           description: The current setting for the limit on hosted zones that you can associate with the specified reusable delegation set.
-        count:
+        Count:
           type: integer
           description: The current number of hosted zones that you can associate with the specified reusable delegation set.
     GetReusableDelegationSetLimitOutputDisplay:
@@ -3314,7 +3314,7 @@ components:
     GetTrafficPolicyInstanceCountResponseDisplay:
       type: object
       properties:
-        traffic_policy_instance_count:
+        TrafficPolicyInstanceCount:
           type: integer
           description: The number of traffic policy instances that are associated with the current Amazon Web Services account.
     GetTrafficPolicyInstanceCountOutputDisplay:
@@ -3332,10 +3332,10 @@ components:
     CidrBlockSummaryDisplay:
       type: object
       properties:
-        cidr_block:
+        CidrBlock:
           type: string
           description: Value for the CIDR block.
-        location_name:
+        LocationName:
           type: string
           description: The location name of the CIDR block.
     ListCidrBlocksOutputDisplay:
@@ -3348,16 +3348,16 @@ components:
     CollectionSummaryDisplay:
       type: object
       properties:
-        arn:
+        Arn:
           type: string
           description: The ARN of the collection summary. Can be used to reference the collection in IAM policy or cross-account.
-        id:
+        Id:
           type: string
           description: Unique ID for the CIDR collection.
-        name:
+        Name:
           type: string
           description: The name of a CIDR collection.
-        version:
+        Version:
           type: integer
           description: A sequential counter that Route 53 sets to 1 when you create a CIDR collection and increments by 1 each time you update settings for the CIDR collection.
     ListCidrCollectionsOutputDisplay:
@@ -3370,7 +3370,7 @@ components:
     LocationSummaryDisplay:
       type: object
       properties:
-        location_name:
+        LocationName:
           type: string
           description: A string that specifies a location name.
     ListCidrLocationsOutputDisplay:
@@ -3420,13 +3420,13 @@ components:
     HostedZoneSummaryDisplay:
       type: object
       properties:
-        hosted_zone_id:
+        HostedZoneId:
           type: string
           description: The Route 53 hosted zone ID of a private hosted zone that the specified VPC is associated with.
-        name:
+        Name:
           type: string
           description: The name of the private hosted zone, such as example.com.
-        owner:
+        Owner:
           type: string
           description: The owner of a private hosted zone that the specified VPC is associated with. The owner can be either an Amazon Web Services account or an Amazon Web Services service.
     ListHostedZonesByVPCOutputDisplay:
@@ -3446,49 +3446,49 @@ components:
     ResourceRecordSetDisplay:
       type: object
       properties:
-        name:
+        Name:
           type: string
           description: "For ChangeResourceRecordSets requests, the name of the record that you want to create, update, or delete. For ListResourceRecordSets responses, the name of a record in the specified hosted zone. ChangeResourceRecordSets Only Enter a fully qualified domain name, for example, www.example.com. You can optionally include a trailing dot. If you omit the trailing dot, Amazon Route 53 assumes that the domain name that you specify is fully qualified. This means that Route 53 treats www.example.com (without a trailing dot) and www.example.com. (with a trailing dot) as identical. For information about how to specify characters other than a-z, 0-9, and - (hyphen) and how to specify internationalized domain names, see DNS Domain Name Format in the Amazon Route 53 Developer Guide. You can use the asterisk (*) wildcard to replace the leftmost label in a domain name, for example, *.example.com. Note the following: The * must replace the entire label. For example, you can't specify *prod.example.com or prod*.example.com. The * can't replace any of the middle labels, for example, marketing.*.example.com. If you include * in any position other than the leftmost label in a domain name, DNS treats it as an * character (ASCII 42), not as a wildcard. You can't use the * wildcard for resource records sets that have a type of NS."
-        type:
+        Type:
           type: string
           description: "The DNS record type. For information about different record types and how data is encoded for them, see Supported DNS Resource Record Types in the Amazon Route 53 Developer Guide. Valid values for basic resource record sets: A | AAAA | CAA | CNAME | DS |MX | NAPTR | NS | PTR | SOA | SPF | SRV | TXT| TLSA| SSHFP| SVCB| HTTPS Values for weighted, latency, geolocation, and failover resource record sets: A | AAAA | CAA | CNAME | MX | NAPTR | PTR | SPF | SRV | TXT| TLSA| SSHFP| SVCB| HTTPS. When creating a group of weighted, latency, geolocation, or failover resource record sets, specify the same value for all of the resource record sets in the group. Valid values for multivalue answer resource record sets: A | AAAA | MX | NAPTR | PTR | SPF | SRV | TXT| CAA| TLSA| SSHFP| SVCB| HTTPS SPF records were formerly used to verify the identity of the sender of email messages. However, we no longer recommend that you create resource record sets for which the value of Type is SPF. RFC 7208, Sender Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 1, has been updated to say, \"...[I]ts existence and mechanism defined in [RFC4408] have led to some interoperability issues. Accordingly, its use is no longer appropriate for SPF version 1; implementations are not to use it.\" In RFC 7208, see section 14.1, The SPF DNS Record Type. Values for alias resource record sets: Amazon API Gateway custom regional APIs and edge-optimized APIs: A CloudFront distributions: A If IPv6 is enabled for the distribution, create two resource record sets to route traffic to your distribution, one with a value of A and one with a value of AAAA. Amazon API Gateway environment that has a regionalized subdomain: A ELB load balancers: A | AAAA Amazon S3 buckets: A Amazon Virtual Private Cloud interface VPC endpoints A Another resource record set in this hosted zone: Specify the type of the resource record set that you're creating the alias for. All values are supported except NS and SOA. If you're creating an alias record that has the same name as the hosted zone (known as the zone apex), you can't route traffic to a record for which the value of Type is CNAME. This is because the alias record must have the same type as the record you're routing traffic to, and creating a CNAME record for the zone apex isn't supported even for an alias record."
-        set_identifier:
+        SetIdentifier:
           type: string
           description: "Resource record sets that have a routing policy other than simple: An identifier that differentiates among multiple resource record sets that have the same combination of name and type, such as multiple weighted resource record sets named acme.example.com that have a type of A. In a group of resource record sets that have the same name and type, the value of SetIdentifier must be unique for each resource record set. For information about routing policies, see Choosing a Routing Policy in the Amazon Route 53 Developer Guide."
-        weight:
+        Weight:
           type: integer
           description: "Weighted resource record sets only: Among resource record sets that have the same combination of DNS name and type, a value that determines the proportion of DNS queries that Amazon Route 53 responds to using the current resource record set. Route 53 calculates the sum of the weights for the resource record sets that have the same combination of DNS name and type. Route 53 then responds to queries based on the ratio of a resource's weight to the total. Note the following: You must specify a value for the Weight element for every weighted resource record set. You can only specify one ResourceRecord per weighted resource record set. You can't create latency, failover, or geolocation resource record sets that have the same values for the Name and Type elements as weighted resource record sets. You can create a maximum of 100 weighted resource record sets that have the same values for the Name and Type elements. For weighted (but not weighted alias) resource record sets, if you set Weight to 0 for a resource record set, Route 53 never responds to queries with the applicable value for that resource record set. However, if you set Weight to 0 for all resource record sets that have the same combination of DNS name and type, traffic is routed to all resources with equal probability. The effect of setting Weight to 0 is different when you associate health checks with weighted resource record sets. For more information, see Options for Configuring Route 53 Active-Active and Active-Passive Failover in the Amazon Route 53 Developer Guide."
-        region:
+        Region:
           type: string
           description: "Latency-based resource record sets only: The Amazon EC2 Region where you created the resource that this resource record set refers to. The resource typically is an Amazon Web Services resource, such as an EC2 instance or an ELB load balancer, and is referred to by an IP address or a DNS domain name, depending on the record type. When Amazon Route 53 receives a DNS query for a domain name and type for which you have created latency resource record sets, Route 53 selects the latency resource record set that has the lowest latency between the end user and the associated Amazon EC2 Region. Route 53 then returns the value that is associated with the selected resource record set. Note the following: You can only specify one ResourceRecord per latency resource record set. You can only create one latency resource record set for each Amazon EC2 Region. You aren't required to create latency resource record sets for all Amazon EC2 Regions. Route 53 will choose the region with the best latency from among the regions that you create latency resource record sets for. You can't create non-latency resource record sets that have the same values for the Name and Type elements as latency resource record sets."
-        geo_location:
+        GeoLocation:
           type: string
           description: "Geolocation resource record sets only: A complex type that lets you control how Amazon Route 53 responds to DNS queries based on the geographic origin of the query. For example, if you want all queries from Africa to be routed to a web server with an IP address of 192.0.2.111, create a resource record set with a Type of A and a ContinentCode of AF. If you create separate resource record sets for overlapping geographic regions (for example, one resource record set for a continent and one for a country on the same continent), priority goes to the smallest geographic region. This allows you to route most queries for a continent to one resource and to route queries for a country on that continent to a different resource. You can't create two geolocation resource record sets that specify the same geographic location. The value * in the CountryCode element matches all geographic locations that aren't specified in other geolocation resource record sets that have the same values for the Name and Type elements. Geolocation works by mapping IP addresses to locations. However, some IP addresses aren't mapped to geographic locations, so even if you create geolocation resource record sets that cover all seven continents, Route 53 will receive some DNS queries from locations that it can't identify. We recommend that you create a resource record set for which the value of CountryCode is *. Two groups of queries are routed to the resource that you specify in this record: queries that come from locations for which you haven't created geolocation resource record sets and queries from IP addresses that aren't mapped to a location. If you don't create a * resource record set, Route 53 returns a \"no answer\" response for queries from those locations. You can't create non-geolocation resource record sets that have the same values for the Name and Type elements as geolocation resource record sets."
-        failover:
+        Failover:
           type: string
           description: "Failover resource record sets only: To configure failover, you add the Failover element to two resource record sets. For one resource record set, you specify PRIMARY as the value for Failover; for the other resource record set, you specify SECONDARY. In addition, you include the HealthCheckId element and specify the health check that you want Amazon Route 53 to perform for each resource record set. Except where noted, the following failover behaviors assume that you have included the HealthCheckId element in both resource record sets: When the primary resource record set is healthy, Route 53 responds to DNS queries with the applicable value from the primary resource record set regardless of the health of the secondary resource record set. When the primary resource record set is unhealthy and the secondary resource record set is healthy, Route 53 responds to DNS queries with the applicable value from the secondary resource record set. When the secondary resource record set is unhealthy, Route 53 responds to DNS queries with the applicable value from the primary resource record set regardless of the health of the primary resource record set. If you omit the HealthCheckId element for the secondary resource record set, and if the primary resource record set is unhealthy, Route 53 always responds to DNS queries with the applicable value from the secondary resource record set. This is true regardless of the health of the associated endpoint. You can't create non-failover resource record sets that have the same values for the Name and Type elements as failover resource record sets. For failover alias resource record sets, you must also include the EvaluateTargetHealth element and set the value to true. For more information about configuring failover for Route 53, see the following topics in the Amazon Route 53 Developer Guide: Route 53 Health Checks and DNS Failover Configuring Failover in a Private Hosted Zone"
-        multi_value_answer:
+        MultiValueAnswer:
           type: boolean
           description: "Multivalue answer resource record sets only: To route traffic approximately randomly to multiple resources, such as web servers, create one multivalue answer record for each resource and specify true for MultiValueAnswer. Note the following: If you associate a health check with a multivalue answer resource record set, Amazon Route 53 responds to DNS queries with the corresponding IP address only when the health check is healthy. If you don't associate a health check with a multivalue answer record, Route 53 always considers the record to be healthy. Route 53 responds to DNS queries with up to eight healthy records; if you have eight or fewer healthy records, Route 53 responds to all DNS queries with all the healthy records. If you have more than eight healthy records, Route 53 responds to different DNS resolvers with different combinations of healthy records. When all records are unhealthy, Route 53 responds to DNS queries with up to eight unhealthy records. If a resource becomes unavailable after a resolver caches a response, client software typically tries another of the IP addresses in the response. You can't create multivalue answer alias records."
-        ttl:
+        TTL:
           type: integer
           description: "The resource record cache time to live (TTL), in seconds. Note the following: If you're creating or updating an alias resource record set, omit TTL. Amazon Route 53 uses the value of TTL for the alias target. If you're associating this resource record set with a health check (if you're adding a HealthCheckId element), we recommend that you specify a TTL of 60 seconds or less so clients respond quickly to changes in health status. All of the resource record sets in a group of weighted resource record sets must have the same value for TTL. If a group of weighted resource record sets includes one or more weighted alias resource record sets for which the alias target is an ELB load balancer, we recommend that you specify a TTL of 60 seconds for all of the non-alias weighted resource record sets that have the same name and type. Values other than 60 seconds (the TTL for load balancers) will change the effect of the values that you specify for Weight."
-        resource_records:
+        ResourceRecords:
           type: string
           description: Information about the resource records to act upon. If you're creating an alias resource record set, omit ResourceRecords.
-        alias_target:
+        AliasTarget:
           type: string
           description: "Alias resource record sets only: Information about the Amazon Web Services resource, such as a CloudFront distribution or an Amazon S3 bucket, that you want to route traffic to. If you're creating resource records sets for a private hosted zone, note the following: You can't create an alias resource record set in a private hosted zone to route traffic to a CloudFront distribution. For information about creating failover resource record sets in a private hosted zone, see Configuring Failover in a Private Hosted Zone in the Amazon Route 53 Developer Guide."
-        health_check_id:
+        HealthCheckId:
           type: string
           description: "If you want Amazon Route 53 to return this resource record set in response to a DNS query only when the status of a health check is healthy, include the HealthCheckId element and specify the ID of the applicable health check. Route 53 determines whether a resource record set is healthy based on one of the following: By periodically sending a request to the endpoint that is specified in the health check By aggregating the status of a specified group of health checks (calculated health checks) By determining the current state of a CloudWatch alarm (CloudWatch metric health checks) Route 53 doesn't check the health of the endpoint that is specified in the resource record set, for example, the endpoint specified by the IP address in the Value element. When you add a HealthCheckId element to a resource record set, Route 53 checks the health of the endpoint that you specified in the health check. For more information, see the following topics in the Amazon Route 53 Developer Guide: How Amazon Route 53 Determines Whether an Endpoint Is Healthy Route 53 Health Checks and DNS Failover Configuring Failover in a Private Hosted Zone When to Specify HealthCheckId Specifying a value for HealthCheckId is useful only when Route 53 is choosing between two or more resource record sets to respond to a DNS query, and you want Route 53 to base the choice in part on the status of a health check. Configuring health checks makes sense only in the following configurations: Non-alias resource record sets: You're checking the health of a group of non-alias resource record sets that have the same routing policy, name, and type (such as multiple weighted records named www.example.com with a type of A) and you specify health check IDs for all the resource record sets. If the health check status for a resource record set is healthy, Route 53 includes the record among the records that it responds to DNS queries with. If the health check status for a resource record set is unhealthy, Route 53 stops responding to DNS queries using the value for that resource record set. If the health check status for all resource record sets in the group is unhealthy, Route 53 considers all resource record sets in the group healthy and responds to DNS queries accordingly. Alias resource record sets: You specify the following settings: You set EvaluateTargetHealth to true for an alias resource record set in a group of resource record sets that have the same routing policy, name, and type (such as multiple weighted records named www.example.com with a type of A). You configure the alias resource record set to route traffic to a non-alias resource record set in the same hosted zone. You specify a health check ID for the non-alias resource record set. If the health check status is healthy, Route 53 considers the alias resource record set to be healthy and includes the alias record among the records that it responds to DNS queries with. If the health check status is unhealthy, Route 53 stops responding to DNS queries using the alias resource record set. The alias resource record set can also route traffic to a group of non-alias resource record sets that have the same routing policy, name, and type. In that configuration, associate health checks with all of the resource record sets in the group of non-alias resource record sets. Geolocation Routing For geolocation resource record sets, if an endpoint is unhealthy, Route 53 looks for a resource record set for the larger, associated geographic region. For example, suppose you have resource record sets for a state in the United States, for the entire United States, for North America, and a resource record set that has * for CountryCode is *, which applies to all locations. If the endpoint for the state resource record set is unhealthy, Route 53 checks for healthy resource record sets in the following order until it finds a resource record set for which the endpoint is healthy: The United States North America The default resource record set Specifying the Health Check Endpoint by Domain Name If your health checks specify the endpoint only by domain name, we recommend that you create a separate health check for each endpoint. For example, create a health check for each HTTP server that is serving content for www.example.com. For the value of FullyQualifiedDomainName, specify the domain name of the server (such as us-east-2-www.example.com), not the name of the resource record sets (www.example.com). Health check results will be unpredictable if you do the following: Create a health check that has the same value for FullyQualifiedDomainName as the name of a resource record set. Associate that health check with the resource record set."
-        traffic_policy_instance_id:
+        TrafficPolicyInstanceId:
           type: string
           description: When you create a traffic policy instance, Amazon Route 53 automatically creates a resource record set. TrafficPolicyInstanceId is the ID of the traffic policy instance that Route 53 created this resource record set for. To delete the resource record set that is associated with a traffic policy instance, use DeleteTrafficPolicyInstance. Route 53 will delete the resource record set automatically. If you delete the resource record set by using ChangeResourceRecordSets, Route 53 doesn't automatically delete the traffic policy instance, and you'll continue to be charged for it even though it's no longer in use.
-        cidr_routing_config:
+        CidrRoutingConfig:
           type: string
           description: The object that is specified in resource record set object when you are linking a resource record set to a CIDR location. A LocationName with an asterisk “*” can be used to create a default CIDR record. CollectionId is still required for default record.
-        geo_proximity_location:
+        GeoProximityLocation:
           type: string
           description: "GeoproximityLocation resource record sets only: A complex type that lets you control how Route 53 responds to DNS queries based on the geographic origin of the query and your resources."
     ListResourceRecordSetsOutputDisplay:
@@ -3508,13 +3508,13 @@ components:
     ResourceTagSetDisplay:
       type: object
       properties:
-        resource_type:
+        ResourceType:
           type: string
           description: The type of the resource. The resource type for health checks is healthcheck. The resource type for hosted zones is hostedzone.
-        resource_id:
+        ResourceId:
           type: string
           description: The ID for the specified resource.
-        tags:
+        Tags:
           type: string
           description: The tags associated with the specified resource.
     ListTagsForResourceOutputDisplay:
@@ -3538,19 +3538,19 @@ components:
     TrafficPolicySummaryDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: The ID that Amazon Route 53 assigned to the traffic policy when you created it.
-        name:
+        Name:
           type: string
           description: The name that you specified for the traffic policy when you created it.
-        type:
+        Type:
           type: string
           description: The DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy to create a traffic policy instance.
-        latest_version:
+        LatestVersion:
           type: integer
           description: The version number of the latest version of the traffic policy.
-        traffic_policy_count:
+        TrafficPolicyCount:
           type: integer
           description: The number of traffic policies that are associated with the current Amazon Web Services account.
     ListTrafficPoliciesOutputDisplay:
@@ -3594,10 +3594,10 @@ components:
     VPCDisplay:
       type: object
       properties:
-        vpc_region:
+        VPCRegion:
           type: string
           description: (Private hosted zones only) The region that an Amazon VPC was created in.
-        vpc_id:
+        VPCId:
           type: string
           description: (Private hosted zones only) The ID of an Amazon VPC.
     ListVPCAssociationAuthorizationsOutputDisplay:
@@ -3614,22 +3614,22 @@ components:
     TestDNSAnswerResponseDisplay:
       type: object
       properties:
-        nameserver:
+        Nameserver:
           type: string
           description: The Amazon Route 53 name server used to respond to the request.
-        record_name:
+        RecordName:
           type: string
           description: The name of the resource record set that you submitted a request for.
-        record_type:
+        RecordType:
           type: string
           description: The type of the resource record set that you submitted a request for.
-        record_data:
+        RecordData:
           type: string
           description: A list that contains values that Amazon Route 53 returned for this resource record set.
-        response_code:
+        ResponseCode:
           type: string
           description: A code that indicates whether the request is valid or not. The most common response code is NOERROR, meaning that the request is valid. If the response is not valid, Amazon Route 53 returns a response code that describes the error. For a list of possible response codes, see DNS RCODES on the IANA website.
-        protocol:
+        Protocol:
           type: string
           description: The protocol that Amazon Route 53 used to respond to the request, either UDP or TCP.
     TestDNSAnswerOutputDisplay:
@@ -3712,25 +3712,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/AssociateVPCWithHostedZoneOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "ChangeInfo" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "status": {{ $v := index . "Status" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "submitted_at": {{ $v := index . "SubmittedAt" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "comment": {{ $v := index . "Comment" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3755,16 +3741,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/DeleteCidrCollectionOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}{}{{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
         create_cidr_collection:
           operation:
@@ -3776,22 +3753,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/CreateCidrCollectionOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "collection": {{ $v := index . "Collection" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "location": {{ $v := index . "Location" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3805,35 +3771,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListCidrCollectionsOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "CidrCollections" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "item" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "arn": {{ $v := index . "Arn" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "version": {{ $v := index . "Version" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cidr_collections/methods/list_cidr_collections"
@@ -3857,32 +3798,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListCidrLocationsOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "CidrLocations" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "item" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "location_name": {{ $v := index . "LocationName" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cidr_locations/methods/list_cidr_locations"
@@ -3904,23 +3823,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListTagsForResourceOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "ResourceTagSet" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "resource_type": {{ $v := index . "ResourceType" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "resource_id": {{ $v := index . "ResourceId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "tags": {{ $v := index . "Tags" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
         list_tags_for_resources:
           operation:
@@ -3932,34 +3835,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListTagsForResourcesOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "ResourceTagSets" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "ResourceTagSet" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "resource_type": {{ $v := index . "ResourceType" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "resource_id": {{ $v := index . "ResourceId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "tags": {{ $v := index . "Tags" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3985,27 +3865,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/CreateHealthCheckOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "HealthCheck" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "caller_reference": {{ $v := index . "CallerReference" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "linked_service": {{ $v := index . "LinkedService" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "health_check_config": {{ $v := index . "HealthCheckConfig" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "health_check_version": {{ $v := index . "HealthCheckVersion" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "cloud_watch_alarm_configuration": {{ $v := index . "CloudWatchAlarmConfiguration" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4019,37 +3883,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListHealthChecksOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "HealthChecks" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "HealthCheck" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "caller_reference": {{ $v := index . "CallerReference" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "linked_service": {{ $v := index . "LinkedService" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "health_check_config": {{ $v := index . "HealthCheckConfig" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "health_check_version": {{ $v := index . "HealthCheckVersion" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "cloud_watch_alarm_configuration": {{ $v := index . "CloudWatchAlarmConfiguration" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
         delete_health_check:
           operation:
             $ref: "#/paths/~12013-04-01~1healthcheck~1{health_check_id}/delete"
@@ -4060,16 +3897,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/DeleteHealthCheckOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}{}{{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
         get_health_check:
           operation:
@@ -4081,26 +3909,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetHealthCheckOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "HealthCheck" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "caller_reference": {{ $v := index . "CallerReference" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "linked_service": {{ $v := index . "LinkedService" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "health_check_config": {{ $v := index . "HealthCheckConfig" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "health_check_version": {{ $v := index . "HealthCheckVersion" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "cloud_watch_alarm_configuration": {{ $v := index . "CloudWatchAlarmConfiguration" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
         update_health_check:
           operation:
@@ -4112,27 +3921,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/UpdateHealthCheckOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "HealthCheck" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "caller_reference": {{ $v := index . "CallerReference" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "linked_service": {{ $v := index . "LinkedService" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "health_check_config": {{ $v := index . "HealthCheckConfig" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "health_check_version": {{ $v := index . "HealthCheckVersion" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "cloud_watch_alarm_configuration": {{ $v := index . "CloudWatchAlarmConfiguration" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4161,28 +3954,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/CreateHostedZoneOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "HostedZone" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "caller_reference": {{ $v := index . "CallerReference" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "config": {{ $v := index . "Config" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "resource_record_set_count": {{ $v := index . "ResourceRecordSetCount" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "linked_service": {{ $v := index . "LinkedService" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "features": {{ $v := index . "Features" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4196,38 +3972,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListHostedZonesOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "HostedZones" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "HostedZone" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "caller_reference": {{ $v := index . "CallerReference" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "config": {{ $v := index . "Config" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "resource_record_set_count": {{ $v := index . "ResourceRecordSetCount" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "linked_service": {{ $v := index . "LinkedService" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "features": {{ $v := index . "Features" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
         delete_hosted_zone:
           operation:
             $ref: "#/paths/~12013-04-01~1hostedzone~1{id}/delete"
@@ -4238,24 +3986,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/DeleteHostedZoneOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "ChangeInfo" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "status": {{ $v := index . "Status" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "submitted_at": {{ $v := index . "SubmittedAt" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "comment": {{ $v := index . "Comment" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
         get_hosted_zone:
           operation:
@@ -4267,27 +3998,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetHostedZoneOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "HostedZone" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "caller_reference": {{ $v := index . "CallerReference" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "config": {{ $v := index . "Config" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "resource_record_set_count": {{ $v := index . "ResourceRecordSetCount" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "linked_service": {{ $v := index . "LinkedService" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "features": {{ $v := index . "Features" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -4313,37 +4024,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/CreateKeySigningKeyOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "KeySigningKey" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "kms_arn": {{ $v := index . "KmsArn" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "flag": {{ $v := index . "Flag" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "signing_algorithm_mnemonic": {{ $v := index . "SigningAlgorithmMnemonic" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "signing_algorithm_type": {{ $v := index . "SigningAlgorithmType" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "digest_algorithm_mnemonic": {{ $v := index . "DigestAlgorithmMnemonic" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "digest_algorithm_type": {{ $v := index . "DigestAlgorithmType" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "key_tag": {{ $v := index . "KeyTag" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "digest_value": {{ $v := index . "DigestValue" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "public_key": {{ $v := index . "PublicKey" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "ds_record": {{ $v := index . "DSRecord" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "dnskey_record": {{ $v := index . "DNSKEYRecord" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "status": {{ $v := index . "Status" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "status_message": {{ $v := index . "StatusMessage" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "created_date": {{ $v := index . "CreatedDate" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "last_modified_date": {{ $v := index . "LastModifiedDate" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4357,24 +4042,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/DeleteKeySigningKeyOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "ChangeInfo" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "status": {{ $v := index . "Status" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "submitted_at": {{ $v := index . "SubmittedAt" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "comment": {{ $v := index . "Comment" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select: []
@@ -4398,24 +4066,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/CreateQueryLoggingConfigOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "QueryLoggingConfig" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "hosted_zone_id": {{ $v := index . "HostedZoneId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "cloud_watch_logs_log_group_arn": {{ $v := index . "CloudWatchLogsLogGroupArn" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4429,34 +4084,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListQueryLoggingConfigsOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "QueryLoggingConfigs" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "QueryLoggingConfig" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "hosted_zone_id": {{ $v := index . "HostedZoneId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "cloud_watch_logs_log_group_arn": {{ $v := index . "CloudWatchLogsLogGroupArn" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
         delete_query_logging_config:
           operation:
             $ref: "#/paths/~12013-04-01~1queryloggingconfig~1{id}/delete"
@@ -4467,16 +4098,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/DeleteQueryLoggingConfigOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}{}{{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
         get_query_logging_config:
           operation:
@@ -4488,23 +4110,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetQueryLoggingConfigOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "QueryLoggingConfig" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "hosted_zone_id": {{ $v := index . "HostedZoneId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "cloud_watch_logs_log_group_arn": {{ $v := index . "CloudWatchLogsLogGroupArn" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -4530,22 +4136,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/CreateReusableDelegationSetOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "delegation_set": {{ $v := index . "DelegationSet" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "location": {{ $v := index . "Location" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4559,34 +4154,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListReusableDelegationSetsOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "DelegationSets" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "DelegationSet" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "caller_reference": {{ $v := index . "CallerReference" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name_servers": {{ $v := index . "NameServers" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
         delete_reusable_delegation_set:
           operation:
             $ref: "#/paths/~12013-04-01~1delegationset~1{id}/delete"
@@ -4597,16 +4168,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/DeleteReusableDelegationSetOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}{}{{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
         get_reusable_delegation_set:
           operation:
@@ -4618,23 +4180,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetReusableDelegationSetOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "DelegationSet" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "caller_reference": {{ $v := index . "CallerReference" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name_servers": {{ $v := index . "NameServers" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -4660,27 +4206,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/CreateTrafficPolicyOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "TrafficPolicy" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "version": {{ $v := index . "Version" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "type": {{ $v := index . "Type" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "document": {{ $v := index . "Document" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "comment": {{ $v := index . "Comment" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4694,16 +4224,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/DeleteTrafficPolicyOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}{}{{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
         get_traffic_policy:
           operation:
@@ -4715,26 +4236,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetTrafficPolicyOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "TrafficPolicy" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "version": {{ $v := index . "Version" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "type": {{ $v := index . "Type" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "document": {{ $v := index . "Document" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "comment": {{ $v := index . "Comment" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
         list_traffic_policies:
           operation:
@@ -4746,36 +4248,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListTrafficPoliciesOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "TrafficPolicySummaries" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "TrafficPolicySummary" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "type": {{ $v := index . "Type" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "latest_version": {{ $v := index . "LatestVersion" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "traffic_policy_count": {{ $v := index . "TrafficPolicyCount" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/traffic_policies/methods/get_traffic_policy"
@@ -4800,30 +4276,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/CreateTrafficPolicyInstanceOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "TrafficPolicyInstance" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "hosted_zone_id": {{ $v := index . "HostedZoneId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "ttl": {{ $v := index . "TTL" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "state": {{ $v := index . "State" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "message": {{ $v := index . "Message" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "traffic_policy_id": {{ $v := index . "TrafficPolicyId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "traffic_policy_version": {{ $v := index . "TrafficPolicyVersion" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "traffic_policy_type": {{ $v := index . "TrafficPolicyType" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4837,16 +4294,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/DeleteTrafficPolicyInstanceOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}{}{{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
         get_traffic_policy_instance:
           operation:
@@ -4858,29 +4306,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetTrafficPolicyInstanceOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "TrafficPolicyInstance" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "hosted_zone_id": {{ $v := index . "HostedZoneId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "ttl": {{ $v := index . "TTL" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "state": {{ $v := index . "State" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "message": {{ $v := index . "Message" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "traffic_policy_id": {{ $v := index . "TrafficPolicyId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "traffic_policy_version": {{ $v := index . "TrafficPolicyVersion" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "traffic_policy_type": {{ $v := index . "TrafficPolicyType" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
         update_traffic_policy_instance:
           operation:
@@ -4892,30 +4318,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/UpdateTrafficPolicyInstanceOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "TrafficPolicyInstance" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "hosted_zone_id": {{ $v := index . "HostedZoneId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "ttl": {{ $v := index . "TTL" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "state": {{ $v := index . "State" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "message": {{ $v := index . "Message" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "traffic_policy_id": {{ $v := index . "TrafficPolicyId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "traffic_policy_version": {{ $v := index . "TrafficPolicyVersion" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "traffic_policy_type": {{ $v := index . "TrafficPolicyType" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4929,40 +4336,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListTrafficPolicyInstancesOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "TrafficPolicyInstances" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "TrafficPolicyInstance" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "hosted_zone_id": {{ $v := index . "HostedZoneId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "ttl": {{ $v := index . "TTL" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "state": {{ $v := index . "State" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "message": {{ $v := index . "Message" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "traffic_policy_id": {{ $v := index . "TrafficPolicyId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "traffic_policy_version": {{ $v := index . "TrafficPolicyVersion" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "traffic_policy_type": {{ $v := index . "TrafficPolicyType" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/traffic_policy_instances/methods/get_traffic_policy_instance"
@@ -4988,22 +4365,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/CreateTrafficPolicyVersionOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "traffic_policy": {{ $v := index . "TrafficPolicy" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "location": {{ $v := index . "Location" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5017,37 +4383,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListTrafficPolicyVersionsOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "TrafficPolicies" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "TrafficPolicy" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "version": {{ $v := index . "Version" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "type": {{ $v := index . "Type" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "document": {{ $v := index . "Document" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "comment": {{ $v := index . "Comment" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/traffic_policy_versions/methods/list_traffic_policy_versions"
@@ -5070,22 +4409,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/CreateVPCAssociationAuthorizationOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "hosted_zone_id": {{ $v := index . "HostedZoneId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "vpc": {{ $v := index . "VPC" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5099,33 +4427,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListVPCAssociationAuthorizationsOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "VPCs" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "VPC" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "vpc_region": {{ $v := index . "VPCRegion" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "vpc_id": {{ $v := index . "VPCId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
         delete_vpc_association_authorization:
           operation:
             $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1deauthorizevpcassociation/post"
@@ -5136,17 +4441,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/DeleteVPCAssociationAuthorizationOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}{}{{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5173,28 +4472,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/UpdateHostedZoneCommentOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "HostedZone" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "caller_reference": {{ $v := index . "CallerReference" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "config": {{ $v := index . "Config" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "resource_record_set_count": {{ $v := index . "ResourceRecordSetCount" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "linked_service": {{ $v := index . "LinkedService" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "features": {{ $v := index . "Features" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5219,27 +4501,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/UpdateTrafficPolicyCommentOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "TrafficPolicy" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "version": {{ $v := index . "Version" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "type": {{ $v := index . "Type" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "document": {{ $v := index . "Document" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "comment": {{ $v := index . "Comment" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5264,25 +4530,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/DisassociateVPCFromHostedZoneOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "ChangeInfo" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "status": {{ $v := index . "Status" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "submitted_at": {{ $v := index . "SubmittedAt" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "comment": {{ $v := index . "Comment" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5307,21 +4559,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetAccountLimitOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "limit": {{ $v := index . "Limit" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "count": {{ $v := index . "Count" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -5344,24 +4582,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetChangeOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "ChangeInfo" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "status": {{ $v := index . "Status" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "submitted_at": {{ $v := index . "SubmittedAt" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "comment": {{ $v := index . "Comment" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -5384,20 +4605,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetCheckerIpRangesOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "checker_ip_ranges": {{ $v := index . "CheckerIpRanges" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -5420,21 +4628,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetDNSSECOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "status": {{ $v := index . "Status" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "key_signing_keys": {{ $v := index . "KeySigningKeys" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -5457,27 +4651,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetGeoLocationOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $row := index $root "GeoLocationDetails" -}}
-                      {{- with $row }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "continent_code": {{ $v := index . "ContinentCode" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "continent_name": {{ $v := index . "ContinentName" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "country_code": {{ $v := index . "CountryCode" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "country_name": {{ $v := index . "CountryName" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "subdivision_code": {{ $v := index . "SubdivisionCode" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "subdivision_name": {{ $v := index . "SubdivisionName" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
         list_geo_locations:
           operation:
             $ref: "#/paths/~12013-04-01~1geolocations/get"
@@ -5488,37 +4665,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListGeoLocationsOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "GeoLocationDetailsList" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "GeoLocationDetails" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "continent_code": {{ $v := index . "ContinentCode" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "continent_name": {{ $v := index . "ContinentName" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "country_code": {{ $v := index . "CountryCode" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "country_name": {{ $v := index . "CountryName" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "subdivision_code": {{ $v := index . "SubdivisionCode" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "subdivision_name": {{ $v := index . "SubdivisionName" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/geo_locations/methods/get_geo_location"
@@ -5540,20 +4690,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetHealthCheckCountOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "health_check_count": {{ $v := index . "HealthCheckCount" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -5576,20 +4713,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetHealthCheckLastFailureReasonOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "health_check_observations": {{ $v := index . "HealthCheckObservations" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -5612,20 +4736,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetHealthCheckStatusOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "health_check_observations": {{ $v := index . "HealthCheckObservations" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -5648,20 +4759,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetHostedZoneCountOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "hosted_zone_count": {{ $v := index . "HostedZoneCount" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -5684,21 +4782,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetHostedZoneLimitOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "limit": {{ $v := index . "Limit" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "count": {{ $v := index . "Count" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -5721,21 +4805,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetReusableDelegationSetLimitOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "limit": {{ $v := index . "Limit" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "count": {{ $v := index . "Count" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -5758,20 +4828,7 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetTrafficPolicyInstanceCountOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "traffic_policy_instance_count": {{ $v := index . "TrafficPolicyInstanceCount" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
       sqlVerbs:
         select:
@@ -5794,33 +4851,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListCidrBlocksOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "CidrBlocks" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "item" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "cidr_block": {{ $v := index . "CidrBlock" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "location_name": {{ $v := index . "LocationName" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cidr_blocks/methods/list_cidr_blocks"
@@ -5842,38 +4876,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListHostedZonesByNameOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "HostedZones" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "HostedZone" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "caller_reference": {{ $v := index . "CallerReference" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "config": {{ $v := index . "Config" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "resource_record_set_count": {{ $v := index . "ResourceRecordSetCount" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "linked_service": {{ $v := index . "LinkedService" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "features": {{ $v := index . "Features" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/hosted_zones_by_names/methods/list_hosted_zones_by_name"
@@ -5895,34 +4901,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListHostedZonesByVPCOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "HostedZoneSummaries" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "HostedZoneSummary" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "hosted_zone_id": {{ $v := index . "HostedZoneId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "owner": {{ $v := index . "Owner" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/hosted_zones_by_vpcs/methods/list_hosted_zones_by_vpc"
@@ -5944,46 +4926,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListResourceRecordSetsOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "ResourceRecordSets" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "ResourceRecordSet" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "type": {{ $v := index . "Type" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "set_identifier": {{ $v := index . "SetIdentifier" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "weight": {{ $v := index . "Weight" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "region": {{ $v := index . "Region" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "geo_location": {{ $v := index . "GeoLocation" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "failover": {{ $v := index . "Failover" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "multi_value_answer": {{ $v := index . "MultiValueAnswer" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},
-                        "ttl": {{ $v := index . "TTL" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "resource_records": {{ $v := index . "ResourceRecords" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "alias_target": {{ $v := index . "AliasTarget" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "health_check_id": {{ $v := index . "HealthCheckId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "traffic_policy_instance_id": {{ $v := index . "TrafficPolicyInstanceId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "cidr_routing_config": {{ $v := index . "CidrRoutingConfig" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }},
-                        "geo_proximity_location": {{ $v := index . "GeoProximityLocation" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resource_record_sets/methods/list_resource_record_sets"
@@ -6005,40 +4951,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListTrafficPolicyInstancesByHostedZoneOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "TrafficPolicyInstances" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "TrafficPolicyInstance" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "hosted_zone_id": {{ $v := index . "HostedZoneId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "ttl": {{ $v := index . "TTL" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "state": {{ $v := index . "State" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "message": {{ $v := index . "Message" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "traffic_policy_id": {{ $v := index . "TrafficPolicyId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "traffic_policy_version": {{ $v := index . "TrafficPolicyVersion" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "traffic_policy_type": {{ $v := index . "TrafficPolicyType" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/traffic_policy_instances_by_hosted_zones/methods/list_traffic_policy_instances_by_hosted_zone"
@@ -6060,40 +4976,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListTrafficPolicyInstancesByPolicyOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- $list_parent := index $root "TrafficPolicyInstances" -}}
-                      {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                        {{- $items := index $list_parent "TrafficPolicyInstance" -}}
-                        {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                          {{template "row" $items}}
-                        {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                          {{- range $i, $v := $items }}
-                            {{- if $i}},{{end}}
-                            {{template "row" $v}}
-                          {{- end }}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "id": {{ $v := index . "Id" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "hosted_zone_id": {{ $v := index . "HostedZoneId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "name": {{ $v := index . "Name" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "ttl": {{ $v := index . "TTL" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "state": {{ $v := index . "State" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "message": {{ $v := index . "Message" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "traffic_policy_id": {{ $v := index . "TrafficPolicyId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "traffic_policy_version": {{ $v := index . "TrafficPolicyVersion" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "traffic_policy_type": {{ $v := index . "TrafficPolicyType" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/traffic_policy_instances_by_policies/methods/list_traffic_policy_instances_by_policy"
@@ -6115,17 +5001,11 @@ components:
             schema_override:
               $ref: "#/components/schemas/UpdateHostedZoneFeaturesOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- range $rk, $root := . -}}
-                      {{- with $root }}{{template "row" .}}{{end}}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}{}{{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
           config:
             requestBodyTranslate:
               algorithm: naive

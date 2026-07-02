@@ -134,7 +134,7 @@ paths:
             $ref: "#/components/schemas/DeviceId"
           description: The ID of the device to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -205,7 +205,7 @@ paths:
             $ref: "#/components/schemas/EnvironmentId"
           description: The ID of the environment to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -246,7 +246,7 @@ paths:
             $ref: "#/components/schemas/DeviceId"
           description: The ID of the device to deregister.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1047,6 +1047,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1057,12 +1059,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.environments
+          request:
+            nativeCasing: pascal
         delete_environment:
           operation:
             $ref: "#/paths/~1environments~1{id}/delete"
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_environment:
           operation:
             $ref: "#/paths/~1environments~1{id}/get"
@@ -1075,6 +1081,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1099,6 +1107,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_device:
           operation:
             $ref: "#/paths/~1devices~1{id}/get"
@@ -1111,6 +1121,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1120,6 +1132,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1130,6 +1144,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.devices
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/devices/methods/get_device"
@@ -1156,6 +1172,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1166,6 +1184,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.softwareSets
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/software_sets/methods/get_software_set"
@@ -1202,6 +1222,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1211,6 +1233,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

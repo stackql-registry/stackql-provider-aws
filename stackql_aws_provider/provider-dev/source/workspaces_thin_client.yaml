@@ -157,7 +157,7 @@ paths:
           $ref: '#/components/schemas/DeviceId'
         description: The ID of the device to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -242,7 +242,7 @@ paths:
           $ref: '#/components/schemas/EnvironmentId'
         description: The ID of the environment to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -286,7 +286,7 @@ paths:
           $ref: '#/components/schemas/DeviceId'
         description: The ID of the device to deregister.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

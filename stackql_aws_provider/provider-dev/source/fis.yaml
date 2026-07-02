@@ -212,7 +212,7 @@ paths:
           $ref: '#/components/schemas/TargetAccountId'
         description: The Amazon Web Services account ID of the target account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -284,7 +284,7 @@ paths:
           $ref: '#/components/schemas/ExperimentTemplateId'
         description: The ID of the experiment template.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

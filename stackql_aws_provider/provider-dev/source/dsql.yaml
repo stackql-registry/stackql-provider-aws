@@ -34,7 +34,7 @@ paths:
         cannot be the same as the cluster''s Region.'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -252,7 +252,7 @@ paths:
           $ref: '#/components/schemas/ClusterId'
         description: The ID of the cluster you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

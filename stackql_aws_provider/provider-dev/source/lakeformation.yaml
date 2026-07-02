@@ -300,7 +300,7 @@ paths:
         to access Data Catalog resources.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -363,7 +363,7 @@ paths:
       description: Deletes a data cell filter.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -452,7 +452,7 @@ paths:
       description: Deletes an IAM Identity Center connection with Lake Formation.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -575,7 +575,7 @@ paths:
       description: Retrieves the instance ARN and application ARN for the connection.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -652,7 +652,7 @@ paths:
         and aborted. Write transactions that remain idle for a long period are automatically aborted unless explicitly extended.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -726,7 +726,7 @@ paths:
       description: Retrieves the list of the data lake administrators of a Lake Formation-managed data lake.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -976,7 +976,7 @@ paths:
         the API call.'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1189,7 +1189,7 @@ paths:
       description: Lists all the data cell filters on a table.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1220,7 +1220,7 @@ paths:
         tag expression.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1249,7 +1249,7 @@ paths:
       description: Lists LF-tags that the requester has permission to view.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1280,7 +1280,7 @@ paths:
       description: Retrieve the current list of resources and principals that are opt in to enforce Lake Formation permissions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1314,7 +1314,7 @@ paths:
         about permissions, see Security and Access Control to Metadata and Data.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1350,7 +1350,7 @@ paths:
       description: Lists the resources registered to be managed by the Data Catalog.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1417,7 +1417,7 @@ paths:
         identify uncommitted transactions or to get information about transactions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1695,7 +1695,7 @@ paths:
         use to identify a transaction.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1815,7 +1815,7 @@ paths:
       description: Updates the IAM Identity Center connection parameters.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

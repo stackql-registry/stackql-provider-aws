@@ -595,7 +595,7 @@ paths:
           $ref: '#/components/schemas/Uuid'
         description: UUID of a mission profile.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -836,7 +836,7 @@ paths:
           $ref: '#/components/schemas/Uuid'
         description: UUID of a contact.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

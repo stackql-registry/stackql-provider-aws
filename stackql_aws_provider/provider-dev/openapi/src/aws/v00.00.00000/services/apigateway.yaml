@@ -22,7 +22,7 @@ paths:
       description: Create an ApiKey resource.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -253,7 +253,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The string identifier of the associated RestApi.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -717,7 +717,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The string identifier of the associated RestApi.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1171,7 +1171,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The identifier of the ApiKey resource to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1246,7 +1246,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: Specifies a test invoke authorizer request's Authorizer ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1288,7 +1288,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The identifier of the Authorizer resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1381,7 +1381,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The base path of the BasePathMapping resource to change. To specify an empty base path, set this parameter to '(none)'.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1438,7 +1438,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The identifier of the ClientCertificate resource to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1519,7 +1519,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The replacement identifier for the Deployment resource to change information about.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1594,7 +1594,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The identifier of the to-be-updated documentation part.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1669,7 +1669,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The version identifier of the to-be-updated documentation version.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1744,7 +1744,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The identifier for the domain name resource. Supported only for private custom domain names.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1833,7 +1833,7 @@ paths:
             $ref: "#/components/schemas/GatewayResponseType"
           description: The response type of the associated GatewayResponse
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1869,7 +1869,7 @@ paths:
             $ref: "#/components/schemas/GatewayResponseType"
           description: The response type of the associated GatewayResponse.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2032,7 +2032,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: Represents an update integration request's HTTP method.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2143,7 +2143,7 @@ paths:
             $ref: "#/components/schemas/StatusCode"
           description: Specifies the status code that is used to map the integration response to an existing MethodResponse.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2193,7 +2193,7 @@ paths:
             $ref: "#/components/schemas/StatusCode"
           description: Specifies an update integration response request's status code.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2340,7 +2340,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: Specifies a test invoke method request's HTTP method.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2388,7 +2388,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The HTTP verb of the Method resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2499,7 +2499,7 @@ paths:
             $ref: "#/components/schemas/StatusCode"
           description: The method response's status code.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2545,7 +2545,7 @@ paths:
             $ref: "#/components/schemas/StatusCode"
           description: The status code for the MethodResponse resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2626,7 +2626,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The name of the model to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2701,7 +2701,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The identifier of RequestValidator to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2782,7 +2782,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The identifier of the Resource resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2885,7 +2885,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The string identifier of the associated RestApi.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2960,7 +2960,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The name of the Stage resource to change information about.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3017,7 +3017,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The Id of the to-be-updated usage plan.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3117,7 +3117,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The identifier of the VpcLink. It is used in an Integration to reference this VpcLink.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3178,7 +3178,7 @@ paths:
       description: Generates a ClientCertificate resource.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3235,7 +3235,7 @@ paths:
       description: Changes information about the current Account resource.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3689,7 +3689,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5262,6 +5262,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5272,6 +5274,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_api_key:
           operation:
             $ref: "#/paths/~1apikeys~1{api__key}/delete"
@@ -5283,12 +5287,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_api_key:
           operation:
             $ref: "#/paths/~1apikeys~1{api__key}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5298,6 +5306,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5322,6 +5332,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5332,6 +5344,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_authorizer:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1authorizers~1{authorizer_id}/delete"
@@ -5349,6 +5363,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5373,6 +5389,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5383,23 +5401,31 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_base_path_mapping:
           operation:
             $ref: "#/paths/~1domainnames~1{domain_name}~1basepathmappings~1{base_path}/delete"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
         get_base_path_mapping:
           operation:
             $ref: "#/paths/~1domainnames~1{domain_name}~1basepathmappings~1{base_path}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_base_path_mapping:
           operation:
             $ref: "#/paths/~1domainnames~1{domain_name}~1basepathmappings~1{base_path}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5424,6 +5450,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5434,6 +5462,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_deployment:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1deployments~1{deployment_id}/delete"
@@ -5445,12 +5475,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_deployment:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1deployments~1{deployment_id}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5475,6 +5509,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5485,12 +5521,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         import_documentation_parts:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1documentation~1parts/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5511,6 +5551,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5535,6 +5577,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5545,6 +5589,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_documentation_version:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1documentation~1versions~1{doc_version}/delete"
@@ -5562,6 +5608,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5586,6 +5634,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5596,23 +5646,31 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_domain_name:
           operation:
             $ref: "#/paths/~1domainnames~1{domain_name}/delete"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
         get_domain_name:
           operation:
             $ref: "#/paths/~1domainnames~1{domain_name}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_domain_name:
           operation:
             $ref: "#/paths/~1domainnames~1{domain_name}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5637,6 +5695,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5646,6 +5706,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_domain_name_access_association:
           operation:
             $ref: "#/paths/~1domainnameaccessassociations~1{domain_name_access_association_arn}/delete"
@@ -5670,6 +5732,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5680,6 +5744,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_model:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1models~1{model_name}/delete"
@@ -5691,12 +5757,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_model:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1models~1{model_name}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5721,6 +5791,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5731,6 +5803,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_request_validator:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1requestvalidators~1{requestvalidator_id}/delete"
@@ -5748,6 +5822,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5772,6 +5848,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5786,12 +5864,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_resource:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1resources~1{resource_id}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5802,11 +5884,15 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5815,6 +5901,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resources/methods/get_resource"
@@ -5838,6 +5926,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5848,6 +5938,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_rest_api:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}/delete"
@@ -5865,6 +5957,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5874,6 +5968,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5900,6 +5996,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5909,6 +6007,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_stage:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1stages~1{stage_name}/delete"
@@ -5926,6 +6026,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5950,6 +6052,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5960,6 +6064,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_usage_plan:
           operation:
             $ref: "#/paths/~1usageplans~1{usageplan_id}/delete"
@@ -5977,6 +6083,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6001,6 +6109,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6011,6 +6121,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_usage_plan_key:
           operation:
             $ref: "#/paths/~1usageplans~1{usageplan_id}~1keys~1{key_id}/delete"
@@ -6042,6 +6154,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6052,6 +6166,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_vpc_link:
           operation:
             $ref: "#/paths/~1vpclinks~1{vpclink_id}/delete"
@@ -6069,6 +6185,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6104,6 +6222,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6114,6 +6234,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/client_certificates/methods/get_client_certificate"
@@ -6145,6 +6267,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6154,6 +6278,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6164,6 +6290,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/gateway_responses/methods/get_gateway_response"
@@ -6197,6 +6325,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6206,6 +6336,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6241,6 +6373,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6250,6 +6384,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6285,6 +6421,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6294,6 +6432,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6329,6 +6469,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6338,6 +6480,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6368,6 +6512,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6389,6 +6535,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/exports/methods/get_export"
@@ -6423,6 +6571,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sdks/methods/get_sdk"
@@ -6447,6 +6597,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sdk_types/methods/get_sdk_type"
@@ -6465,6 +6617,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags/methods/get_tags"
@@ -6482,12 +6636,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_usage:
           operation:
             $ref: "#/paths/~1usageplans~1{usageplan_id}~1keys~1{key_id}~1usage/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

@@ -98,7 +98,7 @@ paths:
           $ref: '#/components/schemas/UpdateConfigurationManagerInputManagerArnString'
         description: The ARN of the configuration manager.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -156,7 +156,7 @@ paths:
       description: Updates settings configured for Quick Setup.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -176,7 +176,7 @@ paths:
       description: Returns Quick Setup configuration managers.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -206,7 +206,7 @@ paths:
         Web Services Region.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -336,7 +336,7 @@ paths:
           $ref: '#/components/schemas/UpdateConfigurationDefinitionInputManagerArnString'
         description: The ARN of the configuration manager associated with the definition to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

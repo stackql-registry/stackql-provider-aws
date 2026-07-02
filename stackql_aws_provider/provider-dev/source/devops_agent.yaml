@@ -262,7 +262,7 @@ paths:
           $ref: '#/components/schemas/AgentSpaceId'
         description: The unique identifier of the AgentSpace
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -584,7 +584,7 @@ paths:
           $ref: '#/components/schemas/ResourceId'
         description: The unique identifier of the task to update
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -675,7 +675,7 @@ paths:
           $ref: '#/components/schemas/ResourceId'
         description: The unique identifier for the recommendation to update
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -777,7 +777,7 @@ paths:
           $ref: '#/components/schemas/AgentSpaceId'
         description: The unique identifier for the agent space containing the tasks
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -892,7 +892,7 @@ paths:
           $ref: '#/components/schemas/AgentSpaceId'
         description: The unique identifier for the agent space
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1001,7 +1001,7 @@ paths:
           $ref: '#/components/schemas/AgentSpaceId'
         description: The unique identifier for the agent space containing the recommendations
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1264,7 +1264,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The unique identifier of the goal to update
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1296,7 +1296,7 @@ paths:
           $ref: '#/components/schemas/AgentSpaceId'
         description: The unique identifier of the AgentSpace
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -664,7 +664,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The application ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -764,7 +764,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The ID of the configuration profile.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -890,7 +890,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The environment ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -974,7 +974,7 @@ paths:
           $ref: '#/components/schemas/Identifier'
         description: The name, the ID, or the Amazon Resource Name (ARN) of the extension.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1048,7 +1048,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The system-generated ID for the association.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1147,7 +1147,7 @@ paths:
       description: Updates the value of the DeletionProtection parameter.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1333,7 +1333,7 @@ paths:
           $ref: '#/components/schemas/DeploymentStrategyId'
         description: The deployment strategy ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -471,7 +471,7 @@ paths:
             $ref: "#/components/schemas/EntityName"
           description: The name of the ID namespace.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -856,7 +856,7 @@ paths:
             $ref: "#/components/schemas/EntityNameOrIdMappingWorkflowArn"
           description: The name of the ID mapping job to be retrieved.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3035,6 +3035,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3062,6 +3064,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3072,6 +3076,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.workflowSummaries
+          request:
+            nativeCasing: pascal
         delete_id_mapping_workflow:
           operation:
             $ref: "#/paths/~1idmappingworkflows~1{workflow_name}/delete"
@@ -3090,6 +3096,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3114,6 +3122,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3124,6 +3134,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.idNamespaceSummaries
+          request:
+            nativeCasing: pascal
         delete_id_namespace:
           operation:
             $ref: "#/paths/~1idnamespaces~1{id_namespace_name}/delete"
@@ -3142,6 +3154,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3166,6 +3180,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3176,6 +3192,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.workflowSummaries
+          request:
+            nativeCasing: pascal
         delete_matching_workflow:
           operation:
             $ref: "#/paths/~1matchingworkflows~1{workflow_name}/delete"
@@ -3194,6 +3212,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3218,6 +3238,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3228,6 +3250,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.schemaList
+          request:
+            nativeCasing: pascal
         delete_schema_mapping:
           operation:
             $ref: "#/paths/~1schemas~1{schema_name}/delete"
@@ -3246,6 +3270,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3277,6 +3303,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/id_mapping_jobs/methods/get_id_mapping_job"
@@ -3295,6 +3323,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3322,6 +3352,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/matching_jobs/methods/get_matching_job"
@@ -3346,6 +3378,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3375,6 +3409,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.providerServiceSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/provider_services/methods/get_provider_service"
@@ -3410,6 +3446,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3419,6 +3457,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

@@ -247,7 +247,7 @@ paths:
             $ref: "#/components/schemas/AppMonitorName"
           description: The name of the app monitor to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1334,12 +1334,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.MetricDefinitions
+          request:
+            nativeCasing: pascal
         update_rum_metric_definition:
           operation:
             $ref: "#/paths/~1rummetrics~1{app_monitor_name}~1metrics/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1361,6 +1365,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1382,6 +1388,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1392,6 +1400,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AppMonitorSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/app_monitors/methods/get_app_monitor"
@@ -1413,6 +1423,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_resource_policy:
           operation:
             $ref: "#/paths/~1appmonitor~1{name}~1policy/get"
@@ -1425,6 +1437,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1448,6 +1462,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_rum_metrics_destinations:
           operation:
             $ref: "#/paths/~1rummetrics~1{app_monitor_name}~1metricsdestination/get"
@@ -1455,12 +1471,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Destinations
+          request:
+            nativeCasing: pascal
         put_rum_metrics_destination:
           operation:
             $ref: "#/paths/~1rummetrics~1{app_monitor_name}~1metricsdestination/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1485,6 +1505,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Events
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1522,6 +1544,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1531,6 +1555,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -1549,6 +1575,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

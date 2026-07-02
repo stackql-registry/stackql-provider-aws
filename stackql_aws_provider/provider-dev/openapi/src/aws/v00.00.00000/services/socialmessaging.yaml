@@ -22,7 +22,7 @@ paths:
       description: This is only used through the Amazon Web Services console during sign-up to associate your WhatsApp Business Account to your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -443,7 +443,7 @@ paths:
             $ref: "#/components/schemas/LinkedWhatsAppBusinessAccountId"
           description: The ID of the WhatsApp Business Account to list library templates for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1491,6 +1491,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1500,6 +1502,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -1518,6 +1522,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1527,18 +1533,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_whats_app_message_template:
           operation:
             $ref: "#/paths/~1v1~1whatsapp~1template/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_whats_app_message_template:
           operation:
             $ref: "#/paths/~1v1~1whatsapp~1template/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1549,6 +1561,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.templates
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/whats_app_message_templates/methods/get_whats_app_message_template"
@@ -1569,6 +1583,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1589,6 +1605,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1609,12 +1627,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_whats_app_message_media:
           operation:
             $ref: "#/paths/~1v1~1whatsapp~1media~1get/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1636,6 +1658,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_linked_whats_app_business_accounts:
           operation:
             $ref: "#/paths/~1v1~1whatsapp~1waba~1list/get"
@@ -1643,6 +1667,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.linkedAccounts
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/linked_whats_app_business_accounts/methods/get_linked_whats_app_business_account"
@@ -1661,6 +1687,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/linked_whats_app_business_account_phone_numbers/methods/get_linked_whats_app_business_account_phone_number"
@@ -1678,6 +1706,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -1696,6 +1726,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.metaLibraryTemplates
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1716,6 +1748,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1737,6 +1771,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1746,6 +1782,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

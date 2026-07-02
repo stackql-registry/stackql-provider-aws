@@ -285,7 +285,7 @@ paths:
         account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -425,7 +425,7 @@ paths:
       description: Retrieves a list of vector enrichment jobs.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

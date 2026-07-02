@@ -201,7 +201,7 @@ paths:
             $ref: "#/components/schemas/ApprovalTeamArn"
           description: Amazon Resource Name (ARN) for the team.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -413,7 +413,7 @@ paths:
             $ref: "#/components/schemas/ApprovalTeamArn"
           description: Amazon Resource Name (ARN) for the approval team.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -518,7 +518,7 @@ paths:
             $ref: "#/components/schemas/ApprovalTeamArn"
           description: Amazon Resource Name (ARN) for the team.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -545,7 +545,7 @@ paths:
             $ref: "#/components/schemas/ApprovalTeamArn"
           description: Amazon Resource Name (ARN) for the approval team.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1673,6 +1673,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Sessions
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1694,6 +1696,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1709,6 +1713,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1719,6 +1725,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ApprovalTeams
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/approval_teams/methods/get_approval_team"
@@ -1739,6 +1747,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1760,6 +1770,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.IdentitySources
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/identity_sources/methods/get_identity_source"
@@ -1804,6 +1816,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.PolicyVersions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_versions/methods/get_policy_version"
@@ -1822,6 +1836,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1832,6 +1848,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ResourcePolicies
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resource_policies/methods/get_resource_policy"
@@ -1851,6 +1869,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Policies
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policies/methods/list_policies"
@@ -1885,6 +1905,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1894,6 +1916,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

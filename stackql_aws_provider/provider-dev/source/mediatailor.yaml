@@ -355,7 +355,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The name to assign to the playback configuration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1304,7 +1304,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: Retrieves the prefetch schedule(s) for a specific playback configuration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

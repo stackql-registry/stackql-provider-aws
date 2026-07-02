@@ -193,6 +193,16 @@ The resource name is the operation's *noun* part after the verb prefix is stripp
 
 EXEC verbs are kept off the CRUD verb lists so the test-meta-routes signature-uniqueness check passes - e.g. `AttachVolume`, `DetachVolume`, and `ModifyVolume` all require `[VolumeId]`, which would collide if they shared an `UPDATE` slot. They live in `methods:` and are callable via stackql's `EXEC` clause.
 
+## Integration tests
+
+```bash
+AWS_RUN_DML_TESTS=1 STACKQL=./stackql bash bin/integration-tests.sh --select-only 2>&1 | tail -30
+```
+
+## TODOs
+
+1. Add pagination block emission for list ops that botocore declares paginators for
+
 ## License
 
 MIT

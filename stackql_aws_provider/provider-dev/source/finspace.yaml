@@ -807,7 +807,7 @@ paths:
           $ref: '#/components/schemas/IdType'
         description: The identifier of the FinSpace environment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1202,7 +1202,7 @@ paths:
           $ref: '#/components/schemas/IdType'
         description: A unique identifier for the kdb environment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1460,7 +1460,7 @@ paths:
           $ref: '#/components/schemas/KxVolumeName'
         description: A unique identifier for the volume.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1775,7 +1775,7 @@ paths:
           $ref: '#/components/schemas/IdType'
         description: A unique identifier for the kdb environment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

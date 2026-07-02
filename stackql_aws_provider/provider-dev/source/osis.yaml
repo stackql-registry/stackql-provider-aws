@@ -557,7 +557,7 @@ paths:
           $ref: '#/components/schemas/PipelineName'
         description: The name of the pipeline to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

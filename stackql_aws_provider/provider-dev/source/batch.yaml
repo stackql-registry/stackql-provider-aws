@@ -499,7 +499,7 @@ paths:
         instances into.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -555,7 +555,7 @@ paths:
         that match that status.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -588,7 +588,7 @@ paths:
       description: Describes one or more of your job queues.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -695,7 +695,7 @@ paths:
       description: Describes one or more of your service environments.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -780,7 +780,7 @@ paths:
       description: Returns a list of Batch consumable resources.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -811,7 +811,7 @@ paths:
         ID to return a list of the children for that job'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -912,7 +912,7 @@ paths:
       description: Returns a list of Batch scheduling policies.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -939,7 +939,7 @@ paths:
       description: Returns a list of service jobs for a specified job queue.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

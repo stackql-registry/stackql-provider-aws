@@ -23,7 +23,7 @@ paths:
       description: Deletes the preferences for recording RDP connections.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

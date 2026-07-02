@@ -23,7 +23,7 @@ paths:
         Account to your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -508,7 +508,7 @@ paths:
           $ref: '#/components/schemas/LinkedWhatsAppBusinessAccountId'
         description: The ID of the WhatsApp Business Account to list library templates for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

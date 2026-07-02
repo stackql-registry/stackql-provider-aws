@@ -1531,7 +1531,7 @@ paths:
           $ref: '#/components/schemas/TableName'
         description: The current name of the table.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -600,7 +600,7 @@ paths:
             $ref: "#/components/schemas/ResourceName"
           description: The name of the geofence collection to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -671,7 +671,7 @@ paths:
             $ref: "#/components/schemas/ResourceName"
           description: The name of the API key resource to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -740,7 +740,7 @@ paths:
             $ref: "#/components/schemas/ResourceName"
           description: The name of the map resource to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -805,7 +805,7 @@ paths:
             $ref: "#/components/schemas/ResourceName"
           description: The name of the place index resource to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -870,7 +870,7 @@ paths:
             $ref: "#/components/schemas/ResourceName"
           description: The name of the route calculator resource to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -933,7 +933,7 @@ paths:
             $ref: "#/components/schemas/ResourceName"
           description: The name of the tracker resource to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1063,7 +1063,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The device whose position history you want to retrieve.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1342,7 +1342,7 @@ paths:
             $ref: "#/components/schemas/ResourceName"
           description: The tracker resource containing the requested devices.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1367,7 +1367,7 @@ paths:
       description: Lists geofence collections in your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1396,7 +1396,7 @@ paths:
             $ref: "#/components/schemas/ResourceName"
           description: The name of the geofence collection storing the list of geofences.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1419,7 +1419,7 @@ paths:
       description: ListJobs retrieves a list of jobs with optional filtering and pagination support. For more information, see Job concepts in the Amazon Location Service Developer Guide.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1444,7 +1444,7 @@ paths:
       description: Lists API key resources in your Amazon Web Services account. For more information, see Use API keys to authenticate in the Amazon Location Service Developer Guide.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1469,7 +1469,7 @@ paths:
       description: This operation is no longer current and may be deprecated in the future. We recommend upgrading to the Maps API V2 unless you require Grab data. ListMaps is part of a previous Amazon Location Service Maps API (version 1) which has been superseded by a more intuitive, powerful, and complete API (version 2). The Maps API version 2 has a simplified interface that can be used without creating or managing map resources. If you are using an AWS SDK or the AWS CLI, note that the Maps API version 2 is found under geo-maps or geo_maps, not under location. Since Grab is not yet fully supported in Maps API version 2, we recommend you continue using API version 1 when using Grab. Start your version 2 API journey with the Maps V2 API Reference or the Developer Guide. Lists map resources in your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1492,7 +1492,7 @@ paths:
       description: This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Places API V2 unless you require Grab data. ListPlaceIndexes is part of a previous Amazon Location Service Places API (version 1) which has been superseded by a more intuitive, powerful, and complete API (version 2). The Places API version 2 has a simplified interface that can be used without creating or managing place index resources. If you are using an Amazon Web Services SDK or the Amazon Web Services CLI, note that the Places API version 2 is found under geo-places or geo_places, not under location. Since Grab is not yet fully supported in Places API version 2, we recommend you continue using API version 1 when using Grab. Start your version 2 API journey with the Places V2 API Reference or the Developer Guide. Lists place index resources in your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1515,7 +1515,7 @@ paths:
       description: This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Routes API V2 unless you require Grab data. ListRouteCalculators is part of a previous Amazon Location Service Routes API (version 1) which has been superseded by a more intuitive, powerful, and complete API (version 2). The Routes API version 2 has a simplified interface that can be used without creating or managing route calculator resources. If you are using an Amazon Web Services SDK or the Amazon Web Services CLI, note that the Routes API version 2 is found under geo-routes or geo_routes, not under location. Since Grab is not yet fully supported in Routes API version 2, we recommend you continue using API version 1 when using Grab. Start your version 2 API journey with the Routes V2 API Reference or the Developer Guide. Lists route calculator resources in your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1613,7 +1613,7 @@ paths:
             $ref: "#/components/schemas/ResourceName"
           description: The tracker resource whose associated geofence collections you want to list.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1636,7 +1636,7 @@ paths:
       description: Lists tracker resources in your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4839,6 +4839,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4855,6 +4857,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ConsumerArns
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4877,6 +4881,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4893,6 +4899,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Entries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4915,6 +4923,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4936,6 +4946,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4946,6 +4958,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Entries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4970,6 +4984,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4979,6 +4995,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_key:
           operation:
             $ref: "#/paths/~1metadata~1v0~1keys~1{key_name}/get"
@@ -4991,6 +5009,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5001,6 +5021,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Entries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5025,6 +5047,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5046,6 +5070,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5056,6 +5082,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Entries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5080,6 +5108,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5101,6 +5131,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5111,6 +5143,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Entries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5135,6 +5169,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5156,6 +5192,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5166,6 +5204,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Entries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5190,6 +5230,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5211,6 +5253,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5221,6 +5265,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Entries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5246,6 +5292,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DevicePositions
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5272,6 +5320,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5282,6 +5332,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Entries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5312,6 +5364,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Entries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5333,6 +5387,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/map_glyphs/methods/get_map_glyphs"
@@ -5350,6 +5406,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/map_sprites/methods/get_map_sprites"
@@ -5367,6 +5425,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/map_style_descriptors/methods/get_map_style_descriptor"
@@ -5384,6 +5444,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/map_tiles/methods/get_map_tile"
@@ -5401,6 +5463,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/places/methods/get_place"
@@ -5435,6 +5499,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5444,6 +5510,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -5462,6 +5530,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5482,6 +5552,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5502,6 +5574,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

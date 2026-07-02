@@ -68,7 +68,7 @@ paths:
         description: The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the app authorization to use
           for the request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -177,7 +177,7 @@ paths:
       description: Creates an app bundle to collect data from an application using AppFabric.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -485,7 +485,7 @@ paths:
         description: The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the app authorization to use
           for the request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

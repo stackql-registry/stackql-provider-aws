@@ -140,7 +140,7 @@ paths:
             $ref: "#/components/schemas/ResourceName"
           description: The name of the monitor.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1340,6 +1340,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1350,6 +1352,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Monitors
+          request:
+            nativeCasing: pascal
         delete_monitor:
           operation:
             $ref: "#/paths/~1v20210603~1Monitors~1{monitor_name}/delete"
@@ -1362,12 +1366,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_monitor:
           operation:
             $ref: "#/paths/~1v20210603~1Monitors~1{monitor_name}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1392,6 +1400,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_health_events:
           operation:
             $ref: "#/paths/~1v20210603~1Monitors~1{monitor_name}~1HealthEvents/get"
@@ -1399,6 +1409,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.HealthEvents
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/health_events/methods/get_health_event"
@@ -1424,6 +1436,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.InternetEvents
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/internet_events/methods/get_internet_event"
@@ -1442,6 +1456,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/query_results/methods/get_query_results"
@@ -1493,6 +1509,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1502,6 +1520,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

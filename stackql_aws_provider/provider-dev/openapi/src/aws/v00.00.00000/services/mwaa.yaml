@@ -157,7 +157,7 @@ paths:
             $ref: "#/components/schemas/EnvironmentName"
           description: The name of your Amazon MWAA environment. For example, MyMWAAEnvironment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1087,6 +1087,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1108,6 +1110,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1118,6 +1122,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Environments
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/environments/methods/get_environment"
@@ -1173,6 +1179,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1182,6 +1190,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

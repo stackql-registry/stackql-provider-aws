@@ -44,7 +44,7 @@ paths:
       description: Starts delete of resources.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -74,7 +74,7 @@ paths:
       description: Starts existing resources
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -100,7 +100,7 @@ paths:
       description: Stops running resources
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -132,7 +132,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: Id of the channel whose schedule is being updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -231,7 +231,7 @@ paths:
         the request succeeds, you will own the device.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -255,7 +255,7 @@ paths:
       description: Creates a new channel
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -352,7 +352,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the cluster.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -592,7 +592,7 @@ paths:
       description: Create a new Cluster.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -796,7 +796,7 @@ paths:
       description: Create an input
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -877,7 +877,7 @@ paths:
       description: Creates a Input Security Group
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1065,7 +1065,7 @@ paths:
         video encoding using MediaLive.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1131,7 +1131,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the cluster.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1204,7 +1204,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the cluster
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1242,7 +1242,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: Unique ID of the input.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1270,7 +1270,7 @@ paths:
         connection between the logical SdiSource and the physical SDI card and port that the physical SDI source uses.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1412,7 +1412,7 @@ paths:
         schema:
           $ref: '#/components/schemas/__string'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1518,7 +1518,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: channel ID
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1636,7 +1636,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the cluster.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1704,7 +1704,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: A cloudwatch alarm template's identifier. Can be either be its id or current name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1793,7 +1793,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: A cloudwatch alarm template group's identifier. Can be either be its id or current name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1863,7 +1863,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the cluster
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1931,7 +1931,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: An eventbridge rule template's identifier. Can be either be its id or current name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2006,7 +2006,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: An eventbridge rule template group's identifier. Can be either be its id or current name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2076,7 +2076,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: Unique ID of the input.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2168,7 +2168,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The id of the Input Security Group to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2240,7 +2240,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: ID of the multiplex to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2332,7 +2332,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The name of the program to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2402,7 +2402,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the network
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2494,7 +2494,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the node.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2568,7 +2568,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: Unique reservation ID, e.g. '1234567'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2641,7 +2641,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the SdiSource
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2712,7 +2712,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: A signal map's identifier. Can be either be its id or current name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2760,7 +2760,7 @@ paths:
       description: Update account configuration
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2810,7 +2810,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The unique ID of the input device. For example, hd-123456789abcdef.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3326,7 +3326,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The unique ID of the input device to reboot. For example, hd-123456789abcdef.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3377,7 +3377,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: ID of channel
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3448,7 +3448,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: A signal map's identifier. Can be either be its id or current name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3612,7 +3612,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The unique ID of this input device. For example, hd-123456789abcdef.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3686,7 +3686,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the node.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

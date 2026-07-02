@@ -368,7 +368,7 @@ paths:
             $ref: "#/components/schemas/WorkspaceId"
           description: The ID of the workspace to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1801,6 +1801,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1811,6 +1813,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.workspaces
+          request:
+            nativeCasing: pascal
         delete_workspace:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}/delete"
@@ -1829,6 +1833,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1853,6 +1859,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1880,6 +1888,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1890,6 +1900,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.serviceAccounts
+          request:
+            nativeCasing: pascal
         delete_workspace_service_account:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1serviceaccounts~1{service_account_id}/delete"
@@ -1915,6 +1927,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1925,6 +1939,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.serviceAccountTokens
+          request:
+            nativeCasing: pascal
         delete_workspace_service_account_token:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1serviceaccounts~1{service_account_id}~1tokens~1{token_id}/delete"
@@ -1956,6 +1972,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1983,6 +2001,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2005,12 +2025,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.permissions
+          request:
+            nativeCasing: pascal
         update_permissions:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1permissions/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2049,6 +2073,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2058,6 +2084,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -2077,6 +2105,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.grafanaVersions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/versions/methods/list_versions"

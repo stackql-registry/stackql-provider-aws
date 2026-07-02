@@ -48,7 +48,7 @@ paths:
       description: Lists all exports that were created. The results are paginated and can be filtered by domain name.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

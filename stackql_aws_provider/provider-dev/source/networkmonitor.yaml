@@ -285,7 +285,7 @@ paths:
           $ref: '#/components/schemas/ProbeId'
         description: The ID of the probe to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

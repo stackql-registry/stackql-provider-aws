@@ -119,7 +119,7 @@ paths:
           $ref: '#/components/schemas/DocumentVersionIdType'
         description: The version ID of the document.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -872,7 +872,7 @@ paths:
           $ref: '#/components/schemas/ResourceIdType'
         description: The ID of the document.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1002,7 +1002,7 @@ paths:
           $ref: '#/components/schemas/ResourceIdType'
         description: The ID of the folder.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1178,7 +1178,7 @@ paths:
           $ref: '#/components/schemas/IdType'
         description: The ID of the user.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1661,7 +1661,7 @@ paths:
         description: Amazon WorkDocs authentication token. Not required when using Amazon Web Services administrator credentials
           to access the API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1764,7 +1764,7 @@ paths:
         description: Amazon WorkDocs authentication token. Not required when using Amazon Web Services administrator credentials
           to access the API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

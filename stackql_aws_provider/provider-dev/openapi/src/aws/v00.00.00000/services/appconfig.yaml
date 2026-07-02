@@ -554,7 +554,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The application ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -637,7 +637,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The ID of the configuration profile.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -740,7 +740,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The environment ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -813,7 +813,7 @@ paths:
             $ref: "#/components/schemas/Identifier"
           description: The name, the ID, or the Amazon Resource Name (ARN) of the extension.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -876,7 +876,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The system-generated ID for the association.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -963,7 +963,7 @@ paths:
       description: Updates the value of the DeletionProtection parameter.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1114,7 +1114,7 @@ paths:
             $ref: "#/components/schemas/DeploymentStrategyId"
           description: The deployment strategy ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2166,6 +2166,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2176,6 +2178,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}/delete"
@@ -2193,6 +2197,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2217,6 +2223,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2227,6 +2235,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_configuration_profile:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1configurationprofiles~1{configuration_profile_id}/delete"
@@ -2244,6 +2254,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2268,6 +2280,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2278,6 +2292,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_deployment_strategy:
           operation:
             $ref: "#/paths/~1deployementstrategies~1{deployment_strategy_id}/delete"
@@ -2295,6 +2311,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2319,6 +2337,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2329,6 +2349,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_environment:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1environments~1{environment_id}/delete"
@@ -2346,6 +2368,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2370,6 +2394,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2380,23 +2406,31 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_extension:
           operation:
             $ref: "#/paths/~1extensions~1{extension_identifier}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         get_extension:
           operation:
             $ref: "#/paths/~1extensions~1{extension_identifier}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_extension:
           operation:
             $ref: "#/paths/~1extensions~1{extension_identifier}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2421,6 +2455,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2431,6 +2467,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_extension_association:
           operation:
             $ref: "#/paths/~1extensionassociations~1{extension_association_id}/delete"
@@ -2448,6 +2486,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2472,6 +2512,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2482,6 +2524,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_hosted_configuration_version:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1configurationprofiles~1{configuration_profile_id}~1hostedconfigurationversions~1{version_number}/delete"
@@ -2519,6 +2563,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2540,6 +2586,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/configurations/methods/get_configuration"
@@ -2564,6 +2612,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/deployments/methods/get_deployment"
@@ -2598,6 +2648,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2606,6 +2658,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

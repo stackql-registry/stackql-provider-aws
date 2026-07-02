@@ -91,7 +91,7 @@ paths:
         the following permissions: resource-groups:DeleteGroup'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -133,7 +133,7 @@ paths:
         have the following permissions: resource-groups:GetGroup'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -161,7 +161,7 @@ paths:
         you must have the following permissions: resource-groups:GetGroupConfiguration'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -187,7 +187,7 @@ paths:
         have the following permissions: resource-groups:GetGroupQuery'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -364,7 +364,7 @@ paths:
         cloudformation:DescribeStacks cloudformation:ListStackResources tag:GetResources'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -451,7 +451,7 @@ paths:
           A NextToken response indicates that more output is available. Set this parameter to the value provided by a previous
           call's NextToken response to indicate where the output should continue from.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -478,7 +478,7 @@ paths:
         filters'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -509,7 +509,7 @@ paths:
         command, you must have the following permissions: resource-groups:PutGroupConfiguration'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -644,7 +644,7 @@ paths:
         by looking for GroupLifecycleEventsStatus to change to ACTIVE.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -669,7 +669,7 @@ paths:
         permissions To run this command, you must have the following permissions: resource-groups:UpdateGroup'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -195,7 +195,7 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: The ID of the DNS view to associate with this token.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -483,7 +483,7 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: The unique identifier of the access source to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -613,7 +613,7 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: The unique identifier of the DNS view to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -800,7 +800,7 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: The ID of the Global Resolver.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -912,7 +912,7 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: The ID of the private hosted zone association.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3732,6 +3732,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3759,6 +3761,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3769,6 +3773,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.accessSources
+          request:
+            nativeCasing: pascal
         delete_access_source:
           operation:
             $ref: "#/paths/~1access-sources~1{access_source_id}/delete"
@@ -3787,6 +3793,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3811,6 +3819,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3832,6 +3842,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3842,6 +3854,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.accessTokens
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/access_tokens/methods/get_access_token"
@@ -3863,6 +3877,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3884,6 +3900,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3894,6 +3912,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.dnsViews
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dns_views/methods/get_dns_view"
@@ -3915,6 +3935,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3937,6 +3959,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.firewallDomainLists
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/firewall_domain_lists/methods/get_firewall_domain_list"
@@ -3957,6 +3981,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3967,6 +3993,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.firewallRules
+          request:
+            nativeCasing: pascal
         delete_firewall_rule:
           operation:
             $ref: "#/paths/~1firewall-rules~1{firewall_rule_id}/delete"
@@ -3985,6 +4013,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4009,6 +4039,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4019,6 +4051,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.globalResolvers
+          request:
+            nativeCasing: pascal
         delete_global_resolver:
           operation:
             $ref: "#/paths/~1global-resolver~1{global_resolver_id}/delete"
@@ -4037,6 +4071,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4067,6 +4103,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4077,6 +4115,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.hostedZoneAssociations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/hosted_zone_associations/methods/get_hosted_zone_association"
@@ -4103,6 +4143,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.managedFirewallDomainLists
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_firewall_domain_lists/methods/get_managed_firewall_domain_list"
@@ -4121,6 +4163,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4131,12 +4175,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.domains
+          request:
+            nativeCasing: pascal
         update_firewall_domains:
           operation:
             $ref: "#/paths/~1firewall-domain-lists~1{firewall_domain_list_id}~1domains/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4158,6 +4206,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4178,6 +4228,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4187,6 +4239,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

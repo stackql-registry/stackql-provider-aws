@@ -906,7 +906,7 @@ paths:
           $ref: '#/components/schemas/BotId'
         description: The unique identifier of the bot to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1091,7 +1091,7 @@ paths:
           $ref: '#/components/schemas/GenericString'
         description: The unique identifier of the security group to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

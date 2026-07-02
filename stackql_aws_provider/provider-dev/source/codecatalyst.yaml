@@ -55,7 +55,7 @@ paths:
         associated with your Amazon Web Services Builder ID.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -177,7 +177,7 @@ paths:
           $ref: '#/components/schemas/NameString'
         description: The name of the space.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -226,7 +226,7 @@ paths:
         description: The name of the source repository. For more information about name requirements, see Quotas for source
           repositories.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -340,7 +340,7 @@ paths:
           $ref: '#/components/schemas/SourceRepositoryBranchString'
         description: The name for the branch you're creating.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -473,7 +473,7 @@ paths:
           $ref: '#/components/schemas/Uuid'
         description: The system-generated unique ID of the Dev Environment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -569,7 +569,7 @@ paths:
           $ref: '#/components/schemas/NameString'
         description: The name of the project.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -640,7 +640,7 @@ paths:
           $ref: '#/components/schemas/NameString'
         description: The name of the space.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -830,7 +830,7 @@ paths:
           $ref: '#/components/schemas/Uuid'
         description: The system-generated unique ID of the Dev Environment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -863,7 +863,7 @@ paths:
           $ref: '#/components/schemas/NameString'
         description: The name of the space.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -953,7 +953,7 @@ paths:
           $ref: '#/components/schemas/NameString'
         description: The name of the project in the space.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -998,7 +998,7 @@ paths:
           $ref: '#/components/schemas/SourceRepositoryNameString'
         description: The name of the source repository.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1025,7 +1025,7 @@ paths:
       description: Retrieves a list of spaces.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1082,7 +1082,7 @@ paths:
           than the number you specified, the response will include a NextToken element, which you can use to obtain additional
           results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1124,7 +1124,7 @@ paths:
           $ref: '#/components/schemas/Uuid'
         description: The system-generated unique ID of the workflow. To retrieve a list of workflow IDs, use ListWorkflows.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1174,7 +1174,7 @@ paths:
           than the number you specified, the response will include a NextToken element, which you can use to obtain additional
           results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1217,7 +1217,7 @@ paths:
           $ref: '#/components/schemas/Uuid'
         description: The system-generated unique ID of the Dev Environment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

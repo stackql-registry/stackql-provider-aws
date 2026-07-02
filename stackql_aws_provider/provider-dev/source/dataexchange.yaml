@@ -377,7 +377,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The unique identifier for a data set.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -619,7 +619,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The unique identifier for a data set.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -687,7 +687,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The unique identifier for the event action.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -771,7 +771,7 @@ paths:
           $ref: '#/components/schemas/Id'
         description: The unique identifier for a revision.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1044,7 +1044,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: Revision ID value for the API request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -543,7 +543,7 @@ paths:
         the billing group that's associated with the linked account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -573,7 +573,7 @@ paths:
         Amazon Web Services charges based on the associated pricing plan of a billing group.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -605,7 +605,7 @@ paths:
         a billing group, the current billing period is used.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -670,7 +670,7 @@ paths:
         provide a billing period, the current billing period is used.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -702,7 +702,7 @@ paths:
         the current billing period is used.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -766,7 +766,7 @@ paths:
       description: Describes a pricing rule that can be associated to a pricing plan, or set of pricing plans.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

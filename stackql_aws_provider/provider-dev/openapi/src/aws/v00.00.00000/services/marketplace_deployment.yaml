@@ -46,7 +46,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The Amazon Resource Name (ARN) associated with the resource you want to tag.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -295,6 +295,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -304,6 +306,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -322,6 +326,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

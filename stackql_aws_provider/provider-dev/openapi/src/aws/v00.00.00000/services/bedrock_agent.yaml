@@ -78,7 +78,7 @@ paths:
             $ref: "#/components/schemas/Version"
           description: The agent's version.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -152,7 +152,7 @@ paths:
             $ref: "#/components/schemas/Version"
           description: The version of the agent for which to return information about knowledge bases associated with it.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -225,7 +225,7 @@ paths:
       description: Lists the agents belonging to an account and information about each agent.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -310,7 +310,7 @@ paths:
             $ref: "#/components/schemas/Version"
           description: The version of the agent.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -375,7 +375,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The unique identifier of the agent.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -445,7 +445,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The unique identifier of the knowledge base for which to return a list of information.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -602,7 +602,7 @@ paths:
             $ref: "#/components/schemas/FlowIdentifier"
           description: The unique identifier of the flow that you want to create a version of.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -690,7 +690,7 @@ paths:
       description: Lists the knowledge bases in an account. The list also includesinformation about each knowledge base.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -783,7 +783,7 @@ paths:
             $ref: "#/components/schemas/PromptIdentifier"
           description: The unique identifier of the prompt that you want to create a version of.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1883,7 +1883,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The unique identifier of the knowledge base that has been associated with an agent.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2019,7 +2019,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The unique identifier of the data source that contains the documents.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2048,7 +2048,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The unique identifier of the agent.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2083,7 +2083,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The unique identifier of the data source for the list of data ingestion jobs.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2121,7 +2121,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The unique identifier of the data source you want to ingest into your knowledge base.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8406,6 +8406,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8416,6 +8418,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.agentCollaboratorSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8437,6 +8441,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8461,6 +8467,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8471,6 +8479,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.agentKnowledgeBaseSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8492,6 +8502,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8515,6 +8527,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8525,6 +8539,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.agentSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8534,6 +8550,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_agent:
           operation:
             $ref: "#/paths/~1agents~1{agent_id}~1/get"
@@ -8546,6 +8564,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8570,6 +8590,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8580,6 +8602,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.actionGroupSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8589,6 +8613,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_agent_action_group:
           operation:
             $ref: "#/paths/~1agents~1{agent_id}~1agentversions~1{agent_version}~1actiongroups~1{action_group_id}~1/get"
@@ -8601,6 +8627,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8625,6 +8653,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8646,6 +8676,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8670,6 +8702,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.agentAliasSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8690,6 +8724,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8700,6 +8736,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.dataSourceSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8721,6 +8759,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8745,6 +8785,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8755,12 +8797,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.flowSummaries
+          request:
+            nativeCasing: pascal
         delete_flow:
           operation:
             $ref: "#/paths/~1flows~1{flow_identifier}~1/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_flow:
           operation:
             $ref: "#/paths/~1flows~1{flow_identifier}~1/get"
@@ -8773,6 +8819,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8797,6 +8845,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8818,6 +8868,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8842,6 +8894,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.flowAliasSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/flow_aliases/methods/list_flow_aliases"
@@ -8859,6 +8913,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8869,12 +8925,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.flowVersionSummaries
+          request:
+            nativeCasing: pascal
         delete_flow_version:
           operation:
             $ref: "#/paths/~1flows~1{flow_identifier}~1versions~1{flow_version}~1/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_flow_version:
           operation:
             $ref: "#/paths/~1flows~1{flow_identifier}~1versions~1{flow_version}~1/get"
@@ -8901,6 +8961,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8911,6 +8973,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.knowledgeBaseSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8932,6 +8996,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8956,6 +9022,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8966,24 +9034,32 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.promptSummaries
+          request:
+            nativeCasing: pascal
         delete_prompt:
           operation:
             $ref: "#/paths/~1prompts~1{prompt_identifier}~1/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_prompt:
           operation:
             $ref: "#/paths/~1prompts~1{prompt_identifier}~1/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_prompt:
           operation:
             $ref: "#/paths/~1prompts~1{prompt_identifier}~1/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9008,6 +9084,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9028,6 +9106,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_agent_version:
           operation:
             $ref: "#/paths/~1agents~1{agent_id}~1agentversions~1{agent_version}~1/get"
@@ -9041,6 +9121,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.agentVersionSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9063,6 +9145,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9072,6 +9156,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9082,6 +9168,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.documentDetails
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9111,6 +9199,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ingestionJobSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9149,6 +9239,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9158,6 +9250,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

@@ -682,7 +682,7 @@ paths:
             $ref: "#/components/schemas/GuardrailIdentifier"
           description: The unique identifier of the guardrail. This can be an ID or the ARN.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2013,7 +2013,7 @@ paths:
             $ref: "#/components/schemas/ProvisionedModelId"
           description: The Amazon Resource Name (ARN) or name of the Provisioned Throughput to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2993,7 +2993,7 @@ paths:
             $ref: "#/components/schemas/AutomatedReasoningPolicyBuildWorkflowId"
           description: The build workflow identifier. The build workflow must show a COMPLETED status before running tests.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -10483,6 +10483,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10493,6 +10495,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobSummaries
+          request:
+            nativeCasing: pascal
         get_advanced_prompt_optimization_job:
           operation:
             $ref: "#/paths/~1advanced-prompt-optimization-jobs~1{job_identifier}/get"
@@ -10518,6 +10522,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10528,12 +10534,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.automatedReasoningPolicySummaries
+          request:
+            nativeCasing: pascal
         delete_automated_reasoning_policy:
           operation:
             $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_automated_reasoning_policy:
           operation:
             $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}/get"
@@ -10546,6 +10556,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10570,6 +10582,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10580,12 +10594,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.testCases
+          request:
+            nativeCasing: pascal
         delete_automated_reasoning_policy_test_case:
           operation:
             $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1test-cases~1{test_case_id}/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_automated_reasoning_policy_test_case:
           operation:
             $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1test-cases~1{test_case_id}/get"
@@ -10598,6 +10616,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10622,6 +10642,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10642,6 +10664,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10664,6 +10688,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.modelSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/custom_models/methods/get_custom_model"
@@ -10684,6 +10710,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10694,6 +10722,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.modelDeploymentSummaries
+          request:
+            nativeCasing: pascal
         delete_custom_model_deployment:
           operation:
             $ref: "#/paths/~1model-customization~1custom-model-deployments~1{custom_model_deployment_identifier}/delete"
@@ -10712,6 +10742,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10736,6 +10768,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10746,6 +10780,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobSummaries
+          request:
+            nativeCasing: pascal
         get_evaluation_job:
           operation:
             $ref: "#/paths/~1evaluation-jobs~1{job_identifier}/get"
@@ -10771,6 +10807,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10780,6 +10818,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10801,6 +10841,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10811,24 +10853,32 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.guardrails
+          request:
+            nativeCasing: pascal
         delete_guardrail:
           operation:
             $ref: "#/paths/~1guardrails~1{guardrail_identifier}/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_guardrail:
           operation:
             $ref: "#/paths/~1guardrails~1{guardrail_identifier}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_guardrail:
           operation:
             $ref: "#/paths/~1guardrails~1{guardrail_identifier}/put"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10853,6 +10903,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10873,6 +10925,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10883,6 +10937,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.inferenceProfileSummaries
+          request:
+            nativeCasing: pascal
         delete_inference_profile:
           operation:
             $ref: "#/paths/~1inference-profiles~1{inference_profile_identifier}/delete"
@@ -10915,6 +10971,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10925,6 +10983,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.marketplaceModelEndpoints
+          request:
+            nativeCasing: pascal
         delete_marketplace_model_endpoint:
           operation:
             $ref: "#/paths/~1marketplace-model~1endpoints~1{endpoint_arn}/delete"
@@ -10943,6 +11003,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10958,6 +11020,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10983,6 +11047,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10993,6 +11059,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.modelCopyJobSummaries
+          request:
+            nativeCasing: pascal
         get_model_copy_job:
           operation:
             $ref: "#/paths/~1model-copy-jobs~1{job_arn}/get"
@@ -11018,6 +11086,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11028,6 +11098,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.modelCustomizationJobSummaries
+          request:
+            nativeCasing: pascal
         get_model_customization_job:
           operation:
             $ref: "#/paths/~1model-customization-jobs~1{job_identifier}/get"
@@ -11053,6 +11125,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11063,6 +11137,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.modelImportJobSummaries
+          request:
+            nativeCasing: pascal
         get_model_import_job:
           operation:
             $ref: "#/paths/~1model-import-jobs~1{job_identifier}/get"
@@ -11088,6 +11164,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11104,6 +11182,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.invocationJobSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/model_invocation_jobs/methods/get_model_invocation_job"
@@ -11123,6 +11203,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11133,6 +11215,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.promptRouterSummaries
+          request:
+            nativeCasing: pascal
         delete_prompt_router:
           operation:
             $ref: "#/paths/~1prompt-routers~1{prompt_router_arn}/delete"
@@ -11165,6 +11249,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11186,6 +11272,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11196,6 +11284,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.provisionedModelSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/provisioned_model_throughputs/methods/get_provisioned_model_throughput"
@@ -11217,6 +11307,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_automated_reasoning_policy_build_workflow:
           operation:
             $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1build-workflows~1{build_workflow_id}/get"
@@ -11230,6 +11322,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.automatedReasoningPolicyBuildWorkflowSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policy_build_workflows/methods/get_automated_reasoning_policy_build_workflow"
@@ -11255,6 +11349,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11290,6 +11386,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.modelSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/imported_models/methods/get_imported_model"
@@ -11321,6 +11419,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11356,6 +11456,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11385,6 +11487,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11406,6 +11510,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policy_build_workflow_result_assets/methods/get_automated_reasoning_policy_build_workflow_result_assets"
@@ -11447,6 +11553,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.testResults
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policy_test_results/methods/get_automated_reasoning_policy_test_result"
@@ -11471,6 +11579,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/foundation_models/methods/get_foundation_model"
@@ -11512,6 +11622,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11535,6 +11647,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.guardrailsConfig
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/enforced_guardrails_configurations/methods/list_enforced_guardrails_configuration"
@@ -11552,6 +11666,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/foundation_model_agreement_offers/methods/list_foundation_model_agreement_offers"
@@ -11569,6 +11685,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11589,6 +11707,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11598,6 +11718,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

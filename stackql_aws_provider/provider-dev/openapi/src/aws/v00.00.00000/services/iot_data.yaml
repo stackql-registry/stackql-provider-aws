@@ -255,7 +255,7 @@ paths:
             $ref: "#/components/schemas/MessageExpiry"
           description: A user-defined integer value that represents the message expiry interval in seconds. If absent, the message doesn't expire. For more information about the limits of messageExpiry, see Amazon Web Services IoT Core message broker and protocol limits and quotas from the Amazon Web Services Reference Guide.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -477,6 +477,8 @@ components:
             $ref: "#/paths/~1connections~1{client_id}/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -494,18 +496,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_thing_shadow:
           operation:
             $ref: "#/paths/~1things~1{thing_name}~1shadow/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_thing_shadow:
           operation:
             $ref: "#/paths/~1things~1{thing_name}~1shadow/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -535,6 +543,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.retainedTopics
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/retained_messages/methods/get_retained_message"
@@ -553,6 +563,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/named_shadows_for_things/methods/list_named_shadows_for_thing"

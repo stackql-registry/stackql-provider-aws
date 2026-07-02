@@ -79,7 +79,7 @@ paths:
             $ref: "#/components/schemas/UuidString"
           description: The unique identifier of the workflow run to create the session in.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -140,7 +140,7 @@ paths:
             $ref: "#/components/schemas/NextToken"
           description: The token for retrieving the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -214,7 +214,7 @@ paths:
             $ref: "#/components/schemas/NextToken"
           description: The token for retrieving the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -340,7 +340,7 @@ paths:
             $ref: "#/components/schemas/NextToken"
           description: The token for retrieving the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -474,7 +474,7 @@ paths:
             $ref: "#/components/schemas/NextToken"
           description: The token for retrieving the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1229,6 +1229,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1239,6 +1241,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.actSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1248,6 +1252,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1270,6 +1276,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1280,6 +1288,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.sessionSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1301,6 +1311,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1311,6 +1323,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.workflowDefinitionSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1346,6 +1360,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1356,6 +1372,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.workflowRunSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1377,6 +1395,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1401,6 +1421,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/models/methods/list_models"

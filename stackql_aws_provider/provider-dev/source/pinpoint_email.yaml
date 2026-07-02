@@ -905,7 +905,7 @@ paths:
       description: Enable or disable the automatic warm-up feature for dedicated IP addresses.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -929,7 +929,7 @@ paths:
       description: Enable or disable the ability of your account to send email.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -960,7 +960,7 @@ paths:
           $ref: '#/components/schemas/ConfigurationSetName'
         description: The name of the configuration set that you want to associate with a dedicated IP pool.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -993,7 +993,7 @@ paths:
           $ref: '#/components/schemas/ConfigurationSetName'
         description: The name of the configuration set that you want to enable or disable reputation metric tracking for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1024,7 +1024,7 @@ paths:
           $ref: '#/components/schemas/ConfigurationSetName'
         description: The name of the configuration set that you want to enable or disable email sending for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1055,7 +1055,7 @@ paths:
           $ref: '#/components/schemas/ConfigurationSetName'
         description: The name of the configuration set that you want to add a custom tracking domain to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1151,7 +1151,7 @@ paths:
           $ref: '#/components/schemas/Identity'
         description: The email identity that you want to change the DKIM settings for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1188,7 +1188,7 @@ paths:
           $ref: '#/components/schemas/Identity'
         description: The email identity that you want to configure bounce and complaint feedback forwarding for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1218,7 +1218,7 @@ paths:
           $ref: '#/components/schemas/Identity'
         description: The verified email identity that you want to set up the custom MAIL FROM domain for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

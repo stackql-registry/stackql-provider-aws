@@ -802,7 +802,7 @@ paths:
           $ref: '#/components/schemas/ConfiguredAudienceModelArn'
         description: The Amazon Resource Name (ARN) of the configured audience model that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

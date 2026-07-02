@@ -134,7 +134,7 @@ paths:
         IAM permission.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -191,7 +191,7 @@ paths:
         how to use the primary contact operations, see Update the primary contact for your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -217,7 +217,7 @@ paths:
         IAM permission.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -296,7 +296,7 @@ paths:
         be filtered by the region-opt-status-contains parameter.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -141,7 +141,7 @@ paths:
             $ref: "#/components/schemas/DirectoryRegistrationArn"
           description: The Amazon Resource Name (ARN) that was returned when you called CreateDirectoryRegistration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -422,7 +422,7 @@ paths:
             $ref: "#/components/schemas/TemplateArn"
           description: The Amazon Resource Name (ARN) that was returned when you called CreateTemplate.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -495,7 +495,7 @@ paths:
             $ref: "#/components/schemas/TemplateArn"
           description: The Amazon Resource Name (ARN) that was returned when you called CreateTemplate.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1950,6 +1950,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1960,6 +1962,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Connectors
+          request:
+            nativeCasing: pascal
         delete_connector:
           operation:
             $ref: "#/paths/~1connectors~1{connector_arn}/delete"
@@ -1991,6 +1995,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2001,6 +2007,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DirectoryRegistrations
+          request:
+            nativeCasing: pascal
         delete_directory_registration:
           operation:
             $ref: "#/paths/~1directoryRegistrations~1{directory_registration_arn}/delete"
@@ -2031,6 +2039,8 @@ components:
             $ref: "#/paths/~1directoryRegistrations~1{directory_registration_arn}~1servicePrincipalNames~1{connector_arn}/post"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2052,6 +2062,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ServicePrincipalNames
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/service_principal_names/methods/get_service_principal_name"
@@ -2072,6 +2084,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2082,6 +2096,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Templates
+          request:
+            nativeCasing: pascal
         delete_template:
           operation:
             $ref: "#/paths/~1templates~1{template_arn}/delete"
@@ -2098,6 +2114,8 @@ components:
             $ref: "#/paths/~1templates~1{template_arn}/patch"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2121,6 +2139,8 @@ components:
             $ref: "#/paths/~1templates~1{template_arn}~1accessControlEntries/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2131,6 +2151,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AccessControlEntries
+          request:
+            nativeCasing: pascal
         delete_template_group_access_control_entry:
           operation:
             $ref: "#/paths/~1templates~1{template_arn}~1accessControlEntries~1{group_security_identifier}/delete"
@@ -2147,6 +2169,8 @@ components:
             $ref: "#/paths/~1templates~1{template_arn}~1accessControlEntries~1{group_security_identifier}/patch"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2187,6 +2211,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2195,6 +2221,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

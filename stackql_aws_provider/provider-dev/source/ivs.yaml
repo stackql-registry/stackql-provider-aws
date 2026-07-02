@@ -130,7 +130,7 @@ paths:
       description: Creates a new channel and an associated stream key to start streaming.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -176,7 +176,7 @@ paths:
       description: Creates a new playback restriction policy, for constraining playback by countries and/or origins.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -702,7 +702,7 @@ paths:
         is processed.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -731,7 +731,7 @@ paths:
         are mutually exclusive and cannot be used together. If you try to use both filters, you will get an error (409 ConflictException).
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -767,7 +767,7 @@ paths:
         in the Amazon IVS User Guide.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -794,7 +794,7 @@ paths:
       description: Gets summary information about playback restriction policies.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -821,7 +821,7 @@ paths:
         region where the API request is processed.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -911,7 +911,7 @@ paths:
         API request is processed.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -1309,7 +1309,7 @@ paths:
       description: Returns the list of component build versions for the specified component version Amazon Resource Name (ARN).
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1343,7 +1343,7 @@ paths:
         in any node, all nodes to the right of the first wildcard must also be wildcards.'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1376,7 +1376,7 @@ paths:
       description: Returns a list of container recipes.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1407,7 +1407,7 @@ paths:
       description: Returns a list of distribution configurations.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1436,7 +1436,7 @@ paths:
       description: Returns a list of image build versions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1532,7 +1532,7 @@ paths:
       description: Returns a list of image pipelines.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1561,7 +1561,7 @@ paths:
       description: Returns a list of image recipes.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1596,7 +1596,7 @@ paths:
         request: accountId imageBuildVersionArn imagePipelineArn vulnerabilityId'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1623,7 +1623,7 @@ paths:
       description: Returns a list of image scan findings for your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1653,7 +1653,7 @@ paths:
         appear in the ListImages API Results.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1688,7 +1688,7 @@ paths:
       description: Returns a list of infrastructure configurations.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1781,7 +1781,7 @@ paths:
       description: Get a list of lifecycle policies in your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1888,7 +1888,7 @@ paths:
       description: Get a list of workflow steps that are waiting for action for workflows in your Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1915,7 +1915,7 @@ paths:
       description: Returns a list of build versions for a specific workflow resource.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2006,7 +2006,7 @@ paths:
       description: Lists workflow build versions based on filtering parameters.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

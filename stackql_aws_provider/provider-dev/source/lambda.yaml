@@ -871,7 +871,7 @@ paths:
           $ref: '#/components/schemas/FunctionUrlQualifier'
         description: The alias name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -965,7 +965,7 @@ paths:
           $ref: '#/components/schemas/Alias'
         description: The name of the alias.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1043,7 +1043,7 @@ paths:
           $ref: '#/components/schemas/CapacityProviderName'
         description: The name of the capacity provider to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1115,7 +1115,7 @@ paths:
           $ref: '#/components/schemas/CodeSigningConfigArn'
         description: The The Amazon Resource Name (ARN) of the code signing configuration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1204,7 +1204,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The identifier of the event source mapping.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1552,7 +1552,7 @@ paths:
           $ref: '#/components/schemas/NumericLatestPublishedOrAliasQualifier'
         description: A version number or alias name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1596,7 +1596,7 @@ paths:
           $ref: '#/components/schemas/NumericLatestPublishedOrAliasQualifier'
         description: A version number or alias name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1975,7 +1975,7 @@ paths:
           Partial ARN – 123456789012:function:my-function. The length constraint applies only to the full ARN. If you specify
           only the function name, it is limited to 64 characters in length.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2137,7 +2137,7 @@ paths:
           $ref: '#/components/schemas/PublishedFunctionQualifier'
         description: Specify a version or alias to set the scaling configuration for a published version of the function.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2331,7 +2331,7 @@ paths:
           $ref: '#/components/schemas/TenantId'
         description: The identifier of the tenant in a multi-tenant Lambda function.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2438,7 +2438,7 @@ paths:
           $ref: '#/components/schemas/TenantId'
         description: The identifier of the tenant in a multi-tenant Lambda function.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2965,7 +2965,7 @@ paths:
           Partial ARN - 123456789012:function:MyFunction. The length constraint applies only to the full ARN. If you specify
           only the function name, it is limited to 64 characters in length.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3080,7 +3080,7 @@ paths:
           $ref: '#/components/schemas/CallbackId'
         description: The unique identifier for the callback operation.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3133,7 +3133,7 @@ paths:
           $ref: '#/components/schemas/CallbackId'
         description: The unique identifier for the callback operation.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3164,7 +3164,7 @@ paths:
           $ref: '#/components/schemas/DurableExecutionArn'
         description: The Amazon Resource Name (ARN) of the durable execution.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3205,7 +3205,7 @@ paths:
           Partial ARN – 123456789012:function:my-function. The length constraint applies only to the full ARN. If you specify
           only the function name, it is limited to 64 characters in length.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

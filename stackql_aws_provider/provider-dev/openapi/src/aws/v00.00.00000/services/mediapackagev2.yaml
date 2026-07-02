@@ -451,7 +451,7 @@ paths:
             $ref: "#/components/schemas/EntityTag"
           description: The expected current Entity Tag (ETag) for the resource. If the specified ETag does not match the resource's current entity tag, the update request will be rejected.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -522,7 +522,7 @@ paths:
             $ref: "#/components/schemas/EntityTag"
           description: The expected current Entity Tag (ETag) for the resource. If the specified ETag does not match the resource's current entity tag, the update request will be rejected.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3216,6 +3216,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3226,6 +3228,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/harvest_jobs/methods/get_harvest_job"
@@ -3245,6 +3249,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3255,6 +3261,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_channel:
           operation:
             $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1/delete"
@@ -3273,6 +3281,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3297,6 +3307,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3307,6 +3319,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_channel_group:
           operation:
             $ref: "#/paths/~1channelGroup~1{channel_group_name}/delete"
@@ -3325,6 +3339,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3349,6 +3365,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3359,6 +3377,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_origin_endpoint:
           operation:
             $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1originEndpoint~1{origin_endpoint_name}/delete"
@@ -3377,6 +3397,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3413,6 +3435,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3448,6 +3472,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3487,6 +3513,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3495,6 +3523,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

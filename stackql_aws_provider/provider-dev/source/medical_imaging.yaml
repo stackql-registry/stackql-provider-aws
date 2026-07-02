@@ -526,7 +526,7 @@ paths:
         description: The token used for pagination of results returned in the response. Use the token returned from the previous
           request to continue results where the previous request ended.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -47,7 +47,7 @@ paths:
       description: Adds a thing to a billing group. Requires permission to access the AddThingToBillingGroup action.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -77,7 +77,7 @@ paths:
       description: Adds a thing to a thing group. Requires permission to access the AddThingToThingGroup action.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -638,7 +638,7 @@ paths:
           will cause a device which is executing the job to be unable to update the job execution status. Use caution and
           ensure that each device executing a job which is canceled is able to recover to a valid state.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -687,7 +687,7 @@ paths:
           is false. Canceling a job execution which is "IN_PROGRESS", will cause the device to be unable to update the job
           execution status. Use caution and ensure that the device is able to recover to a valid state.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -915,7 +915,7 @@ paths:
           $ref: '#/components/schemas/AuthorizerName'
         description: The authorizer name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -955,7 +955,7 @@ paths:
           $ref: '#/components/schemas/BillingGroupName'
         description: The name you wish to give to the billing group.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1237,7 +1237,7 @@ paths:
           $ref: '#/components/schemas/CertificateProviderName'
         description: The name of the certificate provider.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1271,7 +1271,7 @@ paths:
         description: A unique identifier for the command. We recommend using UUID. Alpha-numeric characters, hyphens, and
           underscores are valid for use here.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1356,7 +1356,7 @@ paths:
           $ref: '#/components/schemas/CommandId'
         description: The unique identifier of the command to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1624,7 +1624,7 @@ paths:
           $ref: '#/components/schemas/DomainConfigurationName'
         description: The name of the domain configuration. This value must be unique to a region.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1716,7 +1716,7 @@ paths:
           $ref: '#/components/schemas/ReservedDomainConfigurationName'
         description: The name of the domain configuration to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2142,7 +2142,7 @@ paths:
           format. $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/ The namespaceId feature is only supported
           by IoT Greengrass at this time. For more information, see Setting up IoT Greengrass core devices.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2377,7 +2377,7 @@ paths:
         description: The friendly name for the mitigation action. You cannot change the name by using UpdateMitigationAction.
           Instead, you must delete and recreate the mitigation action with the new name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2528,7 +2528,7 @@ paths:
         description: A unique case-sensitive identifier that you can provide to ensure the idempotency of the request. Don't
           reuse this client token if a new idempotent request is required.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2615,7 +2615,7 @@ paths:
         description: A unique case-sensitive identifier that you can provide to ensure the idempotency of the request. Don't
           reuse this client token if a new idempotent request is required.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2663,7 +2663,7 @@ paths:
         description: A unique case-sensitive identifier that you can provide to ensure the idempotency of the request. Don't
           reuse this client token if a new idempotent request is required.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2775,7 +2775,7 @@ paths:
         description: A unique case-sensitive identifier that you can provide to ensure the idempotency of the request. Don't
           reuse this client token if a new idempotent request is required.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3202,7 +3202,7 @@ paths:
           $ref: '#/components/schemas/RoleAlias'
         description: The role alias to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3316,7 +3316,7 @@ paths:
           $ref: '#/components/schemas/ScheduledAuditName'
         description: The name of the scheduled audit. (Max. 128 chars)
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3352,7 +3352,7 @@ paths:
           $ref: '#/components/schemas/SecurityProfileName'
         description: The name you are giving to the security profile.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3448,7 +3448,7 @@ paths:
         description: The expected version of the security profile. A new version is generated whenever the security profile
           is updated. If you specify a value that is different from the actual version, a VersionConflictException is thrown.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3577,7 +3577,7 @@ paths:
           $ref: '#/components/schemas/StreamId'
         description: The stream ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3615,7 +3615,7 @@ paths:
         description: The name of the thing to create. You can't change a thing's name after you create it. To change a thing's
           name, you must create a new thing, give it the new name, and then delete the old thing.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3697,7 +3697,7 @@ paths:
         description: The name of the thing to update. You can't change a thing's name. To change a thing's name, you must
           create a new thing, give it the new name, and then delete the old thing.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3735,7 +3735,7 @@ paths:
           $ref: '#/components/schemas/ThingGroupName'
         description: The thing group name to create.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3850,7 +3850,7 @@ paths:
           $ref: '#/components/schemas/ThingTypeName'
         description: The name of the thing type.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3924,7 +3924,7 @@ paths:
           $ref: '#/components/schemas/ThingTypeName'
         description: The name of a thing type.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4175,7 +4175,7 @@ paths:
         action.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4291,7 +4291,7 @@ paths:
           $ref: '#/components/schemas/AutoRegistrationStatus'
         description: 'The new value for the auto registration status. Valid values are: "ENABLE" or "DISABLE".'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4624,7 +4624,7 @@ paths:
           $ref: '#/components/schemas/TemplateName'
         description: The name of the provisioning template.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4875,7 +4875,7 @@ paths:
           $ref: '#/components/schemas/ThingTypeName'
         description: The name of the thing type to deprecate.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5192,7 +5192,7 @@ paths:
       description: Updates the event configurations. Requires permission to access the UpdateEventConfigurations action.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5467,7 +5467,7 @@ paths:
           $ref: '#/components/schemas/ThingName'
         description: The thing name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5507,7 +5507,7 @@ paths:
       description: Updates the search configuration. Requires permission to access the UpdateIndexingConfiguration action.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5622,7 +5622,7 @@ paths:
         description: A unique case-sensitive identifier that you can provide to ensure the idempotency of the request. Don't
           reuse this client token if a new idempotent request is required.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5763,7 +5763,7 @@ paths:
         action.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5891,7 +5891,7 @@ paths:
         period. (Findings are retained for 90 days.) Requires permission to access the ListAuditFindings action.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -6037,7 +6037,7 @@ paths:
       description: Lists your Device Defender audit listings. Requires permission to access the ListAuditSuppressions action.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -6357,7 +6357,7 @@ paths:
         description: To retrieve the next set of results, the nextToken value from a previous response; otherwise null to
           receive the first set of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8435,7 +8435,7 @@ paths:
           $ref: '#/components/schemas/CertificateId'
         description: The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8456,7 +8456,7 @@ paths:
         action. This call is asynchronous. It might take several seconds for the detachment to propagate.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8488,7 +8488,7 @@ paths:
         Requires permission to access the RemoveThingFromThingGroup action.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8623,7 +8623,7 @@ paths:
           $ref: '#/components/schemas/AuthorizerName'
         description: The custom authorizer name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8681,7 +8681,7 @@ paths:
           $ref: '#/components/schemas/AwsAccountId'
         description: The Amazon Web Services account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8770,7 +8770,7 @@ paths:
         action.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

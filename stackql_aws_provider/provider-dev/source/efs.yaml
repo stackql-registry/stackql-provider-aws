@@ -527,7 +527,7 @@ paths:
           $ref: '#/components/schemas/FileSystemId'
         description: The ID of the file system that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -690,7 +690,7 @@ paths:
         the request, in the current Amazon Web Services Region.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -908,7 +908,7 @@ paths:
           $ref: '#/components/schemas/MountTargetId'
         description: The ID of the mount target whose security groups you want to modify.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1103,7 +1103,7 @@ paths:
           $ref: '#/components/schemas/FileSystemId'
         description: The ID of the file system to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

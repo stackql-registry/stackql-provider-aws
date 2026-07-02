@@ -432,7 +432,7 @@ paths:
       description: Creates a new device profile.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -668,7 +668,7 @@ paths:
       description: Creates a new service profile.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1032,7 +1032,7 @@ paths:
             $ref: "#/components/schemas/DestinationName"
           description: The new name of the resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1131,7 +1131,7 @@ paths:
           schema:
             $ref: "#/components/schemas/FuotaTaskId"
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1156,7 +1156,7 @@ paths:
           schema:
             $ref: "#/components/schemas/FuotaTaskId"
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1230,7 +1230,7 @@ paths:
           schema:
             $ref: "#/components/schemas/MulticastGroupId"
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1292,7 +1292,7 @@ paths:
           schema:
             $ref: "#/components/schemas/NetworkAnalyzerConfigurationName"
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1483,7 +1483,7 @@ paths:
             $ref: "#/components/schemas/WirelessDeviceId"
           description: The ID of the resource to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1600,7 +1600,7 @@ paths:
             $ref: "#/components/schemas/WirelessGatewayId"
           description: The ID of the resource to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1846,7 +1846,7 @@ paths:
       description: Update the event configuration based on resource types.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1897,7 +1897,7 @@ paths:
       description: Set default log level, or log levels by resource types. This can be for wireless device, wireless gateway, or FUOTA task log options, and is used to control the log messages that'll be displayed in CloudWatch.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1935,7 +1935,7 @@ paths:
       description: Update the summary metric configuration.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1956,7 +1956,7 @@ paths:
       description: Get the summary metrics for this AWS account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2070,7 +2070,7 @@ paths:
             $ref: "#/components/schemas/PositionResourceType"
           description: Resource type of the resource for which you want to update the position configuration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2093,7 +2093,7 @@ paths:
       description: Get estimated position information as a payload in GeoJSON format. The payload measurement data is resolved using solvers that are provided by third-party vendors.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2171,7 +2171,7 @@ paths:
             $ref: "#/components/schemas/EventNotificationPartnerType"
           description: Partner type of the resource if the identifier type is PartnerAccountId
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2313,7 +2313,7 @@ paths:
             $ref: "#/components/schemas/PositionResourceType"
           description: The type of resource for which position information is updated, which can be a wireless device or a wireless gateway.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2734,7 +2734,7 @@ paths:
           schema:
             $ref: "#/components/schemas/MulticastGroupId"
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2761,7 +2761,7 @@ paths:
           schema:
             $ref: "#/components/schemas/MulticastGroupId"
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -7094,6 +7094,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7114,18 +7116,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_partner_account:
           operation:
             $ref: "#/paths/~1partner-accounts~1{partner_account_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_partner_account:
           operation:
             $ref: "#/paths/~1partner-accounts~1{partner_account_id}/patch"
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7148,6 +7156,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7168,6 +7178,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7188,6 +7200,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7208,6 +7222,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7245,6 +7261,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7299,6 +7317,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7353,6 +7373,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7362,6 +7384,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_destination:
           operation:
             $ref: "#/paths/~1destinations~1{name}/delete"
@@ -7380,6 +7404,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7404,6 +7430,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7413,6 +7441,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_device_profile:
           operation:
             $ref: "#/paths/~1device-profiles~1{id}/delete"
@@ -7445,6 +7475,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7454,6 +7486,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_fuota_task:
           operation:
             $ref: "#/paths/~1fuota-tasks~1{id}/delete"
@@ -7472,6 +7506,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7496,6 +7532,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7505,6 +7543,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_multicast_group:
           operation:
             $ref: "#/paths/~1multicast-groups~1{id}/delete"
@@ -7523,6 +7563,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7547,6 +7589,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7556,6 +7600,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_network_analyzer_configuration:
           operation:
             $ref: "#/paths/~1network-analyzer-configurations~1{configuration_name}/delete"
@@ -7574,6 +7620,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7598,6 +7646,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7607,6 +7657,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_service_profile:
           operation:
             $ref: "#/paths/~1service-profiles~1{id}/delete"
@@ -7639,6 +7691,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7648,6 +7702,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_wireless_device:
           operation:
             $ref: "#/paths/~1wireless-devices~1{id}/delete"
@@ -7660,6 +7716,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7669,12 +7727,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_wireless_device:
           operation:
             $ref: "#/paths/~1wireless-devices~1{identifier}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/get_wireless_device"
@@ -7697,6 +7759,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7706,6 +7770,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_wireless_gateway:
           operation:
             $ref: "#/paths/~1wireless-gateways~1{id}/delete"
@@ -7718,6 +7784,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7727,6 +7795,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/wireless_gateways/methods/get_wireless_gateway"
@@ -7748,6 +7818,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7782,6 +7854,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7791,6 +7865,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_wireless_gateway_task_definition:
           operation:
             $ref: "#/paths/~1wireless-gateway-task-definitions~1{id}/delete"
@@ -7823,12 +7899,16 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_queued_messages:
           operation:
             $ref: "#/paths/~1wireless-devices~1{id}~1data/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/queued_messages/methods/list_queued_messages"
@@ -7859,6 +7939,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7868,6 +7950,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/wireless_device_import_tasks/methods/get_wireless_device_import_task"
@@ -7888,6 +7972,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -7962,6 +8048,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7989,6 +8077,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8016,6 +8106,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8037,6 +8129,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8057,12 +8151,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_position:
           operation:
             $ref: "#/paths/~1positions~1{resource_identifier}/patch"
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8084,12 +8182,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_position_configuration:
           operation:
             $ref: "#/paths/~1position-configurations~1{resource_identifier}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8099,6 +8201,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/position_configurations/methods/get_position_configuration"
@@ -8119,6 +8223,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8139,12 +8245,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_resource_event_configuration:
           operation:
             $ref: "#/paths/~1event-configurations~1{identifier}/patch"
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8166,12 +8276,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_resource_log_level:
           operation:
             $ref: "#/paths/~1log-levels~1{resource_identifier}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8194,12 +8308,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_resource_position:
           operation:
             $ref: "#/paths/~1resource-positions~1{resource_identifier}/patch"
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8221,6 +8339,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/service_endpoints/methods/get_service_endpoint"
@@ -8289,6 +8409,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/devices_for_wireless_device_import_tasks/methods/list_devices_for_wireless_device_import_task"
@@ -8306,6 +8428,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/event_configurations/methods/list_event_configurations"
@@ -8323,6 +8447,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/multicast_groups_by_fuota_tasks/methods/list_multicast_groups_by_fuota_task"
@@ -8340,6 +8466,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -8357,6 +8485,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8366,6 +8496,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

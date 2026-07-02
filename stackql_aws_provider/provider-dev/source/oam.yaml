@@ -271,7 +271,7 @@ paths:
         monitoring account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -298,7 +298,7 @@ paths:
       description: Use this operation in a monitoring account to return the list of sinks created in that account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

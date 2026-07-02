@@ -248,7 +248,7 @@ paths:
           uses this information to assemble the archive in the proper sequence. The format of this header follows RFC 2616.
           An example header is Content-Range:bytes 0-4194303/*.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -367,7 +367,7 @@ paths:
           $ref: '#/components/schemas/string'
         description: The name of the vault.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -409,7 +409,7 @@ paths:
           $ref: '#/components/schemas/string'
         description: The name of the vault.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -700,7 +700,7 @@ paths:
           $ref: '#/components/schemas/string'
         description: The name of the vault.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -816,7 +816,7 @@ paths:
           $ref: '#/components/schemas/string'
         description: The name of the vault.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -917,7 +917,7 @@ paths:
           in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If
           you specify your account ID, do not include any hyphens ('-') in the ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1029,7 +1029,7 @@ paths:
           $ref: '#/components/schemas/string'
         description: The name of the vault.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1386,7 +1386,7 @@ paths:
           $ref: '#/components/schemas/string'
         description: The name of the vault.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1449,7 +1449,7 @@ paths:
           $ref: '#/components/schemas/string'
         description: The SHA256 tree hash of the data being uploaded.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

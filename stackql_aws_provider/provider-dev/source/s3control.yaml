@@ -35,7 +35,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -87,7 +87,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -118,32 +118,6 @@ paths:
       x-stackql-method: create_access_grant
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateAccessGrantOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"created_at\": {{ $v := index . \"CreatedAt\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grant_id\": {{ $v := index . \"AccessGrantId\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grant_arn\": {{ $v := index . \"AccessGrantArn\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"grantee\": {{ $v := index . \"Grantee\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"access_grants_location_id\"\
-        : {{ $v := index . \"AccessGrantsLocationId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grants_location_configuration\"\
-        : {{ $v := index . \"AccessGrantsLocationConfiguration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"permission\": {{ $v := index . \"Permission\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"application_arn\": {{ $v := index . \"ApplicationArn\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"grant_scope\": {{ $v := index . \"GrantScope\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{\
-        \ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accessgrantsinstance:
     post:
@@ -161,9 +135,9 @@ paths:
           $ref: '#/components/schemas/AccountId'
         description: The Amazon Web Services account ID of the S3 Access Grants instance.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -182,26 +156,6 @@ paths:
       x-stackql-method: create_access_grants_instance
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateAccessGrantsInstanceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"created_at\": {{ $v := index . \"CreatedAt\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grants_instance_id\": {{ $v := index . \"AccessGrantsInstanceId\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grants_instance_arn\": {{ $v := index . \"AccessGrantsInstanceArn\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"identity_center_arn\": {{ $v := index . \"IdentityCenterArn\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"identity_center_instance_arn\": {{ $v := index . \"IdentityCenterInstanceArn\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"identity_center_application_arn\": {{ $v := index . \"\
-        IdentityCenterApplicationArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     delete:
       operationId: DeleteAccessGrantsInstance
@@ -247,26 +201,6 @@ paths:
       x-stackql-method: get_access_grants_instance
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessGrantsInstanceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"access_grants_instance_arn\": {{ $v\
-        \ := index . \"AccessGrantsInstanceArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grants_instance_id\"\
-        : {{ $v := index . \"AccessGrantsInstanceId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"identity_center_arn\"\
-        : {{ $v := index . \"IdentityCenterArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"identity_center_instance_arn\"\
-        : {{ $v := index . \"IdentityCenterInstanceArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"identity_center_application_arn\"\
-        : {{ $v := index . \"IdentityCenterApplicationArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"created_at\"\
-        : {{ $v := index . \"CreatedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accessgrantsinstance/location:
     post:
@@ -289,7 +223,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -313,23 +247,6 @@ paths:
       x-stackql-method: create_access_grants_location
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateAccessGrantsLocationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"created_at\": {{ $v := index . \"CreatedAt\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grants_location_id\": {{ $v := index . \"AccessGrantsLocationId\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grants_location_arn\": {{ $v := index . \"AccessGrantsLocationArn\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"location_scope\": {{ $v := index . \"LocationScope\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"iam_role_arn\": {{ $v := index . \"IAMRoleArn\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{\
-        \ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accesspoint/{name}:
     put:
@@ -363,7 +280,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -390,14 +307,6 @@ paths:
       x-stackql-method: create_access_point
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateAccessPointOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"access_point_arn\": {{ $v := index\
-        \ . \"AccessPointArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"alias\": {{ $v := index . \"Alias\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     delete:
       operationId: DeleteAccessPoint
@@ -469,39 +378,6 @@ paths:
       x-stackql-method: get_access_point
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessPointOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"name\": {{ $v := index . \"Name\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket\": {{ $v := index . \"Bucket\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"network_origin\": {{ $v := index . \"NetworkOrigin\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"vpc_configuration\": {{ $v := index . \"VpcConfiguration\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"public_access_block_configuration\"\
-        : {{ $v := index . \"PublicAccessBlockConfiguration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"creation_date\": {{ $v := index . \"CreationDate\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"alias\": {{ $v := index . \"Alias\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"access_point_arn\": {{ $v := index . \"AccessPointArn\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"endpoints\": {{ $v := index . \"Endpoints\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\"\
-        ) }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"bucket_account_id\": {{ $v := index . \"BucketAccountId\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"data_source_id\": {{ $v := index . \"DataSourceId\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"data_source_type\": {{ $v := index . \"DataSourceType\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accesspointforobjectlambda/{name}:
     put:
@@ -526,7 +402,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -545,13 +421,6 @@ paths:
       x-stackql-method: create_access_point_for_object_lambda
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateAccessPointForObjectLambdaOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"object_lambda_access_point_arn\": {{\
-        \ $v := index . \"ObjectLambdaAccessPointArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"alias\": {{\
-        \ $v := index . \"Alias\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     delete:
       operationId: DeleteAccessPointForObjectLambda
@@ -606,17 +475,6 @@ paths:
       x-stackql-method: get_access_point_for_object_lambda
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessPointForObjectLambdaOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"name\": {{ $v := index . \"Name\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"public_access_block_configuration\": {{ $v := index . \"PublicAccessBlockConfiguration\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"creation_date\": {{ $v := index . \"CreationDate\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\")\
-        \ }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\"\
-        \ }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"\
-        alias\": {{ $v := index . \"Alias\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/bucket/{name}:
     put:
@@ -691,9 +549,9 @@ paths:
         description: The ID of the Outposts where the bucket is being created. This ID is required by Amazon S3 on Outposts
           buckets.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -710,14 +568,6 @@ paths:
       x-stackql-method: create_bucket
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateBucketOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"location\": {{ $v := index . \"Location\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_arn\": {{ $v := index . \"BucketArn\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     delete:
       operationId: DeleteBucket
@@ -795,15 +645,6 @@ paths:
       x-stackql-method: get_bucket
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"bucket\": {{ $v := index . \"Bucket\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"public_access_block_enabled\": {{ $v := index . \"PublicAccessBlockEnabled\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"creation_date\": {{ $v := index . \"CreationDate\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/jobs:
     post:
@@ -823,7 +664,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -861,11 +702,6 @@ paths:
       x-stackql-method: create_job
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateJobOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"job_id\": {{ $v := index . \"JobId\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: ListJobs
@@ -912,32 +748,6 @@ paths:
       x-stackql-method: list_jobs
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListJobsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"Jobs\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n        {{- $items\
-        \ := index $list_parent \"item\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface {}\" }}\n  \
-        \        {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n      \
-        \    {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n       \
-        \   {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"job_id\"\
-        : {{ $v := index . \"JobId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"description\": {{ $v := index .\
-        \ \"Description\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"operation\": {{ $v := index . \"Operation\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"priority\": {{ $v := index . \"Priority\" }}{{ if eq $v nil }}null{{\
-        \ else }}{{toInt $v}}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"creation_time\": {{ $v := index . \"CreationTime\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }},\n        \"termination_date\": {{ $v := index . \"TerminationDate\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }},\n        \"progress_summary\": {{ $v := index . \"ProgressSummary\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/async-requests/mrap/create:
     post:
@@ -961,7 +771,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -983,11 +793,6 @@ paths:
       x-stackql-method: create_multi_region_access_point
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateMultiRegionAccessPointOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"request_token_arn\": {{ $v := index\
-        \ . \"RequestTokenARN\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/storagelensgroup:
     post:
@@ -1011,7 +816,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1057,21 +862,6 @@ paths:
       x-stackql-method: list_storage_lens_groups
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListStorageLensGroupsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"StorageLensGroup\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n  \
-        \      {{- $items := index $list_parent \"StorageLensGroup\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"name\": {{ $v := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"storage_lens_group_arn\": {{\
-        \ $v := index . \"StorageLensGroupArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"home_region\": {{ $v := index\
-        \ . \"HomeRegion\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accessgrantsinstance/grant/{id}:
     delete:
@@ -1126,32 +916,6 @@ paths:
       x-stackql-method: get_access_grant
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessGrantOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"created_at\": {{ $v := index . \"CreatedAt\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grant_id\": {{ $v := index . \"AccessGrantId\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grant_arn\": {{ $v := index . \"AccessGrantArn\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"grantee\": {{ $v := index . \"Grantee\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"permission\":\
-        \ {{ $v := index . \"Permission\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grants_location_id\"\
-        : {{ $v := index . \"AccessGrantsLocationId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grants_location_configuration\"\
-        : {{ $v := index . \"AccessGrantsLocationConfiguration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"grant_scope\": {{ $v := index . \"GrantScope\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"application_arn\": {{ $v := index . \"ApplicationArn\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accessgrantsinstance/resourcepolicy:
     delete:
@@ -1195,17 +959,6 @@ paths:
       x-stackql-method: get_access_grants_instance_resource_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessGrantsInstanceResourcePolicyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"policy\": {{ $v := index . \"Policy\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"organization\": {{ $v := index . \"Organization\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"created_at\": {{ $v := index . \"CreatedAt\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutAccessGrantsInstanceResourcePolicy
@@ -1221,7 +974,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1240,17 +993,6 @@ paths:
       x-stackql-method: put_access_grants_instance_resource_policy
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutAccessGrantsInstanceResourcePolicyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"policy\": {{ $v := index . \"Policy\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"organization\": {{ $v := index . \"Organization\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"created_at\": {{ $v := index . \"CreatedAt\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accessgrantsinstance/location/{id}:
     delete:
@@ -1310,23 +1052,6 @@ paths:
       x-stackql-method: get_access_grants_location
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessGrantsLocationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"created_at\": {{ $v := index . \"CreatedAt\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grants_location_id\": {{ $v := index . \"AccessGrantsLocationId\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grants_location_arn\": {{ $v := index . \"AccessGrantsLocationArn\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"location_scope\": {{ $v := index . \"LocationScope\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"iam_role_arn\": {{ $v := index . \"IAMRoleArn\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{\
-        \ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: UpdateAccessGrantsLocation
@@ -1355,7 +1080,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1374,23 +1099,6 @@ paths:
       x-stackql-method: update_access_grants_location
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateAccessGrantsLocationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"created_at\": {{ $v := index . \"CreatedAt\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grants_location_id\": {{ $v := index . \"AccessGrantsLocationId\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grants_location_arn\": {{ $v := index . \"AccessGrantsLocationArn\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"location_scope\": {{ $v := index . \"LocationScope\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"iam_role_arn\": {{ $v := index . \"IAMRoleArn\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{\
-        \ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accesspoint/{name}/policy:
     delete:
@@ -1460,11 +1168,6 @@ paths:
       x-stackql-method: get_access_point_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessPointPolicyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"policy\": {{ $v := index . \"Policy\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutAccessPointPolicy
@@ -1497,7 +1200,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1563,11 +1266,6 @@ paths:
       x-stackql-method: get_access_point_policy_for_object_lambda
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessPointPolicyForObjectLambdaOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"policy\": {{ $v := index . \"Policy\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutAccessPointPolicyForObjectLambda
@@ -1590,7 +1288,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1655,11 +1353,6 @@ paths:
       x-stackql-method: get_access_point_scope
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessPointScopeOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"Scope\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n\
-        {\n        \"prefixes\": {{ $v := index . \"Prefixes\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"permissions\": {{ $v := index . \"Permissions\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutAccessPointScope
@@ -1684,7 +1377,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1783,10 +1476,6 @@ paths:
       x-stackql-method: get_bucket_lifecycle_configuration
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketLifecycleConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"rules\": {{ $v := index . \"Rules\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n\
-        {{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketLifecycleConfiguration
@@ -1813,9 +1502,9 @@ paths:
           $ref: '#/components/schemas/BucketName'
         description: The name of the bucket for which to set the configuration.
       requestBody:
-        required: true
+        required: false
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -1915,11 +1604,6 @@ paths:
       x-stackql-method: get_bucket_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketPolicyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"policy\": {{ $v := index . \"Policy\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketPolicy
@@ -1966,7 +1650,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2071,13 +1755,6 @@ paths:
       x-stackql-method: get_bucket_replication
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketReplicationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"ReplicationConfiguration\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n\
-        {{define \"row\"}}\n{\n        \"role\": {{ $v := index . \"Role\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\
-        \") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"\
-        float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n \
-        \       \"rules\": {{ $v := index . \"Rules\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{\
-        \ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketReplication
@@ -2135,7 +1812,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2227,10 +1904,6 @@ paths:
       x-stackql-method: get_bucket_tagging
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketTaggingOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"tag_set\": {{ $v := index . \"TagSet\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n\
-        {{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketTagging
@@ -2278,7 +1951,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2323,8 +1996,6 @@ paths:
       x-stackql-method: delete_job_tagging
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteJobTaggingOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetJobTagging
@@ -2355,9 +2026,6 @@ paths:
       x-stackql-method: get_job_tagging
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetJobTaggingOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"tags\": {{ $v := index . \"Tags\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutJobTagging
@@ -2392,7 +2060,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2409,8 +2077,6 @@ paths:
       x-stackql-method: put_job_tagging
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutJobTaggingOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/async-requests/mrap/delete:
     post:
@@ -2433,7 +2099,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2455,11 +2121,6 @@ paths:
       x-stackql-method: delete_multi_region_access_point
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteMultiRegionAccessPointOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"request_token_arn\": {{ $v := index\
-        \ . \"RequestTokenARN\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/configuration/publicAccessBlock:
     delete:
@@ -2509,13 +2170,6 @@ paths:
       x-stackql-method: get_public_access_block
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetPublicAccessBlockOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"PublicAccessBlockConfiguration\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n\
-        }\n{{define \"row\"}}\n{\n        \"block_public_acls\": {{ $v := index . \"BlockPublicAcls\" }}{{ if eq $v nil }}null{{\
-        \ else }}{{toBool $v}}{{ end }},\n        \"ignore_public_acls\": {{ $v := index . \"IgnorePublicAcls\" }}{{ if eq\
-        \ $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"block_public_policy\": {{ $v := index . \"BlockPublicPolicy\"\
-        \ }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"restrict_public_buckets\": {{ $v := index .\
-        \ \"RestrictPublicBuckets\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutPublicAccessBlock
@@ -2536,7 +2190,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2607,27 +2261,6 @@ paths:
       x-stackql-method: get_storage_lens_configuration
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetStorageLensConfigurationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"StorageLensConfiguration\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n\
-        {{define \"row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\"\
-        ) }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\"\
-        \ }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"\
-        account_level\": {{ $v := index . \"AccountLevel\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"include\": {{ $v := index . \"Include\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"exclude\"\
-        : {{ $v := index . \"Exclude\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }},\n        \"data_export\": {{ $v := index . \"DataExport\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"expanded_prefixes_data_export\"\
-        : {{ $v := index . \"ExpandedPrefixesDataExport\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"is_enabled\": {{ $v := index . \"IsEnabled\" }}{{ if eq $v\
-        \ nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"aws_org\": {{ $v := index . \"AwsOrg\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"storage_lens_arn\"\
-        : {{ $v := index . \"StorageLensArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"prefix_delimiter\": {{ $v :=\
-        \ index . \"PrefixDelimiter\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutStorageLensConfiguration
@@ -2652,7 +2285,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2699,8 +2332,6 @@ paths:
       x-stackql-method: delete_storage_lens_configuration_tagging
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteStorageLensConfigurationTaggingOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetStorageLensConfigurationTagging
@@ -2732,9 +2363,6 @@ paths:
       x-stackql-method: get_storage_lens_configuration_tagging
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetStorageLensConfigurationTaggingOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"tags\": {{ $v := index . \"Tags\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutStorageLensConfigurationTagging
@@ -2758,7 +2386,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2775,8 +2403,6 @@ paths:
       x-stackql-method: put_storage_lens_configuration_tagging
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutStorageLensConfigurationTaggingOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/storagelensgroup/{name}:
     delete:
@@ -2835,16 +2461,6 @@ paths:
       x-stackql-method: get_storage_lens_group
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetStorageLensGroupOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"StorageLensGroup\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"name\": {{ $v := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"filter\"\
-        : {{ $v := index . \"Filter\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }},\n        \"storage_lens_group_arn\": {{ $v := index . \"StorageLensGroupArn\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: UpdateStorageLensGroup
@@ -2868,7 +2484,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -2912,50 +2528,6 @@ paths:
       x-stackql-method: describe_job
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeJobOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"Job\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n\
-        \        \"job_id\": {{ $v := index . \"JobId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"confirmation_required\"\
-        : {{ $v := index . \"ConfirmationRequired\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"\
-        description\": {{ $v := index . \"Description\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"job_arn\": {{\
-        \ $v := index . \"JobArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"manifest\": {{ $v := index . \"Manifest\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"operation\"\
-        : {{ $v := index . \"Operation\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }},\n        \"priority\": {{ $v := index . \"Priority\" }}{{ if eq $v nil }}null{{ else\
-        \ }}{{toInt $v}}{{ end }},\n        \"progress_summary\": {{ $v := index . \"ProgressSummary\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"status_update_reason\"\
-        : {{ $v := index . \"StatusUpdateReason\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq\
-        \ (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"\
-        %q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"failure_reasons\"\
-        : {{ $v := index . \"FailureReasons\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf\
-        \ \"%q\" (toJson $v) }}{{ end }},\n        \"report\": {{ $v := index . \"Report\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"creation_time\": {{ $v :=\
-        \ index . \"CreationTime\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"termination_date\": {{ $v := index\
-        \ . \"TerminationDate\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"role_arn\": {{ $v := index . \"RoleArn\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"suspended_date\": {{ $v := index . \"SuspendedDate\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"suspended_cause\": {{ $v := index . \"SuspendedCause\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"manifest_generator\": {{ $v := index . \"ManifestGenerator\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n     \
-        \   \"generated_manifest_descriptor\": {{ $v := index . \"GeneratedManifestDescriptor\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/async-requests/mrap/{request_token}:
     get:
@@ -2991,23 +2563,6 @@ paths:
       x-stackql-method: describe_multi_region_access_point_operation
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeMultiRegionAccessPointOperationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"AsyncOperation\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"creation_time\": {{ $v := index . \"CreationTime\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }},\n        \"operation\": {{ $v := index . \"Operation\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"request_token_arn\"\
-        : {{ $v := index . \"RequestTokenARN\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"request_parameters\": {{ $v\
-        \ := index . \"RequestParameters\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }},\n        \"request_status\": {{ $v := index . \"RequestStatus\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"response_details\": {{ $v := index . \"ResponseDetails\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accessgrantsinstance/prefix:
     get:
@@ -3039,14 +2594,6 @@ paths:
       x-stackql-method: get_access_grants_instance_for_prefix
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessGrantsInstanceForPrefixOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"access_grants_instance_arn\": {{ $v\
-        \ := index . \"AccessGrantsInstanceArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grants_instance_id\"\
-        : {{ $v := index . \"AccessGrantsInstanceId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accesspointforobjectlambda/{name}/configuration:
     get:
@@ -3077,16 +2624,6 @@ paths:
       x-stackql-method: get_access_point_configuration_for_object_lambda
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessPointConfigurationForObjectLambdaOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"Configuration\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"supporting_access_point\": {{ $v := index . \"SupportingAccessPoint\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"cloud_watch_metrics_enabled\": {{ $v := index . \"CloudWatchMetricsEnabled\" }}{{\
-        \ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n        \"allowed_features\": {{ $v := index . \"AllowedFeatures\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"transformation_configurations\": {{ $v := index . \"TransformationConfigurations\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutAccessPointConfigurationForObjectLambda
@@ -3108,7 +2645,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -3152,10 +2689,6 @@ paths:
       x-stackql-method: get_access_point_policy_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessPointPolicyStatusOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"PolicyStatus\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"is_public\": {{ $v := index . \"IsPublic\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end\
-        \ }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accesspointforobjectlambda/{name}/policyStatus:
     get:
@@ -3186,10 +2719,6 @@ paths:
       x-stackql-method: get_access_point_policy_status_for_object_lambda
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessPointPolicyStatusForObjectLambdaOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"PolicyStatus\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"is_public\": {{ $v := index . \"IsPublic\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end\
-        \ }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/bucket/{name}/versioning:
     get:
@@ -3229,14 +2758,6 @@ paths:
       x-stackql-method: get_bucket_versioning
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetBucketVersioningOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"status\": {{ $v := index . \"Status\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"mfa_delete\": {{ $v := index . \"MfaDelete\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     put:
       operationId: PutBucketVersioning
@@ -3282,7 +2803,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -3369,14 +2890,6 @@ paths:
       x-stackql-method: get_data_access
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetDataAccessOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"credentials\": {{ $v := index . \"\
-        Credentials\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{\
-        \ end }},\n        \"matched_grant_target\": {{ $v := index . \"MatchedGrantTarget\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"grantee\": {{ $v := index . \"Grantee\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/mrap/instances/{name}:
     get:
@@ -3413,23 +2926,6 @@ paths:
       x-stackql-method: get_multi_region_access_point
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetMultiRegionAccessPointOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"AccessPoint\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"name\": {{ $v := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"alias\": {{\
-        \ $v := index . \"Alias\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"created_at\": {{ $v := index . \"CreatedAt\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"public_access_block\": {{ $v := index . \"PublicAccessBlock\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"regions\": {{\
-        \ $v := index . \"Regions\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/mrap/instances/{name}/policy:
     get:
@@ -3465,11 +2961,6 @@ paths:
       x-stackql-method: get_multi_region_access_point_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetMultiRegionAccessPointPolicyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"Policy\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n\
-        {\n        \"established\": {{ $v := index . \"Established\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n        \"proposed\": {{ $v := index . \"Proposed\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/mrap/instances/{name}/policystatus:
     get:
@@ -3505,10 +2996,6 @@ paths:
       x-stackql-method: get_multi_region_access_point_policy_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetMultiRegionAccessPointPolicyStatusOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $row := index $root\
-        \ \"Established\" -}}\n      {{- with $row }}{{template \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"is_public\": {{ $v := index . \"IsPublic\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end\
-        \ }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/mrap/instances/{mrap}/routes:
     get:
@@ -3541,12 +3028,6 @@ paths:
       x-stackql-method: get_multi_region_access_point_routes
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetMultiRegionAccessPointRoutesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"mrap\": {{ $v := index . \"Mrap\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"routes\": {{ $v := index . \"Routes\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     patch:
       operationId: SubmitMultiRegionAccessPointRoutes
@@ -3576,7 +3057,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -3595,8 +3076,6 @@ paths:
       x-stackql-method: submit_multi_region_access_point_routes
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SubmitMultiRegionAccessPointRoutesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accessgrantsinstance/grants:
     get:
@@ -3679,36 +3158,6 @@ paths:
       x-stackql-method: list_access_grants
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAccessGrantsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"AccessGrantsList\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n  \
-        \      {{- $items := index $list_parent \"AccessGrant\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"created_at\": {{ $v := index . \"CreatedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grant_id\"\
-        : {{ $v := index . \"AccessGrantId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"access_grant_arn\": {{ $v :=\
-        \ index . \"AccessGrantArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"grantee\": {{ $v := index . \"\
-        Grantee\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end\
-        \ }},\n        \"permission\": {{ $v := index . \"Permission\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\"\
-        ) }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\"\
-        \ }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"\
-        access_grants_location_id\": {{ $v := index . \"AccessGrantsLocationId\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }},\n        \"access_grants_location_configuration\": {{ $v := index . \"AccessGrantsLocationConfiguration\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n     \
-        \   \"grant_scope\": {{ $v := index . \"GrantScope\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"application_arn\"\
-        : {{ $v := index . \"ApplicationArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accessgrantsinstances:
     get:
@@ -3749,31 +3198,6 @@ paths:
       x-stackql-method: list_access_grants_instances
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAccessGrantsInstancesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"AccessGrantsInstancesList\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\"\
-        \ }}\n        {{- $items := index $list_parent \"AccessGrantsInstance\" -}}\n        {{- if eq (printf \"%T\" $items)\
-        \ \"map[string]interface {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items)\
-        \ \"[]interface {}\" }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template\
-        \ \"row\" $v}}\n          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"access_grants_instance_id\": {{ $v := index . \"AccessGrantsInstanceId\" }}{{ if or (eq $v nil) (eq\
-        \ (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq\
-        \ (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\"\
-        \ $v) }}{{ end }},\n        \"access_grants_instance_arn\": {{ $v := index . \"AccessGrantsInstanceArn\" }}{{ if or\
-        \ (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v\
-        \ }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"\
-        %q\" (printf \"%v\" $v) }}{{ end }},\n        \"created_at\": {{ $v := index . \"CreatedAt\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"identity_center_arn\": {{ $v := index . \"IdentityCenterArn\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"identity_center_instance_arn\": {{ $v := index . \"IdentityCenterInstanceArn\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"identity_center_application_arn\": {{ $v := index . \"IdentityCenterApplicationArn\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accessgrantsinstance/locations:
     get:
@@ -3823,28 +3247,6 @@ paths:
       x-stackql-method: list_access_grants_locations
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAccessGrantsLocationsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"AccessGrantsLocationsList\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\"\
-        \ }}\n        {{- $items := index $list_parent \"AccessGrantsLocation\" -}}\n        {{- if eq (printf \"%T\" $items)\
-        \ \"map[string]interface {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items)\
-        \ \"[]interface {}\" }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template\
-        \ \"row\" $v}}\n          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"created_at\": {{ $v := index . \"CreatedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\")\
-        \ }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\"\
-        \ }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"\
-        access_grants_location_id\": {{ $v := index . \"AccessGrantsLocationId\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\"\
-        \ $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end\
-        \ }},\n        \"access_grants_location_arn\": {{ $v := index . \"AccessGrantsLocationArn\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"location_scope\": {{ $v := index . \"LocationScope\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"iam_role_arn\": {{ $v := index . \"IAMRoleArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n\
-        }\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accesspoint:
     get:
@@ -3916,37 +3318,6 @@ paths:
       x-stackql-method: list_access_points
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAccessPointsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"AccessPointList\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n   \
-        \     {{- $items := index $list_parent \"AccessPoint\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"name\": {{ $v := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"network_origin\": {{ $v :=\
-        \ index . \"NetworkOrigin\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"vpc_configuration\": {{ $v := index\
-        \ . \"VpcConfiguration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }},\n        \"bucket\": {{ $v := index . \"Bucket\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"access_point_arn\": {{ $v := index . \"AccessPointArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\
-        \") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"\
-        float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n \
-        \       \"alias\": {{ $v := index . \"Alias\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_account_id\"\
-        : {{ $v := index . \"BucketAccountId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"data_source_id\": {{ $v :=\
-        \ index . \"DataSourceId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"data_source_type\": {{ $v := index\
-        \ . \"DataSourceType\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accesspointfordirectory:
     get:
@@ -3995,37 +3366,6 @@ paths:
       x-stackql-method: list_access_points_for_directory_buckets
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAccessPointsForDirectoryBucketsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"AccessPointList\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n   \
-        \     {{- $items := index $list_parent \"AccessPoint\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"name\": {{ $v := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"network_origin\": {{ $v :=\
-        \ index . \"NetworkOrigin\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"vpc_configuration\": {{ $v := index\
-        \ . \"VpcConfiguration\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }},\n        \"bucket\": {{ $v := index . \"Bucket\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v)\
-        \ \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n\
-        \        \"access_point_arn\": {{ $v := index . \"AccessPointArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\
-        \") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"\
-        float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n \
-        \       \"alias\": {{ $v := index . \"Alias\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_account_id\"\
-        : {{ $v := index . \"BucketAccountId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"data_source_id\": {{ $v :=\
-        \ index . \"DataSourceId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"data_source_type\": {{ $v := index\
-        \ . \"DataSourceType\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accesspointforobjectlambda:
     get:
@@ -4068,20 +3408,6 @@ paths:
       x-stackql-method: list_access_points_for_object_lambda
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAccessPointsForObjectLambdaOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"ObjectLambdaAccessPointList\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\"\
-        \ }}\n        {{- $items := index $list_parent \"ObjectLambdaAccessPoint\" -}}\n        {{- if eq (printf \"%T\" $items)\
-        \ \"map[string]interface {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items)\
-        \ \"[]interface {}\" }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template\
-        \ \"row\" $v}}\n          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"\
-        }}\n{\n        \"name\": {{ $v := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"object_lambda_access_point_arn\"\
-        : {{ $v := index . \"ObjectLambdaAccessPointArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"alias\": {{\
-        \ $v := index . \"Alias\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/accessgrantsinstance/caller/grants:
     get:
@@ -4142,21 +3468,6 @@ paths:
       x-stackql-method: list_caller_access_grants
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListCallerAccessGrantsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"CallerAccessGrantsList\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n\
-        \        {{- $items := index $list_parent \"AccessGrant\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"permission\": {{ $v := index . \"Permission\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"grant_scope\"\
-        : {{ $v := index . \"GrantScope\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"application_arn\": {{ $v :=\
-        \ index . \"ApplicationArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/mrap/instances:
     get:
@@ -4198,27 +3509,6 @@ paths:
       x-stackql-method: list_multi_region_access_points
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListMultiRegionAccessPointsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"AccessPoints\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n      \
-        \  {{- $items := index $list_parent \"AccessPoint\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"name\": {{ $v := index . \"Name\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"alias\": {{ $v := index . \"\
-        Alias\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"created_at\": {{ $v := index . \"CreatedAt\" }}{{\
-        \ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"\
-        %q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"public_access_block\": {{ $v := index . \"PublicAccessBlock\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }},\n\
-        \        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else\
-        \ if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"regions\": {{\
-        \ $v := index . \"Regions\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson\
-        \ $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/bucket:
     get:
@@ -4261,25 +3551,6 @@ paths:
       x-stackql-method: list_regional_buckets
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListRegionalBucketsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"RegionalBucketList\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n\
-        \        {{- $items := index $list_parent \"RegionalBucket\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\"\
-        \ }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n\
-        \          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n     \
-        \   \"bucket\": {{ $v := index . \"Bucket\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq\
-        \ (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"\
-        %q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"bucket_arn\": {{\
-        \ $v := index . \"BucketArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"public_access_block_enabled\":\
-        \ {{ $v := index . \"PublicAccessBlockEnabled\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},\n      \
-        \  \"creation_date\": {{ $v := index . \"CreationDate\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"outpost_id\"\
-        : {{ $v := index . \"OutpostId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/storagelens:
     get:
@@ -4312,22 +3583,6 @@ paths:
       x-stackql-method: list_storage_lens_configurations
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListStorageLensConfigurationsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"StorageLensConfiguration\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\"\
-        \ }}\n        {{- $items := index $list_parent \"StorageLensConfiguration\" -}}\n        {{- if eq (printf \"%T\"\
-        \ $items) \"map[string]interface {}\" }}\n          {{template \"row\" $items}}\n        {{- else if eq (printf \"\
-        %T\" $items) \"[]interface {}\" }}\n          {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n   \
-        \         {{template \"row\" $v}}\n          {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n\
-        }\n{{define \"row\"}}\n{\n        \"id\": {{ $v := index . \"Id\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\
-        \") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"\
-        float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n \
-        \       \"storage_lens_arn\": {{ $v := index . \"StorageLensArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\
-        \") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"\
-        float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n \
-        \       \"home_region\": {{ $v := index . \"HomeRegion\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{\
-        \ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{\
-        \ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"is_enabled\"\
-        : {{ $v := index . \"IsEnabled\" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/tags/{resource_arn}:
     get:
@@ -4368,18 +3623,6 @@ paths:
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- $list_parent := index\
-        \ $root \"Tags\" -}}\n      {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n        {{- $items\
-        \ := index $list_parent \"Tag\" -}}\n        {{- if eq (printf \"%T\" $items) \"map[string]interface {}\" }}\n   \
-        \       {{template \"row\" $items}}\n        {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n       \
-        \   {{- range $i, $v := $items }}\n            {{- if $i}},{{end}}\n            {{template \"row\" $v}}\n        \
-        \  {{- end }}\n        {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"key\"\
-        : {{ $v := index . \"Key\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"value\": {{ $v := index . \"Value\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
     post:
       operationId: TagResource
@@ -4412,7 +3655,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -4429,8 +3672,6 @@ paths:
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: TagResourceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
     delete:
       operationId: UntagResource
@@ -4475,8 +3716,6 @@ paths:
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UntagResourceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/async-requests/mrap/put-policy:
     post:
@@ -4497,7 +3736,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/xml:
             schema:
               type: object
               properties:
@@ -4519,11 +3758,6 @@ paths:
       x-stackql-method: put_multi_region_access_point_policy
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutMultiRegionAccessPointPolicyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"request_token_arn\": {{ $v := index\
-        \ . \"RequestTokenARN\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/jobs/{id}/priority:
     post:
@@ -4561,12 +3795,6 @@ paths:
       x-stackql-method: update_job_priority
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateJobPriorityOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"job_id\": {{ $v := index . \"JobId\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"priority\": {{ $v := index . \"Priority\" }}{{ if eq $v\
-        \ nil }}null{{ else }}{{toInt $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /v20180820/jobs/{id}/status:
     post:
@@ -4612,17 +3840,6 @@ paths:
       x-stackql-method: update_job_status
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateJobStatusOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- range $rk, $root := . -}}\n      {{- with $root }}{{template\
-        \ \"row\" .}}{{end}}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"job_id\": {{ $v := index . \"JobId\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"status_update_reason\": {{ $v := index . \"StatusUpdateReason\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{\
-        \ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
 components:
   parameters:
@@ -4782,40 +3999,40 @@ components:
     CreateAccessGrantResultDisplay:
       type: object
       properties:
-        created_at:
+        CreatedAt:
           type: string
           description: The date and time when you created the access grant.
-        access_grant_id:
+        AccessGrantId:
           type: string
           description: The ID of the access grant. S3 Access Grants auto-generates this ID when you create the access grant.
-        access_grant_arn:
+        AccessGrantArn:
           type: string
           description: The Amazon Resource Name (ARN) of the access grant.
-        grantee:
+        Grantee:
           type: string
           description: The user, group, or role to which you are granting access. You can grant access to an IAM user or role.
             If you have added your corporate directory to Amazon Web Services IAM Identity Center and associated your Identity
             Center instance with your S3 Access Grants instance, the grantee can also be a corporate directory user or group.
-        access_grants_location_id:
+        AccessGrantsLocationId:
           type: string
           description: The ID of the registered location to which you are granting access. S3 Access Grants assigns this ID
             when you register the location. S3 Access Grants assigns the ID default to the default location s3:// and assigns
             an auto-generated ID to other locations that you register.
-        access_grants_location_configuration:
+        AccessGrantsLocationConfiguration:
           type: string
           description: The configuration options of the grant location. The grant location is the S3 path to the data to which
             you are granting access.
-        permission:
+        Permission:
           type: string
           description: 'The type of access that you are granting to your S3 data, which can be set to one of the following
             values: READ – Grant read-only access to the S3 data. WRITE – Grant write-only access to the S3 data. READWRITE
             – Grant both read and write access to the S3 data.'
-        application_arn:
+        ApplicationArn:
           type: string
           description: The Amazon Resource Name (ARN) of an Amazon Web Services IAM Identity Center application associated
             with your Identity Center instance. If the grant includes an application ARN, the grantee can only access the
             S3 data through this application.
-        grant_scope:
+        GrantScope:
           type: string
           description: The S3 path of the data to which you are granting access. It is the result of appending the Subprefix
             to the location scope.
@@ -4829,32 +4046,32 @@ components:
     CreateAccessGrantsInstanceResultDisplay:
       type: object
       properties:
-        created_at:
+        CreatedAt:
           type: string
           description: The date and time when you created the S3 Access Grants instance.
-        access_grants_instance_id:
+        AccessGrantsInstanceId:
           type: string
           description: The ID of the S3 Access Grants instance. The ID is default. You can have one S3 Access Grants instance
             per Region per account.
-        access_grants_instance_arn:
+        AccessGrantsInstanceArn:
           type: string
           description: The Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity Center instance that you are
             associating with your S3 Access Grants instance. An IAM Identity Center instance is your corporate identity directory
             that you added to the IAM Identity Center. You can use the ListInstances API operation to retrieve a list of your
             Identity Center instances and their ARNs.
-        identity_center_arn:
+        IdentityCenterArn:
           type: string
           description: If you associated your S3 Access Grants instance with an Amazon Web Services IAM Identity Center instance,
             this field returns the Amazon Resource Name (ARN) of the IAM Identity Center instance application; a subresource
             of the original Identity Center instance. S3 Access Grants creates this Identity Center application for the specific
             S3 Access Grants instance.
-        identity_center_instance_arn:
+        IdentityCenterInstanceArn:
           type: string
           description: The Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity Center instance that you are
             associating with your S3 Access Grants instance. An IAM Identity Center instance is your corporate identity directory
             that you added to the IAM Identity Center. You can use the ListInstances API operation to retrieve a list of your
             Identity Center instances and their ARNs.
-        identity_center_application_arn:
+        IdentityCenterApplicationArn:
           type: string
           description: If you associated your S3 Access Grants instance with an Amazon Web Services IAM Identity Center instance,
             this field returns the Amazon Resource Name (ARN) of the IAM Identity Center instance application; a subresource
@@ -4875,25 +4092,25 @@ components:
     CreateAccessGrantsLocationResultDisplay:
       type: object
       properties:
-        created_at:
+        CreatedAt:
           type: string
           description: The date and time when you registered the location.
-        access_grants_location_id:
+        AccessGrantsLocationId:
           type: string
           description: The ID of the registered location to which you are granting access. S3 Access Grants assigns this ID
             when you register the location. S3 Access Grants assigns the ID default to the default location s3:// and assigns
             an auto-generated ID to other locations that you register.
-        access_grants_location_arn:
+        AccessGrantsLocationArn:
           type: string
           description: The Amazon Resource Name (ARN) of the location you are registering.
-        location_scope:
+        LocationScope:
           type: string
           description: The S3 URI path to the location that you are registering. The location scope can be the default S3
             location s3://, the S3 path to a bucket, or the S3 path to a bucket and prefix. A prefix in S3 is a string of
             characters at the beginning of an object key name used to organize the objects that you store in your S3 buckets.
             For example, object key names that start with the engineering/ prefix or object key names that start with the
             marketing/campaigns/ prefix.
-        iam_role_arn:
+        IAMRoleArn:
           type: string
           description: The Amazon Resource Name (ARN) of the IAM role for the registered location. S3 Access Grants assumes
             this role to manage access to the registered location.
@@ -4995,10 +4212,10 @@ components:
     CreateAccessPointResultDisplay:
       type: object
       properties:
-        access_point_arn:
+        AccessPointArn:
           type: string
           description: The ARN of the access point. This is only supported by Amazon S3 on Outposts.
-        alias:
+        Alias:
           type: string
           description: The name or alias of the access point.
     CreateAccessPointOutputDisplay:
@@ -5109,10 +4326,10 @@ components:
     CreateAccessPointForObjectLambdaResultDisplay:
       type: object
       properties:
-        object_lambda_access_point_arn:
+        ObjectLambdaAccessPointArn:
           type: string
           description: Specifies the ARN for the Object Lambda Access Point.
-        alias:
+        Alias:
           type: string
           description: The alias of the Object Lambda Access Point.
     CreateAccessPointForObjectLambdaOutputDisplay:
@@ -5171,10 +4388,10 @@ components:
     CreateBucketResultDisplay:
       type: object
       properties:
-        location:
+        Location:
           type: string
           description: The location of the bucket.
-        bucket_arn:
+        BucketArn:
           type: string
           description: The Amazon Resource Name (ARN) of the bucket. For using this parameter with Amazon S3 on Outposts with
             the REST API, you must specify the name and the x-amz-outpost-id as well. For using this parameter with S3 on
@@ -6084,7 +5301,7 @@ components:
     CreateJobResultDisplay:
       type: object
       properties:
-        job_id:
+        JobId:
           type: string
           description: The ID for this job. Amazon S3 generates this ID automatically and returns it after a successful Create
             Job request.
@@ -6138,7 +5355,7 @@ components:
     CreateMultiRegionAccessPointResultDisplay:
       type: object
       properties:
-        request_token_arn:
+        RequestTokenARN:
           type: string
           description: The request token associated with the request. You can use this token with DescribeMultiRegionAccessPointOperation
             to determine the status of asynchronous requests.
@@ -6331,7 +5548,7 @@ components:
     DeleteMultiRegionAccessPointResultDisplay:
       type: object
       properties:
-        request_token_arn:
+        RequestTokenARN:
           type: string
           description: The request token associated with the request. You can use this token with DescribeMultiRegionAccessPointOperation
             to determine the status of asynchronous requests.
@@ -6360,68 +5577,68 @@ components:
     JobDescriptorDisplay:
       type: object
       properties:
-        job_id:
+        JobId:
           type: string
           description: The ID for the specified job.
-        confirmation_required:
+        ConfirmationRequired:
           type: boolean
           description: Indicates whether confirmation is required before Amazon S3 begins running the specified job. Confirmation
             is required only for jobs created through the Amazon S3 console.
-        description:
+        Description:
           type: string
           description: The description for this job, if one was provided in this job's Create Job request.
-        job_arn:
+        JobArn:
           type: string
           description: The Amazon Resource Name (ARN) for this job.
-        status:
+        Status:
           type: string
           description: The current status of the specified job.
-        manifest:
+        Manifest:
           type: string
           description: The configuration information for the specified job's manifest object.
-        operation:
+        Operation:
           type: string
           description: The operation that the specified job is configured to run on the objects listed in the manifest.
-        priority:
+        Priority:
           type: integer
           description: The priority of the specified job.
-        progress_summary:
+        ProgressSummary:
           type: string
           description: Describes the total number of tasks that the specified job has run, the number of tasks that succeeded,
             and the number of tasks that failed.
-        status_update_reason:
+        StatusUpdateReason:
           type: string
           description: The reason for updating the job.
-        failure_reasons:
+        FailureReasons:
           type: string
           description: If the specified job failed, this field contains information describing the failure.
-        report:
+        Report:
           type: string
           description: Contains the configuration information for the job-completion report if you requested one in the Create
             Job request.
-        creation_time:
+        CreationTime:
           type: string
           description: A timestamp indicating when this job was created.
-        termination_date:
+        TerminationDate:
           type: string
           description: A timestamp indicating when this job terminated. A job's termination date is the date and time when
             it succeeded, failed, or was canceled.
-        role_arn:
+        RoleArn:
           type: string
           description: The Amazon Resource Name (ARN) for the Identity and Access Management (IAM) role assigned to run the
             tasks for this job.
-        suspended_date:
+        SuspendedDate:
           type: string
           description: The timestamp when this job was suspended, if it has been suspended.
-        suspended_cause:
+        SuspendedCause:
           type: string
           description: The reason why the specified job was suspended. A job is only suspended if you create it through the
             Amazon S3 console. When you create the job, it enters the Suspended state to await confirmation before running.
             After you confirm the job, it automatically exits the Suspended state.
-        manifest_generator:
+        ManifestGenerator:
           type: string
           description: The manifest generator that was used to generate a job manifest for this job.
-        generated_manifest_descriptor:
+        GeneratedManifestDescriptor:
           type: string
           description: The attribute of the JobDescriptor containing details about the job's generated manifest.
     DescribeJobOutputDisplay:
@@ -6439,22 +5656,22 @@ components:
     AsyncOperationDisplay:
       type: object
       properties:
-        creation_time:
+        CreationTime:
           type: string
           description: The time that the request was sent to the service.
-        operation:
+        Operation:
           type: string
           description: The specific operation for the asynchronous request.
-        request_token_arn:
+        RequestTokenARN:
           type: string
           description: The request token associated with the request.
-        request_parameters:
+        RequestParameters:
           type: string
           description: The parameters associated with the request.
-        request_status:
+        RequestStatus:
           type: string
           description: The current status of the request.
-        response_details:
+        ResponseDetails:
           type: string
           description: The details of the response.
     DescribeMultiRegionAccessPointOperationOutputDisplay:
@@ -6467,39 +5684,39 @@ components:
     GetAccessGrantResultDisplay:
       type: object
       properties:
-        created_at:
+        CreatedAt:
           type: string
           description: The date and time when you created the access grant.
-        access_grant_id:
+        AccessGrantId:
           type: string
           description: The ID of the access grant. S3 Access Grants auto-generates this ID when you create the access grant.
-        access_grant_arn:
+        AccessGrantArn:
           type: string
           description: The Amazon Resource Name (ARN) of the access grant.
-        grantee:
+        Grantee:
           type: string
           description: The user, group, or role to which you are granting access. You can grant access to an IAM user or role.
             If you have added a corporate directory to Amazon Web Services IAM Identity Center and associated this Identity
             Center instance with the S3 Access Grants instance, the grantee can also be a corporate directory user or group.
-        permission:
+        Permission:
           type: string
           description: 'The type of permission that was granted in the access grant. Can be one of the following values: READ
             – Grant read-only access to the S3 data. WRITE – Grant write-only access to the S3 data. READWRITE – Grant both
             read and write access to the S3 data.'
-        access_grants_location_id:
+        AccessGrantsLocationId:
           type: string
           description: The ID of the registered location to which you are granting access. S3 Access Grants assigns this ID
             when you register the location. S3 Access Grants assigns the ID default to the default location s3:// and assigns
             an auto-generated ID to other locations that you register.
-        access_grants_location_configuration:
+        AccessGrantsLocationConfiguration:
           type: string
           description: The configuration options of the grant location. The grant location is the S3 path to the data to which
             you are granting access.
-        grant_scope:
+        GrantScope:
           type: string
           description: The S3 path of the data to which you are granting access. It is the result of appending the Subprefix
             to the location scope.
-        application_arn:
+        ApplicationArn:
           type: string
           description: The Amazon Resource Name (ARN) of an Amazon Web Services IAM Identity Center application associated
             with your Identity Center instance. If the grant includes an application ARN, the grantee can only access the
@@ -6514,32 +5731,32 @@ components:
     GetAccessGrantsInstanceResultDisplay:
       type: object
       properties:
-        access_grants_instance_arn:
+        AccessGrantsInstanceArn:
           type: string
           description: The Amazon Resource Name (ARN) of the S3 Access Grants instance.
-        access_grants_instance_id:
+        AccessGrantsInstanceId:
           type: string
           description: The ID of the S3 Access Grants instance. The ID is default. You can have one S3 Access Grants instance
             per Region per account.
-        identity_center_arn:
+        IdentityCenterArn:
           type: string
           description: If you associated your S3 Access Grants instance with an Amazon Web Services IAM Identity Center instance,
             this field returns the Amazon Resource Name (ARN) of the IAM Identity Center instance application; a subresource
             of the original Identity Center instance. S3 Access Grants creates this Identity Center application for the specific
             S3 Access Grants instance.
-        identity_center_instance_arn:
+        IdentityCenterInstanceArn:
           type: string
           description: The Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity Center instance that you are
             associating with your S3 Access Grants instance. An IAM Identity Center instance is your corporate identity directory
             that you added to the IAM Identity Center. You can use the ListInstances API operation to retrieve a list of your
             Identity Center instances and their ARNs.
-        identity_center_application_arn:
+        IdentityCenterApplicationArn:
           type: string
           description: If you associated your S3 Access Grants instance with an Amazon Web Services IAM Identity Center instance,
             this field returns the Amazon Resource Name (ARN) of the IAM Identity Center instance application; a subresource
             of the original Identity Center instance. S3 Access Grants creates this Identity Center application for the specific
             S3 Access Grants instance.
-        created_at:
+        CreatedAt:
           type: string
           description: The date and time when you created the S3 Access Grants instance.
     GetAccessGrantsInstanceOutputDisplay:
@@ -6552,10 +5769,10 @@ components:
     GetAccessGrantsInstanceForPrefixResultDisplay:
       type: object
       properties:
-        access_grants_instance_arn:
+        AccessGrantsInstanceArn:
           type: string
           description: The Amazon Resource Name (ARN) of the S3 Access Grants instance.
-        access_grants_instance_id:
+        AccessGrantsInstanceId:
           type: string
           description: The ID of the S3 Access Grants instance. The ID is default. You can have one S3 Access Grants instance
             per Region per account.
@@ -6569,13 +5786,13 @@ components:
     GetAccessGrantsInstanceResourcePolicyResultDisplay:
       type: object
       properties:
-        policy:
+        Policy:
           type: string
           description: The resource policy of the S3 Access Grants instance.
-        organization:
+        Organization:
           type: string
           description: The Organization of the resource policy of the S3 Access Grants instance.
-        created_at:
+        CreatedAt:
           type: string
           description: The date and time when you created the S3 Access Grants instance resource policy.
     GetAccessGrantsInstanceResourcePolicyOutputDisplay:
@@ -6588,25 +5805,25 @@ components:
     GetAccessGrantsLocationResultDisplay:
       type: object
       properties:
-        created_at:
+        CreatedAt:
           type: string
           description: The date and time when you registered the location.
-        access_grants_location_id:
+        AccessGrantsLocationId:
           type: string
           description: The ID of the registered location to which you are granting access. S3 Access Grants assigns this ID
             when you register the location. S3 Access Grants assigns the ID default to the default location s3:// and assigns
             an auto-generated ID to other locations that you register.
-        access_grants_location_arn:
+        AccessGrantsLocationArn:
           type: string
           description: The Amazon Resource Name (ARN) of the registered location.
-        location_scope:
+        LocationScope:
           type: string
           description: The S3 URI path to the registered location. The location scope can be the default S3 location s3://,
             the S3 path to a bucket, or the S3 path to a bucket and prefix. A prefix in S3 is a string of characters at the
             beginning of an object key name used to organize the objects that you store in your S3 buckets. For example, object
             key names that start with the engineering/ prefix or object key names that start with the marketing/campaigns/
             prefix.
-        iam_role_arn:
+        IAMRoleArn:
           type: string
           description: The Amazon Resource Name (ARN) of the IAM role for the registered location. S3 Access Grants assumes
             this role to manage access to the registered location.
@@ -6620,49 +5837,49 @@ components:
     GetAccessPointResultDisplay:
       type: object
       properties:
-        name:
+        Name:
           type: string
           description: The name of the specified access point.
-        bucket:
+        Bucket:
           type: string
           description: The name of the bucket associated with the specified access point.
-        network_origin:
+        NetworkOrigin:
           type: string
           description: Indicates whether this access point allows access from the public internet. If VpcConfiguration is
             specified for this access point, then NetworkOrigin is VPC, and the access point doesn't allow access from the
             public internet. Otherwise, NetworkOrigin is Internet, and the access point allows access from the public internet,
             subject to the access point and bucket access policies. This will always be true for an Amazon S3 on Outposts
             access point
-        vpc_configuration:
+        VpcConfiguration:
           type: string
           description: Contains the virtual private cloud (VPC) configuration for the specified access point. This element
             is empty if this access point is an Amazon S3 on Outposts access point that is used by other Amazon Web Services
             services.
-        public_access_block_configuration:
+        PublicAccessBlockConfiguration:
           type: string
           description: The PublicAccessBlock configuration that you want to apply to this Amazon S3 account. You can enable
             the configuration options in any combination. For more information about when Amazon S3 considers a bucket or
             object public, see The Meaning of "Public" in the Amazon S3 User Guide. This data type is not supported for Amazon
             S3 on Outposts.
-        creation_date:
+        CreationDate:
           type: string
           description: The date and time when the specified access point was created.
-        alias:
+        Alias:
           type: string
           description: The name or alias of the access point.
-        access_point_arn:
+        AccessPointArn:
           type: string
           description: The ARN of the access point.
-        endpoints:
+        Endpoints:
           type: string
           description: The VPC endpoint for the access point.
-        bucket_account_id:
+        BucketAccountId:
           type: string
           description: The Amazon Web Services account ID associated with the S3 bucket associated with this access point.
-        data_source_id:
+        DataSourceId:
           type: string
           description: The unique identifier for the data source of the access point.
-        data_source_type:
+        DataSourceType:
           type: string
           description: The type of the data source that the access point is attached to.
     GetAccessPointOutputDisplay:
@@ -6675,17 +5892,17 @@ components:
     ObjectLambdaConfigurationDisplay:
       type: object
       properties:
-        supporting_access_point:
+        SupportingAccessPoint:
           type: string
           description: Standard access point associated with the Object Lambda Access Point.
-        cloud_watch_metrics_enabled:
+        CloudWatchMetricsEnabled:
           type: boolean
           description: A container for whether the CloudWatch metrics configuration is enabled.
-        allowed_features:
+        AllowedFeatures:
           type: string
           description: A container for allowed features. Valid inputs are GetObject-Range, GetObject-PartNumber, HeadObject-Range,
             and HeadObject-PartNumber.
-        transformation_configurations:
+        TransformationConfigurations:
           type: string
           description: A container for transformation configurations for an Object Lambda Access Point.
     GetAccessPointConfigurationForObjectLambdaOutputDisplay:
@@ -6698,16 +5915,16 @@ components:
     GetAccessPointForObjectLambdaResultDisplay:
       type: object
       properties:
-        name:
+        Name:
           type: string
           description: The name of the Object Lambda Access Point.
-        public_access_block_configuration:
+        PublicAccessBlockConfiguration:
           type: string
           description: Configuration to block all public access. This setting is turned on and can not be edited.
-        creation_date:
+        CreationDate:
           type: string
           description: The date and time when the specified Object Lambda Access Point was created.
-        alias:
+        Alias:
           type: string
           description: The alias of the Object Lambda Access Point.
     GetAccessPointForObjectLambdaOutputDisplay:
@@ -6720,7 +5937,7 @@ components:
     GetAccessPointPolicyResultDisplay:
       type: object
       properties:
-        policy:
+        Policy:
           type: string
           description: The access point policy associated with the specified access point.
     GetAccessPointPolicyOutputDisplay:
@@ -6733,7 +5950,7 @@ components:
     GetAccessPointPolicyForObjectLambdaResultDisplay:
       type: object
       properties:
-        policy:
+        Policy:
           type: string
           description: Object Lambda Access Point resource policy document.
     GetAccessPointPolicyForObjectLambdaOutputDisplay:
@@ -6746,7 +5963,7 @@ components:
     PolicyStatusDisplay:
       type: object
       properties:
-        is_public:
+        IsPublic:
           type: boolean
     GetAccessPointPolicyStatusOutputDisplay:
       type: object
@@ -6765,11 +5982,11 @@ components:
     ScopeDisplay:
       type: object
       properties:
-        prefixes:
+        Prefixes:
           type: string
           description: You can specify any amount of prefixes, but the total length of characters of all prefixes must be
             less than 256 bytes in size.
-        permissions:
+        Permissions:
           type: string
           description: You can include one or more API operations as permissions.
     GetAccessPointScopeOutputDisplay:
@@ -6782,12 +5999,12 @@ components:
     GetBucketResultDisplay:
       type: object
       properties:
-        bucket:
+        Bucket:
           type: string
           description: The Outposts bucket requested.
-        public_access_block_enabled:
+        PublicAccessBlockEnabled:
           type: boolean
-        creation_date:
+        CreationDate:
           type: string
           description: The creation date of the Outposts bucket.
     GetBucketOutputDisplay:
@@ -6800,7 +6017,7 @@ components:
     GetBucketLifecycleConfigurationResultDisplay:
       type: object
       properties:
-        rules:
+        Rules:
           type: string
           description: Container for the lifecycle rule of the Outposts bucket.
     GetBucketLifecycleConfigurationOutputDisplay:
@@ -6813,7 +6030,7 @@ components:
     GetBucketPolicyResultDisplay:
       type: object
       properties:
-        policy:
+        Policy:
           type: string
           description: The policy of the Outposts bucket.
     GetBucketPolicyOutputDisplay:
@@ -6826,12 +6043,12 @@ components:
     ReplicationConfigurationDisplay:
       type: object
       properties:
-        role:
+        Role:
           type: string
           description: The Amazon Resource Name (ARN) of the Identity and Access Management (IAM) role that S3 on Outposts
             assumes when replicating objects. For information about S3 replication on Outposts configuration, see Setting
             up replication in the Amazon S3 User Guide.
-        rules:
+        Rules:
           type: string
           description: A container for one or more replication rules. A replication configuration must have at least one rule
             and can contain an array of 100 rules at the most.
@@ -6845,7 +6062,7 @@ components:
     GetBucketTaggingResultDisplay:
       type: object
       properties:
-        tag_set:
+        TagSet:
           type: string
           description: The tags set of the Outposts bucket.
     GetBucketTaggingOutputDisplay:
@@ -6858,14 +6075,16 @@ components:
     GetBucketVersioningResultDisplay:
       type: object
       properties:
-        status:
+        Status:
           type: string
           description: The versioning state of the S3 on Outposts bucket.
-        mfa_delete:
+        MFADelete:
           type: string
           description: Specifies whether MFA delete is enabled in the bucket versioning configuration. This element is returned
             only if the bucket has been configured with MFA delete. If MFA delete has never been configured for the bucket,
             this element is not returned.
+          xml:
+            name: MfaDelete
     GetBucketVersioningOutputDisplay:
       type: object
       properties:
@@ -6890,13 +6109,13 @@ components:
     GetDataAccessResultDisplay:
       type: object
       properties:
-        credentials:
+        Credentials:
           type: string
           description: The temporary credential token that S3 Access Grants vends.
-        matched_grant_target:
+        MatchedGrantTarget:
           type: string
           description: The S3 URI path of the data to which you are being granted temporary access credentials.
-        grantee:
+        Grantee:
           type: string
           description: The user, group, or role that was granted access to the S3 location scope. For directory identities,
             this API also returns the grants of the IAM role used for the identity-aware request. For more information on
@@ -6911,7 +6130,7 @@ components:
     GetJobTaggingResultDisplay:
       type: object
       properties:
-        tags:
+        Tags:
           type: string
           description: The set of tags associated with the S3 Batch Operations job.
     GetJobTaggingOutputDisplay:
@@ -6924,30 +6143,30 @@ components:
     MultiRegionAccessPointReportDisplay:
       type: object
       properties:
-        name:
+        Name:
           type: string
           description: The name of the Multi-Region Access Point.
-        alias:
+        Alias:
           type: string
           description: The alias for the Multi-Region Access Point. For more information about the distinction between the
             name and the alias of an Multi-Region Access Point, see Rules for naming Amazon S3 Multi-Region Access Points.
-        created_at:
+        CreatedAt:
           type: string
           description: When the Multi-Region Access Point create request was received.
-        public_access_block:
+        PublicAccessBlock:
           type: string
           description: The PublicAccessBlock configuration that you want to apply to this Amazon S3 account. You can enable
             the configuration options in any combination. For more information about when Amazon S3 considers a bucket or
             object public, see The Meaning of "Public" in the Amazon S3 User Guide. This data type is not supported for Amazon
             S3 on Outposts.
-        status:
+        Status:
           type: string
           description: The current status of the Multi-Region Access Point. CREATING and DELETING are temporary states that
             exist while the request is propagating and being completed. If a Multi-Region Access Point has a status of PARTIALLY_CREATED,
             you can retry creation or send a request to delete the Multi-Region Access Point. If a Multi-Region Access Point
             has a status of PARTIALLY_DELETED, you can retry a delete request to finish the deletion of the Multi-Region Access
             Point.
-        regions:
+        Regions:
           type: string
           description: A collection of the Regions and buckets associated with the Multi-Region Access Point.
     GetMultiRegionAccessPointOutputDisplay:
@@ -6960,10 +6179,10 @@ components:
     MultiRegionAccessPointPolicyDocumentDisplay:
       type: object
       properties:
-        established:
+        Established:
           type: string
           description: The last established policy for the Multi-Region Access Point.
-        proposed:
+        Proposed:
           type: string
           description: The proposed policy for the Multi-Region Access Point.
     GetMultiRegionAccessPointPolicyOutputDisplay:
@@ -6987,10 +6206,10 @@ components:
     GetMultiRegionAccessPointRoutesResultDisplay:
       type: object
       properties:
-        mrap:
+        Mrap:
           type: string
           description: The Multi-Region Access Point ARN.
-        routes:
+        Routes:
           type: string
           description: The different routes that make up the route configuration. Active routes return a value of 100, and
             passive routes return a value of 0.
@@ -7004,26 +6223,26 @@ components:
     PublicAccessBlockConfigurationDisplay:
       type: object
       properties:
-        block_public_acls:
+        BlockPublicAcls:
           type: boolean
           description: 'Specifies whether Amazon S3 should block public access control lists (ACLs) for buckets in this account.
             Setting this element to TRUE causes the following behavior: PutBucketAcl and PutObjectAcl calls fail if the specified
             ACL is public. PUT Object calls fail if the request includes a public ACL. PUT Bucket calls fail if the request
             includes a public ACL. Enabling this setting doesn''t affect existing policies or ACLs. This property is not supported
             for Amazon S3 on Outposts.'
-        ignore_public_acls:
+        IgnorePublicAcls:
           type: boolean
           description: Specifies whether Amazon S3 should ignore public ACLs for buckets in this account. Setting this element
             to TRUE causes Amazon S3 to ignore all public ACLs on buckets in this account and any objects that they contain.
             Enabling this setting doesn't affect the persistence of any existing ACLs and doesn't prevent new public ACLs
             from being set. This property is not supported for Amazon S3 on Outposts.
-        block_public_policy:
+        BlockPublicPolicy:
           type: boolean
           description: Specifies whether Amazon S3 should block public bucket policies for buckets in this account. Setting
             this element to TRUE causes Amazon S3 to reject calls to PUT Bucket policy if the specified bucket policy allows
             public access. Enabling this setting doesn't affect existing bucket policies. This property is not supported for
             Amazon S3 on Outposts.
-        restrict_public_buckets:
+        RestrictPublicBuckets:
           type: boolean
           description: Specifies whether Amazon S3 should restrict public bucket policies for buckets in this account. Setting
             this element to TRUE restricts access to buckets with public policies to only Amazon Web Services service principals
@@ -7040,38 +6259,38 @@ components:
     StorageLensConfigurationDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: A container for the Amazon S3 Storage Lens configuration ID.
-        account_level:
+        AccountLevel:
           type: string
           description: A container for all the account-level configurations of your S3 Storage Lens configuration.
-        include:
+        Include:
           type: string
           description: A container for what is included in this configuration. This container can only be valid if there is
             no Exclude container submitted, and it's not empty.
-        exclude:
+        Exclude:
           type: string
           description: A container for what is excluded in this configuration. This container can only be valid if there is
             no Include container submitted, and it's not empty.
-        data_export:
+        DataExport:
           type: string
           description: A container to specify the properties of your S3 Storage Lens metrics export including, the destination,
             schema and format.
-        expanded_prefixes_data_export:
+        ExpandedPrefixesDataExport:
           type: string
           description: A container that configures your S3 Storage Lens expanded prefixes metrics report.
-        is_enabled:
+        IsEnabled:
           type: boolean
           description: A container for whether the S3 Storage Lens configuration is enabled.
-        aws_org:
+        AwsOrg:
           type: string
           description: A container for the Amazon Web Services organization for this S3 Storage Lens configuration.
-        storage_lens_arn:
+        StorageLensArn:
           type: string
           description: 'The Amazon Resource Name (ARN) of the S3 Storage Lens configuration. This property is read-only and
             follows the following format: arn:aws:s3:us-east-1:example-account-id:storage-lens/your-dashboard-name'
-        prefix_delimiter:
+        PrefixDelimiter:
           type: string
           description: A container for all prefix delimiters that are used for object keys in this S3 Storage Lens configuration.
             The prefix delimiters determine how S3 Storage Lens counts prefix depth, by separating the hierarchical levels
@@ -7089,7 +6308,7 @@ components:
     GetStorageLensConfigurationTaggingResultDisplay:
       type: object
       properties:
-        tags:
+        Tags:
           type: string
           description: The tags of S3 Storage Lens configuration requested.
     GetStorageLensConfigurationTaggingOutputDisplay:
@@ -7102,14 +6321,14 @@ components:
     StorageLensGroupDisplay:
       type: object
       properties:
-        name:
+        Name:
           type: string
           description: Contains the name of the Storage Lens group.
-        filter:
+        Filter:
           type: string
           description: Sets the criteria for the Storage Lens group data that is displayed. For multiple filter conditions,
             the AND or OR logical operator is used.
-        storage_lens_group_arn:
+        StorageLensGroupArn:
           type: string
           description: Contains the Amazon Resource Name (ARN) of the Storage Lens group. This property is read-only.
     GetStorageLensGroupOutputDisplay:
@@ -7128,39 +6347,39 @@ components:
     ListAccessGrantEntryDisplay:
       type: object
       properties:
-        created_at:
+        CreatedAt:
           type: string
           description: The date and time when you created the S3 Access Grants instance.
-        access_grant_id:
+        AccessGrantId:
           type: string
           description: The ID of the access grant. S3 Access Grants auto-generates this ID when you create the access grant.
-        access_grant_arn:
+        AccessGrantArn:
           type: string
           description: The Amazon Resource Name (ARN) of the access grant.
-        grantee:
+        Grantee:
           type: string
           description: The user, group, or role to which you are granting access. You can grant access to an IAM user or role.
             If you have added your corporate directory to Amazon Web Services IAM Identity Center and associated your Identity
             Center instance with your S3 Access Grants instance, the grantee can also be a corporate directory user or group.
-        permission:
+        Permission:
           type: string
           description: 'The type of access granted to your S3 data, which can be set to one of the following values: READ
             – Grant read-only access to the S3 data. WRITE – Grant write-only access to the S3 data. READWRITE – Grant both
             read and write access to the S3 data.'
-        access_grants_location_id:
+        AccessGrantsLocationId:
           type: string
           description: The ID of the registered location to which you are granting access. S3 Access Grants assigns this ID
             when you register the location. S3 Access Grants assigns the ID default to the default location s3:// and assigns
             an auto-generated ID to other locations that you register.
-        access_grants_location_configuration:
+        AccessGrantsLocationConfiguration:
           type: string
           description: The configuration options of the grant location. The grant location is the S3 path to the data to which
             you are granting access.
-        grant_scope:
+        GrantScope:
           type: string
           description: The S3 path of the data to which you are granting access. It is the result of appending the Subprefix
             to the location scope.
-        application_arn:
+        ApplicationArn:
           type: string
           description: The Amazon Resource Name (ARN) of an Amazon Web Services IAM Identity Center application associated
             with your Identity Center instance. If the grant includes an application ARN, the grantee can only access the
@@ -7175,29 +6394,29 @@ components:
     ListAccessGrantsInstanceEntryDisplay:
       type: object
       properties:
-        access_grants_instance_id:
+        AccessGrantsInstanceId:
           type: string
           description: The ID of the S3 Access Grants instance. The ID is default. You can have one S3 Access Grants instance
             per Region per account.
-        access_grants_instance_arn:
+        AccessGrantsInstanceArn:
           type: string
           description: The Amazon Resource Name (ARN) of the S3 Access Grants instance.
-        created_at:
+        CreatedAt:
           type: string
           description: The date and time when you created the S3 Access Grants instance.
-        identity_center_arn:
+        IdentityCenterArn:
           type: string
           description: If you associated your S3 Access Grants instance with an Amazon Web Services IAM Identity Center instance,
             this field returns the Amazon Resource Name (ARN) of the IAM Identity Center instance application; a subresource
             of the original Identity Center instance. S3 Access Grants creates this Identity Center application for the specific
             S3 Access Grants instance.
-        identity_center_instance_arn:
+        IdentityCenterInstanceArn:
           type: string
           description: The Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity Center instance that you are
             associating with your S3 Access Grants instance. An IAM Identity Center instance is your corporate identity directory
             that you added to the IAM Identity Center. You can use the ListInstances API operation to retrieve a list of your
             Identity Center instances and their ARNs.
-        identity_center_application_arn:
+        IdentityCenterApplicationArn:
           type: string
           description: If you associated your S3 Access Grants instance with an Amazon Web Services IAM Identity Center instance,
             this field returns the Amazon Resource Name (ARN) of the IAM Identity Center instance application; a subresource
@@ -7213,25 +6432,25 @@ components:
     ListAccessGrantsLocationsEntryDisplay:
       type: object
       properties:
-        created_at:
+        CreatedAt:
           type: string
           description: The date and time when you registered the location.
-        access_grants_location_id:
+        AccessGrantsLocationId:
           type: string
           description: The ID of the registered location to which you are granting access. S3 Access Grants assigns this ID
             when you register the location. S3 Access Grants assigns the ID default to the default location s3:// and assigns
             an auto-generated ID to other locations that you register.
-        access_grants_location_arn:
+        AccessGrantsLocationArn:
           type: string
           description: The Amazon Resource Name (ARN) of the registered location.
-        location_scope:
+        LocationScope:
           type: string
           description: The S3 path to the location that you are registering. The location scope can be the default S3 location
             s3://, the S3 path to a bucket s3://`<bucket>`, or the S3 path to a bucket and prefix s3://`<bucket>`/`<prefix>`.
             A prefix in S3 is a string of characters at the beginning of an object key name used to organize the objects that
             you store in your S3 buckets. For example, object key names that start with the engineering/ prefix or object
             key names that start with the marketing/campaigns/ prefix.
-        iam_role_arn:
+        IAMRoleArn:
           type: string
           description: The Amazon Resource Name (ARN) of the IAM role for the registered location. S3 Access Grants assumes
             this role to manage access to the registered location.
@@ -7250,36 +6469,36 @@ components:
     AccessPointDisplay:
       type: object
       properties:
-        name:
+        Name:
           type: string
           description: The name of this access point.
-        network_origin:
+        NetworkOrigin:
           type: string
           description: Indicates whether this access point allows access from the public internet. If VpcConfiguration is
             specified for this access point, then NetworkOrigin is VPC, and the access point doesn't allow access from the
             public internet. Otherwise, NetworkOrigin is Internet, and the access point allows access from the public internet,
             subject to the access point and bucket access policies.
-        vpc_configuration:
+        VpcConfiguration:
           type: string
           description: The virtual private cloud (VPC) configuration for this access point, if one exists. This element is
             empty if this access point is an Amazon S3 on Outposts access point that is used by other Amazon Web Services
             services.
-        bucket:
+        Bucket:
           type: string
           description: The name of the bucket associated with this access point.
-        access_point_arn:
+        AccessPointArn:
           type: string
           description: The ARN for the access point.
-        alias:
+        Alias:
           type: string
           description: The name or alias of the access point.
-        bucket_account_id:
+        BucketAccountId:
           type: string
           description: The Amazon Web Services account ID associated with the S3 bucket associated with this access point.
-        data_source_id:
+        DataSourceId:
           type: string
           description: A unique identifier for the data source of the access point.
-        data_source_type:
+        DataSourceType:
           type: string
           description: The type of the data source that the access point is attached to.
     ListAccessPointsOutputDisplay:
@@ -7299,13 +6518,13 @@ components:
     ObjectLambdaAccessPointDisplay:
       type: object
       properties:
-        name:
+        Name:
           type: string
           description: The name of the Object Lambda Access Point.
-        object_lambda_access_point_arn:
+        ObjectLambdaAccessPointArn:
           type: string
           description: Specifies the ARN for the Object Lambda Access Point.
-        alias:
+        Alias:
           type: string
           description: The alias of the Object Lambda Access Point.
     ListAccessPointsForObjectLambdaOutputDisplay:
@@ -7318,15 +6537,15 @@ components:
     ListCallerAccessGrantsEntryDisplay:
       type: object
       properties:
-        permission:
+        Permission:
           type: string
           description: 'The type of permission granted, which can be one of the following values: READ - Grants read-only
             access to the S3 data. WRITE - Grants write-only access to the S3 data. READWRITE - Grants both read and write
             access to the S3 data.'
-        grant_scope:
+        GrantScope:
           type: string
           description: The S3 path of the data to which you have been granted access.
-        application_arn:
+        ApplicationArn:
           type: string
           description: The Amazon Resource Name (ARN) of an Amazon Web Services IAM Identity Center application associated
             with your Identity Center instance. If the grant includes an application ARN, the grantee can only access the
@@ -7366,29 +6585,29 @@ components:
     JobListDescriptorDisplay:
       type: object
       properties:
-        job_id:
+        JobId:
           type: string
           description: The ID for the specified job.
-        description:
+        Description:
           type: string
           description: The user-specified description that was included in the specified job's Create Job request.
-        operation:
+        Operation:
           type: string
           description: The operation that the specified job is configured to run on every object listed in the manifest.
-        priority:
+        Priority:
           type: integer
           description: The current priority for the specified job.
-        status:
+        Status:
           type: string
           description: The specified job's current status.
-        creation_time:
+        CreationTime:
           type: string
           description: A timestamp indicating when the specified job was created.
-        termination_date:
+        TerminationDate:
           type: string
           description: A timestamp indicating when the specified job terminated. A job's termination date is the date and
             time when it succeeded, failed, or was canceled.
-        progress_summary:
+        ProgressSummary:
           type: string
           description: Describes the total number of tasks that the specified job has run, the number of tasks that succeeded,
             and the number of tasks that failed.
@@ -7409,17 +6628,17 @@ components:
     RegionalBucketDisplay:
       type: object
       properties:
-        bucket:
+        Bucket:
           type: string
-        bucket_arn:
+        BucketArn:
           type: string
           description: The Amazon Resource Name (ARN) for the regional bucket.
-        public_access_block_enabled:
+        PublicAccessBlockEnabled:
           type: boolean
-        creation_date:
+        CreationDate:
           type: string
           description: The creation date of the regional bucket
-        outpost_id:
+        OutpostId:
           type: string
           description: The Outposts ID of the regional bucket.
     ListRegionalBucketsOutputDisplay:
@@ -7432,17 +6651,17 @@ components:
     ListStorageLensConfigurationEntryDisplay:
       type: object
       properties:
-        id:
+        Id:
           type: string
           description: A container for the S3 Storage Lens configuration ID.
-        storage_lens_arn:
+        StorageLensArn:
           type: string
           description: The ARN of the S3 Storage Lens configuration. This property is read-only.
-        home_region:
+        HomeRegion:
           type: string
           description: A container for the S3 Storage Lens home Region. Your metrics data is stored and retained in your designated
             S3 Storage Lens home Region.
-        is_enabled:
+        IsEnabled:
           type: boolean
           description: A container for whether the S3 Storage Lens configuration is enabled. This property is required.
     ListStorageLensConfigurationsOutputDisplay:
@@ -7455,13 +6674,13 @@ components:
     ListStorageLensGroupEntryDisplay:
       type: object
       properties:
-        name:
+        Name:
           type: string
           description: Contains the name of the Storage Lens group that exists in the specified home Region.
-        storage_lens_group_arn:
+        StorageLensGroupArn:
           type: string
           description: Contains the Amazon Resource Name (ARN) of the Storage Lens group. This property is read-only.
-        home_region:
+        HomeRegion:
           type: string
           description: Contains the Amazon Web Services Region where the Storage Lens group was created.
     ListStorageLensGroupsOutputDisplay:
@@ -7478,12 +6697,12 @@ components:
     TagDisplay:
       type: object
       properties:
-        key:
+        Key:
           type: string
           description: 'The key of the key-value pair of a tag added to your Amazon Web Services resource. A tag key can be
             up to 128 Unicode characters in length and is case-sensitive. System created tags that begin with aws: aren’t
             supported.'
-        value:
+        Value:
           type: string
           description: The value of the key-value pair of a tag added to your Amazon Web Services resource. A tag value can
             be up to 256 Unicode characters in length and is case-sensitive.
@@ -7506,13 +6725,13 @@ components:
     PutAccessGrantsInstanceResourcePolicyResultDisplay:
       type: object
       properties:
-        policy:
+        Policy:
           type: string
           description: The updated resource policy of the S3 Access Grants instance.
-        organization:
+        Organization:
           type: string
           description: The Organization of the resource policy of the S3 Access Grants instance.
-        created_at:
+        CreatedAt:
           type: string
           description: The date and time when you created the S3 Access Grants instance resource policy.
     PutAccessGrantsInstanceResourcePolicyOutputDisplay:
@@ -8105,7 +7324,7 @@ components:
     PutMultiRegionAccessPointPolicyResultDisplay:
       type: object
       properties:
-        request_token_arn:
+        RequestTokenARN:
           type: string
           description: The request token associated with the request. You can use this token with DescribeMultiRegionAccessPointOperation
             to determine the status of asynchronous requests.
@@ -8610,23 +7829,23 @@ components:
     UpdateAccessGrantsLocationResultDisplay:
       type: object
       properties:
-        created_at:
+        CreatedAt:
           type: string
           description: The date and time when you registered the location.
-        access_grants_location_id:
+        AccessGrantsLocationId:
           type: string
           description: The ID of the registered location to which you are granting access. S3 Access Grants assigned this
             ID when you registered the location. S3 Access Grants assigns the ID default to the default location s3:// and
             assigns an auto-generated ID to other locations that you register.
-        access_grants_location_arn:
+        AccessGrantsLocationArn:
           type: string
           description: The Amazon Resource Name (ARN) of the registered location that you are updating.
-        location_scope:
+        LocationScope:
           type: string
           description: The S3 URI path of the location that you are updating. You cannot update the scope of the registered
             location. The location scope can be the default S3 location s3://, the S3 path to a bucket s3://`<bucket>`, or
             the S3 path to a bucket and prefix s3://`<bucket>`/`<prefix>`.
-        iam_role_arn:
+        IAMRoleArn:
           type: string
           description: The Amazon Resource Name (ARN) of the IAM role of the registered location. S3 Access Grants assumes
             this role to manage access to the registered location.
@@ -8640,10 +7859,10 @@ components:
     UpdateJobPriorityResultDisplay:
       type: object
       properties:
-        job_id:
+        JobId:
           type: string
           description: The ID for the job whose priority Amazon S3 updated.
-        priority:
+        Priority:
           type: integer
           description: The new priority assigned to the specified job.
     UpdateJobPriorityOutputDisplay:
@@ -8665,13 +7884,13 @@ components:
     UpdateJobStatusResultDisplay:
       type: object
       properties:
-        job_id:
+        JobId:
           type: string
           description: The ID for the job whose status was updated.
-        status:
+        Status:
           type: string
           description: The current status for the specified job.
-        status_update_reason:
+        StatusUpdateReason:
           type: string
           description: The reason that the specified job's status was updated.
     UpdateJobStatusOutputDisplay:

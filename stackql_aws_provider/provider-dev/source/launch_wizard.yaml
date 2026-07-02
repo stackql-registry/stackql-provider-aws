@@ -270,7 +270,7 @@ paths:
       description: Lists the deployments that have been created.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -410,7 +410,7 @@ paths:
         the available deployment patterns for a given workload.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

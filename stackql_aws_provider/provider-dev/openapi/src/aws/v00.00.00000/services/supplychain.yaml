@@ -153,7 +153,7 @@ paths:
             $ref: "#/components/schemas/DataIntegrationFlowName"
           description: The name of the DataIntegrationFlow to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -196,7 +196,7 @@ paths:
             $ref: "#/components/schemas/DataLakeDatasetName"
           description: The name of the dataset. For asc name space, the name must be one of the supported data entities under https://docs.aws.amazon.com/aws-supply-chain/latest/userguide/data-model-asc.html.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -298,7 +298,7 @@ paths:
             $ref: "#/components/schemas/DataLakeDatasetName"
           description: The name of the dataset. For asc namespace, the name must be one of the supported data entities under https://docs.aws.amazon.com/aws-supply-chain/latest/userguide/data-model-asc.html.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -331,7 +331,7 @@ paths:
             $ref: "#/components/schemas/DataLakeNamespaceName"
           description: The name of the namespace. Noted you cannot create namespace with name starting with asc, default, scn, aws, amazon, amzn
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -411,7 +411,7 @@ paths:
             $ref: "#/components/schemas/DataLakeNamespaceName"
           description: The name of the namespace. Noted you cannot update namespace with name starting with asc, default, scn, aws, amazon, amzn
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -432,7 +432,7 @@ paths:
       description: Enables you to programmatically create an Amazon Web Services Supply Chain instance by applying KMS keys and relevant information associated with the API without using the Amazon Web Services console. This is an asynchronous operation. Upon receiving a CreateInstance request, Amazon Web Services Supply Chain immediately returns the instance resource, instance ID, and the initializing state while simultaneously creating all required Amazon Web Services resources for an instance creation. You can use GetInstance to check the status of the instance. If the instance results in an unhealthy state, you need to check the error message, delete the current instance, and recreate a new one based on the mitigation from the error message.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -538,7 +538,7 @@ paths:
             $ref: "#/components/schemas/UUID"
           description: The AWS Supply Chain instance identifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2168,6 +2168,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2195,6 +2197,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2216,6 +2220,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2226,6 +2232,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.flows
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_integration_flows/methods/get_data_integration_flow"
@@ -2247,6 +2255,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2268,6 +2278,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2278,6 +2290,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.datasets
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_lake_datasets/methods/get_data_lake_dataset"
@@ -2299,6 +2313,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2320,6 +2336,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2330,6 +2348,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.namespaces
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_lake_namespaces/methods/get_data_lake_namespace"
@@ -2351,6 +2371,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2361,6 +2383,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.instances
+          request:
+            nativeCasing: pascal
         delete_instance:
           operation:
             $ref: "#/paths/~1api~1instance~1{instance_id}/delete"
@@ -2379,6 +2403,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2410,6 +2436,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.events
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_integration_events/methods/get_data_integration_event"
@@ -2435,6 +2463,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.flowExecutions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_integration_flow_executions/methods/get_data_integration_flow_execution"
@@ -2470,6 +2500,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2479,6 +2511,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

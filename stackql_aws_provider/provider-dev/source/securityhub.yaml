@@ -443,7 +443,7 @@ paths:
         finding_info.modified_time_dt, time, or time_dt for a finding.'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1040,7 +1040,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The ARN of the custom action target to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1133,7 +1133,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The ARN of the automation rule.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1196,7 +1196,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The Amazon Resource Name (ARN) or universally unique identifier (UUID) of the configuration policy.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1272,7 +1272,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The UUID of the connectorV2 to identify connectorV2 resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1349,7 +1349,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The ARN of the insight that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1436,7 +1436,7 @@ paths:
       description: Returns a list of the custom action targets in Security Hub CSPM in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1513,7 +1513,7 @@ paths:
         use the BatchDisableStandards operation. To learn more, see the setup information in the Security Hub CSPM User Guide.'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1540,7 +1540,7 @@ paths:
       description: Updates configuration options for Security Hub CSPM.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1708,7 +1708,7 @@ paths:
         Region.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2133,7 +2133,7 @@ paths:
       description: Returns a list of the standards that are currently enabled.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2264,7 +2264,7 @@ paths:
         Region and linked Regions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2372,7 +2372,7 @@ paths:
         statement. You must have permission to perform the securityhub:GetFindings action.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2426,7 +2426,7 @@ paths:
       description: Lists and describes insights for the specified insight ARNs.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2578,7 +2578,7 @@ paths:
         are provided, Scopes narrows the data set first, and then Filters refines results within that scoped data set.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2788,7 +2788,7 @@ paths:
         Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3232,7 +3232,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The ARN of the security standard control to enable or disable.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

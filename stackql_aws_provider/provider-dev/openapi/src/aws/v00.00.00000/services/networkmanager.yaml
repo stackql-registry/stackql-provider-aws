@@ -633,7 +633,7 @@ paths:
             $ref: "#/components/schemas/GlobalNetworkId"
           description: The ID of the global network.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -746,7 +746,7 @@ paths:
       description: Creates a new, empty global network.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -897,7 +897,7 @@ paths:
             $ref: "#/components/schemas/GlobalNetworkId"
           description: The ID of the global network.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1176,7 +1176,7 @@ paths:
             $ref: "#/components/schemas/ConnectionId"
           description: The ID of the connection.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1241,7 +1241,7 @@ paths:
             $ref: "#/components/schemas/CoreNetworkId"
           description: The ID of a core network.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1345,7 +1345,7 @@ paths:
             $ref: "#/components/schemas/DeviceId"
           description: The ID of the device.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1403,7 +1403,7 @@ paths:
             $ref: "#/components/schemas/GlobalNetworkId"
           description: The ID of your global network.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1459,7 +1459,7 @@ paths:
             $ref: "#/components/schemas/LinkId"
           description: The ID of the link.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1602,7 +1602,7 @@ paths:
             $ref: "#/components/schemas/SiteId"
           description: The ID of your site.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1922,7 +1922,7 @@ paths:
             $ref: "#/components/schemas/AttachmentId"
           description: The ID of the Direct Connect gateway attachment for the updated edge locations.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2387,7 +2387,7 @@ paths:
             $ref: "#/components/schemas/AttachmentId"
           description: The ID of the attachment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5849,6 +5849,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5858,6 +5860,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5868,6 +5872,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ConnectPeers
+          request:
+            nativeCasing: pascal
         delete_connect_peer:
           operation:
             $ref: "#/paths/~1connect-peers~1{connect_peer_id}/delete"
@@ -5909,6 +5915,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ConnectPeerAssociations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connect_peer_associations/methods/get_connect_peer_associations"
@@ -5926,6 +5934,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5954,6 +5964,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CustomerGatewayAssociations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/customer_gateway_associations/methods/get_customer_gateway_associations"
@@ -5971,6 +5983,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5980,12 +5994,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         create_link:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}~1links/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5996,6 +6014,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Links
+          request:
+            nativeCasing: pascal
         delete_link:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}~1links~1{link_id}/delete"
@@ -6008,6 +6028,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6034,6 +6056,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.LinkAssociations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/link_associations/methods/get_link_associations"
@@ -6051,6 +6075,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6079,6 +6105,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TransitGatewayConnectPeerAssociations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/transit_gateway_connect_peer_associations/methods/get_transit_gateway_connect_peer_associations"
@@ -6096,6 +6124,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6123,6 +6153,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6133,6 +6165,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Connections
+          request:
+            nativeCasing: pascal
         delete_connection:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}~1connections~1{connection_id}/delete"
@@ -6145,6 +6179,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6168,6 +6204,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6178,6 +6216,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CoreNetworks
+          request:
+            nativeCasing: pascal
         delete_core_network:
           operation:
             $ref: "#/paths/~1core-networks~1{core_network_id}/delete"
@@ -6196,6 +6236,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6220,6 +6262,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6236,6 +6280,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.PrefixListAssociations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/core_network_prefix_list_associations/methods/list_core_network_prefix_list_associations"
@@ -6255,6 +6301,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6265,6 +6313,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Devices
+          request:
+            nativeCasing: pascal
         delete_device:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}~1devices~1{device_id}/delete"
@@ -6277,6 +6327,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6300,6 +6352,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6315,6 +6369,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6337,6 +6393,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6347,6 +6405,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.GlobalNetworks
+          request:
+            nativeCasing: pascal
         delete_global_network:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}/delete"
@@ -6359,6 +6419,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6382,6 +6444,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6392,6 +6456,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Sites
+          request:
+            nativeCasing: pascal
         delete_site:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}~1sites~1{site_id}/delete"
@@ -6404,6 +6470,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6427,6 +6495,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6454,6 +6524,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6481,6 +6553,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6508,6 +6582,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6523,6 +6599,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6552,6 +6630,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Attachments
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/attachments/methods/list_attachments"
@@ -6577,6 +6657,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CoreNetworkPolicyVersions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/core_network_policy_versions/methods/list_core_network_policy_versions"
@@ -6602,6 +6684,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Peerings
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/peerings/methods/list_peerings"
@@ -6632,6 +6716,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6661,6 +6747,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6683,6 +6771,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CoreNetworkChangeEvents
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/core_network_change_events/methods/get_core_network_change_events"
@@ -6701,6 +6791,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CoreNetworkChanges
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/core_network_change_sets/methods/get_core_network_change_set"
@@ -6718,12 +6810,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_core_network_policy:
           operation:
             $ref: "#/paths/~1core-networks~1{core_network_id}~1core-network-policy/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6747,6 +6843,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.NetworkResourceCounts
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/network_resource_counts/methods/get_network_resource_counts"
@@ -6765,6 +6863,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Relationships
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/network_resource_relationships/methods/get_network_resource_relationships"
@@ -6783,6 +6883,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.NetworkResources
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/network_resources/methods/get_network_resources"
@@ -6800,6 +6902,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6821,6 +6925,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.NetworkTelemetry
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/network_telemetries/methods/get_network_telemetry"
@@ -6844,6 +6950,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6865,6 +6973,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TransitGatewayRegistrations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/transit_gateway_registrations/methods/get_transit_gateway_registrations"
@@ -6883,6 +6993,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AttachmentRoutingPolicyAssociations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/attachment_routing_policy_associations/methods/list_attachment_routing_policy_associations"
@@ -6901,6 +7013,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CoreNetworkRoutingInformation
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6921,6 +7035,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organization_service_access_status/methods/list_organization_service_access_status"
@@ -6955,6 +7071,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6964,6 +7082,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -6982,6 +7102,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -7010,6 +7132,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

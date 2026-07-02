@@ -26,7 +26,7 @@ paths:
         getting action recommendations, see Getting action recommendations.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -105,7 +105,7 @@ paths:
         backing the recommender. For information on use case requirements see Choosing recommender use cases.'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

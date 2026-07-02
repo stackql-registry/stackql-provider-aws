@@ -165,7 +165,7 @@ paths:
           $ref: '#/components/schemas/UuidOrArnOrEitherWithQualifier'
         description: The identifier of the Amazon Q in Connect AI Agent.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -345,7 +345,7 @@ paths:
           $ref: '#/components/schemas/UuidOrArnOrEitherWithQualifier'
         description: The identifier of the Amazon Q in Connect AI Guardrail.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -526,7 +526,7 @@ paths:
           $ref: '#/components/schemas/UuidOrArnOrEitherWithQualifier'
         description: The identifier of the Amazon Q in Connect AI prompt.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1143,7 +1143,7 @@ paths:
           $ref: '#/components/schemas/UuidOrArnOrEitherWithQualifier'
         description: The identifier of the message template. Can be either the ID or the ARN. It cannot contain any qualifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1971,7 +1971,7 @@ paths:
           $ref: '#/components/schemas/UuidOrArn'
         description: The identifier of the content. Can be either the ID or the ARN. URLs cannot contain the ARN.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2241,7 +2241,7 @@ paths:
           $ref: '#/components/schemas/UuidOrArnOrEitherWithQualifier'
         description: The identifier of the message template. Can be either the ID or the ARN. It cannot contain any qualifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2369,7 +2369,7 @@ paths:
           $ref: '#/components/schemas/UuidOrArn'
         description: The identifier of the quick response.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2577,7 +2577,7 @@ paths:
           $ref: '#/components/schemas/UuidOrArn'
         description: The identifier of the session. Can be either the ID or the ARN. URLs cannot contain the ARN.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2995,7 +2995,7 @@ paths:
         description: The identifier of the Amazon Q in Connect assistant. Can be either the ID or the ARN. URLs cannot contain
           the ARN.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3529,7 +3529,7 @@ paths:
           $ref: '#/components/schemas/UuidOrArnOrEitherWithQualifier'
         description: The identifier of the message template. Can be either the ID or the ARN. It cannot contain any qualifier.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

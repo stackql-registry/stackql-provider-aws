@@ -190,7 +190,7 @@ paths:
       description: Put the account settings for Artifact.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -586,6 +586,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -608,6 +610,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_reports:
           operation:
             $ref: "#/paths/~1v1~1report~1list/get"
@@ -615,6 +619,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.reports
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/reports/methods/get_report"
@@ -633,6 +639,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/report_metadatas/methods/get_report_metadata"
@@ -650,6 +658,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/term_for_reports/methods/get_term_for_report"
@@ -668,6 +678,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.customerAgreements
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/customer_agreements/methods/list_customer_agreements"
@@ -686,6 +698,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.reports
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/report_versions/methods/list_report_versions"

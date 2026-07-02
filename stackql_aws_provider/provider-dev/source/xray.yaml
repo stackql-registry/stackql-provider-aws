@@ -144,7 +144,7 @@ paths:
       description: Deletes a group resource.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -198,7 +198,7 @@ paths:
       description: Deletes a sampling rule.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -239,7 +239,7 @@ paths:
       description: Retrieves group resource details.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -265,7 +265,7 @@ paths:
       description: Retrieves all active group details.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -291,7 +291,7 @@ paths:
         ingested through the CloudWatchLogs destination and indexed by X-Ray. For more information, see Transaction Search.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -482,7 +482,7 @@ paths:
       description: Retrieves all sampling rules.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -507,7 +507,7 @@ paths:
       description: Retrieves information about recent sampling results for all sampling rules.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -733,7 +733,7 @@ paths:
       description: Returns the list of resource policies in the target Amazon Web Services account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1061,7 +1061,7 @@ paths:
       description: Updates a group resource.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1148,7 +1148,7 @@ paths:
         CloudWatchLogs destination. For more information, see Transaction Search.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

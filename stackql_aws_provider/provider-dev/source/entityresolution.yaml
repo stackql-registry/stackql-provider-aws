@@ -534,7 +534,7 @@ paths:
           $ref: '#/components/schemas/EntityName'
         description: The name of the ID namespace.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -977,7 +977,7 @@ paths:
           $ref: '#/components/schemas/EntityNameOrIdMappingWorkflowArn'
         description: The name of the ID mapping job to be retrieved.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

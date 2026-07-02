@@ -307,7 +307,7 @@ paths:
           doesn't expire. For more information about the limits of messageExpiry, see Amazon Web Services IoT Core message
           broker and protocol limits and quotas from the Amazon Web Services Reference Guide.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

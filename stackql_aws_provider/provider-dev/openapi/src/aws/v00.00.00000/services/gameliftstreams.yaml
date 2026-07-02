@@ -292,7 +292,7 @@ paths:
             $ref: "#/components/schemas/Identifier"
           description: "An Amazon Resource Name (ARN) or ID that uniquely identifies the application resource. Example ARN: arn:aws:gameliftstreams:us-west-2:111122223333:application/a-9ZY8X7Wv6. Example ID: a-9ZY8X7Wv6."
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -353,7 +353,7 @@ paths:
             $ref: "#/components/schemas/Identifier"
           description: "An Amazon Resource Name (ARN) or ID that uniquely identifies the stream group resource. Example ARN: arn:aws:gameliftstreams:us-west-2:111122223333:streamgroup/sg-1AB2C3De4. Example ID: sg-1AB2C3De4."
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1739,6 +1739,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1747,6 +1749,8 @@ components:
             $ref: "#/paths/~1streamgroups~1{identifier}~1locations/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -1765,6 +1769,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1774,6 +1780,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1784,6 +1792,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_application:
           operation:
             $ref: "#/paths/~1applications~1{identifier}/delete"
@@ -1801,6 +1811,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1810,6 +1822,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1835,6 +1849,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1845,6 +1861,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_stream_group:
           operation:
             $ref: "#/paths/~1streamgroups~1{identifier}/delete"
@@ -1862,6 +1880,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1886,6 +1906,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1918,6 +1940,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/stream_sessions/methods/get_stream_session"
@@ -1938,6 +1962,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/stream_sessions_by_accounts/methods/list_stream_sessions_by_account"
@@ -1972,6 +1998,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1981,6 +2009,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

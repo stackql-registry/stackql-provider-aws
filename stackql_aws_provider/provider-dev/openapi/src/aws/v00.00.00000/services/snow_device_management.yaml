@@ -968,6 +968,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -984,6 +986,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.tasks
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tasks/methods/describe_task"
@@ -1010,6 +1014,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.devices
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/devices/methods/describe_device"
@@ -1028,6 +1034,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1055,6 +1063,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.executions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/executions/methods/describe_execution"
@@ -1074,6 +1084,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.resources
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/device_resources/methods/list_device_resources"
@@ -1107,6 +1119,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1115,6 +1129,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

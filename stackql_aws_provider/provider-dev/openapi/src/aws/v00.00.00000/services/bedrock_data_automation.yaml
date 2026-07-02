@@ -92,7 +92,7 @@ paths:
       description: Lists all existing Amazon Bedrock Data Automation Blueprints
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -129,7 +129,7 @@ paths:
             $ref: "#/components/schemas/BlueprintArn"
           description: ARN generated at the server side when a Blueprint is created
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -180,7 +180,7 @@ paths:
       description: Lists all existing Amazon Bedrock Data Automation Libraries
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -248,7 +248,7 @@ paths:
       description: Lists all existing Amazon Bedrock Data Automation Projects
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -308,7 +308,7 @@ paths:
             $ref: "#/components/schemas/BlueprintArn"
           description: ARN generated at the server side when a Blueprint is created
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -403,7 +403,7 @@ paths:
             $ref: "#/components/schemas/DataAutomationLibraryArn"
           description: ARN generated at the server side when a DataAutomationLibrary is created
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -449,7 +449,7 @@ paths:
             $ref: "#/components/schemas/DataAutomationProjectArn"
           description: ARN generated at the server side when a DataAutomationProject is created
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -667,7 +667,7 @@ paths:
             $ref: "#/components/schemas/DataAutomationLibraryArn"
           description: ARN generated at the server side when a DataAutomationLibrary is created
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -702,7 +702,7 @@ paths:
             $ref: "#/components/schemas/EntityType"
           description: The entity type for which the entity list is requested
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2407,6 +2407,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2417,6 +2419,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.blueprints
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2426,12 +2430,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_blueprint:
           operation:
             $ref: "#/paths/~1blueprints~1{blueprint_arn}~1/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2441,6 +2449,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2465,6 +2475,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2485,6 +2497,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2495,6 +2509,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.libraries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2516,6 +2532,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2540,6 +2558,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2550,6 +2570,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.projects
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2565,6 +2587,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2574,6 +2598,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2622,6 +2648,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.entities
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2650,6 +2678,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobs
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2671,6 +2701,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2691,6 +2723,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2700,6 +2734,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

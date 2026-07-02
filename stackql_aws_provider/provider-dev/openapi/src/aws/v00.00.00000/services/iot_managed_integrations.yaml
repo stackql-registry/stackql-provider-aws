@@ -216,7 +216,7 @@ paths:
       description: Create a credential locker. This operation will not trigger the creation of all the manufacturing resources.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -634,7 +634,7 @@ paths:
       description: Create a configuraiton for the over-the-air (OTA) task.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -776,7 +776,7 @@ paths:
             $ref: "#/components/schemas/AccountAssociationId"
           description: The unique identifier of the account association to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -831,7 +831,7 @@ paths:
             $ref: "#/components/schemas/CloudConnectorId"
           description: The unique identifier of the cloud connector to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -886,7 +886,7 @@ paths:
             $ref: "#/components/schemas/ConnectorDestinationId"
           description: The unique identifier of the connector destination to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -978,7 +978,7 @@ paths:
             $ref: "#/components/schemas/DestinationName"
           description: The name of the customer-managed destination.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1098,7 +1098,7 @@ paths:
             $ref: "#/components/schemas/ManagedThingId"
           description: The id of the managed thing.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1230,7 +1230,7 @@ paths:
             $ref: "#/components/schemas/OtaTaskId"
           description: The over-the-air (OTA) task id.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5125,6 +5125,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5135,6 +5137,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_account_association:
           operation:
             $ref: "#/paths/~1account-associations~1{account_association_id}/delete"
@@ -5151,6 +5155,8 @@ components:
             $ref: "#/paths/~1account-associations~1{account_association_id}/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5159,6 +5165,8 @@ components:
             $ref: "#/paths/~1managed-thing-associations~1deregister/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5168,6 +5176,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5194,6 +5204,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5204,6 +5216,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_cloud_connector:
           operation:
             $ref: "#/paths/~1cloud-connectors~1{identifier}/delete"
@@ -5220,6 +5234,8 @@ components:
             $ref: "#/paths/~1cloud-connectors~1{identifier}/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5244,6 +5260,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5254,6 +5272,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ConnectorDestinationList
+          request:
+            nativeCasing: pascal
         delete_connector_destination:
           operation:
             $ref: "#/paths/~1connector-destinations~1{identifier}/delete"
@@ -5270,6 +5290,8 @@ components:
             $ref: "#/paths/~1connector-destinations~1{identifier}/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5294,6 +5316,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5304,6 +5328,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_credential_locker:
           operation:
             $ref: "#/paths/~1credential-lockers~1{identifier}/delete"
@@ -5335,6 +5361,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5345,6 +5373,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DestinationList
+          request:
+            nativeCasing: pascal
         delete_destination:
           operation:
             $ref: "#/paths/~1destinations~1{name}/delete"
@@ -5361,6 +5391,8 @@ components:
             $ref: "#/paths/~1destinations~1{name}/put"
           response:
             openAPIDocKey: "201"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5385,6 +5417,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5395,6 +5429,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.EventLogConfigurationList
+          request:
+            nativeCasing: pascal
         delete_event_log_configuration:
           operation:
             $ref: "#/paths/~1event-log-configurations~1{id}/delete"
@@ -5411,6 +5447,8 @@ components:
             $ref: "#/paths/~1event-log-configurations~1{id}/patch"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5435,6 +5473,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5445,11 +5485,15 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_managed_thing:
           operation:
             $ref: "#/paths/~1managed-things~1{identifier}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         get_managed_thing:
           operation:
             $ref: "#/paths/~1managed-things~1{identifier}/get"
@@ -5461,6 +5505,8 @@ components:
             $ref: "#/paths/~1managed-things~1{identifier}/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5485,6 +5531,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5495,6 +5543,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.NotificationConfigurationList
+          request:
+            nativeCasing: pascal
         delete_notification_configuration:
           operation:
             $ref: "#/paths/~1notification-configurations~1{event_type}/delete"
@@ -5511,6 +5561,8 @@ components:
             $ref: "#/paths/~1notification-configurations~1{event_type}/put"
           response:
             openAPIDocKey: "201"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5535,6 +5587,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5545,6 +5599,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Tasks
+          request:
+            nativeCasing: pascal
         delete_ota_task:
           operation:
             $ref: "#/paths/~1ota-tasks~1{identifier}/delete"
@@ -5561,6 +5617,8 @@ components:
             $ref: "#/paths/~1ota-tasks~1{identifier}/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5585,6 +5643,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5595,6 +5655,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_ota_task_configuration:
           operation:
             $ref: "#/paths/~1ota-task-configurations~1{identifier}/delete"
@@ -5626,6 +5688,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5636,6 +5700,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
         delete_provisioning_profile:
           operation:
             $ref: "#/paths/~1provisioning-profiles~1{identifier}/delete"
@@ -5697,6 +5763,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5726,6 +5794,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/device_discoveries/methods/get_device_discovery"
@@ -5750,6 +5820,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5862,6 +5934,8 @@ components:
             $ref: "#/paths/~1runtime-log-configurations~1{managed_thing_id}/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5884,6 +5958,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_schema_versions:
           operation:
             $ref: "#/paths/~1schema-versions~1{type}/get"
@@ -5891,6 +5967,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/schema_versions/methods/get_schema_version"
@@ -5910,6 +5988,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/discovered_devices/methods/list_discovered_devices"
@@ -5928,6 +6008,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_thing_account_associations/methods/list_managed_thing_account_associations"
@@ -5946,6 +6028,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_thing_schemas/methods/list_managed_thing_schemas"
@@ -5964,6 +6048,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ExecutionSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ota_task_executions/methods/list_ota_task_executions"
@@ -5998,6 +6084,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6007,6 +6095,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

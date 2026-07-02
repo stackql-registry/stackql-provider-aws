@@ -102,7 +102,7 @@ paths:
       description: Retrieves the Amazon Inspector status of multiple Amazon Web Services accounts within your environment.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -205,7 +205,7 @@ paths:
         You must be the delegated administrator of an organization in Amazon Inspector to use this API.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -638,7 +638,7 @@ paths:
         in an account disables the Amazon Inspector service.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1034,7 +1034,7 @@ paths:
       description: Gets the status of a findings report.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1111,7 +1111,7 @@ paths:
         or standalone account with resources managed by an Organizations policy, the operation returns fewer permissions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1140,7 +1140,7 @@ paths:
       description: Lists CIS scan configurations.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1247,7 +1247,7 @@ paths:
       description: Returns a CIS scan list.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1381,7 +1381,7 @@ paths:
       description: Lists coverage details for your environment.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1410,7 +1410,7 @@ paths:
       description: Lists Amazon Inspector coverage statistics for your environment.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1439,7 +1439,7 @@ paths:
       description: Lists information about the Amazon Inspector delegated administrator of your organization.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1466,7 +1466,7 @@ paths:
       description: Lists the filters associated with your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1532,7 +1532,7 @@ paths:
       description: Lists findings for your environment.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1563,7 +1563,7 @@ paths:
       description: List members associated with the Amazon Inspector delegated administrator for your organization.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1670,7 +1670,7 @@ paths:
       description: Lists the Amazon Inspector usage totals over the last 30 days.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2012,7 +2012,7 @@ paths:
         update this setting.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2038,7 +2038,7 @@ paths:
       description: Activates, deactivates Amazon Inspector deep inspection, or updates custom paths for your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -22,7 +22,7 @@ paths:
       description: Creates an EncoderConfiguration object.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -126,7 +126,7 @@ paths:
       description: Creates a new stage (and optionally participant tokens).
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -607,7 +607,7 @@ paths:
         is processed.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -638,7 +638,7 @@ paths:
         request is processed.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -664,7 +664,7 @@ paths:
       description: Lists all IngestConfigurations in your account, in the AWS region where the API request is processed.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -807,7 +807,7 @@ paths:
         is processed.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -864,7 +864,7 @@ paths:
       description: Gets summary information about all stages in your account, in the AWS region where the API request is processed.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -891,7 +891,7 @@ paths:
         API request is processed.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

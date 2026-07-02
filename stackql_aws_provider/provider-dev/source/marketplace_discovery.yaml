@@ -197,7 +197,7 @@ paths:
         or a VISIBILITY_SCOPE filter to retrieve purchase options by visibility.'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -227,7 +227,7 @@ paths:
         option types, publishers, and customer ratings. Each facet value includes a count of matching listings.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -258,7 +258,7 @@ paths:
         by category, pricing model, fulfillment type, and other attributes, and sort results by relevance or customer rating.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

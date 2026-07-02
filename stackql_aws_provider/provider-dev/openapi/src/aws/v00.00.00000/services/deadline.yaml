@@ -1707,7 +1707,7 @@ paths:
             $ref: "#/components/schemas/ClientToken"
           description: The unique token which the server uses to recognize retries of the same request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1829,7 +1829,7 @@ paths:
             $ref: "#/components/schemas/ClientToken"
           description: The unique token which the server uses to recognize retries of the same request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1902,7 +1902,7 @@ paths:
             $ref: "#/components/schemas/FarmId"
           description: The farm ID to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1997,7 +1997,7 @@ paths:
             $ref: "#/components/schemas/ClientToken"
           description: The unique token which the server uses to recognize retries of the same request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2123,7 +2123,7 @@ paths:
             $ref: "#/components/schemas/LimitId"
           description: The unique identifier of the limit to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2235,7 +2235,7 @@ paths:
             $ref: "#/components/schemas/MonitorId"
           description: The unique identifier of the monitor to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2324,7 +2324,7 @@ paths:
             $ref: "#/components/schemas/ClientToken"
           description: The idempotency token to update in the queue.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2447,7 +2447,7 @@ paths:
             $ref: "#/components/schemas/ClientToken"
           description: The unique token which the server uses to recognize retries of the same request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2734,7 +2734,7 @@ paths:
             $ref: "#/components/schemas/ClientToken"
           description: The unique token which the server uses to recognize retries of the same request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2837,7 +2837,7 @@ paths:
             $ref: "#/components/schemas/WorkerId"
           description: The worker ID to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2915,7 +2915,7 @@ paths:
             $ref: "#/components/schemas/ClientToken"
           description: The unique token which the server uses to recognize retries of the same request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3993,7 +3993,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The ARN of the resource to apply tags to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4259,7 +4259,7 @@ paths:
             $ref: "#/components/schemas/WorkerId"
           description: The worker ID to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -10672,6 +10672,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10709,6 +10711,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10746,6 +10750,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10783,6 +10789,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10820,6 +10828,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10829,6 +10839,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10839,6 +10851,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobs
+          request:
+            nativeCasing: pascal
         get_job:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1jobs~1{job_id}/get"
@@ -10851,6 +10865,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10860,6 +10876,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10885,6 +10903,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10905,6 +10925,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10920,6 +10942,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10930,6 +10954,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.sessions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/get_session"
@@ -10950,6 +10976,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10966,6 +10994,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.sessionActions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/session_actions/methods/get_session_action"
@@ -10985,6 +11015,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11000,6 +11032,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11010,12 +11044,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.steps
+          request:
+            nativeCasing: pascal
         search_steps:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1search~1steps/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11040,6 +11078,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11055,6 +11095,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11065,12 +11107,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.tasks
+          request:
+            nativeCasing: pascal
         search_tasks:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1search~1tasks/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11095,6 +11141,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11104,6 +11152,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11114,6 +11164,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.workers
+          request:
+            nativeCasing: pascal
         delete_worker:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}/delete"
@@ -11132,6 +11184,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11141,6 +11195,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11167,6 +11223,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11177,6 +11235,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.budgets
+          request:
+            nativeCasing: pascal
         delete_budget:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1budgets~1{budget_id}/delete"
@@ -11195,6 +11255,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11219,6 +11281,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11229,6 +11293,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.farms
+          request:
+            nativeCasing: pascal
         delete_farm:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}/delete"
@@ -11247,6 +11313,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11271,6 +11339,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11281,6 +11351,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.fleets
+          request:
+            nativeCasing: pascal
         delete_fleet:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}/delete"
@@ -11299,6 +11371,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11323,6 +11397,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11333,6 +11409,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.licenseEndpoints
+          request:
+            nativeCasing: pascal
         delete_license_endpoint:
           operation:
             $ref: "#/paths/~12023-10-12~1license-endpoints~1{license_endpoint_id}/delete"
@@ -11365,6 +11443,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11375,6 +11455,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.limits
+          request:
+            nativeCasing: pascal
         delete_limit:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1limits~1{limit_id}/delete"
@@ -11393,6 +11475,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11417,6 +11501,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11427,6 +11513,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.monitors
+          request:
+            nativeCasing: pascal
         delete_monitor:
           operation:
             $ref: "#/paths/~12023-10-12~1monitors~1{monitor_id}/delete"
@@ -11445,6 +11533,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11469,6 +11559,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11479,6 +11571,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.queues
+          request:
+            nativeCasing: pascal
         delete_queue:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}/delete"
@@ -11497,6 +11591,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11521,6 +11617,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11531,6 +11629,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.environments
+          request:
+            nativeCasing: pascal
         delete_queue_environment:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1environments~1{queue_environment_id}/delete"
@@ -11549,6 +11649,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11573,6 +11675,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11583,6 +11687,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.queueFleetAssociations
+          request:
+            nativeCasing: pascal
         delete_queue_fleet_association:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queue-fleet-associations~1{queue_id}~1{fleet_id}/delete"
@@ -11601,6 +11707,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11625,6 +11733,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11635,6 +11745,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.queueLimitAssociations
+          request:
+            nativeCasing: pascal
         delete_queue_limit_association:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queue-limit-associations~1{queue_id}~1{limit_id}/delete"
@@ -11653,6 +11765,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11677,6 +11791,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11687,6 +11803,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.storageProfiles
+          request:
+            nativeCasing: pascal
         delete_storage_profile:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1storage-profiles~1{storage_profile_id}/delete"
@@ -11705,6 +11823,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11742,6 +11862,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.meteredProducts
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/metered_products/methods/list_metered_products"
@@ -11768,6 +11890,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11790,6 +11914,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.statistics
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions_statistics_aggregations/methods/get_sessions_statistics_aggregation"
@@ -11825,6 +11951,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.meteredProducts
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/available_metered_products/methods/list_available_metered_products"
@@ -11843,6 +11971,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.members
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/farm_members/methods/list_farm_members"
@@ -11861,6 +11991,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.members
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/fleet_members/methods/list_fleet_members"
@@ -11879,6 +12011,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.members
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_members/methods/list_job_members"
@@ -11897,6 +12031,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobParameterDefinitions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_parameter_definitions/methods/list_job_parameter_definitions"
@@ -11915,6 +12051,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.members
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/queue_members/methods/list_queue_members"
@@ -11933,6 +12071,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.sessions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions_for_workers/methods/list_sessions_for_worker"
@@ -11951,6 +12091,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.consumers
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/step_consumers/methods/list_step_consumers"
@@ -11969,6 +12111,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.dependencies
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/step_dependencies/methods/list_step_dependencies"
@@ -11987,6 +12131,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.storageProfiles
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/storage_profiles_for_queues/methods/list_storage_profiles_for_queue"
@@ -12021,6 +12167,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -12030,6 +12178,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -12048,6 +12198,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

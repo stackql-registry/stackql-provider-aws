@@ -87,7 +87,7 @@ paths:
           endian format. The following are the accepted values: audio/mpeg audio/ogg audio/pcm audio/* (defaults to mpeg)
           text/plain; charset=utf-8'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

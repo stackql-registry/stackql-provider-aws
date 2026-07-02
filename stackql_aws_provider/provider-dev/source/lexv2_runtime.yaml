@@ -308,7 +308,7 @@ paths:
           audio/pcm at 16 KHz in 16-bit, little-endian format. The following are the accepted values: audio/mpeg audio/ogg
           audio/pcm (16 KHz) audio/* (defaults to mpeg) text/plain; charset=utf-8'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

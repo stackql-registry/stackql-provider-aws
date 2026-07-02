@@ -479,7 +479,7 @@ paths:
             $ref: "#/components/schemas/PipelineName"
           description: The name of the pipeline to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1264,6 +1264,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1285,12 +1287,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_pipeline:
           operation:
             $ref: "#/paths/~12022-01-01~1osis~1updatePipeline~1{pipeline_name}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1315,6 +1321,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1331,6 +1339,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.PipelineEndpoints
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/pipeline_endpoints/methods/list_pipeline_endpoints"
@@ -1362,6 +1372,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1385,6 +1397,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_pipeline_blueprints:
           operation:
             $ref: "#/paths/~12022-01-01~1osis~1listPipelineBlueprints/post"
@@ -1427,12 +1441,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.PipelineEndpointConnections
+          request:
+            nativeCasing: pascal
         revoke_pipeline_endpoint_connections:
           operation:
             $ref: "#/paths/~12022-01-01~1osis~1revokePipelineEndpointConnections/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1454,6 +1472,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -1471,6 +1491,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1480,6 +1502,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

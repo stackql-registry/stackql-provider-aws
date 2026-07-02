@@ -331,7 +331,7 @@ paths:
           $ref: '#/components/schemas/NextToken'
         description: A token to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1650,7 +1650,7 @@ paths:
           $ref: '#/components/schemas/EndpointName'
         description: The name of the AgentCore Runtime endpoint to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1900,7 +1900,7 @@ paths:
           $ref: '#/components/schemas/ConfigurationBundleId'
         description: The unique identifier of the configuration bundle to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1997,7 +1997,7 @@ paths:
           $ref: '#/components/schemas/EvaluatorId'
         description: The unique identifier of the evaluator to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2187,7 +2187,7 @@ paths:
           $ref: '#/components/schemas/GatewayRuleId'
         description: The unique identifier of the rule to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2374,7 +2374,7 @@ paths:
           $ref: '#/components/schemas/HarnessId'
         description: The ID of the harness to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2530,7 +2530,7 @@ paths:
           $ref: '#/components/schemas/OnlineEvaluationConfigId'
         description: The unique identifier of the online evaluation configuration to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2639,7 +2639,7 @@ paths:
           $ref: '#/components/schemas/PaymentConnectorId'
         description: The unique identifier of the payment connector to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2751,7 +2751,7 @@ paths:
           $ref: '#/components/schemas/PaymentManagerId'
         description: The unique identifier of the payment manager to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2859,7 +2859,7 @@ paths:
         description: The unique identifier of the policy to be updated. This must be a valid policy ID that exists within
           the specified policy engine.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2942,7 +2942,7 @@ paths:
           $ref: '#/components/schemas/ResourceId'
         description: The unique identifier of the policy engine to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3017,7 +3017,7 @@ paths:
         description: The identifier of the registry to update. You can specify either the Amazon Resource Name (ARN) or the
           ID of the registry.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3118,7 +3118,7 @@ paths:
         description: The identifier of the registry record to update. You can specify either the Amazon Resource Name (ARN)
           or the ID of the record.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3506,7 +3506,7 @@ paths:
       description: Retrieves information about a token vault.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3590,7 +3590,7 @@ paths:
       description: Lists all API key credential providers in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3638,7 +3638,7 @@ paths:
           this value, use the token returned in the response in the nextToken field when making another request to return
           the next batch of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3723,7 +3723,7 @@ paths:
       description: Lists the available Amazon Bedrock AgentCore Memory resources in the current Amazon Web Services Region.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3750,7 +3750,7 @@ paths:
       description: Lists all OAuth2 credential providers in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3843,7 +3843,7 @@ paths:
       description: Lists all payment credential providers in the account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4232,7 +4232,7 @@ paths:
       description: Lists all workload identities in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4388,7 +4388,7 @@ paths:
           $ref: '#/components/schemas/MemoryId'
         description: The unique identifier of the memory to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

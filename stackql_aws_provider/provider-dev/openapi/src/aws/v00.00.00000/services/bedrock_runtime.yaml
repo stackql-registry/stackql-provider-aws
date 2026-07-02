@@ -68,7 +68,7 @@ paths:
             $ref: "#/components/schemas/ConversationalModelId"
           description: "Specifies the model or throughput with which to run inference, or the prompt resource to use in inference. The value depends on the resource that you use: If you use a base model, specify the model ID or its ARN. For a list of model IDs for base models, see Amazon Bedrock base model IDs (on-demand throughput) in the Amazon Bedrock User Guide. If you use an inference profile, specify the inference profile ID or its ARN. For a list of inference profile IDs, see Supported Regions and models for cross-region inference in the Amazon Bedrock User Guide. If you use a provisioned model, specify the ARN of the Provisioned Throughput. For more information, see Run inference using a Provisioned Throughput in the Amazon Bedrock User Guide. If you use a custom model, first purchase Provisioned Throughput for it. Then specify the ARN of the resulting provisioned model. For more information, see Use a custom model in Amazon Bedrock in the Amazon Bedrock User Guide. To include a prompt that was defined in Prompt management, specify the ARN of the prompt version to use. The Converse API doesn't support imported models."
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -117,7 +117,7 @@ paths:
             $ref: "#/components/schemas/ConversationalModelId"
           description: "Specifies the model or throughput with which to run inference, or the prompt resource to use in inference. The value depends on the resource that you use: If you use a base model, specify the model ID or its ARN. For a list of model IDs for base models, see Amazon Bedrock base model IDs (on-demand throughput) in the Amazon Bedrock User Guide. If you use an inference profile, specify the inference profile ID or its ARN. For a list of inference profile IDs, see Supported Regions and models for cross-region inference in the Amazon Bedrock User Guide. If you use a provisioned model, specify the ARN of the Provisioned Throughput. For more information, see Run inference using a Provisioned Throughput in the Amazon Bedrock User Guide. If you use a custom model, first purchase Provisioned Throughput for it. Then specify the ARN of the resulting provisioned model. For more information, see Use a custom model in Amazon Bedrock in the Amazon Bedrock User Guide. To include a prompt that was defined in Prompt management, specify the ARN of the prompt version to use. The Converse API doesn't support imported models."
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -255,7 +255,7 @@ paths:
             $ref: "#/components/schemas/ServiceTierType"
           description: Specifies the processing tier type used for serving the request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -353,7 +353,7 @@ paths:
             $ref: "#/components/schemas/ServiceTierType"
           description: Specifies the processing tier type used for serving the request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3279,6 +3279,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.asyncInvokeSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/async_invokes/methods/get_async_invoke"

@@ -439,7 +439,7 @@ paths:
         Center integration.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -929,7 +929,7 @@ paths:
       description: Returns a paginated list of agent space summaries in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -956,7 +956,7 @@ paths:
       description: Returns a paginated list of application summaries in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1233,7 +1233,7 @@ paths:
       description: Lists the integrations in your account, optionally filtered by provider or provider type.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1479,7 +1479,7 @@ paths:
       description: Returns a paginated list of target domain summaries in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

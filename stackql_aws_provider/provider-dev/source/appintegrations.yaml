@@ -192,7 +192,7 @@ paths:
           $ref: '#/components/schemas/Identifier'
         description: A unique identifier for the DataIntegration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -376,7 +376,7 @@ paths:
           $ref: '#/components/schemas/ArnOrUUID'
         description: The Amazon Resource Name (ARN) of the Application.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -473,7 +473,7 @@ paths:
           $ref: '#/components/schemas/Identifier'
         description: A unique identifier for the DataIntegration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -546,7 +546,7 @@ paths:
           $ref: '#/components/schemas/Name'
         description: The name of the event integration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -241,7 +241,7 @@ paths:
             $ref: "#/components/schemas/Uuid"
           description: The unique identifier of the certificate revocation list (CRL).
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -304,7 +304,7 @@ paths:
             $ref: "#/components/schemas/Uuid"
           description: The unique identifier of the profile.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -375,7 +375,7 @@ paths:
             $ref: "#/components/schemas/Uuid"
           description: The unique identifier of the trust anchor.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1366,6 +1366,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1376,6 +1378,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.profiles
+          request:
+            nativeCasing: pascal
         delete_profile:
           operation:
             $ref: "#/paths/~1profile~1{profile_id}/delete"
@@ -1394,6 +1398,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1418,6 +1424,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1428,6 +1436,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.trustAnchors
+          request:
+            nativeCasing: pascal
         delete_trust_anchor:
           operation:
             $ref: "#/paths/~1trustanchor~1{trust_anchor_id}/delete"
@@ -1446,6 +1456,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1470,12 +1482,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_attribute_mapping:
           operation:
             $ref: "#/paths/~1profiles~1{profile_id}~1mappings/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1510,6 +1526,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1520,6 +1538,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.crls
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/crls/methods/get_crl"
@@ -1547,6 +1567,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.subjects
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/subjects/methods/get_subject"
@@ -1565,6 +1587,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -1582,6 +1606,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1591,6 +1617,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1612,6 +1640,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1621,6 +1651,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

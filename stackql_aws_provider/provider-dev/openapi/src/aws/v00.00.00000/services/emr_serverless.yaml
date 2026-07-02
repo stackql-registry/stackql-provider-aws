@@ -2141,6 +2141,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_job_runs:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1jobruns/get"
@@ -2148,6 +2150,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobRuns
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_runs/methods/get_job_run"
@@ -2166,6 +2170,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2176,6 +2182,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.applications
+          request:
+            nativeCasing: pascal
         delete_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}/delete"
@@ -2194,6 +2202,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2218,6 +2228,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dashboard_for_job_runs/methods/get_dashboard_for_job_run"
@@ -2235,6 +2247,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resource_dashboards/methods/get_resource_dashboard"
@@ -2265,6 +2279,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.sessions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/get_session"
@@ -2302,6 +2318,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobRunAttempts
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_run_attempts/methods/list_job_run_attempts"
@@ -2336,6 +2354,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2345,6 +2365,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

@@ -621,7 +621,7 @@ paths:
         Prometheus metrics. You can have one or more workspaces in each Region in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1041,7 +1041,7 @@ paths:
           $ref: '#/components/schemas/ScraperId'
         description: The ID of the scraper to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1223,7 +1223,7 @@ paths:
         description: The ID of the workspace that you want to update. To find the IDs of your workspaces, use the ListWorkspaces
           operation.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1357,7 +1357,7 @@ paths:
           $ref: '#/components/schemas/WorkspaceId'
         description: The ID of the workspace to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

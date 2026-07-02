@@ -25,23 +25,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_AddPermission
-      description: Adds a statement to a topic's access control policy, granting access for the specified Amazon Web Services
-        accounts to the specified actions. To remove the ability to change topic permissions, you must deny permissions to
-        the AddPermission, RemovePermission, and SetTopicAttributes actions in your IAM policy.
-      responses:
-        '200':
-          description: Success
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/AddPermissionInput'
-      x-stackql-resource: permissions
-      x-stackql-method: add_permission
-      x-stackql-verb: UPDATE
     get:
       operationId: GET_AddPermission
       description: Adds a statement to a topic's access control policy, granting access for the specified Amazon Web Services
@@ -80,6 +63,23 @@ paths:
       x-stackql-resource: permissions
       x-stackql-method: add_permission
       x-stackql-verb: UPDATE
+    post:
+      operationId: POST_AddPermission
+      description: Adds a statement to a topic's access control policy, granting access for the specified Amazon Web Services
+        accounts to the specified actions. To remove the ability to change topic permissions, you must deny permissions to
+        the AddPermission, RemovePermission, and SetTopicAttributes actions in your IAM policy.
+      responses:
+        '200':
+          description: Success
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/AddPermissionInput'
+      x-stackql-resource: permissions
+      x-stackql-method: add_permission
+      x-stackql-verb: UPDATE
   /?Action=CheckIfPhoneNumberIsOptedOut&Version=2010-03-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -89,33 +89,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_CheckIfPhoneNumberIsOptedOut
-      description: Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from
-        your Amazon Web Services account. You cannot send SMS messages to a number that is opted out. To resume sending messages,
-        you can opt in the number by using the OptInPhoneNumber action.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CheckIfPhoneNumberIsOptedOutOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/CheckIfPhoneNumberIsOptedOutInput'
-      x-stackql-resource: check_if_phone_number_is_opted_out
-      x-stackql-method: check_if_phone_number_is_opted_out
-      x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: CheckIfPhoneNumberIsOptedOutOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CheckIfPhoneNumberIsOptedOutResponse\"\
-        \ \"CheckIfPhoneNumberIsOptedOutResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"is_opted_out\": {{ $v := index . \"isOptedOut\" }}{{ if eq $v nil }}null{{ else }}{{toBool\
-        \ $v}}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_CheckIfPhoneNumberIsOptedOut
       description: Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from
@@ -139,10 +112,29 @@ paths:
       x-stackql-method: check_if_phone_number_is_opted_out
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CheckIfPhoneNumberIsOptedOutOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CheckIfPhoneNumberIsOptedOutResponse\"\
-        \ \"CheckIfPhoneNumberIsOptedOutResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"is_opted_out\": {{ $v := index . \"isOptedOut\" }}{{ if eq $v nil }}null{{ else }}{{toBool\
-        \ $v}}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_CheckIfPhoneNumberIsOptedOut
+      description: Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from
+        your Amazon Web Services account. You cannot send SMS messages to a number that is opted out. To resume sending messages,
+        you can opt in the number by using the OptInPhoneNumber action.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CheckIfPhoneNumberIsOptedOutOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/CheckIfPhoneNumberIsOptedOutInput'
+      x-stackql-resource: check_if_phone_number_is_opted_out
+      x-stackql-method: check_if_phone_number_is_opted_out
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: CheckIfPhoneNumberIsOptedOutOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=ConfirmSubscription&Version=2010-03-31:
     parameters:
@@ -153,34 +145,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_ConfirmSubscription
-      description: Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by
-        an earlier Subscribe action. If the token is valid, the action creates a new subscription and returns its Amazon Resource
-        Name (ARN). This call requires an AWS signature only when the AuthenticateOnUnsubscribe flag is set to "true".
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ConfirmSubscriptionOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/ConfirmSubscriptionInput'
-      x-stackql-resource: subscription
-      x-stackql-method: confirm_subscription
-      x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: ConfirmSubscriptionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"ConfirmSubscriptionResponse\" \"ConfirmSubscriptionResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"subscription_arn\"\
-        : {{ $v := index . \"SubscriptionArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_ConfirmSubscription
       description: Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by
@@ -218,11 +182,29 @@ paths:
       x-stackql-method: confirm_subscription
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ConfirmSubscriptionOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"ConfirmSubscriptionResponse\" \"ConfirmSubscriptionResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"subscription_arn\"\
-        : {{ $v := index . \"SubscriptionArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_ConfirmSubscription
+      description: Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by
+        an earlier Subscribe action. If the token is valid, the action creates a new subscription and returns its Amazon Resource
+        Name (ARN). This call requires an AWS signature only when the AuthenticateOnUnsubscribe flag is set to "true".
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ConfirmSubscriptionOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ConfirmSubscriptionInput'
+      x-stackql-resource: subscription
+      x-stackql-method: confirm_subscription
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: ConfirmSubscriptionOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=CreatePlatformApplication&Version=2010-03-31:
     parameters:
@@ -233,46 +215,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_CreatePlatformApplication
-      description: 'Creates a platform application object for one of the supported push notification services, such as APNS
-        and GCM (Firebase Cloud Messaging), to which devices and mobile apps may register. You must specify PlatformPrincipal
-        and PlatformCredential attributes when using the CreatePlatformApplication action. PlatformPrincipal and PlatformCredential
-        are received from the notification service. For ADM, PlatformPrincipal is client id and PlatformCredential is client
-        secret. For APNS and APNS_SANDBOX using certificate credentials, PlatformPrincipal is SSL certificate and PlatformCredential
-        is private key. For APNS and APNS_SANDBOX using token credentials, PlatformPrincipal is signing key ID and PlatformCredential
-        is signing key. For Baidu, PlatformPrincipal is API key and PlatformCredential is secret key. For GCM (Firebase Cloud
-        Messaging) using key credentials, there is no PlatformPrincipal. The PlatformCredential is API key. For GCM (Firebase
-        Cloud Messaging) using token credentials, there is no PlatformPrincipal. The PlatformCredential is a JSON formatted
-        private key file. When using the Amazon Web Services CLI or Amazon Web Services SDKs, the file must be in string format
-        and special characters must be ignored. To format the file correctly, Amazon SNS recommends using the following command:
-        SERVICE_JSON=$(jq @json < service.json). For MPNS, PlatformPrincipal is TLS certificate and PlatformCredential is
-        private key. For WNS, PlatformPrincipal is Package Security Identifier and PlatformCredential is secret key. You can
-        use the returned PlatformApplicationArn as an attribute for the CreatePlatformEndpoint action.'
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformApplicationOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/CreatePlatformApplicationInput'
-      x-stackql-resource: platform_applications
-      x-stackql-method: create_platform_application
-      x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreatePlatformApplicationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CreatePlatformApplicationResponse\"\
-        \ \"CreatePlatformApplicationResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"platform_application_arn\": {{ $v := index . \"PlatformApplicationArn\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_CreatePlatformApplication
       description: 'Creates a platform application object for one of the supported push notification services, such as APNS
@@ -321,12 +263,40 @@ paths:
       x-stackql-method: create_platform_application
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreatePlatformApplicationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CreatePlatformApplicationResponse\"\
-        \ \"CreatePlatformApplicationResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"platform_application_arn\": {{ $v := index . \"PlatformApplicationArn\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_CreatePlatformApplication
+      description: 'Creates a platform application object for one of the supported push notification services, such as APNS
+        and GCM (Firebase Cloud Messaging), to which devices and mobile apps may register. You must specify PlatformPrincipal
+        and PlatformCredential attributes when using the CreatePlatformApplication action. PlatformPrincipal and PlatformCredential
+        are received from the notification service. For ADM, PlatformPrincipal is client id and PlatformCredential is client
+        secret. For APNS and APNS_SANDBOX using certificate credentials, PlatformPrincipal is SSL certificate and PlatformCredential
+        is private key. For APNS and APNS_SANDBOX using token credentials, PlatformPrincipal is signing key ID and PlatformCredential
+        is signing key. For Baidu, PlatformPrincipal is API key and PlatformCredential is secret key. For GCM (Firebase Cloud
+        Messaging) using key credentials, there is no PlatformPrincipal. The PlatformCredential is API key. For GCM (Firebase
+        Cloud Messaging) using token credentials, there is no PlatformPrincipal. The PlatformCredential is a JSON formatted
+        private key file. When using the Amazon Web Services CLI or Amazon Web Services SDKs, the file must be in string format
+        and special characters must be ignored. To format the file correctly, Amazon SNS recommends using the following command:
+        SERVICE_JSON=$(jq @json < service.json). For MPNS, PlatformPrincipal is TLS certificate and PlatformCredential is
+        private key. For WNS, PlatformPrincipal is Package Security Identifier and PlatformCredential is secret key. You can
+        use the returned PlatformApplicationArn as an attribute for the CreatePlatformEndpoint action.'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformApplicationOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/CreatePlatformApplicationInput'
+      x-stackql-resource: platform_applications
+      x-stackql-method: create_platform_application
+      x-stackql-verb: INSERT
+      x-stackql-responseEnvelope: CreatePlatformApplicationOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=CreatePlatformEndpoint&Version=2010-03-31:
     parameters:
@@ -337,39 +307,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_CreatePlatformEndpoint
-      description: 'Creates an endpoint for a device and mobile app on one of the supported push notification services, such
-        as GCM (Firebase Cloud Messaging) and APNS. CreatePlatformEndpoint requires the PlatformApplicationArn that is returned
-        from CreatePlatformApplication. You can use the returned EndpointArn to send a message to a mobile app or by the Subscribe
-        action for subscription to a topic. The CreatePlatformEndpoint action is idempotent, so if the requester already owns
-        an endpoint with the same device token and attributes, that endpoint''s ARN is returned without creating a new endpoint.
-        For more information, see Using Amazon SNS Mobile Push Notifications. When using CreatePlatformEndpoint with Baidu,
-        two attributes must be provided: ChannelId and UserId. The token field must also contain the ChannelId. For more information,
-        see Creating an Amazon SNS Endpoint for Baidu.'
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformEndpointOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/CreatePlatformEndpointInput'
-      x-stackql-resource: platform_endpoints
-      x-stackql-method: create_platform_endpoint
-      x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreatePlatformEndpointOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CreatePlatformEndpointResponse\" \"\
-        CreatePlatformEndpointResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n\
-        {\n        \"endpoint_arn\": {{ $v := index . \"EndpointArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\")\
-        \ }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\"\
-        \ }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_CreatePlatformEndpoint
       description: 'Creates an endpoint for a device and mobile app on one of the supported push notification services, such
@@ -420,11 +357,34 @@ paths:
       x-stackql-method: create_platform_endpoint
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreatePlatformEndpointOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CreatePlatformEndpointResponse\" \"\
-        CreatePlatformEndpointResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n\
-        {\n        \"endpoint_arn\": {{ $v := index . \"EndpointArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\")\
-        \ }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\"\
-        \ }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_CreatePlatformEndpoint
+      description: 'Creates an endpoint for a device and mobile app on one of the supported push notification services, such
+        as GCM (Firebase Cloud Messaging) and APNS. CreatePlatformEndpoint requires the PlatformApplicationArn that is returned
+        from CreatePlatformApplication. You can use the returned EndpointArn to send a message to a mobile app or by the Subscribe
+        action for subscription to a topic. The CreatePlatformEndpoint action is idempotent, so if the requester already owns
+        an endpoint with the same device token and attributes, that endpoint''s ARN is returned without creating a new endpoint.
+        For more information, see Using Amazon SNS Mobile Push Notifications. When using CreatePlatformEndpoint with Baidu,
+        two attributes must be provided: ChannelId and UserId. The token field must also contain the ChannelId. For more information,
+        see Creating an Amazon SNS Endpoint for Baidu.'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformEndpointOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/CreatePlatformEndpointInput'
+      x-stackql-resource: platform_endpoints
+      x-stackql-method: create_platform_endpoint
+      x-stackql-verb: INSERT
+      x-stackql-responseEnvelope: CreatePlatformEndpointOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=CreateSMSSandboxPhoneNumber&Version=2010-03-31:
     parameters:
@@ -435,36 +395,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_CreateSMSSandboxPhoneNumber
-      description: Adds a destination phone number to an Amazon Web Services account in the SMS sandbox and sends a one-time
-        password (OTP) to that phone number. When you start using Amazon SNS to send SMS messages, your Amazon Web Services
-        account is in the SMS sandbox. The SMS sandbox provides a safe environment for you to try Amazon SNS features without
-        risking your reputation as an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use
-        all of the features of Amazon SNS. However, you can send SMS messages only to verified destination phone numbers.
-        For more information, including how to move out of the sandbox to send messages without restrictions, see SMS sandbox
-        in the Amazon SNS Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateSMSSandboxPhoneNumberOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/CreateSMSSandboxPhoneNumberInput'
-      x-stackql-resource: sms_sandbox_phone_numbers
-      x-stackql-method: create_sms_sandbox_phone_number
-      x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateSMSSandboxPhoneNumberOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CreateSMSSandboxPhoneNumberResponse\"\
-        \ \"CreateSMSSandboxPhoneNumberResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"\
-        row\"}}{}{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_CreateSMSSandboxPhoneNumber
       description: Adds a destination phone number to an Amazon Web Services account in the SMS sandbox and sends a one-time
@@ -499,9 +429,33 @@ paths:
       x-stackql-method: create_sms_sandbox_phone_number
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateSMSSandboxPhoneNumberOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CreateSMSSandboxPhoneNumberResponse\"\
-        \ \"CreateSMSSandboxPhoneNumberResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"\
-        row\"}}{}{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_CreateSMSSandboxPhoneNumber
+      description: Adds a destination phone number to an Amazon Web Services account in the SMS sandbox and sends a one-time
+        password (OTP) to that phone number. When you start using Amazon SNS to send SMS messages, your Amazon Web Services
+        account is in the SMS sandbox. The SMS sandbox provides a safe environment for you to try Amazon SNS features without
+        risking your reputation as an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use
+        all of the features of Amazon SNS. However, you can send SMS messages only to verified destination phone numbers.
+        For more information, including how to move out of the sandbox to send messages without restrictions, see SMS sandbox
+        in the Amazon SNS Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CreateSMSSandboxPhoneNumberOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/CreateSMSSandboxPhoneNumberInput'
+      x-stackql-resource: sms_sandbox_phone_numbers
+      x-stackql-method: create_sms_sandbox_phone_number
+      x-stackql-verb: INSERT
+      x-stackql-responseEnvelope: CreateSMSSandboxPhoneNumberOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=CreateTopic&Version=2010-03-31:
     parameters:
@@ -512,35 +466,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_CreateTopic
-      description: Creates a topic to which notifications can be published. Users can create at most 100,000 standard topics
-        (at most 1,000 FIFO topics). For more information, see Creating an Amazon SNS topic in the Amazon SNS Developer Guide.
-        This action is idempotent, so if the requester already owns a topic with the specified name, that topic's ARN is returned
-        without creating a new topic.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateTopicOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/CreateTopicInput'
-      x-stackql-resource: topics
-      x-stackql-method: create_topic
-      x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateTopicOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CreateTopicResponse\" \"CreateTopicResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"topic_arn\": {{\
-        \ $v := index . \"TopicArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_CreateTopic
       description: Creates a topic to which notifications can be published. Users can create at most 100,000 standard topics
@@ -636,11 +561,30 @@ paths:
       x-stackql-method: create_topic
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateTopicOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"CreateTopicResponse\" \"CreateTopicResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"topic_arn\": {{\
-        \ $v := index . \"TopicArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_CreateTopic
+      description: Creates a topic to which notifications can be published. Users can create at most 100,000 standard topics
+        (at most 1,000 FIFO topics). For more information, see Creating an Amazon SNS topic in the Amazon SNS Developer Guide.
+        This action is idempotent, so if the requester already owns a topic with the specified name, that topic's ARN is returned
+        without creating a new topic.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CreateTopicOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/CreateTopicInput'
+      x-stackql-resource: topics
+      x-stackql-method: create_topic
+      x-stackql-verb: INSERT
+      x-stackql-responseEnvelope: CreateTopicOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteEndpoint&Version=2010-03-31:
     parameters:
@@ -651,23 +595,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DeleteEndpoint
-      description: Deletes the endpoint for a device and mobile app from Amazon SNS. This action is idempotent. For more information,
-        see Using Amazon SNS Mobile Push Notifications. When you delete an endpoint that is also subscribed to a topic, then
-        you must also unsubscribe the endpoint from the topic.
-      responses:
-        '200':
-          description: Success
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DeleteEndpointInput'
-      x-stackql-resource: endpoints
-      x-stackql-method: delete_endpoint
-      x-stackql-verb: DELETE
     get:
       operationId: GET_DeleteEndpoint
       description: Deletes the endpoint for a device and mobile app from Amazon SNS. This action is idempotent. For more information,
@@ -686,6 +613,23 @@ paths:
       x-stackql-resource: endpoints
       x-stackql-method: delete_endpoint
       x-stackql-verb: DELETE
+    post:
+      operationId: POST_DeleteEndpoint
+      description: Deletes the endpoint for a device and mobile app from Amazon SNS. This action is idempotent. For more information,
+        see Using Amazon SNS Mobile Push Notifications. When you delete an endpoint that is also subscribed to a topic, then
+        you must also unsubscribe the endpoint from the topic.
+      responses:
+        '200':
+          description: Success
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DeleteEndpointInput'
+      x-stackql-resource: endpoints
+      x-stackql-method: delete_endpoint
+      x-stackql-verb: DELETE
   /?Action=DeletePlatformApplication&Version=2010-03-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -695,22 +639,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DeletePlatformApplication
-      description: Deletes a platform application object for one of the supported push notification services, such as APNS
-        and GCM (Firebase Cloud Messaging). For more information, see Using Amazon SNS Mobile Push Notifications.
-      responses:
-        '200':
-          description: Success
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DeletePlatformApplicationInput'
-      x-stackql-resource: platform_applications
-      x-stackql-method: delete_platform_application
-      x-stackql-verb: DELETE
     get:
       operationId: GET_DeletePlatformApplication
       description: Deletes a platform application object for one of the supported push notification services, such as APNS
@@ -728,6 +656,22 @@ paths:
       x-stackql-resource: platform_applications
       x-stackql-method: delete_platform_application
       x-stackql-verb: DELETE
+    post:
+      operationId: POST_DeletePlatformApplication
+      description: Deletes a platform application object for one of the supported push notification services, such as APNS
+        and GCM (Firebase Cloud Messaging). For more information, see Using Amazon SNS Mobile Push Notifications.
+      responses:
+        '200':
+          description: Success
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DeletePlatformApplicationInput'
+      x-stackql-resource: platform_applications
+      x-stackql-method: delete_platform_application
+      x-stackql-verb: DELETE
   /?Action=DeleteSMSSandboxPhoneNumber&Version=2010-03-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -737,35 +681,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DeleteSMSSandboxPhoneNumber
-      description: Deletes an Amazon Web Services account's verified or pending phone number from the SMS sandbox. When you
-        start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the SMS sandbox. The SMS sandbox
-        provides a safe environment for you to try Amazon SNS features without risking your reputation as an SMS sender. While
-        your Amazon Web Services account is in the SMS sandbox, you can use all of the features of Amazon SNS. However, you
-        can send SMS messages only to verified destination phone numbers. For more information, including how to move out
-        of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteSMSSandboxPhoneNumberOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DeleteSMSSandboxPhoneNumberInput'
-      x-stackql-resource: sms_sandbox_phone_numbers
-      x-stackql-method: delete_sms_sandbox_phone_number
-      x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteSMSSandboxPhoneNumberOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DeleteSMSSandboxPhoneNumberResponse\"\
-        \ \"DeleteSMSSandboxPhoneNumberResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"\
-        row\"}}{}{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_DeleteSMSSandboxPhoneNumber
       description: Deletes an Amazon Web Services account's verified or pending phone number from the SMS sandbox. When you
@@ -792,9 +707,32 @@ paths:
       x-stackql-method: delete_sms_sandbox_phone_number
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteSMSSandboxPhoneNumberOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"DeleteSMSSandboxPhoneNumberResponse\"\
-        \ \"DeleteSMSSandboxPhoneNumberResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"\
-        row\"}}{}{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DeleteSMSSandboxPhoneNumber
+      description: Deletes an Amazon Web Services account's verified or pending phone number from the SMS sandbox. When you
+        start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the SMS sandbox. The SMS sandbox
+        provides a safe environment for you to try Amazon SNS features without risking your reputation as an SMS sender. While
+        your Amazon Web Services account is in the SMS sandbox, you can use all of the features of Amazon SNS. However, you
+        can send SMS messages only to verified destination phone numbers. For more information, including how to move out
+        of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DeleteSMSSandboxPhoneNumberOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DeleteSMSSandboxPhoneNumberInput'
+      x-stackql-resource: sms_sandbox_phone_numbers
+      x-stackql-method: delete_sms_sandbox_phone_number
+      x-stackql-verb: DELETE
+      x-stackql-responseEnvelope: DeleteSMSSandboxPhoneNumberOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteTopic&Version=2010-03-31:
     parameters:
@@ -805,23 +743,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_DeleteTopic
-      description: Deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously sent
-        to the topic from being delivered to subscribers. This action is idempotent, so deleting a topic that does not exist
-        does not result in an error.
-      responses:
-        '200':
-          description: Success
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/DeleteTopicInput'
-      x-stackql-resource: topics
-      x-stackql-method: delete_topic
-      x-stackql-verb: DELETE
     get:
       operationId: GET_DeleteTopic
       description: Deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously sent
@@ -840,6 +761,23 @@ paths:
       x-stackql-resource: topics
       x-stackql-method: delete_topic
       x-stackql-verb: DELETE
+    post:
+      operationId: POST_DeleteTopic
+      description: Deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously sent
+        to the topic from being delivered to subscribers. This action is idempotent, so deleting a topic that does not exist
+        does not result in an error.
+      responses:
+        '200':
+          description: Success
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DeleteTopicInput'
+      x-stackql-resource: topics
+      x-stackql-method: delete_topic
+      x-stackql-verb: DELETE
   /?Action=GetDataProtectionPolicy&Version=2010-03-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -849,34 +787,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_GetDataProtectionPolicy
-      description: Retrieves the specified inline DataProtectionPolicy document that is stored in the specified Amazon SNS
-        topic.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/GetDataProtectionPolicyOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/GetDataProtectionPolicyInput'
-      x-stackql-resource: data_protection_policies
-      x-stackql-method: get_data_protection_policy
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: GetDataProtectionPolicyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetDataProtectionPolicyResponse\" \"\
-        GetDataProtectionPolicyResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n\
-        {\n        \"data_protection_policy\": {{ $v := index . \"DataProtectionPolicy\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_GetDataProtectionPolicy
       description: Retrieves the specified inline DataProtectionPolicy document that is stored in the specified Amazon SNS
@@ -900,12 +810,28 @@ paths:
       x-stackql-method: get_data_protection_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetDataProtectionPolicyOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetDataProtectionPolicyResponse\" \"\
-        GetDataProtectionPolicyResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n\
-        {\n        \"data_protection_policy\": {{ $v := index . \"DataProtectionPolicy\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf\
-        \ \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_GetDataProtectionPolicy
+      description: Retrieves the specified inline DataProtectionPolicy document that is stored in the specified Amazon SNS
+        topic.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/GetDataProtectionPolicyOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetDataProtectionPolicyInput'
+      x-stackql-resource: data_protection_policies
+      x-stackql-method: get_data_protection_policy
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetDataProtectionPolicyOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=GetEndpointAttributes&Version=2010-03-31:
     parameters:
@@ -916,32 +842,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_GetEndpointAttributes
-      description: Retrieves the endpoint attributes for a device on one of the supported push notification services, such
-        as GCM (Firebase Cloud Messaging) and APNS. For more information, see Using Amazon SNS Mobile Push Notifications.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/GetEndpointAttributesOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/GetEndpointAttributesInput'
-      x-stackql-resource: endpoint_attributes
-      x-stackql-method: get_endpoint_attributes
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: GetEndpointAttributesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetEndpointAttributesResponse\" \"GetEndpointAttributesResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"attributes\": {{\
-        \ $v := index . \"Attributes\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_GetEndpointAttributes
       description: Retrieves the endpoint attributes for a device on one of the supported push notification services, such
@@ -964,10 +864,28 @@ paths:
       x-stackql-method: get_endpoint_attributes
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetEndpointAttributesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetEndpointAttributesResponse\" \"GetEndpointAttributesResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"attributes\": {{\
-        \ $v := index . \"Attributes\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_GetEndpointAttributes
+      description: Retrieves the endpoint attributes for a device on one of the supported push notification services, such
+        as GCM (Firebase Cloud Messaging) and APNS. For more information, see Using Amazon SNS Mobile Push Notifications.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/GetEndpointAttributesOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetEndpointAttributesInput'
+      x-stackql-resource: endpoint_attributes
+      x-stackql-method: get_endpoint_attributes
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetEndpointAttributesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=GetPlatformApplicationAttributes&Version=2010-03-31:
     parameters:
@@ -978,32 +896,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_GetPlatformApplicationAttributes
-      description: Retrieves the attributes of the platform application object for the supported push notification services,
-        such as APNS and GCM (Firebase Cloud Messaging). For more information, see Using Amazon SNS Mobile Push Notifications.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/GetPlatformApplicationAttributesOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/GetPlatformApplicationAttributesInput'
-      x-stackql-resource: platform_application_attributes
-      x-stackql-method: get_platform_application_attributes
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: GetPlatformApplicationAttributesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetPlatformApplicationAttributesResponse\"\
-        \ \"GetPlatformApplicationAttributesResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"attributes\": {{ $v := index . \"Attributes\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_GetPlatformApplicationAttributes
       description: Retrieves the attributes of the platform application object for the supported push notification services,
@@ -1026,10 +918,28 @@ paths:
       x-stackql-method: get_platform_application_attributes
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetPlatformApplicationAttributesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetPlatformApplicationAttributesResponse\"\
-        \ \"GetPlatformApplicationAttributesResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define\
-        \ \"row\"}}\n{\n        \"attributes\": {{ $v := index . \"Attributes\" }}{{ if or (eq $v nil) (eq (printf \"%v\"\
-        \ $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_GetPlatformApplicationAttributes
+      description: Retrieves the attributes of the platform application object for the supported push notification services,
+        such as APNS and GCM (Firebase Cloud Messaging). For more information, see Using Amazon SNS Mobile Push Notifications.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/GetPlatformApplicationAttributesOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetPlatformApplicationAttributesInput'
+      x-stackql-resource: platform_application_attributes
+      x-stackql-method: get_platform_application_attributes
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetPlatformApplicationAttributesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=GetSMSAttributes&Version=2010-03-31:
     parameters:
@@ -1040,32 +950,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_GetSMSAttributes
-      description: Returns the settings for sending SMS messages from your Amazon Web Services account. These settings are
-        set with the SetSMSAttributes action.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/GetSMSAttributesOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/GetSMSAttributesInput'
-      x-stackql-resource: sms_attributes
-      x-stackql-method: get_sms_attributes
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: GetSMSAttributesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetSMSAttributesResponse\" \"GetSMSAttributesResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"attributes\": {{\
-        \ $v := index . \"attributes\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_GetSMSAttributes
       description: Returns the settings for sending SMS messages from your Amazon Web Services account. These settings are
@@ -1089,10 +973,28 @@ paths:
       x-stackql-method: get_sms_attributes
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetSMSAttributesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetSMSAttributesResponse\" \"GetSMSAttributesResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"attributes\": {{\
-        \ $v := index . \"attributes\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_GetSMSAttributes
+      description: Returns the settings for sending SMS messages from your Amazon Web Services account. These settings are
+        set with the SetSMSAttributes action.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/GetSMSAttributesOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetSMSAttributesInput'
+      x-stackql-resource: sms_attributes
+      x-stackql-method: get_sms_attributes
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetSMSAttributesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=GetSMSSandboxAccountStatus&Version=2010-03-31:
     parameters:
@@ -1103,6 +1005,28 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: GET_GetSMSSandboxAccountStatus
+      description: Retrieves the SMS sandbox status for the calling Amazon Web Services account in the target Amazon Web Services
+        Region. When you start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the SMS sandbox.
+        The SMS sandbox provides a safe environment for you to try Amazon SNS features without risking your reputation as
+        an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use all of the features of Amazon
+        SNS. However, you can send SMS messages only to verified destination phone numbers. For more information, including
+        how to move out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer
+        Guide.
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/GetSMSSandboxAccountStatusOutputDisplay'
+      x-stackql-resource: sms_sandbox_account_status
+      x-stackql-method: get_sms_sandbox_account_status
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetSMSSandboxAccountStatusOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_GetSMSSandboxAccountStatus
       description: Retrieves the SMS sandbox status for the calling Amazon Web Services account in the target Amazon Web Services
@@ -1129,36 +1053,6 @@ paths:
       x-stackql-method: get_sms_sandbox_account_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetSMSSandboxAccountStatusOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetSMSSandboxAccountStatusResponse\"\
-        \ \"GetSMSSandboxAccountStatusResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"is_in_sandbox\": {{ $v := index . \"IsInSandbox\" }}{{ if eq $v nil }}null{{ else }}{{toBool\
-        \ $v}}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
-    get:
-      operationId: GET_GetSMSSandboxAccountStatus
-      description: Retrieves the SMS sandbox status for the calling Amazon Web Services account in the target Amazon Web Services
-        Region. When you start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the SMS sandbox.
-        The SMS sandbox provides a safe environment for you to try Amazon SNS features without risking your reputation as
-        an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use all of the features of Amazon
-        SNS. However, you can send SMS messages only to verified destination phone numbers. For more information, including
-        how to move out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer
-        Guide.
-      parameters: []
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/GetSMSSandboxAccountStatusOutputDisplay'
-      x-stackql-resource: sms_sandbox_account_status
-      x-stackql-method: get_sms_sandbox_account_status
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: GetSMSSandboxAccountStatusOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetSMSSandboxAccountStatusResponse\"\
-        \ \"GetSMSSandboxAccountStatusResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"is_in_sandbox\": {{ $v := index . \"IsInSandbox\" }}{{ if eq $v nil }}null{{ else }}{{toBool\
-        \ $v}}{{ end }}\n}\n{{end}}"
       x-stackql-responseObjectKey: $.line_items
   /?Action=GetSubscriptionAttributes&Version=2010-03-31:
     parameters:
@@ -1169,31 +1063,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_GetSubscriptionAttributes
-      description: Returns all of the properties of a subscription.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/GetSubscriptionAttributesOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/GetSubscriptionAttributesInput'
-      x-stackql-resource: subscription_attributes
-      x-stackql-method: get_subscription_attributes
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: GetSubscriptionAttributesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetSubscriptionAttributesResponse\"\
-        \ \"GetSubscriptionAttributesResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"attributes\": {{ $v := index . \"Attributes\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_GetSubscriptionAttributes
       description: Returns all of the properties of a subscription.
@@ -1215,10 +1084,27 @@ paths:
       x-stackql-method: get_subscription_attributes
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetSubscriptionAttributesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetSubscriptionAttributesResponse\"\
-        \ \"GetSubscriptionAttributesResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"\
-        row\"}}\n{\n        \"attributes\": {{ $v := index . \"Attributes\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v)\
-        \ \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_GetSubscriptionAttributes
+      description: Returns all of the properties of a subscription.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/GetSubscriptionAttributesOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetSubscriptionAttributesInput'
+      x-stackql-resource: subscription_attributes
+      x-stackql-method: get_subscription_attributes
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetSubscriptionAttributesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=GetTopicAttributes&Version=2010-03-31:
     parameters:
@@ -1229,32 +1115,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_GetTopicAttributes
-      description: Returns all of the properties of a topic. Topic properties returned might differ based on the authorization
-        of the user.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/GetTopicAttributesOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/GetTopicAttributesInput'
-      x-stackql-resource: topic_attributes
-      x-stackql-method: get_topic_attributes
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: GetTopicAttributesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetTopicAttributesResponse\" \"GetTopicAttributesResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"attributes\": {{\
-        \ $v := index . \"Attributes\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_GetTopicAttributes
       description: Returns all of the properties of a topic. Topic properties returned might differ based on the authorization
@@ -1277,10 +1137,28 @@ paths:
       x-stackql-method: get_topic_attributes
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetTopicAttributesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"GetTopicAttributesResponse\" \"GetTopicAttributesResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"attributes\": {{\
-        \ $v := index . \"Attributes\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_GetTopicAttributes
+      description: Returns all of the properties of a topic. Topic properties returned might differ based on the authorization
+        of the user.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/GetTopicAttributesOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetTopicAttributesInput'
+      x-stackql-resource: topic_attributes
+      x-stackql-method: get_topic_attributes
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetTopicAttributesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=ListEndpointsByPlatformApplication&Version=2010-03-31:
     parameters:
@@ -1291,44 +1169,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_ListEndpointsByPlatformApplication
-      description: Lists the endpoints and endpoint attributes for devices in a supported push notification service, such
-        as GCM (Firebase Cloud Messaging) and APNS. The results for ListEndpointsByPlatformApplication are paginated and return
-        a limited list of endpoints, up to 100. If additional records are available after the first page results, then a NextToken
-        string will be returned. To receive the next page, you call ListEndpointsByPlatformApplication again using the NextToken
-        string received from the previous call. When there are no more records to return, NextToken will be null. For more
-        information, see Using Amazon SNS Mobile Push Notifications. This action is throttled at 30 transactions per second
-        (TPS).
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ListEndpointsByPlatformApplicationOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/ListEndpointsByPlatformApplicationInput'
-      x-stackql-resource: endpoints_by_platform_applications
-      x-stackql-method: list_endpoints_by_platform_application
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: ListEndpointsByPlatformApplicationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListEndpointsByPlatformApplicationResponse\"\
-        \ \"ListEndpointsByPlatformApplicationResult\" \"Endpoints\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"endpoint_arn\": {{ $v :=\
-        \ index . \"EndpointArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"attributes\": {{ $v := index . \"Attributes\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n\
-        {{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_ListEndpointsByPlatformApplication
       description: Lists the endpoints and endpoint attributes for devices in a supported push notification service, such
@@ -1363,17 +1203,33 @@ paths:
       x-stackql-method: list_endpoints_by_platform_application
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListEndpointsByPlatformApplicationOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListEndpointsByPlatformApplicationResponse\"\
-        \ \"ListEndpointsByPlatformApplicationResult\" \"Endpoints\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"endpoint_arn\": {{ $v :=\
-        \ index . \"EndpointArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"attributes\": {{ $v := index . \"Attributes\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n\
-        {{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_ListEndpointsByPlatformApplication
+      description: Lists the endpoints and endpoint attributes for devices in a supported push notification service, such
+        as GCM (Firebase Cloud Messaging) and APNS. The results for ListEndpointsByPlatformApplication are paginated and return
+        a limited list of endpoints, up to 100. If additional records are available after the first page results, then a NextToken
+        string will be returned. To receive the next page, you call ListEndpointsByPlatformApplication again using the NextToken
+        string received from the previous call. When there are no more records to return, NextToken will be null. For more
+        information, see Using Amazon SNS Mobile Push Notifications. This action is throttled at 30 transactions per second
+        (TPS).
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ListEndpointsByPlatformApplicationOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ListEndpointsByPlatformApplicationInput'
+      x-stackql-resource: endpoints_by_platform_applications
+      x-stackql-method: list_endpoints_by_platform_application
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListEndpointsByPlatformApplicationOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=ListOriginationNumbers&Version=2010-03-31:
     parameters:
@@ -1384,50 +1240,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_ListOriginationNumbers
-      description: Lists the calling Amazon Web Services account's dedicated origination numbers and their metadata. For more
-        information about origination numbers, see Origination numbers in the Amazon SNS Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ListOriginationNumbersOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/ListOriginationNumbersRequest'
-      x-stackql-resource: origination_numbers
-      x-stackql-method: list_origination_numbers
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: ListOriginationNumbersOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListOriginationNumbersResponse\"\
-        \ \"ListOriginationNumbersResult\" \"PhoneNumbers\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"created_at\": {{ $v := index\
-        \ . \"CreatedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"phone_number\": {{ $v := index . \"PhoneNumber\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"iso2_country_code\": {{ $v := index . \"Iso2CountryCode\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"route_type\": {{ $v := index . \"RouteType\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"\
-        %T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"number_capabilities\": {{ $v := index . \"NumberCapabilities\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_ListOriginationNumbers
       description: Lists the calling Amazon Web Services account's dedicated origination numbers and their metadata. For more
@@ -1456,28 +1268,28 @@ paths:
       x-stackql-method: list_origination_numbers
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListOriginationNumbersOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListOriginationNumbersResponse\"\
-        \ \"ListOriginationNumbersResult\" \"PhoneNumbers\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"created_at\": {{ $v := index\
-        \ . \"CreatedAt\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\"\
-        \ }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{\
-        \ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"phone_number\": {{ $v := index . \"PhoneNumber\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\" }}{{ if or (eq $v\
-        \ nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else\
-        \ if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }},\n        \"iso2_country_code\": {{ $v := index . \"Iso2CountryCode\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"route_type\": {{ $v := index . \"RouteType\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"\
-        %T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }},\n        \"number_capabilities\": {{ $v := index . \"NumberCapabilities\" }}{{ if or (eq $v nil) (eq (printf\
-        \ \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_ListOriginationNumbers
+      description: Lists the calling Amazon Web Services account's dedicated origination numbers and their metadata. For more
+        information about origination numbers, see Origination numbers in the Amazon SNS Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ListOriginationNumbersOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ListOriginationNumbersRequest'
+      x-stackql-resource: origination_numbers
+      x-stackql-method: list_origination_numbers
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListOriginationNumbersOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=ListPhoneNumbersOptedOut&Version=2010-03-31:
     parameters:
@@ -1488,37 +1300,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_ListPhoneNumbersOptedOut
-      description: Returns a list of phone numbers that are opted out, meaning you cannot send SMS messages to them. The results
-        for ListPhoneNumbersOptedOut are paginated, and each page returns up to 100 phone numbers. If additional phone numbers
-        are available after the first page of results, then a NextToken string will be returned. To receive the next page,
-        you call ListPhoneNumbersOptedOut again using the NextToken string received from the previous call. When there are
-        no more records to return, NextToken will be null.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ListPhoneNumbersOptedOutOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/ListPhoneNumbersOptedOutInput'
-      x-stackql-resource: phone_numbers_opted_outs
-      x-stackql-method: list_phone_numbers_opted_out
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: ListPhoneNumbersOptedOutOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListPhoneNumbersOptedOutResponse\"\
-        \ \"ListPhoneNumbersOptedOutResult\" \"phoneNumbers\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_ListPhoneNumbersOptedOut
       description: Returns a list of phone numbers that are opted out, meaning you cannot send SMS messages to them. The results
@@ -1545,12 +1326,31 @@ paths:
       x-stackql-method: list_phone_numbers_opted_out
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListPhoneNumbersOptedOutOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListPhoneNumbersOptedOutResponse\"\
-        \ \"ListPhoneNumbersOptedOutResult\" \"phoneNumbers\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_ListPhoneNumbersOptedOut
+      description: Returns a list of phone numbers that are opted out, meaning you cannot send SMS messages to them. The results
+        for ListPhoneNumbersOptedOut are paginated, and each page returns up to 100 phone numbers. If additional phone numbers
+        are available after the first page of results, then a NextToken string will be returned. To receive the next page,
+        you call ListPhoneNumbersOptedOut again using the NextToken string received from the previous call. When there are
+        no more records to return, NextToken will be null.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ListPhoneNumbersOptedOutOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ListPhoneNumbersOptedOutInput'
+      x-stackql-resource: phone_numbers_opted_outs
+      x-stackql-method: list_phone_numbers_opted_out
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListPhoneNumbersOptedOutOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=ListPlatformApplications&Version=2010-03-31:
     parameters:
@@ -1561,43 +1361,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_ListPlatformApplications
-      description: Lists the platform application objects for the supported push notification services, such as APNS and GCM
-        (Firebase Cloud Messaging). The results for ListPlatformApplications are paginated and return a limited list of applications,
-        up to 100. If additional records are available after the first page results, then a NextToken string will be returned.
-        To receive the next page, you call ListPlatformApplications using the NextToken string received from the previous
-        call. When there are no more records to return, NextToken will be null. For more information, see Using Amazon SNS
-        Mobile Push Notifications. This action is throttled at 15 transactions per second (TPS).
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ListPlatformApplicationsOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/ListPlatformApplicationsInput'
-      x-stackql-resource: platform_applications
-      x-stackql-method: list_platform_applications
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: ListPlatformApplicationsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListPlatformApplicationsResponse\"\
-        \ \"ListPlatformApplicationsResult\" \"PlatformApplications\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"platform_application_arn\"\
-        : {{ $v := index . \"PlatformApplicationArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"attributes\"\
-        : {{ $v := index . \"Attributes\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_ListPlatformApplications
       description: Lists the platform application objects for the supported push notification services, such as APNS and GCM
@@ -1625,17 +1388,32 @@ paths:
       x-stackql-method: list_platform_applications
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListPlatformApplicationsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListPlatformApplicationsResponse\"\
-        \ \"ListPlatformApplicationsResult\" \"PlatformApplications\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"platform_application_arn\"\
-        : {{ $v := index . \"PlatformApplicationArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if\
-        \ eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf\
-        \ \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"attributes\"\
-        : {{ $v := index . \"Attributes\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"\
-        %q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_ListPlatformApplications
+      description: Lists the platform application objects for the supported push notification services, such as APNS and GCM
+        (Firebase Cloud Messaging). The results for ListPlatformApplications are paginated and return a limited list of applications,
+        up to 100. If additional records are available after the first page results, then a NextToken string will be returned.
+        To receive the next page, you call ListPlatformApplications using the NextToken string received from the previous
+        call. When there are no more records to return, NextToken will be null. For more information, see Using Amazon SNS
+        Mobile Push Notifications. This action is throttled at 15 transactions per second (TPS).
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ListPlatformApplicationsOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ListPlatformApplicationsInput'
+      x-stackql-resource: platform_applications
+      x-stackql-method: list_platform_applications
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListPlatformApplicationsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=ListSMSSandboxPhoneNumbers&Version=2010-03-31:
     parameters:
@@ -1646,45 +1424,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_ListSMSSandboxPhoneNumbers
-      description: Lists the calling Amazon Web Services account's current verified and pending destination phone numbers
-        in the SMS sandbox. When you start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the
-        SMS sandbox. The SMS sandbox provides a safe environment for you to try Amazon SNS features without risking your reputation
-        as an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use all of the features of
-        Amazon SNS. However, you can send SMS messages only to verified destination phone numbers. For more information, including
-        how to move out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer
-        Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ListSMSSandboxPhoneNumbersOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/ListSMSSandboxPhoneNumbersInput'
-      x-stackql-resource: sms_sandbox_phone_numbers
-      x-stackql-method: list_sms_sandbox_phone_numbers
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: ListSMSSandboxPhoneNumbersOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListSMSSandboxPhoneNumbersResponse\"\
-        \ \"ListSMSSandboxPhoneNumbersResult\" \"PhoneNumbers\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"phone_number\": {{ $v :=\
-        \ index . \"PhoneNumber\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_ListSMSSandboxPhoneNumbers
       description: Lists the calling Amazon Web Services account's current verified and pending destination phone numbers
@@ -1718,18 +1457,33 @@ paths:
       x-stackql-method: list_sms_sandbox_phone_numbers
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListSMSSandboxPhoneNumbersOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListSMSSandboxPhoneNumbersResponse\"\
-        \ \"ListSMSSandboxPhoneNumbersResult\" \"PhoneNumbers\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"phone_number\": {{ $v :=\
-        \ index . \"PhoneNumber\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"status\": {{ $v := index . \"Status\"\
-        \ }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_ListSMSSandboxPhoneNumbers
+      description: Lists the calling Amazon Web Services account's current verified and pending destination phone numbers
+        in the SMS sandbox. When you start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the
+        SMS sandbox. The SMS sandbox provides a safe environment for you to try Amazon SNS features without risking your reputation
+        as an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use all of the features of
+        Amazon SNS. However, you can send SMS messages only to verified destination phone numbers. For more information, including
+        how to move out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer
+        Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ListSMSSandboxPhoneNumbersOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ListSMSSandboxPhoneNumbersInput'
+      x-stackql-resource: sms_sandbox_phone_numbers
+      x-stackql-method: list_sms_sandbox_phone_numbers
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListSMSSandboxPhoneNumbersOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=ListSubscriptions&Version=2010-03-31:
     parameters:
@@ -1740,50 +1494,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_ListSubscriptions
-      description: Returns a list of the requester's subscriptions. Each call returns a limited list of subscriptions, up
-        to 100. If there are more subscriptions, a NextToken is also returned. Use the NextToken parameter in a new ListSubscriptions
-        call to get further results. This action is throttled at 30 transactions per second (TPS).
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ListSubscriptionsOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/ListSubscriptionsInput'
-      x-stackql-resource: subscriptions
-      x-stackql-method: list_subscriptions
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: ListSubscriptionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListSubscriptionsResponse\"\
-        \ \"ListSubscriptionsResult\" \"Subscriptions\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"subscription_arn\": {{ $v\
-        \ := index . \"SubscriptionArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"owner\": {{ $v := index . \"\
-        Owner\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"protocol\": {{ $v := index . \"Protocol\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"endpoint\": {{ $v := index . \"Endpoint\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"topic_arn\": {{ $v := index . \"TopicArn\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"\
-        %T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_ListSubscriptions
       description: Returns a list of the requester's subscriptions. Each call returns a limited list of subscriptions, up
@@ -1807,27 +1517,29 @@ paths:
       x-stackql-method: list_subscriptions
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListSubscriptionsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListSubscriptionsResponse\"\
-        \ \"ListSubscriptionsResult\" \"Subscriptions\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"subscription_arn\": {{ $v\
-        \ := index . \"SubscriptionArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"owner\": {{ $v := index . \"\
-        Owner\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"protocol\": {{ $v := index . \"Protocol\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"endpoint\": {{ $v := index . \"Endpoint\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"topic_arn\": {{ $v := index . \"TopicArn\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"\
-        %T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_ListSubscriptions
+      description: Returns a list of the requester's subscriptions. Each call returns a limited list of subscriptions, up
+        to 100. If there are more subscriptions, a NextToken is also returned. Use the NextToken parameter in a new ListSubscriptions
+        call to get further results. This action is throttled at 30 transactions per second (TPS).
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ListSubscriptionsOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ListSubscriptionsInput'
+      x-stackql-resource: subscriptions
+      x-stackql-method: list_subscriptions
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListSubscriptionsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=ListSubscriptionsByTopic&Version=2010-03-31:
     parameters:
@@ -1838,50 +1550,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_ListSubscriptionsByTopic
-      description: Returns a list of the subscriptions to a specific topic. Each call returns a limited list of subscriptions,
-        up to 100. If there are more subscriptions, a NextToken is also returned. Use the NextToken parameter in a new ListSubscriptionsByTopic
-        call to get further results. This action is throttled at 30 transactions per second (TPS).
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ListSubscriptionsByTopicOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/ListSubscriptionsByTopicInput'
-      x-stackql-resource: subscriptions_by_topics
-      x-stackql-method: list_subscriptions_by_topic
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: ListSubscriptionsByTopicOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListSubscriptionsByTopicResponse\"\
-        \ \"ListSubscriptionsByTopicResult\" \"Subscriptions\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"subscription_arn\": {{ $v\
-        \ := index . \"SubscriptionArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"owner\": {{ $v := index . \"\
-        Owner\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"protocol\": {{ $v := index . \"Protocol\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"endpoint\": {{ $v := index . \"Endpoint\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"topic_arn\": {{ $v := index . \"TopicArn\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"\
-        %T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_ListSubscriptionsByTopic
       description: Returns a list of the subscriptions to a specific topic. Each call returns a limited list of subscriptions,
@@ -1911,27 +1579,29 @@ paths:
       x-stackql-method: list_subscriptions_by_topic
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListSubscriptionsByTopicOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListSubscriptionsByTopicResponse\"\
-        \ \"ListSubscriptionsByTopicResult\" \"Subscriptions\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface\
-        \ {}\" }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"subscription_arn\": {{ $v\
-        \ := index . \"SubscriptionArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"\
-        %T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"owner\": {{ $v := index . \"\
-        Owner\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{\
-        \ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else\
-        \ }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"protocol\": {{ $v := index . \"Protocol\" }}{{ if\
-        \ or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\"\
-        \ $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf\
-        \ \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"endpoint\": {{ $v := index . \"Endpoint\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }},\n        \"topic_arn\": {{ $v := index . \"TopicArn\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"\
-        %T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{\
-        \ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_ListSubscriptionsByTopic
+      description: Returns a list of the subscriptions to a specific topic. Each call returns a limited list of subscriptions,
+        up to 100. If there are more subscriptions, a NextToken is also returned. Use the NextToken parameter in a new ListSubscriptionsByTopic
+        call to get further results. This action is throttled at 30 transactions per second (TPS).
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ListSubscriptionsByTopicOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ListSubscriptionsByTopicInput'
+      x-stackql-resource: subscriptions_by_topics
+      x-stackql-method: list_subscriptions_by_topic
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListSubscriptionsByTopicOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=ListTagsForResource&Version=2010-03-31:
     parameters:
@@ -1942,40 +1612,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_ListTagsForResource
-      description: List all tags added to the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the Amazon
-        Simple Notification Service Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ListTagsForResourceOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/ListTagsForResourceRequest'
-      x-stackql-resource: tags_for_resources
-      x-stackql-method: list_tags_for_resource
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListTagsForResourceResponse\"\
-        \ \"ListTagsForResourceResult\" \"Tags\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\"\
-        \ }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"key\": {{ $v := index . \"\
-        Key\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"value\": {{ $v := index . \"Value\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_ListTagsForResource
       description: List all tags added to the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the Amazon
@@ -1998,18 +1634,28 @@ paths:
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListTagsForResourceResponse\"\
-        \ \"ListTagsForResourceResult\" \"Tags\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\"\
-        \ }}\n      {{- $items := index $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface\
-        \ {}\" }}\n        {{template \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n\
-        \        {{- range $i, $v := $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n       \
-        \ {{- end }}\n      {{- end }}\n    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"key\": {{ $v := index . \"\
-        Key\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf\
-        \ \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{\
-        \ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"value\": {{ $v := index . \"Value\" }}{{ if or (eq $v nil)\
-        \ (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if\
-        \ eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"\
-        %v\" $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_ListTagsForResource
+      description: List all tags added to the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the Amazon
+        Simple Notification Service Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ListTagsForResourceOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ListTagsForResourceRequest'
+      x-stackql-resource: tags_for_resources
+      x-stackql-method: list_tags_for_resource
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=ListTopics&Version=2010-03-31:
     parameters:
@@ -2020,38 +1666,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_ListTopics
-      description: Returns a list of the requester's topics. Each call returns a limited list of topics, up to 100. If there
-        are more topics, a NextToken is also returned. Use the NextToken parameter in a new ListTopics call to get further
-        results. This action is throttled at 30 transactions per second (TPS).
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ListTopicsOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/ListTopicsInput'
-      x-stackql-resource: topics
-      x-stackql-method: list_topics
-      x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: ListTopicsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListTopicsResponse\" \"ListTopicsResult\"\
-        \ \"Topics\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n      {{- $items := index\
-        \ $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface {}\" }}\n        {{template\
-        \ \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n        {{- range $i, $v :=\
-        \ $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n        {{- end }}\n      {{- end }}\n\
-        \    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"topic_arn\": {{ $v := index . \"TopicArn\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{\
-        \ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_ListTopics
       description: Returns a list of the requester's topics. Each call returns a limited list of topics, up to 100. If there
@@ -2075,15 +1689,29 @@ paths:
       x-stackql-method: list_topics
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTopicsOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $list_parent := index . \"ListTopicsResponse\" \"ListTopicsResult\"\
-        \ \"Topics\" -}}\n    {{- if eq (printf \"%T\" $list_parent) \"map[string]interface {}\" }}\n      {{- $items := index\
-        \ $list_parent \"item\" -}}\n      {{- if eq (printf \"%T\" $items) \"map[string]interface {}\" }}\n        {{template\
-        \ \"row\" $items}}\n      {{- else if eq (printf \"%T\" $items) \"[]interface {}\" }}\n        {{- range $i, $v :=\
-        \ $items }}\n          {{- if $i}},{{end}}\n          {{template \"row\" $v}}\n        {{- end }}\n      {{- end }}\n\
-        \    {{- end }}\n  ]\n}\n{{define \"row\"}}\n{\n        \"topic_arn\": {{ $v := index . \"TopicArn\" }}{{ if or (eq\
-        \ $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{\
-        \ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf\
-        \ \"%v\" $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_ListTopics
+      description: Returns a list of the requester's topics. Each call returns a limited list of topics, up to 100. If there
+        are more topics, a NextToken is also returned. Use the NextToken parameter in a new ListTopics call to get further
+        results. This action is throttled at 30 transactions per second (TPS).
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ListTopicsOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ListTopicsInput'
+      x-stackql-resource: topics
+      x-stackql-method: list_topics
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListTopicsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=OptInPhoneNumber&Version=2010-03-31:
     parameters:
@@ -2094,30 +1722,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_OptInPhoneNumber
-      description: Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages
-        to the number. You can opt in a phone number only once every 30 days.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/OptInPhoneNumberOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/OptInPhoneNumberInput'
-      x-stackql-resource: opt_in_phone_number
-      x-stackql-method: opt_in_phone_number
-      x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: OptInPhoneNumberOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"OptInPhoneNumberResponse\" \"OptInPhoneNumberResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_OptInPhoneNumber
       description: Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages
@@ -2140,8 +1744,28 @@ paths:
       x-stackql-method: opt_in_phone_number
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: OptInPhoneNumberOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"OptInPhoneNumberResponse\" \"OptInPhoneNumberResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_OptInPhoneNumber
+      description: Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages
+        to the number. You can opt in a phone number only once every 30 days.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/OptInPhoneNumberOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/OptInPhoneNumberInput'
+      x-stackql-resource: opt_in_phone_number
+      x-stackql-method: opt_in_phone_number
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: OptInPhoneNumberOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=Publish&Version=2010-03-31:
     parameters:
@@ -2152,43 +1776,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_Publish
-      description: Sends a message to an Amazon SNS topic, a text message (SMS message) directly to a phone number, or a message
-        to a mobile platform endpoint (when you specify the TargetArn). If you send a message to a topic, Amazon SNS delivers
-        the message to each endpoint that is subscribed to the topic. The format of the message depends on the notification
-        protocol for each subscribed endpoint. When a messageId is returned, the message is saved and Amazon SNS immediately
-        delivers it to subscribers. To use the Publish action for publishing a message to a mobile endpoint, such as an app
-        on a Kindle device or mobile phone, you must specify the EndpointArn for the TargetArn parameter. The EndpointArn
-        is returned when making a call with the CreatePlatformEndpoint action. For more information about formatting messages,
-        see Send Custom Platform-Specific Payloads in Messages to Mobile Devices. You can publish messages only to topics
-        and endpoints in the same Amazon Web Services Region.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/PublishOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/PublishInput'
-      x-stackql-resource: publish
-      x-stackql-method: publish
-      x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: PublishOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"PublishResponse\" \"PublishResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"message_id\": {{\
-        \ $v := index . \"MessageId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"sequence_number\": {{ $v := index\
-        \ . \"SequenceNumber\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_Publish
       description: Sends a message to an Amazon SNS topic, a text message (SMS message) directly to a phone number, or a message
@@ -2314,14 +1901,35 @@ paths:
       x-stackql-method: publish
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PublishOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"PublishResponse\" \"PublishResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"message_id\": {{\
-        \ $v := index . \"MessageId\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\"\
-        \ $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"\
-        %.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }},\n        \"sequence_number\": {{ $v := index\
-        \ . \"SequenceNumber\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf \"%T\" $v)\
-        \ \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf \"%.0f\"\
-        \ $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_Publish
+      description: Sends a message to an Amazon SNS topic, a text message (SMS message) directly to a phone number, or a message
+        to a mobile platform endpoint (when you specify the TargetArn). If you send a message to a topic, Amazon SNS delivers
+        the message to each endpoint that is subscribed to the topic. The format of the message depends on the notification
+        protocol for each subscribed endpoint. When a messageId is returned, the message is saved and Amazon SNS immediately
+        delivers it to subscribers. To use the Publish action for publishing a message to a mobile endpoint, such as an app
+        on a Kindle device or mobile phone, you must specify the EndpointArn for the TargetArn parameter. The EndpointArn
+        is returned when making a call with the CreatePlatformEndpoint action. For more information about formatting messages,
+        see Send Custom Platform-Specific Payloads in Messages to Mobile Devices. You can publish messages only to topics
+        and endpoints in the same Amazon Web Services Region.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/PublishOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/PublishInput'
+      x-stackql-resource: publish
+      x-stackql-method: publish
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: PublishOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=PublishBatch&Version=2010-03-31:
     parameters:
@@ -2332,46 +1940,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_PublishBatch
-      description: 'Publishes up to 10 messages to the specified topic in a single batch. This is a batch version of the Publish
-        API. If you try to send more than 10 messages in a single batch request, you will receive a TooManyEntriesInBatchRequest
-        exception. For FIFO topics, multiple messages within a single batch are published in the order they are sent, and
-        messages are deduplicated within the batch and across batches for five minutes. The result of publishing each message
-        is reported individually in the response. Because the batch request can result in a combination of successful and
-        unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200. The
-        maximum allowed individual message size and the maximum total payload size (the sum of the individual lengths of all
-        of the batched messages) are both 256 KB (262,144 bytes). The PublishBatch API can send up to 10 messages at a time.
-        If you attempt to send more than 10 messages in one request, you will encounter a TooManyEntriesInBatchRequest exception.
-        In such cases, split your messages into multiple requests, each containing no more than 10 messages. Some actions
-        take lists of parameters. These lists are specified using the param.n notation. Values of n are integers starting
-        from 1. For example, a parameter list with two elements looks like this: &AttributeName.1=first &AttributeName.2=second
-        If you send a batch message to a topic, Amazon SNS publishes the batch message to each endpoint that is subscribed
-        to the topic. The format of the batch message depends on the notification protocol for each subscribed endpoint. When
-        a messageId is returned, the batch message is saved, and Amazon SNS immediately delivers the message to subscribers.'
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/PublishBatchOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/PublishBatchInput'
-      x-stackql-resource: batch
-      x-stackql-method: publish_batch
-      x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: PublishBatchOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"PublishBatchResponse\" \"PublishBatchResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"successful\": {{\
-        \ $v := index . \"Successful\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }},\n        \"failed\": {{ $v := index . \"Failed\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_PublishBatch
       description: 'Publishes up to 10 messages to the specified topic in a single batch. This is a batch version of the Publish
@@ -2413,11 +1981,41 @@ paths:
       x-stackql-method: publish_batch
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PublishBatchOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"PublishBatchResponse\" \"PublishBatchResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"successful\": {{\
-        \ $v := index . \"Successful\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else }}{{ printf \"%q\"\
-        \ (toJson $v) }}{{ end }},\n        \"failed\": {{ $v := index . \"Failed\" }}{{ if or (eq $v nil) (eq (printf \"\
-        %v\" $v) \"\") }}null{{ else }}{{ printf \"%q\" (toJson $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_PublishBatch
+      description: 'Publishes up to 10 messages to the specified topic in a single batch. This is a batch version of the Publish
+        API. If you try to send more than 10 messages in a single batch request, you will receive a TooManyEntriesInBatchRequest
+        exception. For FIFO topics, multiple messages within a single batch are published in the order they are sent, and
+        messages are deduplicated within the batch and across batches for five minutes. The result of publishing each message
+        is reported individually in the response. Because the batch request can result in a combination of successful and
+        unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200. The
+        maximum allowed individual message size and the maximum total payload size (the sum of the individual lengths of all
+        of the batched messages) are both 256 KB (262,144 bytes). The PublishBatch API can send up to 10 messages at a time.
+        If you attempt to send more than 10 messages in one request, you will encounter a TooManyEntriesInBatchRequest exception.
+        In such cases, split your messages into multiple requests, each containing no more than 10 messages. Some actions
+        take lists of parameters. These lists are specified using the param.n notation. Values of n are integers starting
+        from 1. For example, a parameter list with two elements looks like this: &AttributeName.1=first &AttributeName.2=second
+        If you send a batch message to a topic, Amazon SNS publishes the batch message to each endpoint that is subscribed
+        to the topic. The format of the batch message depends on the notification protocol for each subscribed endpoint. When
+        a messageId is returned, the batch message is saved, and Amazon SNS immediately delivers the message to subscribers.'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/PublishBatchOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/PublishBatchInput'
+      x-stackql-resource: batch
+      x-stackql-method: publish_batch
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: PublishBatchOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=PutDataProtectionPolicy&Version=2010-03-31:
     parameters:
@@ -2428,21 +2026,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_PutDataProtectionPolicy
-      description: Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
-      responses:
-        '200':
-          description: Success
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/PutDataProtectionPolicyInput'
-      x-stackql-resource: data_protection_policies
-      x-stackql-method: put_data_protection_policy
-      x-stackql-verb: REPLACE
     get:
       operationId: GET_PutDataProtectionPolicy
       description: Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
@@ -2467,6 +2050,21 @@ paths:
       x-stackql-resource: data_protection_policies
       x-stackql-method: put_data_protection_policy
       x-stackql-verb: REPLACE
+    post:
+      operationId: POST_PutDataProtectionPolicy
+      description: Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
+      responses:
+        '200':
+          description: Success
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/PutDataProtectionPolicyInput'
+      x-stackql-resource: data_protection_policies
+      x-stackql-method: put_data_protection_policy
+      x-stackql-verb: REPLACE
   /?Action=RemovePermission&Version=2010-03-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2476,22 +2074,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_RemovePermission
-      description: Removes a statement from a topic's access control policy. To remove the ability to change topic permissions,
-        you must deny permissions to the AddPermission, RemovePermission, and SetTopicAttributes actions in your IAM policy.
-      responses:
-        '200':
-          description: Success
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/RemovePermissionInput'
-      x-stackql-resource: permissions
-      x-stackql-method: remove_permission
-      x-stackql-verb: UPDATE
     get:
       operationId: GET_RemovePermission
       description: Removes a statement from a topic's access control policy. To remove the ability to change topic permissions,
@@ -2515,6 +2097,22 @@ paths:
       x-stackql-resource: permissions
       x-stackql-method: remove_permission
       x-stackql-verb: UPDATE
+    post:
+      operationId: POST_RemovePermission
+      description: Removes a statement from a topic's access control policy. To remove the ability to change topic permissions,
+        you must deny permissions to the AddPermission, RemovePermission, and SetTopicAttributes actions in your IAM policy.
+      responses:
+        '200':
+          description: Success
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/RemovePermissionInput'
+      x-stackql-resource: permissions
+      x-stackql-method: remove_permission
+      x-stackql-verb: UPDATE
   /?Action=SetEndpointAttributes&Version=2010-03-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2524,22 +2122,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_SetEndpointAttributes
-      description: Sets the attributes for an endpoint for a device on one of the supported push notification services, such
-        as GCM (Firebase Cloud Messaging) and APNS. For more information, see Using Amazon SNS Mobile Push Notifications.
-      responses:
-        '200':
-          description: Success
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/SetEndpointAttributesInput'
-      x-stackql-resource: endpoint_attributes
-      x-stackql-method: set_endpoint_attributes
-      x-stackql-verb: UPDATE
     get:
       operationId: GET_SetEndpointAttributes
       description: Sets the attributes for an endpoint for a device on one of the supported push notification services, such
@@ -2569,6 +2151,22 @@ paths:
       x-stackql-resource: endpoint_attributes
       x-stackql-method: set_endpoint_attributes
       x-stackql-verb: UPDATE
+    post:
+      operationId: POST_SetEndpointAttributes
+      description: Sets the attributes for an endpoint for a device on one of the supported push notification services, such
+        as GCM (Firebase Cloud Messaging) and APNS. For more information, see Using Amazon SNS Mobile Push Notifications.
+      responses:
+        '200':
+          description: Success
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/SetEndpointAttributesInput'
+      x-stackql-resource: endpoint_attributes
+      x-stackql-method: set_endpoint_attributes
+      x-stackql-verb: UPDATE
   /?Action=SetPlatformApplicationAttributes&Version=2010-03-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2578,24 +2176,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_SetPlatformApplicationAttributes
-      description: Sets the attributes of the platform application object for the supported push notification services, such
-        as APNS and GCM (Firebase Cloud Messaging). For more information, see Using Amazon SNS Mobile Push Notifications.
-        For information on configuring attributes for message delivery status, see Using Amazon SNS Application Attributes
-        for Message Delivery Status.
-      responses:
-        '200':
-          description: Success
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/SetPlatformApplicationAttributesInput'
-      x-stackql-resource: platform_application_attributes
-      x-stackql-method: set_platform_application_attributes
-      x-stackql-verb: UPDATE
     get:
       operationId: GET_SetPlatformApplicationAttributes
       description: Sets the attributes of the platform application object for the supported push notification services, such
@@ -2640,6 +2220,24 @@ paths:
       x-stackql-resource: platform_application_attributes
       x-stackql-method: set_platform_application_attributes
       x-stackql-verb: UPDATE
+    post:
+      operationId: POST_SetPlatformApplicationAttributes
+      description: Sets the attributes of the platform application object for the supported push notification services, such
+        as APNS and GCM (Firebase Cloud Messaging). For more information, see Using Amazon SNS Mobile Push Notifications.
+        For information on configuring attributes for message delivery status, see Using Amazon SNS Application Attributes
+        for Message Delivery Status.
+      responses:
+        '200':
+          description: Success
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/SetPlatformApplicationAttributesInput'
+      x-stackql-resource: platform_application_attributes
+      x-stackql-method: set_platform_application_attributes
+      x-stackql-verb: UPDATE
   /?Action=SetSMSAttributes&Version=2010-03-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2649,32 +2247,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_SetSMSAttributes
-      description: Use this request to set the default settings for sending SMS messages and receiving daily SMS usage reports.
-        You can override some of these settings for a single message when you use the Publish action with the MessageAttributes.entry.N
-        parameter. For more information, see Publishing to a mobile phone in the Amazon SNS Developer Guide. To use this operation,
-        you must grant the Amazon SNS service principal (sns.amazonaws.com) permission to perform the s3:ListBucket action.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetSMSAttributesOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/SetSMSAttributesInput'
-      x-stackql-resource: sms_attributes
-      x-stackql-method: set_sms_attributes
-      x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetSMSAttributesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"SetSMSAttributesResponse\" \"SetSMSAttributesResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_SetSMSAttributes
       description: Use this request to set the default settings for sending SMS messages and receiving daily SMS usage reports.
@@ -2726,8 +2298,30 @@ paths:
       x-stackql-method: set_sms_attributes
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetSMSAttributesOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"SetSMSAttributesResponse\" \"SetSMSAttributesResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_SetSMSAttributes
+      description: Use this request to set the default settings for sending SMS messages and receiving daily SMS usage reports.
+        You can override some of these settings for a single message when you use the Publish action with the MessageAttributes.entry.N
+        parameter. For more information, see Publishing to a mobile phone in the Amazon SNS Developer Guide. To use this operation,
+        you must grant the Amazon SNS service principal (sns.amazonaws.com) permission to perform the s3:ListBucket action.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/SetSMSAttributesOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/SetSMSAttributesInput'
+      x-stackql-resource: sms_attributes
+      x-stackql-method: set_sms_attributes
+      x-stackql-verb: UPDATE
+      x-stackql-responseEnvelope: SetSMSAttributesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=SetSubscriptionAttributes&Version=2010-03-31:
     parameters:
@@ -2738,21 +2332,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_SetSubscriptionAttributes
-      description: Allows a subscription owner to set an attribute of the subscription to a new value.
-      responses:
-        '200':
-          description: Success
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/SetSubscriptionAttributesInput'
-      x-stackql-resource: subscription_attributes
-      x-stackql-method: set_subscription_attributes
-      x-stackql-verb: UPDATE
     get:
       operationId: GET_SetSubscriptionAttributes
       description: Allows a subscription owner to set an attribute of the subscription to a new value.
@@ -2796,6 +2375,21 @@ paths:
       x-stackql-resource: subscription_attributes
       x-stackql-method: set_subscription_attributes
       x-stackql-verb: UPDATE
+    post:
+      operationId: POST_SetSubscriptionAttributes
+      description: Allows a subscription owner to set an attribute of the subscription to a new value.
+      responses:
+        '200':
+          description: Success
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/SetSubscriptionAttributesInput'
+      x-stackql-resource: subscription_attributes
+      x-stackql-method: set_subscription_attributes
+      x-stackql-verb: UPDATE
   /?Action=SetTopicAttributes&Version=2010-03-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2805,23 +2399,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_SetTopicAttributes
-      description: Allows a topic owner to set an attribute of the topic to a new value. To remove the ability to change topic
-        permissions, you must deny permissions to the AddPermission, RemovePermission, and SetTopicAttributes actions in your
-        IAM policy.
-      responses:
-        '200':
-          description: Success
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/SetTopicAttributesInput'
-      x-stackql-resource: topic_attributes
-      x-stackql-method: set_topic_attributes
-      x-stackql-verb: UPDATE
     get:
       operationId: GET_SetTopicAttributes
       description: Allows a topic owner to set an attribute of the topic to a new value. To remove the ability to change topic
@@ -2903,6 +2480,23 @@ paths:
       x-stackql-resource: topic_attributes
       x-stackql-method: set_topic_attributes
       x-stackql-verb: UPDATE
+    post:
+      operationId: POST_SetTopicAttributes
+      description: Allows a topic owner to set an attribute of the topic to a new value. To remove the ability to change topic
+        permissions, you must deny permissions to the AddPermission, RemovePermission, and SetTopicAttributes actions in your
+        IAM policy.
+      responses:
+        '200':
+          description: Success
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/SetTopicAttributesInput'
+      x-stackql-resource: topic_attributes
+      x-stackql-method: set_topic_attributes
+      x-stackql-verb: UPDATE
   /?Action=Subscribe&Version=2010-03-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2912,35 +2506,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_Subscribe
-      description: Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is HTTP/S or email, or if the endpoint
-        and the topic are not in the same Amazon Web Services account, the endpoint owner must run the ConfirmSubscription
-        action to confirm the subscription. You call the ConfirmSubscription action with the token from the subscription response.
-        Confirmation tokens are valid for two days. This action is throttled at 100 transactions per second (TPS).
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SubscribeOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/SubscribeInput'
-      x-stackql-resource: subscribe
-      x-stackql-method: subscribe
-      x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: SubscribeOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"SubscribeResponse\" \"SubscribeResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"subscription_arn\"\
-        : {{ $v := index . \"SubscriptionArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_Subscribe
       description: Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is HTTP/S or email, or if the endpoint
@@ -3025,11 +2590,30 @@ paths:
       x-stackql-method: subscribe
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SubscribeOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"SubscribeResponse\" \"SubscribeResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}\n{\n        \"subscription_arn\"\
-        : {{ $v := index . \"SubscriptionArn\" }}{{ if or (eq $v nil) (eq (printf \"%v\" $v) \"\") }}null{{ else if eq (printf\
-        \ \"%T\" $v) \"string\" }}{{ printf \"%q\" $v }}{{ else if eq (printf \"%T\" $v) \"float64\" }}{{ printf \"%q\" (printf\
-        \ \"%.0f\" $v) }}{{ else }}{{ printf \"%q\" (printf \"%v\" $v) }}{{ end }}\n}\n{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_Subscribe
+      description: Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is HTTP/S or email, or if the endpoint
+        and the topic are not in the same Amazon Web Services account, the endpoint owner must run the ConfirmSubscription
+        action to confirm the subscription. You call the ConfirmSubscription action with the token from the subscription response.
+        Confirmation tokens are valid for two days. This action is throttled at 100 transactions per second (TPS).
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/SubscribeOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/SubscribeInput'
+      x-stackql-resource: subscribe
+      x-stackql-method: subscribe
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: SubscribeOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=TagResource&Version=2010-03-31:
     parameters:
@@ -3040,34 +2624,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_TagResource
-      description: 'Add tags to the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the Amazon SNS Developer
-        Guide. When you use topic tags, keep the following guidelines in mind: Adding more than 50 tags to a topic isn''t
-        recommended. Tags don''t have any semantic meaning. Amazon SNS interprets tags as character strings. Tags are case-sensitive.
-        A new tag with a key identical to that of an existing tag overwrites the existing tag. Tagging actions are limited
-        to 10 TPS per Amazon Web Services account, per Amazon Web Services Region. If your application requires a higher throughput,
-        file a technical support request.'
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/TagResourceRequest'
-      x-stackql-resource: resources
-      x-stackql-method: tag_resource
-      x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: TagResourceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"TagResourceResponse\" \"TagResourceResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_TagResource
       description: 'Add tags to the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the Amazon SNS Developer
@@ -3100,8 +2656,32 @@ paths:
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: TagResourceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"TagResourceResponse\" \"TagResourceResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_TagResource
+      description: 'Add tags to the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the Amazon SNS Developer
+        Guide. When you use topic tags, keep the following guidelines in mind: Adding more than 50 tags to a topic isn''t
+        recommended. Tags don''t have any semantic meaning. Amazon SNS interprets tags as character strings. Tags are case-sensitive.
+        A new tag with a key identical to that of an existing tag overwrites the existing tag. Tagging actions are limited
+        to 10 TPS per Amazon Web Services account, per Amazon Web Services Region. If your application requires a higher throughput,
+        file a technical support request.'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TagResourceOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/TagResourceRequest'
+      x-stackql-resource: resources
+      x-stackql-method: tag_resource
+      x-stackql-verb: UPDATE
+      x-stackql-responseEnvelope: TagResourceOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=Unsubscribe&Version=2010-03-31:
     parameters:
@@ -3112,25 +2692,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_Unsubscribe
-      description: Deletes a subscription. If the subscription requires authentication for deletion, only the owner of the
-        subscription or the topic's owner can unsubscribe, and an Amazon Web Services signature is required. If the Unsubscribe
-        call does not require authentication and the requester is not the subscription owner, a final cancellation message
-        is delivered to the endpoint, so that the endpoint owner can easily resubscribe to the topic if the Unsubscribe request
-        was unintended. This action is throttled at 100 transactions per second (TPS).
-      responses:
-        '200':
-          description: Success
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/UnsubscribeInput'
-      x-stackql-resource: unsubscribe
-      x-stackql-method: unsubscribe
-      x-stackql-verb: EXEC
     get:
       operationId: GET_Unsubscribe
       description: Deletes a subscription. If the subscription requires authentication for deletion, only the owner of the
@@ -3151,6 +2712,25 @@ paths:
       x-stackql-resource: unsubscribe
       x-stackql-method: unsubscribe
       x-stackql-verb: EXEC
+    post:
+      operationId: POST_Unsubscribe
+      description: Deletes a subscription. If the subscription requires authentication for deletion, only the owner of the
+        subscription or the topic's owner can unsubscribe, and an Amazon Web Services signature is required. If the Unsubscribe
+        call does not require authentication and the requester is not the subscription owner, a final cancellation message
+        is delivered to the endpoint, so that the endpoint owner can easily resubscribe to the topic if the Unsubscribe request
+        was unintended. This action is throttled at 100 transactions per second (TPS).
+      responses:
+        '200':
+          description: Success
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/UnsubscribeInput'
+      x-stackql-resource: unsubscribe
+      x-stackql-method: unsubscribe
+      x-stackql-verb: EXEC
   /?Action=UntagResource&Version=2010-03-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3160,30 +2740,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_UntagResource
-      description: Remove tags from the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the Amazon SNS
-        Developer Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/UntagResourceRequest'
-      x-stackql-resource: resources
-      x-stackql-method: untag_resource
-      x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UntagResourceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"UntagResourceResponse\" \"UntagResourceResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_UntagResource
       description: Remove tags from the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the Amazon SNS
@@ -3212,8 +2768,28 @@ paths:
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UntagResourceOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"UntagResourceResponse\" \"UntagResourceResult\"\
-        \ -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"row\"}}{}{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_UntagResource
+      description: Remove tags from the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the Amazon SNS
+        Developer Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/UntagResourceOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/UntagResourceRequest'
+      x-stackql-resource: resources
+      x-stackql-method: untag_resource
+      x-stackql-verb: UPDATE
+      x-stackql-responseEnvelope: UntagResourceOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=VerifySMSSandboxPhoneNumber&Version=2010-03-31:
     parameters:
@@ -3224,36 +2800,6 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Security-Token'
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
-    post:
-      operationId: POST_VerifySMSSandboxPhoneNumber
-      description: Verifies a destination phone number with a one-time password (OTP) for the calling Amazon Web Services
-        account. When you start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the SMS sandbox.
-        The SMS sandbox provides a safe environment for you to try Amazon SNS features without risking your reputation as
-        an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use all of the features of Amazon
-        SNS. However, you can send SMS messages only to verified destination phone numbers. For more information, including
-        how to move out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer
-        Guide.
-      responses:
-        '200':
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/VerifySMSSandboxPhoneNumberOutputDisplay'
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/VerifySMSSandboxPhoneNumberInput'
-      x-stackql-resource: sms_sandbox_phone_number
-      x-stackql-method: verify_sms_sandbox_phone_number
-      x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: VerifySMSSandboxPhoneNumberOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"VerifySMSSandboxPhoneNumberResponse\"\
-        \ \"VerifySMSSandboxPhoneNumberResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"\
-        row\"}}{}{{end}}"
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GET_VerifySMSSandboxPhoneNumber
       description: Verifies a destination phone number with a one-time password (OTP) for the calling Amazon Web Services
@@ -3287,9 +2833,33 @@ paths:
       x-stackql-method: verify_sms_sandbox_phone_number
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: VerifySMSSandboxPhoneNumberOutputDisplay
-      x-stackql-responseTransform: "{\n  \"line_items\": [\n    {{- $row := index . \"VerifySMSSandboxPhoneNumberResponse\"\
-        \ \"VerifySMSSandboxPhoneNumberResult\" -}}\n    {{- with $row }}{{template \"row\" .}}{{end}}\n  ]\n}\n{{define \"\
-        row\"}}{}{{end}}"
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_VerifySMSSandboxPhoneNumber
+      description: Verifies a destination phone number with a one-time password (OTP) for the calling Amazon Web Services
+        account. When you start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the SMS sandbox.
+        The SMS sandbox provides a safe environment for you to try Amazon SNS features without risking your reputation as
+        an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use all of the features of Amazon
+        SNS. However, you can send SMS messages only to verified destination phone numbers. For more information, including
+        how to move out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer
+        Guide.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/VerifySMSSandboxPhoneNumberOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/VerifySMSSandboxPhoneNumberInput'
+      x-stackql-resource: sms_sandbox_phone_number
+      x-stackql-method: verify_sms_sandbox_phone_number
+      x-stackql-verb: EXEC
+      x-stackql-responseEnvelope: VerifySMSSandboxPhoneNumberOutputDisplay
       x-stackql-responseObjectKey: $.line_items
 components:
   parameters:
@@ -3379,7 +2949,7 @@ components:
     CheckIfPhoneNumberIsOptedOutResponseDisplay:
       type: object
       properties:
-        is_opted_out:
+        isOptedOut:
           type: boolean
           description: 'Indicates whether the phone number is opted out: true – The phone number is opted out, meaning you
             cannot publish SMS messages to it. false – The phone number is opted in, meaning you can publish SMS messages
@@ -3407,7 +2977,7 @@ components:
     ConfirmSubscriptionResponseDisplay:
       type: object
       properties:
-        subscription_arn:
+        SubscriptionArn:
           type: string
           description: The ARN of the created subscription.
     ConfirmSubscriptionOutputDisplay:
@@ -3443,7 +3013,7 @@ components:
     CreatePlatformApplicationResponseDisplay:
       type: object
       properties:
-        platform_application_arn:
+        PlatformApplicationArn:
           type: string
           description: PlatformApplicationArn is returned.
     CreatePlatformApplicationOutputDisplay:
@@ -3476,7 +3046,7 @@ components:
     CreateEndpointResponseDisplay:
       type: object
       properties:
-        endpoint_arn:
+        EndpointArn:
           type: string
           description: EndpointArn returned from CreateEndpoint action.
     CreatePlatformEndpointOutputDisplay:
@@ -3588,7 +3158,7 @@ components:
     CreateTopicResponseDisplay:
       type: object
       properties:
-        topic_arn:
+        TopicArn:
           type: string
           description: The Amazon Resource Name (ARN) assigned to the created topic.
     CreateTopicOutputDisplay:
@@ -3718,7 +3288,7 @@ components:
     GetDataProtectionPolicyResponseDisplay:
       type: object
       properties:
-        data_protection_policy:
+        DataProtectionPolicy:
           type: string
           description: Retrieves the DataProtectionPolicy in JSON string format.
     GetDataProtectionPolicyOutputDisplay:
@@ -3740,7 +3310,7 @@ components:
     GetEndpointAttributesResponseDisplay:
       type: object
       properties:
-        attributes:
+        Attributes:
           type: string
           description: 'Attributes include the following: CustomUserData – arbitrary user data to associate with the endpoint.
             Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB. Enabled – flag that enables/disables
@@ -3768,7 +3338,7 @@ components:
     GetPlatformApplicationAttributesResponseDisplay:
       type: object
       properties:
-        attributes:
+        Attributes:
           type: string
           description: 'Attributes include the following: AppleCertificateExpiryDate – The expiry date of the SSL certificate
             used to configure certificate-based authentication. ApplePlatformTeamID – The Apple developer account ID used
@@ -3823,7 +3393,7 @@ components:
     GetSMSSandboxAccountStatusResultDisplay:
       type: object
       properties:
-        is_in_sandbox:
+        IsInSandbox:
           type: boolean
           description: Indicates whether the calling Amazon Web Services account is in the SMS sandbox.
     GetSMSSandboxAccountStatusOutputDisplay:
@@ -3840,7 +3410,7 @@ components:
     GetSubscriptionAttributesResponseDisplay:
       type: object
       properties:
-        attributes:
+        Attributes:
           type: string
           description: 'A map of the subscription''s attributes. Attributes in this map include the following: ConfirmationWasAuthenticated
             – true if the subscription confirmation request was authenticated. DeliveryPolicy – The JSON serialization of
@@ -3881,7 +3451,7 @@ components:
     GetTopicAttributesResponseDisplay:
       type: object
       properties:
-        attributes:
+        Attributes:
           type: string
           description: 'A map of the topic''s attributes. Attributes in this map include the following: DeliveryPolicy – The
             JSON serialization of the topic''s delivery policy. DisplayName – The human-readable name used in the From field
@@ -3930,10 +3500,10 @@ components:
     EndpointDisplay:
       type: object
       properties:
-        endpoint_arn:
+        EndpointArn:
           type: string
           description: The EndpointArn for mobile app and device.
-        attributes:
+        Attributes:
           type: string
           description: Attributes for endpoint.
     ListEndpointsByPlatformApplicationOutputDisplay:
@@ -3965,22 +3535,22 @@ components:
     PhoneNumberInformationDisplay:
       type: object
       properties:
-        created_at:
+        CreatedAt:
           type: string
           description: The date and time when the phone number was created.
-        phone_number:
+        PhoneNumber:
           type: string
           description: The phone number.
-        status:
+        Status:
           type: string
           description: The status of the phone number.
-        iso2_country_code:
+        Iso2CountryCode:
           type: string
           description: The two-character code for the country or region, in ISO 3166-1 alpha-2 format.
-        route_type:
+        RouteType:
           type: string
           description: The list of supported routes.
-        number_capabilities:
+        NumberCapabilities:
           type: string
           description: The capabilities of each phone number.
     ListOriginationNumbersOutputDisplay:
@@ -4022,10 +3592,10 @@ components:
     PlatformApplicationDisplay:
       type: object
       properties:
-        platform_application_arn:
+        PlatformApplicationArn:
           type: string
           description: PlatformApplicationArn for platform application object.
-        attributes:
+        Attributes:
           type: string
           description: Attributes for platform application object.
     ListPlatformApplicationsOutputDisplay:
@@ -4050,10 +3620,10 @@ components:
     SMSSandboxPhoneNumberDisplay:
       type: object
       properties:
-        phone_number:
+        PhoneNumber:
           type: string
           description: The destination phone number.
-        status:
+        Status:
           type: string
           description: The destination phone number's verification status.
     ListSMSSandboxPhoneNumbersOutputDisplay:
@@ -4075,19 +3645,19 @@ components:
     SubscriptionDisplay:
       type: object
       properties:
-        subscription_arn:
+        SubscriptionArn:
           type: string
           description: The subscription's ARN.
-        owner:
+        Owner:
           type: string
           description: The subscription's owner.
-        protocol:
+        Protocol:
           type: string
           description: The subscription's protocol.
-        endpoint:
+        Endpoint:
           type: string
           description: The subscription's endpoint (format depends on the protocol).
-        topic_arn:
+        TopicArn:
           type: string
           description: The ARN of the subscription's topic.
     ListSubscriptionsOutputDisplay:
@@ -4130,10 +3700,10 @@ components:
     TagDisplay:
       type: object
       properties:
-        key:
+        Key:
           type: string
           description: The required key portion of the tag.
-        value:
+        Value:
           type: string
           description: The optional value portion of the tag.
     ListTagsForResourceOutputDisplay:
@@ -4154,7 +3724,7 @@ components:
     TopicDisplay:
       type: object
       properties:
-        topic_arn:
+        TopicArn:
           type: string
           description: The topic's ARN.
     ListTopicsOutputDisplay:
@@ -4201,10 +3771,10 @@ components:
     PublishResponseDisplay:
       type: object
       properties:
-        message_id:
+        MessageId:
           type: string
           description: 'Unique identifier assigned to the published message. Length Constraint: Maximum 100 characters'
-        sequence_number:
+        SequenceNumber:
           type: string
           description: This response element applies only to FIFO (first-in-first-out) topics. The sequence number is a large,
             non-consecutive number that Amazon SNS assigns to each message. The length of SequenceNumber is 128 bits. SequenceNumber
@@ -4374,10 +3944,10 @@ components:
     PublishBatchResponseDisplay:
       type: object
       properties:
-        successful:
+        Successful:
           type: string
           description: A list of successful PublishBatch responses.
-        failed:
+        Failed:
           type: string
           description: A list of failed PublishBatch responses.
     PublishBatchOutputDisplay:
@@ -4640,7 +4210,7 @@ components:
     SubscribeResponseDisplay:
       type: object
       properties:
-        subscription_arn:
+        SubscriptionArn:
           type: string
           description: The ARN of the subscription if it is confirmed, or the string "pending confirmation" if the subscription
             requires confirmation. However, if the API request parameter ReturnSubscriptionArn is true, then the value is

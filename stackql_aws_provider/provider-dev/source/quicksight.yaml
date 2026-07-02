@@ -75,7 +75,7 @@ paths:
         description: The ID for the topic reviewed answer that you want to delete. This ID is unique per Amazon Web Services
           Region for each Amazon Web Services account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -154,7 +154,7 @@ paths:
           $ref: '#/components/schemas/AwsAccountId'
         description: The Amazon Web Services account ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -791,7 +791,7 @@ paths:
           $ref: '#/components/schemas/ShortRestrictiveResourceId'
         description: The ID of the Quick brand.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -889,7 +889,7 @@ paths:
           $ref: '#/components/schemas/ShortRestrictiveResourceId'
         description: The ID of the Quick brand.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1376,7 +1376,7 @@ paths:
           $ref: '#/components/schemas/RestrictiveResourceId'
         description: The ID of the folder.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2068,7 +2068,7 @@ paths:
         description: An ID for the template that you want to create. This template is unique per Amazon Web Services Region;
           in each Amazon Web Services account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2189,7 +2189,7 @@ paths:
           $ref: '#/components/schemas/ShortRestrictiveResourceId'
         description: The ID for the template.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3243,7 +3243,7 @@ paths:
           $ref: '#/components/schemas/CustomPermissionsName'
         description: The name of the custom permissions profile that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3761,7 +3761,7 @@ paths:
           $ref: '#/components/schemas/Namespace'
         description: The namespace of the group that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3862,7 +3862,7 @@ paths:
         description: The name of the Amazon Web Services service that contains the authorized targets that you want to add
           or update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4762,7 +4762,7 @@ paths:
           $ref: '#/components/schemas/ShortRestrictiveResourceId'
         description: The unique identifier of the action connector whose permissions you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4858,7 +4858,7 @@ paths:
           $ref: '#/components/schemas/ShortRestrictiveResourceId'
         description: The ID of the analysis whose permissions you're updating. The ID is part of the analysis URL.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5141,7 +5141,7 @@ paths:
           $ref: '#/components/schemas/ShortRestrictiveResourceId'
         description: The ID for the dashboard.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5350,7 +5350,7 @@ paths:
         description: The ID for the dataset whose permissions you want to update. This ID is unique per Amazon Web Services
           Region for each Amazon Web Services account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5416,7 +5416,7 @@ paths:
         description: The ID of the data source. This ID is unique per Amazon Web Services Region for each Amazon Web Services
           account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5499,7 +5499,7 @@ paths:
           $ref: '#/components/schemas/RestrictiveResourceId'
         description: The ID of the folder.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5624,7 +5624,7 @@ paths:
           $ref: '#/components/schemas/Namespace'
         description: The namespace of the assignment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5680,7 +5680,7 @@ paths:
           $ref: '#/components/schemas/AwsAccountId'
         description: The ID of the Amazon Web Services account that contains the IP rules.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -6025,7 +6025,7 @@ paths:
           $ref: '#/components/schemas/ShortRestrictiveResourceId'
         description: The ID for the template.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -6095,7 +6095,7 @@ paths:
           $ref: '#/components/schemas/ShortRestrictiveResourceId'
         description: The ID for the theme.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -6162,7 +6162,7 @@ paths:
         description: The ID of the topic that you want to modify. This ID is unique per Amazon Web Services Region for each
           Amazon Web Services account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -6527,7 +6527,7 @@ paths:
           $ref: '#/components/schemas/FlowId'
         description: The unique identifier of the flow to update permissions for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8434,7 +8434,7 @@ paths:
           $ref: '#/components/schemas/AutomateId'
         description: The ID of the automation to run.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8705,7 +8705,7 @@ paths:
           $ref: '#/components/schemas/AwsAccountId'
         description: The Amazon Web Services account ID associated with your Amazon Quick Sight subscription.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

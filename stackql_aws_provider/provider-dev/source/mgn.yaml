@@ -238,7 +238,7 @@ paths:
       description: Creates a new Launch Configuration Template.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -704,7 +704,7 @@ paths:
         are APIs available only to *Support* and only used in response to relevant support tickets.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -735,7 +735,7 @@ paths:
       description: Lists all Launch Configuration Templates, filtered by Launch Configuration Template IDs
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -764,7 +764,7 @@ paths:
       description: Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -793,7 +793,7 @@ paths:
       description: Retrieves all SourceServers or multiple SourceServers by ID.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1116,7 +1116,7 @@ paths:
       description: Retrieves all applications or multiple applications by ID.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1147,7 +1147,7 @@ paths:
       description: List Connectors.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1207,7 +1207,7 @@ paths:
       description: List exports.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1267,7 +1267,7 @@ paths:
       description: Lists import file enrichment jobs with optional filtering by job IDs.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1296,7 +1296,7 @@ paths:
       description: List imports.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1325,7 +1325,7 @@ paths:
       description: List Managed Accounts.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1500,7 +1500,7 @@ paths:
       description: Lists all network migration definitions in the account, with optional filtering.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1922,7 +1922,7 @@ paths:
       description: Retrieves all waves or multiple waves by ID.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

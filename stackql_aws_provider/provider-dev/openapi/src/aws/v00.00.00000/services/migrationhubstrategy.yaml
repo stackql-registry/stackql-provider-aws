@@ -197,7 +197,7 @@ paths:
       description: Retrieves a list of all the servers fetched from customer vCenter using Strategy Recommendation Collector.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -222,7 +222,7 @@ paths:
       description: Retrieves a list of all the application components (processes).
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -301,7 +301,7 @@ paths:
       description: Returns a list of all the servers.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -332,7 +332,7 @@ paths:
       description: Saves the specified migration and modernization preferences.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -359,7 +359,7 @@ paths:
       description: Starts the assessment of an on-premises environment.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -421,7 +421,7 @@ paths:
       description: Starts generating a recommendation report.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2290,6 +2290,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.taskInfos
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/import_file_tasks/methods/get_import_file_task"
@@ -2331,6 +2333,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2388,6 +2392,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.associatedApplications
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/server_details/methods/get_server_details"
@@ -2423,6 +2429,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.analyzableServers
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2444,6 +2452,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.applicationComponentInfos
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2465,6 +2475,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Collectors
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collectors/methods/list_collectors"
@@ -2483,6 +2495,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.serverInfos
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2503,6 +2517,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2523,6 +2539,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

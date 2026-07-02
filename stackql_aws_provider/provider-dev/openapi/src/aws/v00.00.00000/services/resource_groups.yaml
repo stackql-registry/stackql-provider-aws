@@ -78,7 +78,7 @@ paths:
       description: "Deletes the specified resource group. Deleting a resource group does not delete any resources that are members of the group; it only deletes the group structure. Minimum permissions To run this command, you must have the following permissions: resource-groups:DeleteGroup"
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -113,7 +113,7 @@ paths:
       description: "Returns information about a specified resource group. Minimum permissions To run this command, you must have the following permissions: resource-groups:GetGroup"
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -136,7 +136,7 @@ paths:
       description: "Retrieves the service configuration associated with the specified resource group. For details about the service configuration syntax, see Service configurations for Resource Groups. Minimum permissions To run this command, you must have the following permissions: resource-groups:GetGroupConfiguration"
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -157,7 +157,7 @@ paths:
       description: "Retrieves the resource query associated with the specified resource group. For more information about resource queries, see Create a tag-based group in Resource Groups. Minimum permissions To run this command, you must have the following permissions: resource-groups:GetGroupQuery"
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -303,7 +303,7 @@ paths:
       description: "Returns a list of Amazon resource names (ARNs) of the resources that are members of a specified resource group. Minimum permissions To run this command, you must have the following permissions: resource-groups:ListGroupResources cloudformation:DescribeStacks cloudformation:ListStackResources tag:GetResources"
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -373,7 +373,7 @@ paths:
             $ref: "#/components/schemas/NextToken"
           description: The parameter for receiving additional results if you receive a NextToken response in a previous request. A NextToken response indicates that more output is available. Set this parameter to the value provided by a previous call's NextToken response to indicate where the output should continue from.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -394,7 +394,7 @@ paths:
       description: "Returns a list of tag-sync tasks. Minimum permissions To run this command, you must have the following permissions: resource-groups:ListTagSyncTasks with the group passed in the filters as the resource or * if using no filters"
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -419,7 +419,7 @@ paths:
       description: "Attaches a service configuration to the specified group. This occurs asynchronously, and can take time to complete. You can use GetGroupConfiguration to check the status of the update. Minimum permissions To run this command, you must have the following permissions: resource-groups:PutGroupConfiguration"
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -527,7 +527,7 @@ paths:
       description: Turns on or turns off optional features in Resource Groups. The preceding example shows that the request to turn on group lifecycle events is IN_PROGRESS. You can call the GetAccountSettings operation to check for completion by looking for GroupLifecycleEventsStatus to change to ACTIVE.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -548,7 +548,7 @@ paths:
       description: "Updates the description for an existing group. You cannot update the name of a resource group. Minimum permissions To run this command, you must have the following permissions: resource-groups:UpdateGroup"
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1472,6 +1472,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1481,6 +1483,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1490,6 +1494,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1500,6 +1506,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.GroupIdentifiers
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1509,6 +1517,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1538,6 +1548,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1559,6 +1571,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1568,6 +1582,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1590,6 +1606,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1599,6 +1617,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1620,6 +1640,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1630,6 +1652,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TagSyncTasks
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1668,6 +1692,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1678,6 +1704,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ResourceIdentifiers
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1699,6 +1727,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.GroupingStatuses
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1720,6 +1750,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ResourceIdentifiers
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

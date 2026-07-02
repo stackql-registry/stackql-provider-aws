@@ -851,7 +851,7 @@ paths:
           $ref: '#/components/schemas/InstanceId'
         description: The unique identifier of the Amazon Q Business application environment instance.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

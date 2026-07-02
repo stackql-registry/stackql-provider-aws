@@ -176,7 +176,7 @@ paths:
             $ref: "#/components/schemas/ResourceName"
           description: The name of the monitor.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -245,7 +245,7 @@ paths:
             $ref: "#/components/schemas/ScopeId"
           description: The identifier for the scope that includes the resources you want to get data results for. A scope ID is an internally-generated identifier that includes all the resources for a specific root account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1560,6 +1560,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1570,6 +1572,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.monitors
+          request:
+            nativeCasing: pascal
         delete_monitor:
           operation:
             $ref: "#/paths/~1monitors~1{monitor_name}/delete"
@@ -1588,6 +1592,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1612,6 +1618,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1622,6 +1630,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.scopes
+          request:
+            nativeCasing: pascal
         delete_scope:
           operation:
             $ref: "#/paths/~1scopes~1{scope_id}/delete"
@@ -1640,6 +1650,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1665,6 +1677,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.topContributors
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/query_results_monitor_top_contributors/methods/get_query_results_monitor_top_contributors"
@@ -1683,6 +1697,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.topContributors
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/query_results_workload_insights_top_contributors/methods/get_query_results_workload_insights_top_contributors"
@@ -1701,6 +1717,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.datapoints
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/query_results_workload_insights_top_contributors_datas/methods/get_query_results_workload_insights_top_contributors_data"
@@ -1786,6 +1804,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1795,6 +1815,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

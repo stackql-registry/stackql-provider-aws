@@ -98,7 +98,7 @@ paths:
       description: Lists all existing Amazon Bedrock Data Automation Blueprints
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -139,7 +139,7 @@ paths:
           $ref: '#/components/schemas/BlueprintArn'
         description: ARN generated at the server side when a Blueprint is created
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -196,7 +196,7 @@ paths:
       description: Lists all existing Amazon Bedrock Data Automation Libraries
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -271,7 +271,7 @@ paths:
       description: Lists all existing Amazon Bedrock Data Automation Projects
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -338,7 +338,7 @@ paths:
           $ref: '#/components/schemas/BlueprintArn'
         description: ARN generated at the server side when a Blueprint is created
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -445,7 +445,7 @@ paths:
           $ref: '#/components/schemas/DataAutomationLibraryArn'
         description: ARN generated at the server side when a DataAutomationLibrary is created
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -497,7 +497,7 @@ paths:
           $ref: '#/components/schemas/DataAutomationProjectArn'
         description: ARN generated at the server side when a DataAutomationProject is created
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -736,7 +736,7 @@ paths:
           $ref: '#/components/schemas/DataAutomationLibraryArn'
         description: ARN generated at the server side when a DataAutomationLibrary is created
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -775,7 +775,7 @@ paths:
           $ref: '#/components/schemas/EntityType'
         description: The entity type for which the entity list is requested
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

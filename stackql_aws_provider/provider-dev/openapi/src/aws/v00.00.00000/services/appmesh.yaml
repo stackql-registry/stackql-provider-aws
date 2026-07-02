@@ -726,7 +726,7 @@ paths:
             $ref: "#/components/schemas/ResourceName"
           description: The name of the service mesh to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4193,6 +4193,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4203,24 +4205,32 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.gatewayRoutes
+          request:
+            nativeCasing: pascal
         delete_gateway_route:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualGateway~1{virtual_gateway_name}~1gatewayRoutes~1{gateway_route_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_gateway_route:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualGateway~1{virtual_gateway_name}~1gatewayRoutes~1{gateway_route_name}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_gateway_route:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualGateway~1{virtual_gateway_name}~1gatewayRoutes~1{gateway_route_name}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4245,6 +4255,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4255,6 +4267,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.meshes
+          request:
+            nativeCasing: pascal
         delete_mesh:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}/delete"
@@ -4267,12 +4281,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_mesh:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4297,6 +4315,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4307,24 +4327,32 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.routes
+          request:
+            nativeCasing: pascal
         delete_route:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualRouter~1{virtual_router_name}~1routes~1{route_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_route:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualRouter~1{virtual_router_name}~1routes~1{route_name}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_route:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualRouter~1{virtual_router_name}~1routes~1{route_name}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4349,6 +4377,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4359,24 +4389,32 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.virtualGateways
+          request:
+            nativeCasing: pascal
         delete_virtual_gateway:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualGateways~1{virtual_gateway_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_virtual_gateway:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualGateways~1{virtual_gateway_name}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_virtual_gateway:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualGateways~1{virtual_gateway_name}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4401,6 +4439,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4411,24 +4451,32 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.virtualNodes
+          request:
+            nativeCasing: pascal
         delete_virtual_node:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualNodes~1{virtual_node_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_virtual_node:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualNodes~1{virtual_node_name}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_virtual_node:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualNodes~1{virtual_node_name}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4453,6 +4501,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4463,24 +4513,32 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.virtualRouters
+          request:
+            nativeCasing: pascal
         delete_virtual_router:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualRouters~1{virtual_router_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_virtual_router:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualRouters~1{virtual_router_name}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_virtual_router:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualRouters~1{virtual_router_name}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4505,6 +4563,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4515,24 +4575,32 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.virtualServices
+          request:
+            nativeCasing: pascal
         delete_virtual_service:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualServices~1{virtual_service_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_virtual_service:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualServices~1{virtual_service_name}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_virtual_service:
           operation:
             $ref: "#/paths/~1v20190125~1meshes~1{mesh_name}~1virtualServices~1{virtual_service_name}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4558,6 +4626,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.tags
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -4575,6 +4645,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4584,6 +4656,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

@@ -258,7 +258,7 @@ paths:
           $ref: '#/components/schemas/typeName'
         description: The unique name of the calculated attribute.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -387,7 +387,7 @@ paths:
           $ref: '#/components/schemas/name'
         description: The unique name of the domain.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -541,7 +541,7 @@ paths:
           $ref: '#/components/schemas/name'
         description: The unique name of the layout.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -781,7 +781,7 @@ paths:
           $ref: '#/components/schemas/name'
         description: The unique name of the event trigger.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -865,7 +865,7 @@ paths:
           $ref: '#/components/schemas/name'
         description: The unique name of the domain.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1135,7 +1135,7 @@ paths:
           $ref: '#/components/schemas/name'
         description: The name of the recommender to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1456,7 +1456,7 @@ paths:
           $ref: '#/components/schemas/name'
         description: The unique name of the domain.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2217,7 +2217,7 @@ paths:
           $ref: '#/components/schemas/name'
         description: The unique name of the domain.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3649,7 +3649,7 @@ paths:
           $ref: '#/components/schemas/maxSize100'
         description: The maximum number of results to return per page.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

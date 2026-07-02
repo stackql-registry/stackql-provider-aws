@@ -25,22 +25,6 @@ paths:
       - $ref: "#/components/parameters/X-Amz-Security-Token"
       - $ref: "#/components/parameters/X-Amz-Signature"
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
-    post:
-      operationId: POST_CancelJob
-      description: This operation cancels a specified job. Only the job owner can cancel it. The operation fails if the job has already started or is complete.
-      responses:
-        "200":
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CancelJobOutputDisplay"
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: "#/components/schemas/CancelJobInput"
     get:
       operationId: GET_CancelJob
       description: This operation cancels a specified job. Only the job owner can cancel it. The operation fails if the job has already started or is complete.
@@ -62,6 +46,22 @@ paths:
             text/xml:
               schema:
                 $ref: "#/components/schemas/CancelJobOutputDisplay"
+    post:
+      operationId: POST_CancelJob
+      description: This operation cancels a specified job. Only the job owner can cancel it. The operation fails if the job has already started or is complete.
+      responses:
+        "200":
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/CancelJobOutputDisplay"
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: "#/components/schemas/CancelJobInput"
   /?Action=CreateJob&Version=2010-06-01:
     parameters:
       - $ref: "#/components/parameters/X-Amz-Content-Sha256"
@@ -71,22 +71,6 @@ paths:
       - $ref: "#/components/parameters/X-Amz-Security-Token"
       - $ref: "#/components/parameters/X-Amz-Signature"
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
-    post:
-      operationId: POST_CreateJob
-      description: This operation initiates the process of scheduling an upload or download of your data. You include in the request a manifest that describes the data transfer specifics. The response to the request includes a job ID, which you can use in other operations, a signature that you use to identify your storage device, and the address where you should ship your storage device.
-      responses:
-        "200":
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateJobOutputDisplay"
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: "#/components/schemas/CreateJobInput"
     get:
       operationId: GET_CreateJob
       description: This operation initiates the process of scheduling an upload or download of your data. You include in the request a manifest that describes the data transfer specifics. The response to the request includes a job ID, which you can use in other operations, a signature that you use to identify your storage device, and the address where you should ship your storage device.
@@ -123,6 +107,22 @@ paths:
             text/xml:
               schema:
                 $ref: "#/components/schemas/CreateJobOutputDisplay"
+    post:
+      operationId: POST_CreateJob
+      description: This operation initiates the process of scheduling an upload or download of your data. You include in the request a manifest that describes the data transfer specifics. The response to the request includes a job ID, which you can use in other operations, a signature that you use to identify your storage device, and the address where you should ship your storage device.
+      responses:
+        "200":
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/CreateJobOutputDisplay"
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: "#/components/schemas/CreateJobInput"
   /?Action=GetShippingLabel&Version=2010-06-01:
     parameters:
       - $ref: "#/components/parameters/X-Amz-Content-Sha256"
@@ -132,22 +132,6 @@ paths:
       - $ref: "#/components/parameters/X-Amz-Security-Token"
       - $ref: "#/components/parameters/X-Amz-Signature"
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
-    post:
-      operationId: POST_GetShippingLabel
-      description: This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for processing.
-      responses:
-        "200":
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/GetShippingLabelOutputDisplay"
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: "#/components/schemas/GetShippingLabelInput"
     get:
       operationId: GET_GetShippingLabel
       description: This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for processing.
@@ -219,6 +203,22 @@ paths:
             text/xml:
               schema:
                 $ref: "#/components/schemas/GetShippingLabelOutputDisplay"
+    post:
+      operationId: POST_GetShippingLabel
+      description: This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for processing.
+      responses:
+        "200":
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/GetShippingLabelOutputDisplay"
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: "#/components/schemas/GetShippingLabelInput"
   /?Action=GetStatus&Version=2010-06-01:
     parameters:
       - $ref: "#/components/parameters/X-Amz-Content-Sha256"
@@ -228,22 +228,6 @@ paths:
       - $ref: "#/components/parameters/X-Amz-Security-Token"
       - $ref: "#/components/parameters/X-Amz-Signature"
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
-    post:
-      operationId: POST_GetStatus
-      description: This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature value associated with the job. You can only return information about jobs you own.
-      responses:
-        "200":
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/GetStatusOutputDisplay"
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: "#/components/schemas/GetStatusInput"
     get:
       operationId: GET_GetStatus
       description: This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature value associated with the job. You can only return information about jobs you own.
@@ -265,6 +249,22 @@ paths:
             text/xml:
               schema:
                 $ref: "#/components/schemas/GetStatusOutputDisplay"
+    post:
+      operationId: POST_GetStatus
+      description: This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature value associated with the job. You can only return information about jobs you own.
+      responses:
+        "200":
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/GetStatusOutputDisplay"
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: "#/components/schemas/GetStatusInput"
   /?Action=ListJobs&Version=2010-06-01:
     parameters:
       - $ref: "#/components/parameters/X-Amz-Content-Sha256"
@@ -274,22 +274,6 @@ paths:
       - $ref: "#/components/parameters/X-Amz-Security-Token"
       - $ref: "#/components/parameters/X-Amz-Signature"
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
-    post:
-      operationId: POST_ListJobs
-      description: This operation returns the jobs associated with the requester. AWS Import/Export lists the jobs in reverse chronological order based on the date of creation. For example if Job Test1 was created 2009Dec30 and Test2 was created 2010Feb05, the ListJobs operation would return Test2 followed by Test1.
-      responses:
-        "200":
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/ListJobsOutputDisplay"
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: "#/components/schemas/ListJobsInput"
     get:
       operationId: GET_ListJobs
       description: This operation returns the jobs associated with the requester. AWS Import/Export lists the jobs in reverse chronological order based on the date of creation. For example if Job Test1 was created 2009Dec30 and Test2 was created 2010Feb05, the ListJobs operation would return Test2 followed by Test1.
@@ -316,6 +300,22 @@ paths:
             text/xml:
               schema:
                 $ref: "#/components/schemas/ListJobsOutputDisplay"
+    post:
+      operationId: POST_ListJobs
+      description: This operation returns the jobs associated with the requester. AWS Import/Export lists the jobs in reverse chronological order based on the date of creation. For example if Job Test1 was created 2009Dec30 and Test2 was created 2010Feb05, the ListJobs operation would return Test2 followed by Test1.
+      responses:
+        "200":
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/ListJobsOutputDisplay"
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: "#/components/schemas/ListJobsInput"
   /?Action=UpdateJob&Version=2010-06-01:
     parameters:
       - $ref: "#/components/parameters/X-Amz-Content-Sha256"
@@ -325,22 +325,6 @@ paths:
       - $ref: "#/components/parameters/X-Amz-Security-Token"
       - $ref: "#/components/parameters/X-Amz-Signature"
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
-    post:
-      operationId: POST_UpdateJob
-      description: You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file. The manifest file attached to this request replaces the original manifest file. You can only use the operation after a CreateJob request but before the data transfer starts and you can only use it on jobs you own.
-      responses:
-        "200":
-          description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/UpdateJobOutputDisplay"
-      parameters: []
-      requestBody:
-        content:
-          text/xml:
-            schema:
-              $ref: "#/components/schemas/UpdateJobInput"
     get:
       operationId: GET_UpdateJob
       description: You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file. The manifest file attached to this request replaces the original manifest file. You can only use the operation after a CreateJob request but before the data transfer starts and you can only use it on jobs you own.
@@ -377,6 +361,22 @@ paths:
             text/xml:
               schema:
                 $ref: "#/components/schemas/UpdateJobOutputDisplay"
+    post:
+      operationId: POST_UpdateJob
+      description: You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file. The manifest file attached to this request replaces the original manifest file. You can only use the operation after a CreateJob request but before the data transfer starts and you can only use it on jobs you own.
+      responses:
+        "200":
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/UpdateJobOutputDisplay"
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: "#/components/schemas/UpdateJobInput"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -583,16 +583,16 @@ components:
     JobDisplay:
       type: object
       properties:
-        job_id:
+        JobId:
           type: string
           description: A unique identifier which refers to a particular job.
-        creation_date:
+        CreationDate:
           type: string
           description: Timestamp of the CreateJob request in ISO8601 date format. For example "2010-03-28T20:27:35Z".
-        is_canceled:
+        IsCanceled:
           type: boolean
           description: Indicates whether the job was canceled.
-        job_type:
+        JobType:
           type: string
           description: Specifies whether the job to initiate is an import or export job.
     ListJobsOutputDisplay:
@@ -654,25 +654,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/CreateJobOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- $row := index . "CreateJobResponse" "CreateJobResult" -}}
-                    {{- with $row }}{{template "row" .}}{{end}}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "job_id": {{ $v := index . "JobId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "job_type": {{ $v := index . "JobType" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "signature": {{ $v := index . "Signature" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "signature_file_contents": {{ $v := index . "SignatureFileContents" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "warning_message": {{ $v := index . "WarningMessage" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "artifact_list": {{ $v := index . "ArtifactList" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -688,33 +673,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListJobsOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- $list_parent := index . "ListJobsResponse" "ListJobsResult" "Jobs" -}}
-                    {{- if eq (printf "%T" $list_parent) "map[string]interface {}" }}
-                      {{- $items := index $list_parent "item" -}}
-                      {{- if eq (printf "%T" $items) "map[string]interface {}" }}
-                        {{template "row" $items}}
-                      {{- else if eq (printf "%T" $items) "[]interface {}" }}
-                        {{- range $i, $v := $items }}
-                          {{- if $i}},{{end}}
-                          {{template "row" $v}}
-                        {{- end }}
-                      {{- end }}
-                    {{- end }}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "job_id": {{ $v := index . "JobId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "creation_date": {{ $v := index . "CreationDate" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "is_canceled": {{ $v := index . "IsCanceled" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},
-                        "job_type": {{ $v := index . "JobType" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -730,22 +692,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/UpdateJobOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- $row := index . "UpdateJobResponse" "UpdateJobResult" -}}
-                    {{- with $row }}{{template "row" .}}{{end}}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "success": {{ $v := index . "Success" }}{{ if eq $v nil }}null{{ else }}{{toBool $v}}{{ end }},
-                        "warning_message": {{ $v := index . "WarningMessage" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "artifact_list": {{ $v := index . "ArtifactList" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -774,21 +724,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetShippingLabelOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- $row := index . "GetShippingLabelResponse" "GetShippingLabelResult" -}}
-                    {{- with $row }}{{template "row" .}}{{end}}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "shipping_label_url": {{ $v := index . "ShippingLabelURL" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "warning": {{ $v := index . "Warning" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -815,35 +754,10 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetStatusOutputDisplay"
             transform:
-              body: |-
-                {
-                  "line_items": [
-                    {{- $row := index . "GetStatusResponse" "GetStatusResult" -}}
-                    {{- with $row }}{{template "row" .}}{{end}}
-                  ]
-                }
-                {{define "row"}}
-                {
-                        "job_id": {{ $v := index . "JobId" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "job_type": {{ $v := index . "JobType" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "location_code": {{ $v := index . "LocationCode" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "location_message": {{ $v := index . "LocationMessage" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "progress_code": {{ $v := index . "ProgressCode" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "progress_message": {{ $v := index . "ProgressMessage" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "carrier": {{ $v := index . "Carrier" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "tracking_number": {{ $v := index . "TrackingNumber" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "log_bucket": {{ $v := index . "LogBucket" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "log_key": {{ $v := index . "LogKey" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "error_count": {{ $v := index . "ErrorCount" }}{{ if eq $v nil }}null{{ else }}{{toInt $v}}{{ end }},
-                        "signature": {{ $v := index . "Signature" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "signature_file_contents": {{ $v := index . "SignatureFileContents" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "current_manifest": {{ $v := index . "CurrentManifest" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "creation_date": {{ $v := index . "CreationDate" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else if eq (printf "%T" $v) "string" }}{{ printf "%q" $v }}{{ else if eq (printf "%T" $v) "float64" }}{{ printf "%q" (printf "%.0f" $v) }}{{ else }}{{ printf "%q" (printf "%v" $v) }}{{ end }},
-                        "artifact_list": {{ $v := index . "ArtifactList" }}{{ if or (eq $v nil) (eq (printf "%v" $v) "") }}null{{ else }}{{ printf "%q" (toJson $v) }}{{ end }}
-                }
-                {{end}}
-              type: golang_template_mxj_v0.2.0
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical

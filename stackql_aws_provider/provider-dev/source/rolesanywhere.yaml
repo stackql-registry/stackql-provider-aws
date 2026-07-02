@@ -278,7 +278,7 @@ paths:
           $ref: '#/components/schemas/Uuid'
         description: The unique identifier of the certificate revocation list (CRL).
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -351,7 +351,7 @@ paths:
           $ref: '#/components/schemas/Uuid'
         description: The unique identifier of the profile.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -435,7 +435,7 @@ paths:
           $ref: '#/components/schemas/Uuid'
         description: The unique identifier of the trust anchor.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -334,7 +334,7 @@ paths:
           $ref: '#/components/schemas/VoiceId'
         description: The voice to use in synthesis. To get a list of available voice IDs, use the DescribeVoices operation.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -157,7 +157,7 @@ paths:
             $ref: "#/components/schemas/PolicyId"
           description: The identifier of the lifecycle policy.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1134,6 +1134,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1143,6 +1145,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_lifecycle_policy:
           operation:
             $ref: "#/paths/~1policies~1{policy_id}/delete"
@@ -1161,6 +1165,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1202,6 +1208,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1211,6 +1219,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

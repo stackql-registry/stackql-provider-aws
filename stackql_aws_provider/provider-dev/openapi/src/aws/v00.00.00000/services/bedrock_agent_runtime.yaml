@@ -29,7 +29,7 @@ paths:
             $ref: "#/components/schemas/SessionIdentifier"
           description: The unique identifier for the associated session for the invocation. You can specify either the session's sessionId or its Amazon Resource Name (ARN).
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -81,7 +81,7 @@ paths:
       description: "Creates a session to temporarily store conversations for generative AI (GenAI) applications built with open-source frameworks such as LangGraph and LlamaIndex. Sessions enable you to save the state of conversations at checkpoints, with the added security and infrastructure of Amazon Web Services. For more information, see Store and retrieve conversation history and context with Amazon Bedrock sessions. By default, Amazon Bedrock uses Amazon Web Services-managed keys for session encryption, including session metadata, or you can use your own KMS key. For more information, see Amazon Bedrock session encryption. You use a session to store state and conversation history for generative AI applications built with open-source frameworks. For Amazon Bedrock Agents, the service automatically manages conversation context and associates them with the agent-specific sessionId you specify in the InvokeAgent API operation. Related APIs: ListSessions GetSession EndSession DeleteSession"
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -252,7 +252,7 @@ paths:
             $ref: "#/components/schemas/SessionIdentifier"
           description: The unique identifier of the session to modify. You can specify either the session's sessionId or its Amazon Resource Name (ARN).
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -436,7 +436,7 @@ paths:
             $ref: "#/components/schemas/AWSResourceARN"
           description: The ARN of the resource making the request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -684,7 +684,7 @@ paths:
             $ref: "#/components/schemas/SessionIdentifier"
           description: The unique identifier for the session associated with the invocation steps. You can specify either the session's sessionId or its Amazon Resource Name (ARN).
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -6026,6 +6026,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6036,6 +6038,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.invocationSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/invocations/methods/list_invocations"
@@ -6054,6 +6058,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6064,6 +6070,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.sessionSummaries
+          request:
+            nativeCasing: pascal
         delete_session:
           operation:
             $ref: "#/paths/~1sessions~1{session_identifier}~1/delete"
@@ -6082,6 +6090,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6106,6 +6116,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_agent_memory:
           operation:
             $ref: "#/paths/~1agents~1{agent_id}~1agentAliases~1{agent_alias_id}~1memories/get"
@@ -6113,6 +6125,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.memoryContents
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/agent_memories/methods/get_agent_memory"
@@ -6155,6 +6169,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.flowExecutionSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/flow_executions/methods/get_flow_execution"
@@ -6173,6 +6189,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6183,6 +6201,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.invocationStepSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6192,6 +6212,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6216,6 +6238,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.flowExecutionEvents
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/flow_execution_events/methods/list_flow_execution_events"
@@ -6250,6 +6274,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -6259,6 +6285,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

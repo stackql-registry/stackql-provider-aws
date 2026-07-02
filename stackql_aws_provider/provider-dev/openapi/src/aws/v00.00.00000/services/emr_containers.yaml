@@ -1841,6 +1841,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobRuns
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_runs/methods/describe_job_run"
@@ -1859,6 +1861,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1869,6 +1873,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.templates
+          request:
+            nativeCasing: pascal
         delete_job_template:
           operation:
             $ref: "#/paths/~1jobtemplates~1{template_id}/delete"
@@ -1901,6 +1907,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1911,6 +1919,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.endpoints
+          request:
+            nativeCasing: pascal
         delete_managed_endpoint:
           operation:
             $ref: "#/paths/~1virtualclusters~1{virtual_cluster_id}~1endpoints~1{endpoint_id}/delete"
@@ -1943,6 +1953,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1953,6 +1965,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.securityConfigurations
+          request:
+            nativeCasing: pascal
         describe_security_configuration:
           operation:
             $ref: "#/paths/~1securityconfigurations~1{security_configuration_id}/get"
@@ -1978,6 +1992,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1988,6 +2004,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.virtualClusters
+          request:
+            nativeCasing: pascal
         delete_virtual_cluster:
           operation:
             $ref: "#/paths/~1virtualclusters~1{virtual_cluster_id}/delete"
@@ -2020,6 +2038,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2057,6 +2077,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2066,6 +2088,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

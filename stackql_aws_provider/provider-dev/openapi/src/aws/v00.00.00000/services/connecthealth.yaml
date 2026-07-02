@@ -383,7 +383,7 @@ paths:
             $ref: "#/components/schemas/MedicalScribeMediaEncoding"
           description: The encoding for the input audio
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1474,6 +1474,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1484,6 +1486,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.domains
+          request:
+            nativeCasing: pascal
         delete_domain:
           operation:
             $ref: "#/paths/~1domain~1{domain_id}/delete"
@@ -1523,6 +1527,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.subscriptions
+          request:
+            nativeCasing: pascal
         get_subscription:
           operation:
             $ref: "#/paths/~1domains~1{domain_id}~1subscriptions~1{subscription_id}/get"
@@ -1598,6 +1604,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1606,6 +1614,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

@@ -335,7 +335,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The unique identifier for a data set.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -549,7 +549,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The unique identifier for a data set.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -608,7 +608,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The unique identifier for the event action.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -683,7 +683,7 @@ paths:
             $ref: "#/components/schemas/Id"
           description: The unique identifier for a revision.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -928,7 +928,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: Revision ID value for the API request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3419,6 +3419,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3429,6 +3431,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Jobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/get_job"
@@ -3448,6 +3452,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3458,6 +3464,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DataGrantSummaries
+          request:
+            nativeCasing: pascal
         delete_data_grant:
           operation:
             $ref: "#/paths/~1v1~1data-grants~1{data_grant_id}/delete"
@@ -3489,6 +3497,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3499,6 +3509,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DataSets
+          request:
+            nativeCasing: pascal
         delete_data_set:
           operation:
             $ref: "#/paths/~1v1~1data-sets~1{data_set_id}/delete"
@@ -3516,6 +3528,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3540,6 +3554,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3550,6 +3566,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.EventActions
+          request:
+            nativeCasing: pascal
         delete_event_action:
           operation:
             $ref: "#/paths/~1v1~1event-actions~1{event_action_id}/delete"
@@ -3567,6 +3585,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3591,6 +3611,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3611,6 +3633,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3620,6 +3644,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3645,6 +3671,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Revisions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_set_revisions/methods/list_data_set_revisions"
@@ -3673,6 +3701,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3702,6 +3732,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DataGrantSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/received_data_grants/methods/get_received_data_grant"
@@ -3721,6 +3753,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Assets
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/revision_assets/methods/list_revision_assets"
@@ -3754,6 +3788,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3762,6 +3798,8 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

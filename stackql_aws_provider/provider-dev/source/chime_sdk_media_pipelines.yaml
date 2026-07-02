@@ -555,7 +555,7 @@ paths:
         description: The unique identifier of the requested resource. Valid values include the name and ARN of the media pipeline
           Kinesis Video Stream pool.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

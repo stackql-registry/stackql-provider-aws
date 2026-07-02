@@ -71,7 +71,7 @@ paths:
             $ref: "#/components/schemas/CustomID"
           description: "The ID of the asset property. This can be either the actual ID in UUID format, or else externalId: followed by the external ID, if it has one. For more information, see Referencing objects with external IDs in the IoT SiteWise User Guide."
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2014,7 +2014,7 @@ paths:
             $ref: "#/components/schemas/CustomID"
           description: "The ID of the asset property. This can be either the actual ID in UUID format, or else externalId: followed by the external ID, if it has one. For more information, see Referencing objects with external IDs in the IoT SiteWise User Guide."
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2108,7 +2108,7 @@ paths:
             $ref: "#/components/schemas/CustomID"
           description: "The ID of the asset property to be updated. This can be either the actual ID in UUID format, or else externalId: followed by the external ID, if it has one. For more information, see Referencing objects with external IDs in the IoT SiteWise User Guide."
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2415,7 +2415,7 @@ paths:
             $ref: "#/components/schemas/CustomID"
           description: "The ID of the asset property. This can be either the actual ID in UUID format, or else externalId: followed by the external ID, if it has one. For more information, see Referencing objects with external IDs in the IoT SiteWise User Guide."
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8384,6 +8384,8 @@ components:
             $ref: "#/paths/~1assets~1{asset_id}~1associate/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8393,6 +8395,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8403,24 +8407,32 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.assetSummaries
+          request:
+            nativeCasing: pascal
         delete_asset:
           operation:
             $ref: "#/paths/~1assets~1{asset_id}/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_asset:
           operation:
             $ref: "#/paths/~1assets~1{asset_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_asset:
           operation:
             $ref: "#/paths/~1assets~1{asset_id}/put"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8429,6 +8441,8 @@ components:
             $ref: "#/paths/~1assets~1{asset_id}~1disassociate/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8453,6 +8467,8 @@ components:
             $ref: "#/paths/~1timeseries~1associate~1/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8473,6 +8489,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8483,6 +8501,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.aggregatedValues
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_property_aggregates/methods/get_asset_property_aggregates"
@@ -8501,6 +8521,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8510,6 +8532,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_property_values/methods/batch_get_asset_property_value"
@@ -8528,6 +8552,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8538,6 +8564,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.assetPropertyValueHistory
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_property_value_histories/methods/batch_get_asset_property_value_history"
@@ -8556,6 +8584,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8566,12 +8596,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.accessPolicySummaries
+          request:
+            nativeCasing: pascal
         delete_access_policy:
           operation:
             $ref: "#/paths/~1access-policies~1{access_policy_id}/delete"
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_access_policy:
           operation:
             $ref: "#/paths/~1access-policies~1{access_policy_id}/get"
@@ -8584,6 +8618,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8608,6 +8644,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8618,24 +8656,32 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.assetModelSummaries
+          request:
+            nativeCasing: pascal
         delete_asset_model:
           operation:
             $ref: "#/paths/~1asset-models~1{asset_model_id}/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_asset_model:
           operation:
             $ref: "#/paths/~1asset-models~1{asset_model_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_asset_model:
           operation:
             $ref: "#/paths/~1asset-models~1{asset_model_id}/put"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8660,6 +8706,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8670,24 +8718,32 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.assetModelCompositeModelSummaries
+          request:
+            nativeCasing: pascal
         delete_asset_model_composite_model:
           operation:
             $ref: "#/paths/~1asset-models~1{asset_model_id}~1composite-models~1{asset_model_composite_model_id}/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_asset_model_composite_model:
           operation:
             $ref: "#/paths/~1asset-models~1{asset_model_id}~1composite-models~1{asset_model_composite_model_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_asset_model_composite_model:
           operation:
             $ref: "#/paths/~1asset-models~1{asset_model_id}~1composite-models~1{asset_model_composite_model_id}/put"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8712,6 +8768,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8722,6 +8780,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobSummaries
+          request:
+            nativeCasing: pascal
         describe_bulk_import_job:
           operation:
             $ref: "#/paths/~1jobs~1{job_id}/get"
@@ -8747,6 +8807,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8757,24 +8819,32 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.computationModelSummaries
+          request:
+            nativeCasing: pascal
         delete_computation_model:
           operation:
             $ref: "#/paths/~1computation-models~1{computation_model_id}/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_computation_model:
           operation:
             $ref: "#/paths/~1computation-models~1{computation_model_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_computation_model:
           operation:
             $ref: "#/paths/~1computation-models~1{computation_model_id}/post"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8799,6 +8869,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8809,12 +8881,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.dashboardSummaries
+          request:
+            nativeCasing: pascal
         delete_dashboard:
           operation:
             $ref: "#/paths/~1dashboards~1{dashboard_id}/delete"
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_dashboard:
           operation:
             $ref: "#/paths/~1dashboards~1{dashboard_id}/get"
@@ -8827,6 +8903,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8851,6 +8929,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8861,12 +8941,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.datasetSummaries
+          request:
+            nativeCasing: pascal
         delete_dataset:
           operation:
             $ref: "#/paths/~1datasets~1{dataset_id}/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_dataset:
           operation:
             $ref: "#/paths/~1datasets~1{dataset_id}/get"
@@ -8879,6 +8963,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8903,6 +8989,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8913,6 +9001,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.gatewaySummaries
+          request:
+            nativeCasing: pascal
         delete_gateway:
           operation:
             $ref: "#/paths/~120200301~1gateways~1{gateway_id}/delete"
@@ -8929,6 +9019,8 @@ components:
             $ref: "#/paths/~120200301~1gateways~1{gateway_id}/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8953,6 +9045,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8963,12 +9057,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.portalSummaries
+          request:
+            nativeCasing: pascal
         delete_portal:
           operation:
             $ref: "#/paths/~1portals~1{portal_id}/delete"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_portal:
           operation:
             $ref: "#/paths/~1portals~1{portal_id}/get"
@@ -8981,6 +9079,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9005,6 +9105,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9015,12 +9117,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.projectSummaries
+          request:
+            nativeCasing: pascal
         delete_project:
           operation:
             $ref: "#/paths/~1projects~1{project_id}/delete"
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_project:
           operation:
             $ref: "#/paths/~1projects~1{project_id}/get"
@@ -9033,6 +9139,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9057,6 +9165,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_asset_model_interface_relationship:
           operation:
             $ref: "#/paths/~1asset-models~1{asset_model_id}~1interface~1{interface_asset_model_id}~1asset-model-interface-relationship/get"
@@ -9069,6 +9179,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9091,6 +9203,8 @@ components:
             $ref: "#/paths/~1timeseries~1delete~1/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9100,6 +9214,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_time_series:
           operation:
             $ref: "#/paths/~1timeseries~1/get"
@@ -9107,6 +9223,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TimeSeriesSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/time_series/methods/describe_time_series"
@@ -9132,6 +9250,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.actionSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/actions/methods/list_actions"
@@ -9172,6 +9292,8 @@ components:
             $ref: "#/paths/~1assets~1{asset_id}~1properties~1{property_id}/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9182,6 +9304,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.assetPropertySummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_properties/methods/describe_asset_property"
@@ -9201,6 +9325,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/computation_model_execution_summaries/methods/describe_computation_model_execution_summary"
@@ -9224,6 +9350,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9253,6 +9381,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.executionSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/executions/methods/list_executions"
@@ -9277,6 +9407,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9304,6 +9436,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9332,6 +9466,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9353,6 +9489,8 @@ components:
             $ref: "#/paths/~1timeseries~1disassociate~1/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9374,6 +9512,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.interpolatedAssetPropertyValues
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/interpolated_asset_property_values/methods/get_interpolated_asset_property_values"
@@ -9392,6 +9532,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.assetModelPropertySummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_model_properties/methods/list_asset_model_properties"
@@ -9410,6 +9552,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.assetRelationshipSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_relationships/methods/list_asset_relationships"
@@ -9428,6 +9572,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.assetSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/associated_assets/methods/list_associated_assets"
@@ -9446,6 +9592,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.compositionRelationshipSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/composition_relationships/methods/list_composition_relationships"
@@ -9464,6 +9612,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.dataBindingUsageSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9485,6 +9635,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.computationModelResolveToResourceSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/computation_model_resolve_to_resources/methods/list_computation_model_resolve_to_resources"
@@ -9503,6 +9655,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.interfaceRelationshipSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/interface_relationships/methods/list_interface_relationships"
@@ -9521,6 +9675,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.assetIds
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/project_assets/methods/list_project_assets"
@@ -9538,6 +9694,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -9555,6 +9713,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9564,6 +9724,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

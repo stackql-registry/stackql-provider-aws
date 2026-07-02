@@ -113,7 +113,7 @@ paths:
           most granular available resolution after the target resolution. There are 3 valid values. P1D — 1 day PT1H — 1 hour
           PT5M — 5 minutes
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -145,7 +145,7 @@ paths:
           $ref: '#/components/schemas/ProfilingGroupName'
         description: The name of the profiling group for which the configured agent is collecting profiling data.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

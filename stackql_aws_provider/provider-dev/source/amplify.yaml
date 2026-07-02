@@ -318,7 +318,7 @@ paths:
           $ref: '#/components/schemas/BranchName'
         description: The name of the branch to use for the job.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -533,7 +533,7 @@ paths:
           $ref: '#/components/schemas/AppId'
         description: The unique ID for an Amplify app.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -720,7 +720,7 @@ paths:
           $ref: '#/components/schemas/BranchName'
         description: The name of the branch.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -842,7 +842,7 @@ paths:
           $ref: '#/components/schemas/DomainName'
         description: The name of the domain.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -985,7 +985,7 @@ paths:
           $ref: '#/components/schemas/WebhookId'
         description: The unique ID for a webhook.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1296,7 +1296,7 @@ paths:
           $ref: '#/components/schemas/BranchName'
         description: The name of the branch to use for the deployment job.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

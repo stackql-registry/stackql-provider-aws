@@ -35,7 +35,7 @@ paths:
             $ref: "#/components/schemas/Identifier"
           description: The unique identifier of the batch job execution.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -476,7 +476,7 @@ paths:
             $ref: "#/components/schemas/Identifier"
           description: The unique identifier of the runtime environment that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1077,7 +1077,7 @@ paths:
             $ref: "#/components/schemas/Identifier"
           description: The unique identifier of the application you want to stop.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2810,6 +2810,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2820,6 +2822,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.applications
+          request:
+            nativeCasing: pascal
         delete_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}/delete"
@@ -2838,6 +2842,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2862,6 +2868,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2889,6 +2897,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2916,6 +2926,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2926,6 +2938,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.deployments
+          request:
+            nativeCasing: pascal
         get_deployment:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1deployments~1{deployment_id}/get"
@@ -2951,6 +2965,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2961,6 +2977,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.environments
+          request:
+            nativeCasing: pascal
         delete_environment:
           operation:
             $ref: "#/paths/~1environments~1{environment_id}/delete"
@@ -2979,6 +2997,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3027,6 +3047,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.applicationVersions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_versions/methods/get_application_version"
@@ -3052,6 +3074,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.batchJobExecutions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/batch_job_executions/methods/get_batch_job_execution"
@@ -3105,6 +3129,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.batchJobDefinitions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/batch_job_definitions/methods/list_batch_job_definitions"
@@ -3122,6 +3148,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/batch_job_restart_points/methods/list_batch_job_restart_points"
@@ -3140,6 +3168,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.dataSetExportTasks
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_set_export_histories/methods/list_data_set_export_history"
@@ -3158,6 +3188,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.dataSetImportTasks
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_set_import_histories/methods/list_data_set_import_history"
@@ -3176,6 +3208,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.dataSets
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_sets/methods/list_data_sets"
@@ -3194,6 +3228,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.engineVersions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/engine_versions/methods/list_engine_versions"
@@ -3228,6 +3264,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3237,6 +3275,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

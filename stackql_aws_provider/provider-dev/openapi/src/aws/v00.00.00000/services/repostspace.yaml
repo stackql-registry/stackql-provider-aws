@@ -318,7 +318,7 @@ paths:
             $ref: "#/components/schemas/SpaceId"
           description: The unique ID of this private re:Post.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1121,6 +1121,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1131,6 +1133,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.channels
+          request:
+            nativeCasing: pascal
         get_channel:
           operation:
             $ref: "#/paths/~1spaces~1{space_id}~1channels~1{channel_id}/get"
@@ -1143,6 +1147,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1166,6 +1172,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1176,6 +1184,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.spaces
+          request:
+            nativeCasing: pascal
         delete_space:
           operation:
             $ref: "#/paths/~1spaces~1{space_id}/delete"
@@ -1192,6 +1202,8 @@ components:
             $ref: "#/paths/~1spaces~1{space_id}/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1255,6 +1267,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1264,6 +1278,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

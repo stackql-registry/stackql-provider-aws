@@ -29,7 +29,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the channel to log subscription.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -321,7 +321,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the Channel to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -391,7 +391,7 @@ paths:
           $ref: '#/components/schemas/__string'
         description: The ID of the OriginEndpoint to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

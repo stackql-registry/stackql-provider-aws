@@ -345,7 +345,7 @@ paths:
       description: "Updates information about a customer's investigation into a finding. Delegated administrator accounts can update findings for their account and their member accounts. Member accounts can update findings for their own account. BatchUpdateFindings and BatchUpdateFindingsV2 both use securityhub:BatchUpdateFindings in the Action element of an IAM policy statement. You must have permission to perform the securityhub:BatchUpdateFindings action. You can configure IAM policies to restrict access to specific finding fields or field values by using the securityhub:OCSFSyntaxPath/`<fieldName>` condition key, where `<fieldName>` is one of the following supported fields: SeverityId, StatusId, or Comment. To prevent a user from updating a specific field, use a Null condition with securityhub:OCSFSyntaxPath/`<fieldName>` set to \"false\". To prevent a user from setting a field to a specific value, use a StringEquals condition with securityhub:OCSFSyntaxPath/`<fieldName>` set to the disallowed value or list of values. Updates from BatchUpdateFindingsV2 don't affect the value of finding_info.modified_time, finding_info.modified_time_dt, time, or time_dt for a finding."
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -847,7 +847,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The ARN of the custom action target to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -928,7 +928,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The ARN of the automation rule.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -982,7 +982,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The Amazon Resource Name (ARN) or universally unique identifier (UUID) of the configuration policy.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1049,7 +1049,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The UUID of the connectorV2 to identify connectorV2 resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1113,7 +1113,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The ARN of the insight that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1184,7 +1184,7 @@ paths:
       description: Returns a list of the custom action targets in Security Hub CSPM in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1237,7 +1237,7 @@ paths:
       description: "Enables Security Hub CSPM for your account in the current Region or the Region you specify in the request. When you enable Security Hub CSPM, you grant to Security Hub CSPM the permissions necessary to gather findings from other services that are integrated with Security Hub CSPM. When you use the EnableSecurityHub operation to enable Security Hub CSPM, you also automatically enable the following standards: Center for Internet Security (CIS) Amazon Web Services Foundations Benchmark v1.2.0 Amazon Web Services Foundational Security Best Practices Other standards are not automatically enabled. To opt out of automatically enabled standards, set EnableDefaultStandards to false. After you enable Security Hub CSPM, to enable a standard, use the BatchEnableStandards operation. To disable a standard, use the BatchDisableStandards operation. To learn more, see the setup information in the Security Hub CSPM User Guide."
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1261,7 +1261,7 @@ paths:
       description: Updates configuration options for Security Hub CSPM.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1398,7 +1398,7 @@ paths:
       description: Enables the service in account for the current Amazon Web Services Region or specified Amazon Web Services Region.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1740,7 +1740,7 @@ paths:
       description: Returns a list of the standards that are currently enabled.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1843,7 +1843,7 @@ paths:
       description: Returns a list of findings that match the specified criteria. If cross-Region aggregation is enabled, then when you call GetFindings from the home Region, the results include all of the matching findings from both the home Region and linked Regions.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1928,7 +1928,7 @@ paths:
       description: Returns a list of findings that match the specified criteria. You can use the Scopes parameter to define the data boundary for the query. Currently, Scopes supports AwsOrganizations, which lets you retrieve findings from your entire organization or from specific organizational units. Only the delegated administrator account can use Scopes. You can use the Filters parameter to refine results based on finding attributes. You can use Scopes and Filters independently or together. When both are provided, Scopes narrows the data set first, and then Filters refines results within that scoped data set. GetFindings and GetFindingsV2 both use securityhub:GetFindings in the Action element of an IAM policy statement. You must have permission to perform the securityhub:GetFindings action.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1975,7 +1975,7 @@ paths:
       description: Lists and describes insights for the specified insight ARNs.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2096,7 +2096,7 @@ paths:
       description: Returns a list of resources. You can use the Scopes parameter to define the data boundary for the query. Currently, Scopes supports AwsOrganizations, which lets you retrieve resources from your entire organization or from specific organizational units. Only the delegated administrator account can use Scopes. You can use the Filters parameter to refine results based on resource attributes. You can use Scopes and Filters independently or together. When both are provided, Scopes narrows the data set first, and then Filters refines results within that scoped data set.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2262,7 +2262,7 @@ paths:
       description: Provides information about the associations for your configuration policies and self-managed behavior. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2634,7 +2634,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The ARN of the security standard control to enable or disable.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -18848,6 +18848,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -18857,6 +18859,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -18866,6 +18870,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/automation_rules/methods/batch_get_automation_rules"
@@ -18885,6 +18891,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -18894,6 +18902,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -18904,6 +18914,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ConfigurationPolicyAssociationSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -18926,6 +18938,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -18935,6 +18949,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -18956,6 +18972,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -18966,6 +18984,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.StandardsControlAssociationSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/standards_control_associations/methods/batch_get_standards_control_associations"
@@ -18984,6 +19004,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -18999,6 +19021,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19009,6 +19033,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ActionTargets
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19032,6 +19058,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19053,6 +19081,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19076,6 +19106,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19097,6 +19129,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19120,6 +19154,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19135,6 +19171,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19151,6 +19189,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ConfigurationPolicySummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/configuration_policies/methods/get_configuration_policy"
@@ -19172,6 +19212,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19193,6 +19235,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19202,6 +19246,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19226,6 +19272,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connectors_v2s/methods/list_connectors_v2"
@@ -19243,6 +19291,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19265,12 +19315,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FindingAggregators
+          request:
+            nativeCasing: pascal
         update_finding_aggregator:
           operation:
             $ref: "#/paths/~1findingAggregator~1update/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19295,6 +19349,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19310,6 +19366,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19320,6 +19378,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Insights
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19343,6 +19403,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19353,12 +19415,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Members
+          request:
+            nativeCasing: pascal
         delete_members:
           operation:
             $ref: "#/paths/~1members~1delete/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19368,6 +19434,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19377,6 +19445,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19401,6 +19471,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19421,6 +19493,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19431,6 +19505,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Invitations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/invitations/methods/list_invitations"
@@ -19449,6 +19525,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/hubs/methods/describe_hub"
@@ -19466,6 +19544,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19492,6 +19572,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19514,6 +19596,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Products
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/products/methods/describe_products"
@@ -19532,6 +19616,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ProductsV2
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/products_v2s/methods/describe_products_v2"
@@ -19567,6 +19653,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Standards
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/standards/methods/describe_standards"
@@ -19585,12 +19673,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Controls
+          request:
+            nativeCasing: pascal
         update_standards_control:
           operation:
             $ref: "#/paths/~1standards~1control~1{standards_control_arn}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19647,6 +19739,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ProductSubscriptions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/enabled_products_for_imports/methods/list_enabled_products_for_import"
@@ -19665,6 +19759,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RecommendationSteps
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommended_policy_v2s/methods/get_recommended_policy_v2"
@@ -19683,6 +19779,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.StandardsSubscriptions
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19704,6 +19802,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Records
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19724,6 +19824,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19745,6 +19847,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Findings
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19754,6 +19858,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19776,6 +19882,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TrendsMetrics
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19797,6 +19905,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Findings
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19851,6 +19961,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19872,6 +19984,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TrendsMetrics
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19893,6 +20007,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Resources
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -19913,6 +20029,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_security_control_definitions:
           operation:
             $ref: "#/paths/~1securityControls~1definitions/get"
@@ -19920,6 +20038,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.SecurityControlDefinitions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/security_control_definitions/methods/get_security_control_definition"
@@ -19939,6 +20059,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AggregatorsV2
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/aggregators_v2s/methods/list_aggregators_v2"
@@ -19956,6 +20078,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/automation_rules_v2s/methods/list_automation_rules_v2"
@@ -19974,6 +20098,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AdminAccounts
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organization_admin_accounts/methods/list_organization_admin_accounts"
@@ -20008,6 +20134,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -20017,6 +20145,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

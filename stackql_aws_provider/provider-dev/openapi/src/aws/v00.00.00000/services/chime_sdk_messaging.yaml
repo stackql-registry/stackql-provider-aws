@@ -564,7 +564,7 @@ paths:
             $ref: "#/components/schemas/ChimeArn"
           description: The ARN of the AppInstanceUser or AppInstanceBot that makes the API call.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1493,7 +1493,7 @@ paths:
             $ref: "#/components/schemas/ChimeArn"
           description: The ARN of the AppInstanceUser or AppInstanceBot that makes the API call.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1532,7 +1532,7 @@ paths:
             $ref: "#/components/schemas/ChimeArn"
           description: The ARN of the AppInstanceUser or AppInstanceBot that makes the API call.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2954,6 +2954,8 @@ components:
             $ref: "#/paths/~1channels~1{channel_arn}~1channel-flow/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2963,6 +2965,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2972,6 +2976,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_channel_flow:
           operation:
             $ref: "#/paths/~1channel-flows~1{channel_flow_arn}/delete"
@@ -2989,6 +2995,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3020,6 +3028,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3029,6 +3039,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_channel:
           operation:
             $ref: "#/paths/~1channels~1{channel_arn}/delete"
@@ -3046,6 +3058,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3055,6 +3069,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3080,6 +3096,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3089,6 +3107,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_channel_ban:
           operation:
             $ref: "#/paths/~1channels~1{channel_arn}~1bans~1{member_arn}/delete"
@@ -3120,6 +3140,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3129,17 +3151,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_channel_membership:
           operation:
             $ref: "#/paths/~1channels~1{channel_arn}~1memberships~1{member_arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         describe_channel_membership:
           operation:
             $ref: "#/paths/~1channels~1{channel_arn}~1memberships~1{member_arn}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channel_memberships/methods/describe_channel_membership"
@@ -3160,6 +3188,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3169,6 +3199,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_channel_moderator:
           operation:
             $ref: "#/paths/~1channels~1{channel_arn}~1moderators~1{channel_moderator_arn}/delete"
@@ -3199,18 +3231,24 @@ components:
             $ref: "#/paths/~1channels~1{channel_arn}~1messages~1{message_id}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
         get_channel_message:
           operation:
             $ref: "#/paths/~1channels~1{channel_arn}~1messages~1{message_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_channel_message:
           operation:
             $ref: "#/paths/~1channels~1{channel_arn}~1messages~1{message_id}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3220,6 +3258,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channel_messages/methods/get_channel_message"
@@ -3251,6 +3291,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3274,6 +3316,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channel_membership_for_app_instance_users/methods/describe_channel_membership_for_app_instance_user"
@@ -3291,6 +3335,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channel_moderated_by_app_instance_users/methods/describe_channel_moderated_by_app_instance_user"
@@ -3314,6 +3360,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3336,6 +3384,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channel_message_status/methods/get_channel_message_status"
@@ -3353,6 +3403,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/messaging_session_endpoints/methods/get_messaging_session_endpoint"
@@ -3370,6 +3422,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channel_memberships_for_app_instance_users/methods/list_channel_memberships_for_app_instance_user"
@@ -3387,6 +3441,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channels_associated_with_channel_flows/methods/list_channels_associated_with_channel_flow"
@@ -3404,6 +3460,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channels_moderated_by_app_instance_users/methods/list_channels_moderated_by_app_instance_user"
@@ -3421,6 +3479,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sub_channels/methods/list_sub_channels"
@@ -3438,6 +3498,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -3455,6 +3517,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3475,6 +3539,8 @@ components:
             $ref: "#/paths/~1tags?operation=tag-resource/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3483,6 +3549,8 @@ components:
             $ref: "#/paths/~1tags?operation=untag-resource/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

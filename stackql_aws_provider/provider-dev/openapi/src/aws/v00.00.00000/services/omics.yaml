@@ -948,7 +948,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: A name for the store.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1262,7 +1262,7 @@ paths:
             $ref: "#/components/schemas/RunCacheId"
           description: The identifier of the run cache you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1319,7 +1319,7 @@ paths:
             $ref: "#/components/schemas/RunGroupId"
           description: The group's ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1447,7 +1447,7 @@ paths:
             $ref: "#/components/schemas/SequenceStoreId"
           description: The ID of the sequence store.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1524,7 +1524,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: A name for the store.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1599,7 +1599,7 @@ paths:
             $ref: "#/components/schemas/WorkflowId"
           description: The workflow's ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1696,7 +1696,7 @@ paths:
             $ref: "#/components/schemas/WorkflowVersionName"
           description: The name of the workflow version.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1754,7 +1754,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The name of an annotation store version.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1991,7 +1991,7 @@ paths:
             $ref: "#/components/schemas/ListAnnotationImportJobsRequestNextTokenString"
           description: Specifies the pagination token from a previous request to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2032,7 +2032,7 @@ paths:
             $ref: "#/components/schemas/ListAnnotationStoreVersionsRequestNextTokenString"
           description: Specifies the pagination token from a previous request to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2065,7 +2065,7 @@ paths:
             $ref: "#/components/schemas/ListAnnotationStoresRequestNextTokenString"
           description: Specify the pagination token from a previous request to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2210,7 +2210,7 @@ paths:
             $ref: "#/components/schemas/NextToken"
           description: Specify the pagination token from a previous request to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2249,7 +2249,7 @@ paths:
             $ref: "#/components/schemas/NextToken"
           description: Specify the pagination token from a previous request to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2288,7 +2288,7 @@ paths:
             $ref: "#/components/schemas/SequenceStoreId"
           description: The jobs' sequence store ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2376,7 +2376,7 @@ paths:
             $ref: "#/components/schemas/NextToken"
           description: Specify the pagination token from a previous request to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2415,7 +2415,7 @@ paths:
             $ref: "#/components/schemas/ReferenceStoreId"
           description: The job's reference store ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2448,7 +2448,7 @@ paths:
             $ref: "#/components/schemas/NextToken"
           description: Specify the pagination token from a previous request to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2487,7 +2487,7 @@ paths:
             $ref: "#/components/schemas/NextToken"
           description: Specify the pagination token from a previous request to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2716,7 +2716,7 @@ paths:
             $ref: "#/components/schemas/NextToken"
           description: Specify the pagination token from a previous request to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2855,7 +2855,7 @@ paths:
             $ref: "#/components/schemas/ListVariantImportJobsRequestNextTokenString"
           description: Specify the pagination token from a previous request to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2890,7 +2890,7 @@ paths:
             $ref: "#/components/schemas/ListVariantStoresRequestNextTokenString"
           description: Specify the pagination token from a previous request to retrieve the next page of results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8799,6 +8799,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8809,6 +8811,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.shares
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8839,6 +8843,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.annotationImportJobs
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8867,6 +8873,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.variantImportJobs
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8888,6 +8896,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8897,6 +8907,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_annotation_store:
           operation:
             $ref: "#/paths/~1annotationStore~1{name}/get"
@@ -8909,6 +8921,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8919,6 +8933,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.annotationStores
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8943,6 +8959,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8952,6 +8970,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8967,6 +8987,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -8977,6 +8999,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.annotationStoreVersions
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9001,6 +9025,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9011,6 +9037,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_configuration:
           operation:
             $ref: "#/paths/~1configuration~1{name}/delete"
@@ -9042,6 +9070,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9052,6 +9082,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.uploads
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/multipart_read_set_uploads/methods/list_multipart_read_set_uploads"
@@ -9070,6 +9102,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9092,6 +9126,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.referenceStores
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9115,6 +9151,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9125,6 +9163,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_run_cache:
           operation:
             $ref: "#/paths/~1runCache~1{id}/delete"
@@ -9141,6 +9181,8 @@ components:
             $ref: "#/paths/~1runCache~1{id}/post"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9165,6 +9207,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9175,6 +9219,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_run_group:
           operation:
             $ref: "#/paths/~1runGroup~1{id}/delete"
@@ -9191,6 +9237,8 @@ components:
             $ref: "#/paths/~1runGroup~1{id}/post"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9215,6 +9263,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9236,6 +9286,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9246,6 +9298,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.sequenceStores
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9270,6 +9324,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9279,6 +9335,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_variant_store:
           operation:
             $ref: "#/paths/~1variantStore~1{name}/get"
@@ -9291,6 +9349,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9301,6 +9361,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.variantStores
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9325,6 +9387,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9335,6 +9399,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_workflow:
           operation:
             $ref: "#/paths/~1workflow~1{id}/delete"
@@ -9346,11 +9412,15 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_workflow:
           operation:
             $ref: "#/paths/~1workflow~1{id}/post"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9375,6 +9445,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9385,6 +9457,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
         delete_workflow_version:
           operation:
             $ref: "#/paths/~1workflow~1{workflow_id}~1version~1{version_name}/delete"
@@ -9396,11 +9470,15 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_workflow_version:
           operation:
             $ref: "#/paths/~1workflow~1{workflow_id}~1version~1{version_name}/post"
           response:
             openAPIDocKey: "202"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9437,6 +9515,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/batches/methods/get_batch"
@@ -9462,6 +9542,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_references:
           operation:
             $ref: "#/paths/~1referencestore~1{reference_store_id}~1references/post"
@@ -9469,6 +9551,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.references
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9496,6 +9580,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_runs:
           operation:
             $ref: "#/paths/~1run/get"
@@ -9503,6 +9589,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/runs/methods/get_run"
@@ -9522,6 +9610,8 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9554,6 +9644,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9577,6 +9669,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_read_sets:
           operation:
             $ref: "#/paths/~1sequencestore~1{sequence_store_id}~1readsets/post"
@@ -9584,6 +9678,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.readSets
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9612,6 +9708,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.activationJobs
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9640,6 +9738,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.exportJobs
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9668,6 +9768,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.importJobs
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9713,6 +9815,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.importJobs
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9758,6 +9862,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/run_tasks/methods/get_run_task"
@@ -9777,6 +9883,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.parts
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9798,6 +9906,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.runs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/runs_in_batches/methods/list_runs_in_batch"
@@ -9832,6 +9942,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9841,6 +9953,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

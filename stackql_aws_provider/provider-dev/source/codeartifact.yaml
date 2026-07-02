@@ -156,7 +156,7 @@ paths:
           $ref: '#/components/schemas/PackageName'
         description: The name of the package that contains the versions to be copied.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -198,7 +198,7 @@ paths:
           Amazon Web Services account must be unique. The domain name is used as the prefix in DNS hostnames. Do not use sensitive
           information in a domain name because it is publicly discoverable.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -456,7 +456,7 @@ paths:
           $ref: '#/components/schemas/RepositoryName'
         description: The name of the repository to create.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -568,7 +568,7 @@ paths:
           $ref: '#/components/schemas/RepositoryName'
         description: The name of the repository to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1614,7 +1614,7 @@ paths:
         this call. Each returned DomainSummary object contains information about a domain.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2365,7 +2365,7 @@ paths:
           $ref: '#/components/schemas/PackageGroupPattern'
         description: The pattern of the package group for which to update the origin configuration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

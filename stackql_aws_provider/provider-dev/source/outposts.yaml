@@ -379,7 +379,7 @@ paths:
           $ref: '#/components/schemas/OutpostId'
         description: The ID or ARN of the Outpost.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -453,7 +453,7 @@ paths:
           $ref: '#/components/schemas/SiteId'
         description: The ID or the Amazon Resource Name (ARN) of the site.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1175,7 +1175,7 @@ paths:
           $ref: '#/components/schemas/OutpostIdentifier'
         description: The ID or ARN of the Outpost that you want to decommission.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1207,7 +1207,7 @@ paths:
           $ref: '#/components/schemas/SiteId'
         description: The ID or the Amazon Resource Name (ARN) of the site.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

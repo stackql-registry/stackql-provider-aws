@@ -169,7 +169,7 @@ paths:
           $ref: '#/components/schemas/EnvironmentName'
         description: The name of your Amazon MWAA environment. For example, MyMWAAEnvironment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

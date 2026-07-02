@@ -935,7 +935,7 @@ paths:
           $ref: '#/components/schemas/RecipeName'
         description: The name of the recipe to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1158,7 +1158,7 @@ paths:
           $ref: '#/components/schemas/RecipeName'
         description: The name of the recipe to be published.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1188,7 +1188,7 @@ paths:
           $ref: '#/components/schemas/ProjectName'
         description: The name of the project to apply the action to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1247,7 +1247,7 @@ paths:
           $ref: '#/components/schemas/ProjectName'
         description: The name of the project to act upon.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

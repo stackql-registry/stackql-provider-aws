@@ -281,7 +281,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The current version of the connector that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1688,6 +1688,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1698,12 +1700,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.connectors
+          request:
+            nativeCasing: pascal
         delete_connector:
           operation:
             $ref: "#/paths/~1v1~1connectors~1{connector_arn}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_connector:
           operation:
             $ref: "#/paths/~1v1~1connectors~1{connector_arn}/get"
@@ -1716,6 +1722,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1740,6 +1748,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1750,6 +1760,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.customPlugins
+          request:
+            nativeCasing: pascal
         delete_custom_plugin:
           operation:
             $ref: "#/paths/~1v1~1custom-plugins~1{custom_plugin_arn}/delete"
@@ -1782,6 +1794,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1792,6 +1806,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.workerConfigurations
+          request:
+            nativeCasing: pascal
         delete_worker_configuration:
           operation:
             $ref: "#/paths/~1v1~1worker-configurations~1{worker_configuration_arn}/delete"
@@ -1831,6 +1847,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.connectorOperations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connector_operations/methods/describe_connector_operation"
@@ -1866,6 +1884,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1875,6 +1895,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

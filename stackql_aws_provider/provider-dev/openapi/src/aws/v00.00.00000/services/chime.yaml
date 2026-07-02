@@ -641,7 +641,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The Amazon Chime account ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -706,7 +706,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The Amazon Chime account ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -783,7 +783,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The bot ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -842,7 +842,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The phone number ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -919,7 +919,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The room ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -983,7 +983,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The member ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1138,7 +1138,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The bot ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1170,7 +1170,7 @@ paths:
       description: Updates global settings for the administrator's AWS account, such as Amazon Chime Business Calling and Amazon Chime Voice Connector settings.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1318,7 +1318,7 @@ paths:
             $ref: "#/components/schemas/NonEmptyString"
           description: The user ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2864,6 +2864,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2884,6 +2886,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2905,12 +2909,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Users
+          request:
+            nativeCasing: pascal
         create_user:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1users?operation=create/post"
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2926,6 +2934,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2949,6 +2959,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2959,6 +2971,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Accounts
+          request:
+            nativeCasing: pascal
         delete_account:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}/delete"
@@ -2977,6 +2991,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3001,6 +3017,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3010,6 +3028,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_bot:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1bots~1{bot_id}/get"
@@ -3022,6 +3042,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3045,6 +3067,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3065,6 +3089,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3074,6 +3100,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_phone_number_order:
           operation:
             $ref: "#/paths/~1phone-number-orders~1{phone_number_order_id}/get"
@@ -3099,6 +3127,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3108,6 +3138,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_room:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1rooms~1{room_id}/delete"
@@ -3125,6 +3157,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3149,6 +3183,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3158,6 +3194,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_room_membership:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1rooms~1{room_id}~1memberships~1{member_id}/delete"
@@ -3169,6 +3207,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3203,6 +3243,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3237,6 +3279,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3246,6 +3290,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/get_phone_number"
@@ -3283,6 +3329,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3309,6 +3357,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3335,6 +3385,8 @@ components:
             $ref: "#/paths/~1settings/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3361,6 +3413,8 @@ components:
             $ref: "#/paths/~1settings~1phone-number/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3388,6 +3442,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3415,6 +3471,8 @@ components:
             $ref: "#/paths/~1accounts~1{account_id}~1users~1{user_id}~1settings/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3436,6 +3494,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/supported_phone_number_countries/methods/list_supported_phone_number_countries"
@@ -3453,6 +3513,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/available_phone_numbers/methods/search_available_phone_numbers"

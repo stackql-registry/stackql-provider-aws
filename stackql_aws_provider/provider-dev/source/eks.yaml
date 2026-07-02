@@ -1062,7 +1062,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The ARN of the IAM principal for the AccessEntry.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1223,7 +1223,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The name of the capability to update configuration for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1569,7 +1569,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The ID of the association to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2085,7 +2085,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The name of the Amazon EKS cluster associated with the insights.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2347,7 +2347,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The name of the add-on. The name must match one of the names returned by ListAddons .
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2406,7 +2406,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The name of the Amazon EKS cluster to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2467,7 +2467,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The name of the managed node group to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2528,7 +2528,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The name of the managed node group to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

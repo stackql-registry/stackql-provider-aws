@@ -337,7 +337,7 @@ paths:
             $ref: "#/components/schemas/DirectoryId"
           description: The identifier (ID) of the directory that's associated with the group.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -405,7 +405,7 @@ paths:
             $ref: "#/components/schemas/DirectoryId"
           description: The identifier (ID) of the directory that's associated with the user.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1114,6 +1114,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1124,6 +1126,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Members
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1133,6 +1137,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1154,6 +1160,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1163,6 +1171,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1172,6 +1182,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1182,6 +1194,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Groups
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1192,6 +1206,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Groups
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1201,6 +1217,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1226,6 +1244,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1235,6 +1255,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1244,6 +1266,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1254,6 +1278,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Users
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1264,6 +1290,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Users
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1273,6 +1301,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1299,6 +1329,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Groups
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

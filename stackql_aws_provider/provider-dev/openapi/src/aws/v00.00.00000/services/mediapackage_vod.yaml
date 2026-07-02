@@ -29,7 +29,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of a MediaPackage VOD PackagingGroup resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -342,7 +342,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of a MediaPackage VOD PackagingGroup resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1165,6 +1165,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1175,6 +1177,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Assets
+          request:
+            nativeCasing: pascal
         delete_asset:
           operation:
             $ref: "#/paths/~1assets~1{id}/delete"
@@ -1207,6 +1211,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1217,6 +1223,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.PackagingConfigurations
+          request:
+            nativeCasing: pascal
         delete_packaging_configuration:
           operation:
             $ref: "#/paths/~1packaging_configurations~1{id}/delete"
@@ -1249,6 +1257,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1259,6 +1269,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.PackagingGroups
+          request:
+            nativeCasing: pascal
         delete_packaging_group:
           operation:
             $ref: "#/paths/~1packaging_groups~1{id}/delete"
@@ -1277,6 +1289,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1317,6 +1331,8 @@ components:
             $ref: "#/paths/~1tags~1{resource-arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1325,6 +1341,8 @@ components:
             $ref: "#/paths/~1tags~1{resource-arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

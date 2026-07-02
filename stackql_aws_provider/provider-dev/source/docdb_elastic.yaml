@@ -232,7 +232,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The ARN identifier of the elastic cluster.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

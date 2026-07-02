@@ -70,7 +70,7 @@ paths:
             $ref: "#/components/schemas/TopicId"
           description: The ID for the topic reviewed answer that you want to delete. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -138,7 +138,7 @@ paths:
             $ref: "#/components/schemas/AwsAccountId"
           description: The Amazon Web Services account ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -650,7 +650,7 @@ paths:
             $ref: "#/components/schemas/ShortRestrictiveResourceId"
           description: The ID of the Quick brand.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -736,7 +736,7 @@ paths:
             $ref: "#/components/schemas/ShortRestrictiveResourceId"
           description: The ID of the Quick brand.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1177,7 +1177,7 @@ paths:
             $ref: "#/components/schemas/RestrictiveResourceId"
           description: The ID of the folder.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1788,7 +1788,7 @@ paths:
             $ref: "#/components/schemas/ShortRestrictiveResourceId"
           description: An ID for the template that you want to create. This template is unique per Amazon Web Services Region; in each Amazon Web Services account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1896,7 +1896,7 @@ paths:
             $ref: "#/components/schemas/ShortRestrictiveResourceId"
           description: The ID for the template.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2830,7 +2830,7 @@ paths:
             $ref: "#/components/schemas/CustomPermissionsName"
           description: The name of the custom permissions profile that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3287,7 +3287,7 @@ paths:
             $ref: "#/components/schemas/Namespace"
           description: The namespace of the group that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3373,7 +3373,7 @@ paths:
             $ref: "#/components/schemas/ServiceType"
           description: The name of the Amazon Web Services service that contains the authorized targets that you want to add or update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4170,7 +4170,7 @@ paths:
             $ref: "#/components/schemas/ShortRestrictiveResourceId"
           description: The unique identifier of the action connector whose permissions you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4252,7 +4252,7 @@ paths:
             $ref: "#/components/schemas/ShortRestrictiveResourceId"
           description: The ID of the analysis whose permissions you're updating. The ID is part of the analysis URL.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4500,7 +4500,7 @@ paths:
             $ref: "#/components/schemas/ShortRestrictiveResourceId"
           description: The ID for the dashboard.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4668,7 +4668,7 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: The ID for the dataset whose permissions you want to update. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4726,7 +4726,7 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: The ID of the data source. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4802,7 +4802,7 @@ paths:
             $ref: "#/components/schemas/RestrictiveResourceId"
           description: The ID of the folder.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4914,7 +4914,7 @@ paths:
             $ref: "#/components/schemas/Namespace"
           description: The namespace of the assignment.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4962,7 +4962,7 @@ paths:
             $ref: "#/components/schemas/AwsAccountId"
           description: The ID of the Amazon Web Services account that contains the IP rules.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5262,7 +5262,7 @@ paths:
             $ref: "#/components/schemas/ShortRestrictiveResourceId"
           description: The ID for the template.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5320,7 +5320,7 @@ paths:
             $ref: "#/components/schemas/ShortRestrictiveResourceId"
           description: The ID for the theme.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5378,7 +5378,7 @@ paths:
             $ref: "#/components/schemas/TopicId"
           description: The ID of the topic that you want to modify. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -5672,7 +5672,7 @@ paths:
             $ref: "#/components/schemas/FlowId"
           description: The unique identifier of the flow to update permissions for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -7314,7 +7314,7 @@ paths:
             $ref: "#/components/schemas/AutomateId"
           description: The ID of the automation to run.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -7500,7 +7500,7 @@ paths:
             $ref: "#/components/schemas/AwsAccountId"
           description: The Amazon Web Services account ID associated with your Amazon Quick Sight subscription.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -30926,6 +30926,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -30942,6 +30944,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Ingestions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ingestions/methods/describe_ingestion"
@@ -30961,6 +30965,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -30970,18 +30976,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_account_customization:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1customizations/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_account_customization:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1customizations/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31005,6 +31017,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31039,6 +31053,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31049,6 +31065,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ActionConnectorSummaries
+          request:
+            nativeCasing: pascal
         delete_action_connector:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1action-connectors~1{action_connector_id}/delete"
@@ -31067,6 +31085,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31077,6 +31097,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ActionConnectorSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31102,6 +31124,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31111,6 +31135,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_analysis:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1analyses~1{analysis_id}/get"
@@ -31123,6 +31149,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31132,6 +31160,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/analysis/methods/describe_analysis"
@@ -31152,6 +31182,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31167,12 +31199,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_brand:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1brands~1{brand_id}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31183,6 +31219,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Brands
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/brands/methods/describe_brand"
@@ -31204,6 +31242,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31214,6 +31254,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.CustomPermissionsList
+          request:
+            nativeCasing: pascal
         delete_custom_permissions:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1custom-permissions~1{custom_permissions_name}/delete"
@@ -31232,6 +31274,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31256,6 +31300,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31265,18 +31311,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_dashboard:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1dashboards~1{dashboard_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_dashboard:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1dashboards~1{dashboard_id}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31287,6 +31339,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DashboardSummaryList
+          request:
+            nativeCasing: pascal
         search_dashboards:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1dashboards/post"
@@ -31294,6 +31348,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DashboardSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31319,6 +31375,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31329,6 +31387,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DataSetSummaries
+          request:
+            nativeCasing: pascal
         delete_data_set:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1data-sets~1{data_set_id}/delete"
@@ -31347,6 +31407,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31357,6 +31419,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DataSetSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31382,6 +31446,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31392,6 +31458,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DataSources
+          request:
+            nativeCasing: pascal
         delete_data_source:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1data-sources~1{data_source_id}/delete"
@@ -31410,6 +31478,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31420,6 +31490,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DataSourceSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31445,6 +31517,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31466,6 +31540,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31476,6 +31552,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FolderSummaryList
+          request:
+            nativeCasing: pascal
         search_folders:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1folders/post"
@@ -31483,6 +31561,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FolderSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31532,6 +31612,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31542,6 +31624,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.GroupList
+          request:
+            nativeCasing: pascal
         delete_group:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1groups~1{group_name}/delete"
@@ -31560,6 +31644,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31570,6 +31656,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.GroupList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31614,6 +31702,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.GroupMemberList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/group_memberships/methods/describe_group_membership"
@@ -31634,6 +31724,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31655,6 +31747,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31665,6 +31759,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.IAMPolicyAssignments
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/iam_policy_assignments/methods/describe_iam_policy_assignment"
@@ -31686,6 +31782,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31708,6 +31806,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Namespaces
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/namespaces/methods/describe_namespace"
@@ -31728,6 +31828,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31743,6 +31845,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31792,6 +31896,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.MembersList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/role_memberships/methods/list_role_memberships"
@@ -31811,6 +31917,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31820,18 +31928,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_template:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1templates~1{template_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_template:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1templates~1{template_id}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31842,6 +31956,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TemplateSummaryList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/templates/methods/describe_template"
@@ -31863,6 +31979,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31884,6 +32002,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31907,6 +32027,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31916,18 +32038,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_theme:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1themes~1{theme_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_theme:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1themes~1{theme_id}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31938,6 +32066,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ThemeSummaryList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/themes/methods/describe_theme"
@@ -31959,6 +32089,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -31980,6 +32112,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32003,6 +32137,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32012,6 +32148,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_topic:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1topics~1{topic_id}/delete"
@@ -32030,6 +32168,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32040,6 +32180,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TopicSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32065,6 +32207,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32092,6 +32236,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32116,6 +32262,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32125,6 +32273,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_vpc_connection:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1vpc-connections~1{vpc_connection_id}/delete"
@@ -32143,6 +32293,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32179,6 +32331,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32213,6 +32367,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32247,6 +32403,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32270,18 +32428,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_default_q_business_application:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1default-qbusiness-application/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_default_q_business_application:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1default-qbusiness-application/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32310,6 +32474,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32319,6 +32485,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/identity_propagation_configs/methods/list_identity_propagation_configs"
@@ -32350,6 +32518,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32384,6 +32554,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32394,12 +32566,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.UserList
+          request:
+            nativeCasing: pascal
         register_user:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1users/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32447,6 +32623,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32474,6 +32652,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32501,6 +32681,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32545,6 +32727,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32573,6 +32757,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AssetBundleExportJobSummaryList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_bundle_export_jobs/methods/describe_asset_bundle_export_job"
@@ -32598,6 +32784,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AssetBundleImportJobSummaryList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_bundle_import_jobs/methods/describe_asset_bundle_import_job"
@@ -32616,6 +32804,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/automation_jobs/methods/describe_automation_job"
@@ -32639,6 +32829,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32660,6 +32852,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dashboard_definitions/methods/describe_dashboard_definition"
@@ -32683,6 +32877,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32744,6 +32940,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32771,6 +32969,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32798,6 +32998,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32820,12 +33022,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Permissions
+          request:
+            nativeCasing: pascal
         update_folder_permissions:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1folders~1{folder_id}~1permissions/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32848,6 +33054,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Permissions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/folder_resolved_permissions/methods/describe_folder_resolved_permissions"
@@ -32871,6 +33079,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32892,12 +33102,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_key_registration:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1key-registration/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32925,6 +33139,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32952,6 +33168,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -32979,6 +33197,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -33000,6 +33220,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/template_definitions/methods/describe_template_definition"
@@ -33023,6 +33245,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -33050,6 +33274,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -33077,6 +33303,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -33115,6 +33343,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dashboard_embed_urls/methods/get_dashboard_embed_url"
@@ -33155,6 +33385,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -33176,6 +33408,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -33196,6 +33430,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/session_embed_urls/methods/get_session_embed_url"
@@ -33214,6 +33450,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AnalysisSummaryList
+          request:
+            nativeCasing: pascal
         search_analyses:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1analyses/post"
@@ -33221,6 +33459,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AnalysisSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -33243,6 +33483,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.DashboardVersionSummaryList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dashboard_versions/methods/list_dashboard_versions"
@@ -33261,6 +33503,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FlowSummaryList
+          request:
+            nativeCasing: pascal
         search_flows:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1flows~1searchFlows/post"
@@ -33268,6 +33512,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FlowSummaryList
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -33290,6 +33536,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FolderMemberList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/folder_members/methods/list_folder_members"
@@ -33308,6 +33556,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Folders
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/folders_for_resources/methods/list_folders_for_resource"
@@ -33326,6 +33576,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ActiveAssignments
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/iam_policy_assignments_for_users/methods/list_iam_policy_assignments_for_user"
@@ -33343,12 +33595,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_self_upgrade:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1update-self-upgrade-request/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -33387,6 +33643,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -33396,6 +33654,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -33415,6 +33675,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TemplateAliasList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/template_aliases/methods/list_template_aliases"
@@ -33433,6 +33695,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TemplateVersionSummaryList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/template_versions/methods/list_template_versions"
@@ -33450,6 +33714,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/theme_aliases/methods/list_theme_aliases"
@@ -33468,6 +33734,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ThemeVersionSummaryList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/theme_versions/methods/list_theme_versions"
@@ -33503,6 +33771,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.GroupList
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/user_groups/methods/list_user_groups"
@@ -33520,6 +33790,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -33537,6 +33809,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -33574,6 +33848,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -33594,6 +33870,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

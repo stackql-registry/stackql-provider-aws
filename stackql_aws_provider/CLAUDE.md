@@ -100,9 +100,11 @@ A resource with all-empty sqlVerb arrays gets dropped (no SQL surface). A servic
 
 Stackql's Go YAML parser is YAML 1.1; it coerces `y/Y/yes/Yes/YES/n/N/no/No/NO/on/On/ON/off/Off/OFF` to bool. When any of these lands in a `required: [...]` list (AWS bedrock_agentcore has members literally named `x` and `y`), the parser refuses the spec. Both writers must emit YAML 1.1 quoting — Python uses a custom `_str_repr`, Node uses `YAML.stringify(..., { version: '1.1' })`.
 
-### 13. aws-json — single `application/json` content type, body inlined
+### 13. aws-json — amz-json content key matching `request.mediaType`, body inlined
 
-For aws-json, content type is a routing pointer to the op — stackql doesn't parse `application/x-amz-json-1.1` differently from `application/json`. Emit one `application/json` content entry. Body schemas inlined in `requestBody` (not `$ref` to a separate named shape) so stackql's required-param scan reaches them.
+For aws-json, emit a single `application/x-amz-json-<jsonVersion>` content entry (jsonVersion from botocore metadata, default `1.0`) and stamp the same string as the method's `request.mediaType` in stage 2, plus `request.base: '{}'` (the fallback body sent verbatim when no SQL-supplied body fields exist, merged under supplied fields when they do — aws-json requires a JSON body even for no-input ops). Do NOT use `request.default` for this: it diverts supplied body params in any-sdk's armoury flow. The loader binds the body schema by EXACT content-key match against `request.mediaType`; a mismatch silently drops the schema and required body fields vanish from routing. any-sdk's media fuzzy-matcher maps amz-json variants onto the JSON marshal path. Body schemas inlined in `requestBody` (not `$ref` to a separate named shape) so stackql's required-param scan reaches them.
+
+Same exact-match rule for rest-xml bodies: content key `application/xml` + `request.mediaType: application/xml` (activates any-sdk's schema-driven JSON-map -> XML body marshalling).
 
 ### 14. XML responses — schema-driven walker
 
@@ -119,9 +121,9 @@ response:
   objectKey: $.line_items
 ```
 
-The walker (in `any-sdk/pkg/stream_transform`) reads the OpenAPI schema, navigates the mxj-decoded XML using the schema's `xml.locationName` / wrapping annotations, and emits `{"line_items": [...]}`. The per-row template is gone — the schema drives the projection.
+The walker (in `any-sdk/pkg/stream_transform`) reads the OpenAPI schema, navigates the mxj-decoded XML using the schema's `xml: {name: ...}` overrides / wrapping conventions, and emits `{"line_items": [...]}`. The per-row template is gone — the schema drives the projection.
 
-**Display synthesis**: the generator still emits `<RowShape>Display` + `<OpName>OutputDisplay` schemas. They describe the per-row column set (in **PascalCase** wire names, no rename — the casing engine handles snake column rendering). The wrapping `<OpName>OutputDisplay` is just `{type: object, properties: { line_items: { type: array, items: $ref: <RowShape>Display } }}`.
+**Display synthesis**: the generator still emits `<RowShape>Display` + `<OpName>OutputDisplay` schemas. Each property key is the **botocore member name** (`VpcId`, `Attachments` — no rename; the casing engine renders snake columns from these). When the XML wire element name differs from the member name (member `locationName`, e.g. EC2's `Attachments` serialised as `<attachmentSet>`), the property carries an `xml: {name: attachmentSet}` override — the walker extracts by the override and keys the projected row by it; drm value extraction resolves `GetWireName` first, then `GetName`. The wrapping `<OpName>OutputDisplay` is just `{type: object, properties: { line_items: { type: array, items: $ref: <RowShape>Display } }}`.
 
 **Row-shape picker** (`_pick_row_shape`):
 1. **Regime (a) list**: output has a list-typed member (the typical `Describe*`/`List*` shape). Element shape becomes the row shape. Used when paginator declares `result_key` OR op-name starts with `List`/`Describe`/`BatchGet`/`Search`/`Lookup`.

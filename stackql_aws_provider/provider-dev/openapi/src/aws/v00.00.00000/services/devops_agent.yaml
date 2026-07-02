@@ -236,7 +236,7 @@ paths:
             $ref: "#/components/schemas/AgentSpaceId"
           description: The unique identifier of the AgentSpace
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -520,7 +520,7 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: The unique identifier of the task to update
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -602,7 +602,7 @@ paths:
             $ref: "#/components/schemas/ResourceId"
           description: The unique identifier for the recommendation to update
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -693,7 +693,7 @@ paths:
             $ref: "#/components/schemas/AgentSpaceId"
           description: The unique identifier for the agent space containing the tasks
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -796,7 +796,7 @@ paths:
             $ref: "#/components/schemas/AgentSpaceId"
           description: The unique identifier for the agent space
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -894,7 +894,7 @@ paths:
             $ref: "#/components/schemas/AgentSpaceId"
           description: The unique identifier for the agent space containing the recommendations
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1132,7 +1132,7 @@ paths:
             $ref: "#/components/schemas/String"
           description: The unique identifier of the goal to update
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1161,7 +1161,7 @@ paths:
             $ref: "#/components/schemas/AgentSpaceId"
           description: The unique identifier of the AgentSpace
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4427,6 +4427,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4455,12 +4457,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.services
+          request:
+            nativeCasing: pascal
         register_service:
           operation:
             $ref: "#/paths/~1v1~1register~1{service}/post"
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4486,6 +4492,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4507,6 +4515,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4517,6 +4527,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.agentSpaces
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/agent_spaces/methods/get_agent_space"
@@ -4538,6 +4550,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4553,6 +4567,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4563,6 +4579,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.tasks
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4586,12 +4604,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_chats:
           operation:
             $ref: "#/paths/~1agents~1agent-space~1{agent_space_id}~1chat~1list/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/chats/methods/list_chats"
@@ -4610,6 +4632,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4657,6 +4681,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4667,6 +4693,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.associations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/associations/methods/get_association"
@@ -4720,12 +4748,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_recommendation:
           operation:
             $ref: "#/paths/~1backlog~1agent-space~1{agent_space_id}~1recommendations~1{recommendation_id}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4735,6 +4767,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4758,6 +4792,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.executions
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4779,6 +4815,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.goals
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4788,6 +4826,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4810,6 +4850,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.records
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4830,6 +4872,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4867,6 +4911,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4876,6 +4922,8 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -4911,6 +4959,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4931,6 +4981,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

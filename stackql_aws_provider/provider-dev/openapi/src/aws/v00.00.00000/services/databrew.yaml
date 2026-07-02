@@ -828,7 +828,7 @@ paths:
             $ref: "#/components/schemas/RecipeName"
           description: The name of the recipe to be updated.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1022,7 +1022,7 @@ paths:
             $ref: "#/components/schemas/RecipeName"
           description: The name of the recipe to be published.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1049,7 +1049,7 @@ paths:
             $ref: "#/components/schemas/ProjectName"
           description: The name of the project to apply the action to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1102,7 +1102,7 @@ paths:
             $ref: "#/components/schemas/ProjectName"
           description: The name of the project to act upon.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3312,6 +3312,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3322,6 +3324,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Datasets
+          request:
+            nativeCasing: pascal
         delete_dataset:
           operation:
             $ref: "#/paths/~1datasets~1{name}/delete"
@@ -3340,6 +3344,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3364,6 +3370,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3373,6 +3381,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3394,6 +3404,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3404,6 +3416,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Projects
+          request:
+            nativeCasing: pascal
         delete_project:
           operation:
             $ref: "#/paths/~1projects~1{name}/delete"
@@ -3422,6 +3436,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3446,6 +3462,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3456,18 +3474,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Recipes
+          request:
+            nativeCasing: pascal
         describe_recipe:
           operation:
             $ref: "#/paths/~1recipes~1{name}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_recipe:
           operation:
             $ref: "#/paths/~1recipes~1{name}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3491,6 +3515,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3500,6 +3526,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3521,6 +3549,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3531,6 +3561,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Rulesets
+          request:
+            nativeCasing: pascal
         delete_ruleset:
           operation:
             $ref: "#/paths/~1rulesets~1{name}/delete"
@@ -3549,6 +3581,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3573,6 +3607,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3583,6 +3619,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Schedules
+          request:
+            nativeCasing: pascal
         delete_schedule:
           operation:
             $ref: "#/paths/~1schedules~1{name}/delete"
@@ -3601,6 +3639,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3638,6 +3678,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Jobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/describe_job"
@@ -3664,6 +3706,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Recipes
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recipe_versions/methods/list_recipe_versions"
@@ -3689,6 +3733,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.JobRuns
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_runs/methods/describe_job_run"
@@ -3724,6 +3770,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3733,6 +3781,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

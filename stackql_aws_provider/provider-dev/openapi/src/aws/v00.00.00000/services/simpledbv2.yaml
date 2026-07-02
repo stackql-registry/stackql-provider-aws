@@ -45,7 +45,7 @@ paths:
       description: Lists all exports that were created. The results are paginated and can be filtered by domain name.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -336,6 +336,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -346,6 +348,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.exportSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

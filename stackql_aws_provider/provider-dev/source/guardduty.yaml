@@ -659,7 +659,7 @@ paths:
         description: The ID of the detector for which you need to create sample findings. To find the detectorId in the current
           Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1032,7 +1032,7 @@ paths:
         description: The unique ID of the detector to update. To find the detectorId in the current Region, see the Settings
           page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1130,7 +1130,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The name of the filter.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1227,7 +1227,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The unique ID that specifies the IPSet that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1327,7 +1327,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: A unique identifier associated with the Malware Protection plan.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1453,7 +1453,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The ID of the publishing destination to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1545,7 +1545,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The ID returned by GuardDuty after updating the threat entity set resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1642,7 +1642,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The unique ID that specifies the ThreatIntelSet that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1739,7 +1739,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The ID returned by GuardDuty after updating the trusted entity set resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1779,7 +1779,7 @@ paths:
         description: The unique ID of the detector that the request is associated with. To find the detectorId in the current
           Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1859,7 +1859,7 @@ paths:
         description: The ID of the detector that configures the delegated administrator. To find the detectorId in the current
           Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2122,7 +2122,7 @@ paths:
         description: The ID of the detector whose findings statistics you want to retrieve. To find the detectorId in the
           current Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2228,7 +2228,7 @@ paths:
           To find the detectorId in the current Region, see the Settings page in the GuardDuty console, or run the ListDetectors
           API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2481,7 +2481,7 @@ paths:
         description: The unique ID of the detector whose coverage details you want to retrieve. To find the detectorId in
           the current Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2521,7 +2521,7 @@ paths:
         description: The ID of the detector that specifies the GuardDuty service whose findings you want to list. To find
           the detectorId in the current Region, see the Settings page in the GuardDuty console, or run the ListDetectors API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2599,7 +2599,7 @@ paths:
           call to the list action. For subsequent calls to the action, fill nextToken in the request with the value of NextToken
           from the previous response to continue listing results.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2740,7 +2740,7 @@ paths:
         terms for GuardDuty Malware Protection.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

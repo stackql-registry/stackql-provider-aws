@@ -137,7 +137,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -197,7 +197,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the connector definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -253,7 +253,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -313,7 +313,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the core definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -437,7 +437,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -497,7 +497,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the device definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -553,7 +553,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -613,7 +613,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the Lambda function definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -774,7 +774,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the Greengrass group.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -842,7 +842,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -902,7 +902,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the logger definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -958,7 +958,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1018,7 +1018,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the resource definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1117,7 +1117,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: A client token used to correlate requests and responses.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1177,7 +1177,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the subscription definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1267,7 +1267,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the connector definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1328,7 +1328,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the core definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1389,7 +1389,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the device definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1450,7 +1450,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the Lambda function definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1511,7 +1511,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the Greengrass group.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1572,7 +1572,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the logger definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1633,7 +1633,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the resource definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1694,7 +1694,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the subscription definition.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1756,7 +1756,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The thing name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1962,7 +1962,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the Greengrass group.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2114,7 +2114,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The thing name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2245,7 +2245,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The Amazon Resource Name (ARN) of the resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2293,7 +2293,7 @@ paths:
             $ref: "#/components/schemas/__string"
           description: The ID of the Greengrass group.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4278,6 +4278,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4332,6 +4334,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4386,6 +4390,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4396,6 +4402,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Definitions
+          request:
+            nativeCasing: pascal
         delete_connector_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1connectors~1{connector_definition_id}/delete"
@@ -4414,6 +4422,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4438,6 +4448,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4448,12 +4460,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Versions
+          request:
+            nativeCasing: pascal
         get_connector_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1connectors~1{connector_definition_id}~1versions~1{connector_definition_version_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connector_definition_versions/methods/get_connector_definition_version"
@@ -4473,6 +4489,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4483,6 +4501,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Definitions
+          request:
+            nativeCasing: pascal
         delete_core_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1cores~1{core_definition_id}/delete"
@@ -4501,6 +4521,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4525,6 +4547,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4535,6 +4559,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Versions
+          request:
+            nativeCasing: pascal
         get_core_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1cores~1{core_definition_id}~1versions~1{core_definition_version_id}/get"
@@ -4560,6 +4586,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4570,12 +4598,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Deployments
+          request:
+            nativeCasing: pascal
         reset_deployments:
           operation:
             $ref: "#/paths/~1greengrass~1groups~1{group_id}~1deployments~1$reset/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4597,6 +4629,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4607,6 +4641,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Definitions
+          request:
+            nativeCasing: pascal
         delete_device_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1devices~1{device_definition_id}/delete"
@@ -4625,6 +4661,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4649,6 +4687,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4659,12 +4699,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Versions
+          request:
+            nativeCasing: pascal
         get_device_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1devices~1{device_definition_id}~1versions~1{device_definition_version_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/device_definition_versions/methods/get_device_definition_version"
@@ -4684,6 +4728,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4694,6 +4740,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Definitions
+          request:
+            nativeCasing: pascal
         delete_function_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1functions~1{function_definition_id}/delete"
@@ -4712,6 +4760,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4736,6 +4786,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4746,12 +4798,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Versions
+          request:
+            nativeCasing: pascal
         get_function_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1functions~1{function_definition_id}~1versions~1{function_definition_version_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/function_definition_versions/methods/get_function_definition_version"
@@ -4771,6 +4827,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4781,6 +4839,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Groups
+          request:
+            nativeCasing: pascal
         delete_group:
           operation:
             $ref: "#/paths/~1greengrass~1groups~1{group_id}/delete"
@@ -4799,6 +4859,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4854,6 +4916,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4864,6 +4928,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Versions
+          request:
+            nativeCasing: pascal
         get_group_version:
           operation:
             $ref: "#/paths/~1greengrass~1groups~1{group_id}~1versions~1{group_version_id}/get"
@@ -4889,6 +4955,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4899,6 +4967,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Definitions
+          request:
+            nativeCasing: pascal
         delete_logger_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1loggers~1{logger_definition_id}/delete"
@@ -4917,6 +4987,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4941,6 +5013,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4951,12 +5025,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Versions
+          request:
+            nativeCasing: pascal
         get_logger_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1loggers~1{logger_definition_id}~1versions~1{logger_definition_version_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/logger_definition_versions/methods/get_logger_definition_version"
@@ -4976,6 +5054,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4986,6 +5066,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Definitions
+          request:
+            nativeCasing: pascal
         delete_resource_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1resources~1{resource_definition_id}/delete"
@@ -5004,6 +5086,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5028,6 +5112,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5038,6 +5124,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Versions
+          request:
+            nativeCasing: pascal
         get_resource_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1resources~1{resource_definition_id}~1versions~1{resource_definition_version_id}/get"
@@ -5063,6 +5151,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5083,6 +5173,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5093,6 +5185,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Definitions
+          request:
+            nativeCasing: pascal
         delete_subscription_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1subscriptions~1{subscription_definition_id}/delete"
@@ -5111,6 +5205,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5135,6 +5231,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5145,12 +5243,16 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Versions
+          request:
+            nativeCasing: pascal
         get_subscription_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1subscriptions~1{subscription_definition_id}~1versions~1{subscription_definition_version_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/subscription_definition_versions/methods/get_subscription_definition_version"
@@ -5193,6 +5295,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5237,6 +5341,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5264,6 +5370,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5286,6 +5394,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Deployments
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/bulk_deployment_detailed_reports/methods/list_bulk_deployment_detailed_reports"
@@ -5304,6 +5414,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.BulkDeployments
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/bulk_deployments/methods/list_bulk_deployments"
@@ -5337,6 +5449,8 @@ components:
             $ref: "#/paths/~1tags~1{resource-arn}/post"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5345,6 +5459,8 @@ components:
             $ref: "#/paths/~1tags~1{resource-arn}/delete"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

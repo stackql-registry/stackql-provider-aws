@@ -98,7 +98,7 @@ paths:
           $ref: '#/components/schemas/IoTThingName'
         description: The name of the core device. This is also the name of the IoT thing.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -130,7 +130,7 @@ paths:
           $ref: '#/components/schemas/IoTThingName'
         description: The name of the core device. This is also the name of the IoT thing.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -187,7 +187,7 @@ paths:
         when you call this operation. IoT Greengrass currently supports Lambda functions on only Linux core devices.'
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -903,7 +903,7 @@ paths:
         certificate. For more information, see IoT Greengrass endpoints and quotas.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

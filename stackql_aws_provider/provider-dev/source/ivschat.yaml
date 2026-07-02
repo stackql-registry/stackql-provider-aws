@@ -94,7 +94,7 @@ paths:
       description: Creates a room that allows clients to connect and pass messages.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -290,7 +290,7 @@ paths:
         is processed.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -317,7 +317,7 @@ paths:
         are sorted in descending order of updateTime.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -1377,6 +1377,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1386,12 +1388,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         remove_profile_permission:
           operation:
             $ref: "#/paths/~1signing-profiles~1{profile_name}~1permissions~1{statement_id}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/profile_permissions/methods/list_profile_permissions"
@@ -1411,12 +1417,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_signing_profile:
           operation:
             $ref: "#/paths/~1signing-profiles~1{profile_name}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1427,11 +1437,15 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.profiles
+          request:
+            nativeCasing: pascal
         revoke_signing_profile:
           operation:
             $ref: "#/paths/~1signing-profiles~1{profile_name}~1revoke/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1463,6 +1477,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.jobs
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/signing_jobs/methods/describe_signing_job"
@@ -1481,6 +1497,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/revocation_status/methods/get_revocation_status"
@@ -1505,6 +1523,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.platforms
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/signing_platforms/methods/get_signing_platform"
@@ -1540,6 +1560,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1549,6 +1571,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -1566,6 +1590,8 @@ components:
             $ref: "#/paths/~1signing-jobs~1{job_id}~1revoke/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

@@ -35,7 +35,7 @@ paths:
           $ref: '#/components/schemas/Identifier'
         description: The unique identifier of the batch job execution.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -531,7 +531,7 @@ paths:
           $ref: '#/components/schemas/Identifier'
         description: The unique identifier of the runtime environment that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1215,7 +1215,7 @@ paths:
           $ref: '#/components/schemas/Identifier'
         description: The unique identifier of the application you want to stop.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

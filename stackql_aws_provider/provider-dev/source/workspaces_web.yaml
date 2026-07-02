@@ -399,7 +399,7 @@ paths:
         portal, browser settings control how the browser will behave once a user starts a streaming session for the web portal.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -459,7 +459,7 @@ paths:
       description: Creates a data protection settings resource that can be associated with a web portal.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -688,7 +688,7 @@ paths:
       description: Creates a web portal.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1068,7 +1068,7 @@ paths:
           $ref: '#/components/schemas/ARN'
         description: The ARN of the browser settings.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1142,7 +1142,7 @@ paths:
           $ref: '#/components/schemas/ARN'
         description: The ARN of the data protection settings.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1218,7 +1218,7 @@ paths:
           $ref: '#/components/schemas/SubresourceARN'
         description: The ARN of the identity provider.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1294,7 +1294,7 @@ paths:
           $ref: '#/components/schemas/ARN'
         description: The ARN of the IP access settings.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1370,7 +1370,7 @@ paths:
           $ref: '#/components/schemas/ARN'
         description: The ARN of the network settings.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1446,7 +1446,7 @@ paths:
           $ref: '#/components/schemas/ARN'
         description: The ARN of the web portal.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1524,7 +1524,7 @@ paths:
           $ref: '#/components/schemas/ARN'
         description: The ARN of the session logger to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1598,7 +1598,7 @@ paths:
           $ref: '#/components/schemas/ARN'
         description: The ARN of the trust store.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1672,7 +1672,7 @@ paths:
           $ref: '#/components/schemas/ARN'
         description: The ARN of the user access logging settings.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1744,7 +1744,7 @@ paths:
           $ref: '#/components/schemas/ARN'
         description: The ARN of the user settings.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

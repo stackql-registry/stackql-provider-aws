@@ -119,7 +119,7 @@ paths:
           $ref: '#/components/schemas/RuleIdentifier'
         description: The unique ID of the retention rule.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

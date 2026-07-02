@@ -136,7 +136,7 @@ paths:
             $ref: "#/components/schemas/PackageName"
           description: The name of the package that contains the versions to be copied.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -169,7 +169,7 @@ paths:
             $ref: "#/components/schemas/DomainName"
           description: The name of the domain to create. All domain names in an Amazon Web Services Region that are in the same Amazon Web Services account must be unique. The domain name is used as the prefix in DNS hostnames. Do not use sensitive information in a domain name because it is publicly discoverable.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -393,7 +393,7 @@ paths:
             $ref: "#/components/schemas/RepositoryName"
           description: The name of the repository to create.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -493,7 +493,7 @@ paths:
             $ref: "#/components/schemas/RepositoryName"
           description: The name of the repository to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1367,7 +1367,7 @@ paths:
       description: Returns a list of DomainSummary objects for all domains owned by the Amazon Web Services account that makes this call. Each returned DomainSummary object contains information about a domain.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2005,7 +2005,7 @@ paths:
             $ref: "#/components/schemas/PackageGroupPattern"
           description: The pattern of the package group for which to update the origin configuration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3319,12 +3319,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         disassociate_external_connection:
           operation:
             $ref: "#/paths/~1v1~1repository~1external-connection/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -3342,6 +3346,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3351,6 +3357,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3360,6 +3368,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_package_versions:
           operation:
             $ref: "#/paths/~1v1~1package~1versions/post"
@@ -3367,6 +3377,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.versions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/package_versions/methods/describe_package_version"
@@ -3386,6 +3398,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3395,12 +3409,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_domain:
           operation:
             $ref: "#/paths/~1v1~1domain/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_domains:
           operation:
             $ref: "#/paths/~1v1~1domains/post"
@@ -3408,6 +3426,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.domains
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3431,6 +3451,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3440,18 +3462,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_package_group:
           operation:
             $ref: "#/paths/~1v1~1package-group/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_package_group:
           operation:
             $ref: "#/paths/~1v1~1package-group/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3462,6 +3490,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.packageGroups
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/package_groups/methods/describe_package_group"
@@ -3483,6 +3513,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3492,18 +3524,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_repository:
           operation:
             $ref: "#/paths/~1v1~1repository/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_repository:
           operation:
             $ref: "#/paths/~1v1~1repository/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3514,6 +3552,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.repositories
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/repositories/methods/describe_repository"
@@ -3535,18 +3575,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_domain_permissions_policy:
           operation:
             $ref: "#/paths/~1v1~1domain~1permissions~1policy/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_domain_permissions_policy:
           operation:
             $ref: "#/paths/~1v1~1domain~1permissions~1policy/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3570,12 +3616,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_package:
           operation:
             $ref: "#/paths/~1v1~1package/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_packages:
           operation:
             $ref: "#/paths/~1v1~1packages/post"
@@ -3583,6 +3633,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.packages
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/packages/methods/describe_package"
@@ -3602,6 +3654,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3623,18 +3677,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_repository_permissions_policy:
           operation:
             $ref: "#/paths/~1v1~1repository~1permissions~1policy/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_repository_permissions_policy:
           operation:
             $ref: "#/paths/~1v1~1repository~1permissions~1policy/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3658,6 +3718,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/associated_package_groups/methods/get_associated_package_group"
@@ -3675,6 +3737,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/authorization_tokens/methods/get_authorization_token"
@@ -3692,6 +3756,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_package_version_assets:
           operation:
             $ref: "#/paths/~1v1~1package~1version~1assets/post"
@@ -3699,6 +3765,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.assets
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/package_version_assets/methods/get_package_version_asset"
@@ -3717,6 +3785,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/package_version_readmes/methods/get_package_version_readme"
@@ -3734,6 +3804,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/repository_endpoints/methods/get_repository_endpoint"
@@ -3752,6 +3824,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.allowedRepositories
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/allowed_repositories_for_groups/methods/list_allowed_repositories_for_group"
@@ -3770,6 +3844,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.packages
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/associated_packages/methods/list_associated_packages"
@@ -3787,6 +3863,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/package_version_dependencies/methods/list_package_version_dependencies"
@@ -3805,6 +3883,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.repositories
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/repositories_in_domains/methods/list_repositories_in_domain"
@@ -3823,6 +3903,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.packageGroups
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sub_package_groups/methods/list_sub_package_groups"
@@ -3840,6 +3922,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
@@ -3857,6 +3941,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3866,6 +3952,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3887,6 +3975,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3907,6 +3997,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

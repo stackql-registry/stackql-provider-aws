@@ -1111,7 +1111,7 @@ paths:
           $ref: '#/components/schemas/EmailAddress'
         description: The contact's email address.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1185,7 +1185,7 @@ paths:
           $ref: '#/components/schemas/ContactListName'
         description: The name of the contact list.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2011,7 +2011,7 @@ paths:
           $ref: '#/components/schemas/ContactListName'
         description: The name of the contact list.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2121,7 +2121,7 @@ paths:
       description: Lists all of the export jobs.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2151,7 +2151,7 @@ paths:
       description: Lists all of the import jobs.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2180,7 +2180,7 @@ paths:
         You can execute this operation no more than once per second.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2211,7 +2211,7 @@ paths:
         to get an overview of all entities and their current reputation status.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2471,7 +2471,7 @@ paths:
         returns basic information about each tenant, such as tenant name, ID, ARN, and creation timestamp.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2498,7 +2498,7 @@ paths:
       description: Enable or disable the automatic warm-up feature for dedicated IP addresses.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2559,7 +2559,7 @@ paths:
       description: Enable or disable the ability of your account to send email.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2583,7 +2583,7 @@ paths:
       description: Change the settings for the account-level suppression list.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2643,7 +2643,7 @@ paths:
           $ref: '#/components/schemas/ConfigurationSetName'
         description: The name of the configuration set to associate with a MailManager archive.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2674,7 +2674,7 @@ paths:
           $ref: '#/components/schemas/ConfigurationSetName'
         description: The name of the configuration set to associate with a dedicated IP pool.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2709,7 +2709,7 @@ paths:
           $ref: '#/components/schemas/ConfigurationSetName'
         description: The name of the configuration set.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2740,7 +2740,7 @@ paths:
           $ref: '#/components/schemas/ConfigurationSetName'
         description: The name of the configuration set to enable or disable email sending for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2770,7 +2770,7 @@ paths:
           $ref: '#/components/schemas/ConfigurationSetName'
         description: The name of the configuration set to change the suppression list preferences for.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2802,7 +2802,7 @@ paths:
           $ref: '#/components/schemas/ConfigurationSetName'
         description: The name of the configuration set.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2835,7 +2835,7 @@ paths:
           $ref: '#/components/schemas/ConfigurationSetName'
         description: The name of the configuration set.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2964,7 +2964,7 @@ paths:
           $ref: '#/components/schemas/Identity'
         description: The email address or domain to associate with a configuration set.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2994,7 +2994,7 @@ paths:
           $ref: '#/components/schemas/Identity'
         description: The email identity.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3067,7 +3067,7 @@ paths:
           $ref: '#/components/schemas/Identity'
         description: The email identity.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3097,7 +3097,7 @@ paths:
           $ref: '#/components/schemas/Identity'
         description: The verified email identity.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

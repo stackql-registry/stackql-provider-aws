@@ -73,7 +73,7 @@ paths:
             $ref: "#/components/schemas/IoTThingName"
           description: The name of the core device. This is also the name of the IoT thing.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -100,7 +100,7 @@ paths:
             $ref: "#/components/schemas/IoTThingName"
           description: The name of the core device. This is also the name of the IoT thing.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -139,7 +139,7 @@ paths:
       description: "Creates a component. Components are software that run on Greengrass core devices. After you develop and test a component on your core device, you can use this operation to upload your component to IoT Greengrass. Then, you can deploy the component to other core devices. You can use this operation to do the following: Create components from recipes Create a component from a recipe, which is a file that defines the component's metadata, parameters, dependencies, lifecycle, artifacts, and platform capability. For more information, see IoT Greengrass component recipe reference in the IoT Greengrass V2 Developer Guide. To create a component from a recipe, specify inlineRecipe when you call this operation. Create components from Lambda functions Create a component from an Lambda function that runs on IoT Greengrass. This creates a recipe and artifacts from the Lambda function's deployment package. You can use this operation to migrate Lambda functions from IoT Greengrass V1 to IoT Greengrass V2. This function accepts Lambda functions in all supported versions of Python, Node.js, and Java runtimes. IoT Greengrass doesn't apply any additional restrictions on deprecated Lambda runtime versions. To create a component from a Lambda function, specify lambdaFunction when you call this operation. IoT Greengrass currently supports Lambda functions on only Linux core devices."
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -710,7 +710,7 @@ paths:
       description: Retrieves a list of components that meet the component, version, and platform requirements of a deployment. Greengrass core devices call this operation when they receive a deployment to identify the components to install. This operation identifies components that meet all dependency requirements for a deployment. If the requirements conflict, then this operation returns an error and the deployment fails. For example, this occurs if component A requires version >2.0.0 and component B requires version <2.0.0 of a component dependency. When you specify the component candidates to resolve, IoT Greengrass compares each component's digest from the core device with the component's digest in the Amazon Web Services Cloud. If the digests don't match, then IoT Greengrass specifies to use the version from the Amazon Web Services Cloud. To use this operation, you must use the data plane API endpoint and authenticate with an IoT device certificate. For more information, see IoT Greengrass endpoints and quotas.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2041,6 +2041,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2095,6 +2097,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2105,6 +2109,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.componentVersions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/component_versions/methods/list_component_versions"
@@ -2123,6 +2129,8 @@ components:
           response:
             openAPIDocKey: "201"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2133,6 +2141,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.deployments
+          request:
+            nativeCasing: pascal
         delete_deployment:
           operation:
             $ref: "#/paths/~1greengrass~1v2~1deployments~1{deployment_id}/delete"
@@ -2169,6 +2179,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         describe_component:
           operation:
             $ref: "#/paths/~1greengrass~1v2~1components~1{arn}~1metadata/get"
@@ -2182,6 +2194,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.components
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/components/methods/get_component"
@@ -2213,6 +2227,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.coreDevices
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/core_devices/methods/get_core_device"
@@ -2232,6 +2248,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/component_version_artifacts/methods/get_component_version_artifact"
@@ -2255,6 +2273,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2277,6 +2297,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.associatedClientDevices
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/client_devices_associated_with_core_devices/methods/list_client_devices_associated_with_core_device"
@@ -2295,6 +2317,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.effectiveDeployments
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/effective_deployments/methods/list_effective_deployments"
@@ -2313,6 +2337,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.installedComponents
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/installed_components/methods/list_installed_components"
@@ -2347,6 +2373,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2356,6 +2384,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []

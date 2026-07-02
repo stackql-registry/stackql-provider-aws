@@ -324,7 +324,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The ID for your GraphQL API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1089,7 +1089,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The API key ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1179,7 +1179,7 @@ paths:
           $ref: '#/components/schemas/Namespace'
         description: The name of the ChannelNamespace.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1365,7 +1365,7 @@ paths:
           $ref: '#/components/schemas/DomainName'
         description: The domain name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1679,7 +1679,7 @@ paths:
           $ref: '#/components/schemas/ResourceName'
         description: The new field name.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1922,7 +1922,7 @@ paths:
           APIs (especially in your account) only require the API ID value or ARN of the merged API. However, Merged APIs in
           other accounts (cross-account use cases) strictly require the full resource ARN of the merged API.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2435,7 +2435,7 @@ paths:
       description: Creates a new introspection. Returns the introspectionId of the new introspection after its creation.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

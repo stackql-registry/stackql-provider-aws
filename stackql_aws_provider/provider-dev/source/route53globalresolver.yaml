@@ -239,7 +239,7 @@ paths:
           $ref: '#/components/schemas/ResourceId'
         description: The ID of the DNS view to associate with this token.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -588,7 +588,7 @@ paths:
           $ref: '#/components/schemas/ResourceId'
         description: The unique identifier of the access source to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -754,7 +754,7 @@ paths:
           $ref: '#/components/schemas/ResourceId'
         description: The unique identifier of the DNS view to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -990,7 +990,7 @@ paths:
           $ref: '#/components/schemas/ResourceId'
         description: The ID of the Global Resolver.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1133,7 +1133,7 @@ paths:
           $ref: '#/components/schemas/ResourceId'
         description: The ID of the private hosted zone association.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

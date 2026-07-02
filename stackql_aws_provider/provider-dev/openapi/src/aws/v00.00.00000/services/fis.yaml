@@ -187,7 +187,7 @@ paths:
             $ref: "#/components/schemas/TargetAccountId"
           description: The Amazon Web Services account ID of the target account.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -250,7 +250,7 @@ paths:
             $ref: "#/components/schemas/ExperimentTemplateId"
           description: The ID of the experiment template.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1964,6 +1964,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -1974,6 +1976,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.experimentTemplates
+          request:
+            nativeCasing: pascal
         delete_experiment_template:
           operation:
             $ref: "#/paths/~1experimentTemplates~1{id}/delete"
@@ -1992,6 +1996,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2016,6 +2022,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2037,6 +2045,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2047,6 +2057,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.targetAccountConfigurations
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/target_account_configurations/methods/get_target_account_configuration"
@@ -2075,6 +2087,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.actions
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/actions/methods/get_action"
@@ -2100,6 +2114,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.experiments
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/experiments/methods/get_experiment"
@@ -2124,6 +2140,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/experiment_target_account_configurations/methods/get_experiment_target_account_configuration"
@@ -2166,6 +2184,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.targetResourceTypes
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/target_resource_types/methods/get_target_resource_type"
@@ -2185,6 +2205,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.resolvedTargets
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/experiment_resolved_targets/methods/list_experiment_resolved_targets"
@@ -2219,6 +2241,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2228,6 +2252,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -2246,6 +2272,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

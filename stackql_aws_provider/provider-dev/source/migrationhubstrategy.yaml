@@ -231,7 +231,7 @@ paths:
       description: Retrieves a list of all the servers fetched from customer vCenter using Strategy Recommendation Collector.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -260,7 +260,7 @@ paths:
       description: Retrieves a list of all the application components (processes).
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -355,7 +355,7 @@ paths:
       description: Returns a list of all the servers.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -390,7 +390,7 @@ paths:
       description: Saves the specified migration and modernization preferences.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -420,7 +420,7 @@ paths:
       description: Starts the assessment of an on-premises environment.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -488,7 +488,7 @@ paths:
       description: Starts generating a recommendation report.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

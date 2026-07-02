@@ -391,6 +391,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -399,17 +401,23 @@ components:
             $ref: "#/paths/~1FeatureGroup~1{feature_group_name}/delete"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
         get_record:
           operation:
             $ref: "#/paths/~1FeatureGroup~1{feature_group_name}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_record:
           operation:
             $ref: "#/paths/~1FeatureGroup~1{feature_group_name}/put"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive

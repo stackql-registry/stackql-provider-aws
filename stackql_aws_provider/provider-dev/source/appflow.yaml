@@ -276,7 +276,7 @@ paths:
         returns all connector profiles in a paginated form. If there is no match, this operation returns an empty list.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -311,7 +311,7 @@ paths:
         to the DescribeConnectors API operation to retrieve the next page.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -396,7 +396,7 @@ paths:
         Salesforce for Account and Opportunity entities, or query ServiceNow for the Incident entity.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -431,7 +431,7 @@ paths:
         only custom connectors registered in this account, not the Amazon Web Services authored connectors.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -457,7 +457,7 @@ paths:
       description: Lists all of the flows associated with your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -562,7 +562,7 @@ paths:
         you must deploy the associated AWS lambda function in your account.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -599,7 +599,7 @@ paths:
         this action when you want to get the latest metadata right away.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

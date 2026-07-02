@@ -735,7 +735,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The Amazon Chime account ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -815,7 +815,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The Amazon Chime account ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -903,7 +903,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The bot ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -978,7 +978,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The phone number ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1064,7 +1064,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The room ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1136,7 +1136,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The member ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1314,7 +1314,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The bot ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1354,7 +1354,7 @@ paths:
         Amazon Chime Voice Connector settings.
       parameters: []
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1535,7 +1535,7 @@ paths:
           $ref: '#/components/schemas/NonEmptyString'
         description: The user ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

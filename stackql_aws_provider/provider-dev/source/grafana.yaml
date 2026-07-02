@@ -433,7 +433,7 @@ paths:
           $ref: '#/components/schemas/WorkspaceId'
         description: The ID of the workspace to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

@@ -1048,7 +1048,7 @@ paths:
           $ref: '#/components/schemas/AnalysisTemplateIdentifier'
         description: The identifier for the analysis template resource.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1118,7 +1118,7 @@ paths:
           $ref: '#/components/schemas/CollaborationIdentifier'
         description: The identifier for the collaboration.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1212,7 +1212,7 @@ paths:
         description: A unique identifier of the membership that contains the configured audience model association that you
           want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1284,7 +1284,7 @@ paths:
           $ref: '#/components/schemas/ConfiguredTableIdentifier'
         description: The identifier for the configured table to update. Currently accepts the configured table ID.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1482,7 +1482,7 @@ paths:
           $ref: '#/components/schemas/MembershipIdentifier'
         description: The unique ID for the membership that the configured table association belongs to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1684,7 +1684,7 @@ paths:
           $ref: '#/components/schemas/MembershipIdentifier'
         description: The unique identifier of the membership that contains the ID mapping table that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1774,7 +1774,7 @@ paths:
           $ref: '#/components/schemas/MembershipIdentifier'
         description: The unique identifier of the membership that contains the ID namespace association that you want to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1876,7 +1876,7 @@ paths:
           $ref: '#/components/schemas/MembershipIdentifier'
         description: The unique identifier of the membership.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2944,7 +2944,7 @@ paths:
           $ref: '#/components/schemas/MembershipIdentifier'
         description: The unique identifier of the membership that contains the ID mapping table that you want to populate.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

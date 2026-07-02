@@ -99,7 +99,7 @@ paths:
           model in Amazon Bedrock in the Amazon Bedrock User Guide. To include a prompt that was defined in Prompt management,
           specify the ARN of the prompt version to use. The Converse API doesn''t support imported models.'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -181,7 +181,7 @@ paths:
           model in Amazon Bedrock in the Amazon Bedrock User Guide. To include a prompt that was defined in Prompt management,
           specify the ARN of the prompt version to use. The Converse API doesn''t support imported models.'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -358,7 +358,7 @@ paths:
           $ref: '#/components/schemas/ServiceTierType'
         description: Specifies the processing tier type used for serving the request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -489,7 +489,7 @@ paths:
           $ref: '#/components/schemas/ServiceTierType'
         description: Specifies the processing tier type used for serving the request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

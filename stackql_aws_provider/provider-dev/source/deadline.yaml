@@ -1921,7 +1921,7 @@ paths:
           $ref: '#/components/schemas/ClientToken'
         description: The unique token which the server uses to recognize retries of the same request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2057,7 +2057,7 @@ paths:
           $ref: '#/components/schemas/ClientToken'
         description: The unique token which the server uses to recognize retries of the same request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2139,7 +2139,7 @@ paths:
           $ref: '#/components/schemas/FarmId'
         description: The farm ID to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2243,7 +2243,7 @@ paths:
           $ref: '#/components/schemas/ClientToken'
         description: The unique token which the server uses to recognize retries of the same request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2385,7 +2385,7 @@ paths:
           $ref: '#/components/schemas/LimitId'
         description: The unique identifier of the limit to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2515,7 +2515,7 @@ paths:
           $ref: '#/components/schemas/MonitorId'
         description: The unique identifier of the monitor to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2614,7 +2614,7 @@ paths:
           $ref: '#/components/schemas/ClientToken'
         description: The idempotency token to update in the queue.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2746,7 +2746,7 @@ paths:
           $ref: '#/components/schemas/ClientToken'
         description: The unique token which the server uses to recognize retries of the same request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3064,7 +3064,7 @@ paths:
           $ref: '#/components/schemas/ClientToken'
         description: The unique token which the server uses to recognize retries of the same request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3176,7 +3176,7 @@ paths:
           $ref: '#/components/schemas/WorkerId'
         description: The worker ID to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3261,7 +3261,7 @@ paths:
           $ref: '#/components/schemas/ClientToken'
         description: The unique token which the server uses to recognize retries of the same request.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4462,7 +4462,7 @@ paths:
           $ref: '#/components/schemas/String'
         description: The ARN of the resource to apply tags to.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -4751,7 +4751,7 @@ paths:
           $ref: '#/components/schemas/WorkerId'
         description: The worker ID to update.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:

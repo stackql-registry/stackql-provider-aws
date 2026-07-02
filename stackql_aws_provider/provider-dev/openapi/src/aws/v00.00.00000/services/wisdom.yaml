@@ -531,7 +531,7 @@ paths:
             $ref: "#/components/schemas/UuidOrArn"
           description: The identifier of the knowledge base. This should not be a QUICK_RESPONSES type knowledge base if you're storing Wisdom Content resource to it. Can be either the ID or the ARN
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -702,7 +702,7 @@ paths:
             $ref: "#/components/schemas/UuidOrArn"
           description: The identifier of the quick response.
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2979,6 +2979,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2989,6 +2991,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.assistantSummaries
+          request:
+            nativeCasing: pascal
         delete_assistant:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}/delete"
@@ -3021,6 +3025,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3031,6 +3037,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.assistantAssociationSummaries
+          request:
+            nativeCasing: pascal
         delete_assistant_association:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1associations~1{assistant_association_id}/delete"
@@ -3063,6 +3071,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3073,6 +3083,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.contentSummaries
+          request:
+            nativeCasing: pascal
         delete_content:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1contents~1{content_id}/delete"
@@ -3091,6 +3103,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3101,6 +3115,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.contentSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3126,6 +3142,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3136,6 +3154,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.knowledgeBaseSummaries
+          request:
+            nativeCasing: pascal
         delete_knowledge_base:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}/delete"
@@ -3168,6 +3188,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3178,6 +3200,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.quickResponseSummaries
+          request:
+            nativeCasing: pascal
         delete_quick_response:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1quickResponses~1{quick_response_id}/delete"
@@ -3196,6 +3220,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3206,6 +3232,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.results
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3231,6 +3259,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3247,6 +3277,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.sessionSummaries
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3282,6 +3314,8 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.importJobSummaries
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/import_jobs/methods/get_import_job"
@@ -3318,6 +3352,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommendations/methods/get_recommendations"
@@ -3352,6 +3388,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3361,6 +3399,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -3385,6 +3425,8 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
