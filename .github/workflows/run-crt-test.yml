@@ -2,8 +2,9 @@ name: Run CRT tests
  
 on:
   push:
+    branches-ignore: [stackql-provider]
   pull_request:
-    branches-ignore: [master]
+    branches-ignore: [master, stackql-provider]
 
 permissions:
   contents: read
