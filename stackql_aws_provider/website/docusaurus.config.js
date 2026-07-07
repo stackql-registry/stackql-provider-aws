@@ -2,7 +2,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import { createConfig } from './.shared-config/index.js';
 import { providerName, providerTitle } from './provider.js';
 
-export default createConfig({
+const config = createConfig({
   providerName,
   providerTitle,
   prismThemes,
@@ -17,3 +17,18 @@ export default createConfig({
     },
   },
 });
+
+// Use the locally vendored registry-branded logos (STACKQL>> | REGISTRY,
+// matching the awscc microsite) instead of the shared config's hotlinked
+// main-site wordmark - self-contained assets, no cross-origin fetch.
+// global.css swaps in the -mobile variants below 996px.
+const registryLogo = {
+  alt: 'StackQL',
+  href: '/',
+  src: 'img/stackql-registry-logo.svg',
+  srcDark: 'img/stackql-registry-logo-white.svg',
+};
+config.themeConfig.navbar.logo = { ...registryLogo };
+config.themeConfig.footer.logo = { ...registryLogo };
+
+export default config;
