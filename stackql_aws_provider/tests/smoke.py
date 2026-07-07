@@ -403,6 +403,39 @@ def main():
     print("version:  %s" % version)
     print("registry: %s" % (registry_path or "public registry (live)"))
 
+    if args.live:
+        # exec does not auto-pull: without a local --registry override the
+        # provider must be installed from the public registry first, and a
+        # fresh pull also picks up the latest published version.
+        print("pulling aws provider from the public registry ...")
+        try:
+            rc, out, err = run_stackql(stackql, registry_path, "REGISTRY PULL aws", timeout)
+        except (subprocess.TimeoutExpired, OSError) as exc:
+            print("registry pull failed: %s" % exc, file=sys.stderr)
+            return 2
+        pull_text = (out + err).strip()
+        if pull_text:
+            print(pull_text)
+        if rc != 0:
+            print("registry pull failed (rc=%d), aborting" % rc, file=sys.stderr)
+            return 2
+        # capture the installed provider version for the run log
+        # (SHOW VERSIONS is not in the grammar; SHOW PROVIDERS carries a
+        # version column)
+        try:
+            rc, out, err = run_stackql(stackql, registry_path, "SHOW PROVIDERS", timeout)
+        except (subprocess.TimeoutExpired, OSError) as exc:
+            print("warning: SHOW PROVIDERS failed: %s" % exc, file=sys.stderr)
+            rc, out = 1, ""
+        aws_version = None
+        for row in parse_rows(out) or []:
+            if row.get("name") == "aws":
+                aws_version = row.get("version")
+        if aws_version:
+            print("provider: aws %s (public registry)" % aws_version)
+        else:
+            print("warning: could not determine installed aws provider version", file=sys.stderr)
+
     jenv = Environment(undefined=StrictUndefined)
     context = dict(manifest.get("vars") or {})
 
